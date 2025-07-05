@@ -98,6 +98,16 @@ const gameApi = {
   // 食用鱼类
   async eatFish(playerName, fishId) {
     return await api.post(`/game/player/${playerName}/eat/${fishId}`)
+  },
+
+  // 时间推进
+  async advanceTime(playerName) {
+    return await api.post(`/game/player/${playerName}/advance-time`)
+  },
+
+  // 获取时间信息
+  async getTimeInfo(playerName) {
+    return await api.get(`/game/player/${playerName}/time`)
   }
 }
 

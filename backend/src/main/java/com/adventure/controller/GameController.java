@@ -157,6 +157,13 @@ public class GameController {
         public Boolean isGameCompleted;
         public LocalDateTime lastPlayedAt;
         public Integer totalPlayTime;
+        public Integer currentDay;
+        public Integer currentHour;
+        public LocalDateTime gameStartTime;
+        public LocalDateTime lastDayUpdateTime;
+        public Integer actionsToday;
+        public Integer maxActionsPerDay;
+        public String timeDescription;
         
         public static GameStateDTO fromEntity(GameState gameState) {
             GameStateDTO dto = new GameStateDTO();
@@ -169,6 +176,13 @@ public class GameController {
             dto.isGameCompleted = gameState.getIsGameCompleted();
             dto.lastPlayedAt = gameState.getLastPlayedAt();
             dto.totalPlayTime = gameState.getTotalPlayTime();
+            dto.currentDay = gameState.getCurrentDay();
+            dto.currentHour = gameState.getCurrentHour();
+            dto.gameStartTime = gameState.getGameStartTime();
+            dto.lastDayUpdateTime = gameState.getLastDayUpdateTime();
+            dto.actionsToday = gameState.getActionsToday();
+            dto.maxActionsPerDay = gameState.getMaxActionsPerDay();
+            dto.timeDescription = gameState.getTimeDescription();
             return dto;
         }
     }
@@ -404,6 +418,66 @@ public class GameController {
         fishDTO.put("hungerRestore", fish.getHungerRestore());
         fishDTO.put("thirstRestore", fish.getThirstRestore());
         return fishDTO;
+    }
+    
+    /**
+     * 时间推进和每日消耗
+     */
+    @PostMapping("/player/{name}/advance-time")
+    public ResponseEntity<Map<String, Object>> advanceTime(@PathVariable String name) {
+        try {
+            Player player = gameService.getPlayer(name)
+                    .orElseThrow(() -> new RuntimeException("玩家不存在"));
+            
+            GameState gameState = player.getGameState();
+            
+            // 推进时间（1小时）
+            gameState.advanceTime(1);
+            
+            // 应用每日消耗
+            gameService.applyDailyConsumption(player, gameState);
+            
+            // 保存更新
+            player = gameService.savePlayer(player);
+            
+            Map<String, Object> response = new HashMap<>();
+            response.put("success", true);
+            response.put("message", "时间推进成功");
+            response.put("player", PlayerDTO.fromEntity(player));
+            response.put("currentDay", gameState.getCurrentDay());
+            response.put("currentHour", gameState.getCurrentHour());
+            response.put("timeDescription", gameState.getTimeDescription());
+            
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+        }
+    }
+    
+    /**
+     * 获取游戏时间信息
+     */
+    @GetMapping("/player/{name}/time")
+    public ResponseEntity<Map<String, Object>> getTimeInfo(@PathVariable String name) {
+        try {
+            Player player = gameService.getPlayer(name)
+                    .orElseThrow(() -> new RuntimeException("玩家不存在"));
+            
+            GameState gameState = player.getGameState();
+            
+            Map<String, Object> response = new HashMap<>();
+            response.put("success", true);
+            response.put("currentDay", gameState.getCurrentDay());
+            response.put("currentHour", gameState.getCurrentHour());
+            response.put("timeDescription", gameState.getTimeDescription());
+            response.put("actionsToday", gameState.getActionsToday());
+            response.put("maxActionsPerDay", gameState.getMaxActionsPerDay());
+            response.put("remainingActions", gameState.getMaxActionsPerDay() - gameState.getActionsToday());
+            
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+        }
     }
     
     /**

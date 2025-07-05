@@ -1,4 +1,4 @@
-n<template>
+<template>
   <div class="comprehensive-status">
     <!-- 综合状态头部 -->
     <div class="status-header">
@@ -6,6 +6,11 @@ n<template>
         <el-icon class="captain-icon"><User /></el-icon>
         <span class="captain-name">{{ player.name }}</span>
         <el-tag type="success" size="small">Lv.{{ player.level }}</el-tag>
+      </div>
+      <div class="time-info">
+        <el-icon class="time-icon"><Timer /></el-icon>
+        <span class="time-text">第{{ gameStore.timeInfo.currentDay }}天 {{ gameStore.timeInfo.timeDescription }}</span>
+        <el-tag type="info" size="small">{{ gameStore.timeInfo.currentHour }}:00</el-tag>
       </div>
       <div class="ship-info">
         <el-icon class="ship-icon"><Ship /></el-icon>
@@ -59,7 +64,7 @@ n<template>
                 :show-text="false"
                 :stroke-width="6"
               />
-              <span class="status-value">{{ player.hunger || 100 }}/100</span>
+              <span class="status-value">{{ (player.hunger || 100) }}/100</span>
             </div>
             <div class="status-item">
               <span class="status-label">口渴</span>
@@ -69,7 +74,7 @@ n<template>
                 :show-text="false"
                 :stroke-width="6"
               />
-              <span class="status-value">{{ player.thirst || 100 }}/100</span>
+              <span class="status-value">{{ (player.thirst || 100) }}/100</span>
             </div>
           </div>
         </div>
@@ -200,6 +205,34 @@ n<template>
         </div>
       </div>
     </div>
+
+    <!-- 行动次数显示 -->
+    <div class="action-status">
+      <div class="action-info">
+        <span class="action-label">今日行动：</span>
+        <span class="action-count">{{ gameStore.timeInfo.actionsToday }}/{{ gameStore.timeInfo.maxActionsPerDay }}</span>
+        <el-progress 
+          :percentage="(gameStore.timeInfo.actionsToday / gameStore.timeInfo.maxActionsPerDay) * 100" 
+          :show-text="false"
+          :stroke-width="4"
+          color="#909399"
+        />
+      </div>
+      <div class="time-actions">
+        <el-button 
+          type="primary" 
+          size="small"
+          @click="advanceTime"
+          :loading="gameStore.loading"
+          :disabled="gameStore.timeInfo.remainingActions <= 0"
+          class="advance-time-btn"
+        >
+          <el-icon><Clock /></el-icon>
+          休息1小时
+        </el-button>
+        <span class="remaining-actions">剩余行动: {{ gameStore.timeInfo.remainingActions }}</span>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -207,7 +240,7 @@ n<template>
 import { ref, computed } from 'vue'
 import { useGameStore } from '@/stores/game'
 import { ElMessage } from 'element-plus'
-import { User, Ship, Coin, TrophyBase, Timer, Box, Operation } from '@element-plus/icons-vue'
+import { User, Ship, Coin, TrophyBase, Timer, Box, Operation, Clock } from '@element-plus/icons-vue'
 
 const gameStore = useGameStore()
 
@@ -299,39 +332,78 @@ const fishingStatusText = computed(() => {
 
 // 方法
 const startFishing = async () => {
-  if (!canFish.value) return
+  if (!canFish.value) {
+    ElMessage.warning('无法钓鱼：精力不足或理智过低')
+    return
+  }
   
   fishingState.value.fishing = true
   fishingState.value.status = 'fishing'
   
   try {
-    // 模拟钓鱼过程
-    await new Promise(resolve => setTimeout(resolve, 2000))
+    // 调用真正的后端钓鱼API
+    const result = await gameStore.goFishing()
     
-    // 模拟钓鱼结果
-    const fishResults = [
-      { fishName: '长腿沙丁鱼', rarity: '奇异', canEat: true },
-      { fishName: '海鲈鱼', rarity: '普通', canEat: true },
-      { fishName: '囊肿刺豚', rarity: '危险', canEat: false },
-      { fishName: '人头章鱼', rarity: '稀有', canEat: true }
-    ]
-    
-    const result = fishResults[Math.floor(Math.random() * fishResults.length)]
-    fishingState.value.lastResult = result
-    
-    ElMessage.success(`钓到了${result.fishName}！`)
+    if (result.success) {
+      if (result.fish) {
+        // 钓到鱼了
+        fishingState.value.lastResult = {
+          fishName: result.fish.name,
+          rarity: result.fish.rarity,
+          canEat: result.fish.isEdible,
+          fishId: result.fish.id,
+          description: result.fish.description
+        }
+        ElMessage.success(`钓到了${result.fish.name}！`)
+      } else {
+        // 没钓到鱼
+        fishingState.value.lastResult = null
+        ElMessage.info(result.message || '没有钓到鱼，再试试吧')
+      }
+    } else {
+      ElMessage.error(result.message || '钓鱼失败')
+    }
     
   } catch (err) {
-    ElMessage.error('钓鱼失败')
+    ElMessage.error(err.message || '钓鱼失败')
   } finally {
     fishingState.value.fishing = false
     fishingState.value.status = 'ready'
   }
 }
 
-const eatFish = (fish) => {
-  ElMessage.success(`食用了${fish.fishName}，获得营养补充`)
-  fishingState.value.lastResult = null
+const eatFish = async (fish) => {
+  if (!fish.canEat) {
+    ElMessage.warning('这种鱼不能食用！')
+    return
+  }
+  
+  try {
+    const result = await gameStore.eatFish(fish.fishId)
+    
+    if (result.success) {
+      ElMessage.success(`食用了${fish.fishName}，获得营养补充`)
+      
+      // 显示属性变化
+      if (result.playerChanges) {
+        const changes = []
+        if (result.playerChanges.health > 0) changes.push(`生命值+${result.playerChanges.health}`)
+        if (result.playerChanges.hunger > 0) changes.push(`饥饿值+${result.playerChanges.hunger}`)
+        if (result.playerChanges.thirst > 0) changes.push(`口渴值+${result.playerChanges.thirst}`)
+        if (result.playerChanges.sanity < 0) changes.push(`理智值${result.playerChanges.sanity}`)
+        
+        if (changes.length > 0) {
+          ElMessage.info(`属性变化：${changes.join(', ')}`)
+        }
+      }
+      
+      fishingState.value.lastResult = null
+    } else {
+      ElMessage.error(result.message || '食用失败')
+    }
+  } catch (err) {
+    ElMessage.error(err.message || '食用失败')
+  }
 }
 
 const discardFish = () => {
@@ -348,6 +420,34 @@ const getFishRarityType = (rarity) => {
     '传说': 'success'
   }
   return typeMap[rarity] || ''
+}
+
+const advanceTime = async () => {
+  try {
+    const result = await gameStore.advanceTime()
+    if (result.success) {
+      ElMessage.success(`时间推进成功：${result.timeDescription}`)
+      
+      // 显示属性变化提示
+      const changes = []
+      if (result.playerChanges) {
+        Object.keys(result.playerChanges).forEach(key => {
+          if (result.playerChanges[key] < 0) {
+            changes.push(`${key}${result.playerChanges[key]}`)
+          }
+        })
+      }
+      
+      if (changes.length > 0) {
+        ElMessage.info(`属性变化：${changes.join(', ')}`)
+      }
+      
+    } else {
+      ElMessage.error(result.message || '时间推进失败')
+    }
+  } catch (err) {
+    ElMessage.error(err.message || '时间推进失败')
+  }
 }
 </script>
 
@@ -553,6 +653,52 @@ const getFishRarityType = (rarity) => {
       font-size: 0.65rem;
       font-weight: 600;
       text-shadow: 0 0 3px rgba(0, 255, 200, 0.6);
+    }
+  }
+}
+
+.action-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(102, 255, 204, 0.2);
+  font-size: 0.7rem;
+  
+  .action-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    
+    .action-label {
+      color: #00ff88;
+      font-weight: 500;
+    }
+    
+    .action-count {
+      color: #00ffc8;
+      font-weight: 600;
+    }
+    
+    .el-progress {
+      flex: 1;
+    }
+  }
+  
+  .time-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    
+    .advance-time-btn {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.6rem;
+      height: auto;
+    }
+    
+    .remaining-actions {
+      color: #00ffc8;
+      font-weight: 600;
     }
   }
 }

@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import gameApi from '@/api/game'
+import { ElMessage } from 'element-plus'
 
 export const useGameStore = defineStore('game', () => {
   // 状态
@@ -11,6 +12,14 @@ export const useGameStore = defineStore('game', () => {
   const gameStarted = ref(false)
   const fishingResult = ref(null)
   const caughtFish = ref(null)
+  const timeInfo = ref({
+    currentDay: 1,
+    currentHour: 8,
+    timeDescription: '上午',
+    actionsToday: 0,
+    maxActionsPerDay: 10,
+    remainingActions: 10
+  })
 
   // 计算属性
   const isPlayerAlive = computed(() => {
@@ -122,7 +131,25 @@ export const useGameStore = defineStore('game', () => {
         nextStoryId
       })
       
+      // 记录选择前的属性值
+      const oldPlayer = { ...player.value }
+      
       player.value = response.player
+      
+      // 更新时间信息
+      if (player.value.gameState) {
+        timeInfo.value = {
+          currentDay: player.value.gameState.currentDay || 1,
+          currentHour: player.value.gameState.currentHour || 8,
+          timeDescription: player.value.gameState.timeDescription || '上午',
+          actionsToday: player.value.gameState.actionsToday || 0,
+          maxActionsPerDay: player.value.gameState.maxActionsPerDay || 10,
+          remainingActions: (player.value.gameState.maxActionsPerDay || 10) - (player.value.gameState.actionsToday || 0)
+        }
+      }
+      
+      // 计算并显示属性变化
+      showAttributeChanges(oldPlayer, player.value)
       
       // 加载新故事
       await loadCurrentStory()
@@ -133,6 +160,71 @@ export const useGameStore = defineStore('game', () => {
       throw err
     } finally {
       loading.value = false
+    }
+  }
+
+  // 显示属性变化
+  function showAttributeChanges(oldPlayer, newPlayer) {
+    const changes = []
+    
+    // 检查各种属性变化
+    const attributes = [
+      { key: 'gold', name: '金币' },
+      { key: 'health', name: '生命值' },
+      { key: 'energy', name: '精力' },
+      { key: 'sanity', name: '理智' },
+      { key: 'hunger', name: '饥饿值' },
+      { key: 'thirst', name: '口渴值' },
+      { key: 'experience', name: '经验值' }
+    ]
+    
+    attributes.forEach(attr => {
+      const oldValue = oldPlayer[attr.key] || 0
+      const newValue = newPlayer[attr.key] || 0
+      const change = newValue - oldValue
+      
+      if (change !== 0) {
+        const symbol = change > 0 ? '+' : ''
+        changes.push(`${attr.name}${symbol}${change}`)
+      }
+    })
+    
+    // 检查船只属性变化
+    if (oldPlayer.ship && newPlayer.ship) {
+      const shipAttributes = [
+        { key: 'fuel', name: '燃料' },
+        { key: 'food', name: '食物' },
+        { key: 'water', name: '淡水' },
+        { key: 'durability', name: '耐久' }
+      ]
+      
+      shipAttributes.forEach(attr => {
+        const oldValue = oldPlayer.ship[attr.key] || 0
+        const newValue = newPlayer.ship[attr.key] || 0
+        const change = newValue - oldValue
+        
+        if (change !== 0) {
+          const symbol = change > 0 ? '+' : ''
+          changes.push(`${attr.name}${symbol}${change}`)
+        }
+      })
+    }
+    
+    // 显示变化
+    if (changes.length > 0) {
+      const message = `属性变化：${changes.join(', ')}`
+      
+      // 根据变化类型显示不同的消息类型
+      const hasNegativeChange = changes.some(change => change.includes('-'))
+      const hasPositiveChange = changes.some(change => change.includes('+'))
+      
+      if (hasNegativeChange && !hasPositiveChange) {
+        ElMessage.warning(message)
+      } else if (hasPositiveChange && !hasNegativeChange) {
+        ElMessage.success(message)
+      } else {
+        ElMessage.info(message)
+      }
     }
   }
 
@@ -226,6 +318,60 @@ export const useGameStore = defineStore('game', () => {
     })
   }
 
+  async function advanceTime() {
+    if (!player.value) return
+    
+    loading.value = true
+    error.value = ''
+    
+    try {
+      const response = await gameApi.advanceTime(player.value.name)
+      
+      if (response.success) {
+        player.value = response.player
+        timeInfo.value = {
+          currentDay: response.currentDay,
+          currentHour: response.currentHour,
+          timeDescription: response.timeDescription,
+          actionsToday: response.actionsToday || 0,
+          maxActionsPerDay: response.maxActionsPerDay || 10,
+          remainingActions: (response.maxActionsPerDay || 10) - (response.actionsToday || 0)
+        }
+      }
+      
+      return response
+    } catch (err) {
+      error.value = err.message
+      throw err
+    } finally {
+      loading.value = false
+    }
+  }
+
+  async function getTimeInfo() {
+    if (!player.value) return
+    
+    try {
+      const response = await gameApi.getTimeInfo(player.value.name)
+      
+      if (response.success) {
+        timeInfo.value = {
+          currentDay: response.currentDay,
+          currentHour: response.currentHour,
+          timeDescription: response.timeDescription,
+          actionsToday: response.actionsToday || 0,
+          maxActionsPerDay: response.maxActionsPerDay || 10,
+          remainingActions: (response.maxActionsPerDay || 10) - (response.actionsToday || 0)
+        }
+      }
+      
+      return response
+    } catch (err) {
+      error.value = err.message
+      throw err
+    }
+  }
+
   function resetGame() {
     player.value = null
     currentStory.value = null
@@ -233,6 +379,14 @@ export const useGameStore = defineStore('game', () => {
     error.value = ''
     fishingResult.value = null
     caughtFish.value = null
+    timeInfo.value = {
+      currentDay: 1,
+      currentHour: 8,
+      timeDescription: '上午',
+      actionsToday: 0,
+      maxActionsPerDay: 10,
+      remainingActions: 10
+    }
   }
 
   return {
@@ -244,6 +398,7 @@ export const useGameStore = defineStore('game', () => {
     gameStarted,
     fishingResult,
     caughtFish,
+    timeInfo,
     
     // 计算属性
     isPlayerAlive,
@@ -260,6 +415,8 @@ export const useGameStore = defineStore('game', () => {
     updatePlayerStats,
     goFishing,
     eatFish,
+    advanceTime,
+    getTimeInfo,
     resetGame
   }
 }) 
