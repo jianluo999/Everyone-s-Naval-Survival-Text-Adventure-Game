@@ -22,37 +22,43 @@
       
                     <!-- 游戏内容区域 -->
        <div class="game-content deep-sea-content">
-         <!-- 顶部综合状态区域 -->
-         <div class="top-section deep-sea-top-section">
-           <div class="comprehensive-card deep-sea-comprehensive-card">
-             <div class="card-frame">
-               <div class="frame-corner top-left"></div>
-               <div class="frame-corner top-right"></div>
-               <div class="frame-corner bottom-left"></div>
-               <div class="frame-corner bottom-right"></div>
-               <ComprehensiveStatus />
-             </div>
-           </div>
-         </div>
-
-         <!-- 底部主要内容区域 -->
+         <!-- 主要内容区域 - 左右分列 -->
          <div class="main-content-section deep-sea-main-content">
-           <!-- 深海故事展示区 -->
-           <div class="story-section deep-sea-story-section">
-             <div class="story-frame">
-               <div class="frame-corner top-left"></div>
-               <div class="frame-corner top-right"></div>
-               <div class="frame-corner bottom-left"></div>
-               <div class="frame-corner bottom-right"></div>
-               <StoryDisplay class="deep-sea-story-display" />
+           <!-- 左侧区域：状态面板 + 故事区域 -->
+           <div class="left-section deep-sea-left-section">
+             <!-- 顶部综合状态区域 -->
+             <div class="top-section deep-sea-top-section">
+               <div class="comprehensive-card deep-sea-comprehensive-card">
+                 <div class="card-frame">
+                   <div class="frame-corner top-left"></div>
+                   <div class="frame-corner top-right"></div>
+                   <div class="frame-corner bottom-left"></div>
+                   <div class="frame-corner bottom-right"></div>
+                   <ComprehensiveStatus />
+                 </div>
+               </div>
+             </div>
+             
+             <!-- 深海故事展示区 -->
+             <div class="story-section deep-sea-story-section">
+               <div class="story-frame">
+                 <div class="frame-corner top-left"></div>
+                 <div class="frame-corner top-right"></div>
+                 <div class="frame-corner bottom-left"></div>
+                 <div class="frame-corner bottom-right"></div>
+                 <StoryDisplay class="deep-sea-story-display" @choice-made="handleChoiceMade" />
+               </div>
              </div>
            </div>
 
-           <!-- 深海聊天区域 -->
-           <div class="chat-section deep-sea-chat-section">
-             <div class="chat-frame">
-               <div class="frame-glow"></div>
-               <ChatPanel class="deep-sea-chat-panel" />
+           <!-- 右侧区域：聊天面板占据整个高度 -->
+           <div class="right-section deep-sea-right-section">
+             <!-- 深海聊天区域 -->
+             <div class="chat-section deep-sea-chat-section">
+               <div class="chat-frame">
+                 <div class="frame-glow"></div>
+                 <ChatPanel ref="chatPanelRef" class="deep-sea-chat-panel" />
+               </div>
              </div>
            </div>
          </div>
@@ -134,6 +140,7 @@ const gameStore = useGameStore()
 // 响应式数据
 const loading = ref(false)
 const saving = ref(false)
+const chatPanelRef = ref(null)
 
 // 生命周期
 onMounted(() => {
@@ -218,6 +225,13 @@ const handleSaveGame = async () => {
     saving.value = false
   }
 }
+
+// 处理选择记录
+const handleChoiceMade = (choiceData) => {
+  if (chatPanelRef.value && chatPanelRef.value.recordPlayerChoice) {
+    chatPanelRef.value.recordPlayerChoice(choiceData.choice, choiceData.storyTitle)
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -230,9 +244,11 @@ const handleSaveGame = async () => {
 
 .deep-sea-game {
   background: 
-    radial-gradient(ellipse at 30% 20%, rgba(0, 40, 80, 0.3) 0%, transparent 50%),
-    radial-gradient(ellipse at 70% 80%, rgba(0, 60, 120, 0.2) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(0, 10, 20, 0.8) 0%, rgba(0, 5, 15, 0.9) 50%, rgba(0, 0, 0, 0.95) 100%);
+    radial-gradient(ellipse at 30% 20%, rgba(0, 60, 40, 0.6) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(0, 80, 60, 0.4) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(5, 25, 20, 0.98) 0%, rgba(0, 20, 15, 0.99) 50%, rgba(0, 15, 10, 1) 100%);
+  font-family: 'Consolas', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
+  color: #ffffff;
   
   // 深海迷雾效果
   .deep-sea-fog {
@@ -242,8 +258,8 @@ const handleSaveGame = async () => {
     width: 100%;
     height: 100%;
     background: 
-      radial-gradient(ellipse at 20% 30%, rgba(102, 255, 204, 0.05) 0%, transparent 40%),
-      radial-gradient(ellipse at 80% 70%, rgba(0, 255, 127, 0.03) 0%, transparent 40%);
+      radial-gradient(ellipse at 20% 30%, rgba(0, 255, 136, 0.08) 0%, transparent 40%),
+      radial-gradient(ellipse at 80% 70%, rgba(0, 255, 200, 0.06) 0%, transparent 40%);
     animation: fog-drift 25s ease-in-out infinite;
     pointer-events: none;
     z-index: 1;
@@ -364,19 +380,37 @@ const handleSaveGame = async () => {
 
  // 深海内容区域
  .deep-sea-content {
-   display: flex;
-   flex-direction: column;
-   gap: 1.5rem;
    margin-bottom: 2rem;
  }
  
-  // 顶部综合状态区域
+ // 主要内容区域 - 左右分列
+ .deep-sea-main-content {
+   display: grid;
+   grid-template-columns: 2fr 1fr;
+   gap: 2rem;
+   min-height: 600px;
+ }
+ 
+ // 左侧区域：状态面板 + 故事区域
+ .deep-sea-left-section {
+   display: flex;
+   flex-direction: column;
+   gap: 1.5rem;
+ }
+ 
+ // 右侧区域：聊天面板占据整个高度
+ .deep-sea-right-section {
+   display: flex;
+   flex-direction: column;
+ }
+ 
+ // 顶部综合状态区域
  .deep-sea-top-section {
-   margin-bottom: 1rem;
+   flex-shrink: 0;
    
    .comprehensive-card {
      position: relative;
-     height: 220px; // 高度适中，能容纳所有信息
+     height: 180px; // 调整为更合适的高度
      
      .card-frame {
        position: relative;
@@ -384,13 +418,13 @@ const handleSaveGame = async () => {
        background: rgba(0, 20, 40, 0.8);
        border-radius: 15px;
        backdrop-filter: blur(15px);
-       border: 1px solid rgba(102, 255, 204, 0.4);
+       border: 1px solid rgba(255, 255, 255, 0.3);
        
        .frame-corner {
          position: absolute;
          width: 20px;
          height: 20px;
-         border: 2px solid rgba(102, 255, 204, 0.8);
+         border: 2px solid rgba(255, 255, 255, 0.6);
          z-index: 1;
          
          &.top-left {
@@ -424,85 +458,83 @@ const handleSaveGame = async () => {
      }
    }
  }
-   
-
- 
- // 底部主要内容区域
- .deep-sea-main-content {
-   display: grid;
-   grid-template-columns: 2fr 1fr;
-   gap: 2rem;
-   min-height: 400px;
- }
  
  // 深海故事区域
- .deep-sea-story-section {
-   .story-frame {
-     position: relative;
-     height: 100%;
-     
-     .frame-corner {
-       position: absolute;
-       width: 20px;
-       height: 20px;
-       border: 2px solid rgba(102, 255, 204, 0.6);
-       z-index: 1;
-       
-       &.top-left {
-         top: -2px;
-         left: -2px;
-         border-right: none;
-         border-bottom: none;
-       }
-       
-       &.top-right {
-         top: -2px;
-         right: -2px;
-         border-left: none;
-         border-bottom: none;
-       }
-       
-       &.bottom-left {
-         bottom: -2px;
-         left: -2px;
-         border-right: none;
-         border-top: none;
-       }
-       
-       &.bottom-right {
-         bottom: -2px;
-         right: -2px;
-         border-left: none;
-         border-top: none;
-       }
-     }
-   }
- }
+.deep-sea-story-section {
+  flex: 1;
+  
+  .story-frame {
+    position: relative;
+    height: 100%;
+    background: rgba(0, 30, 25, 0.95);
+    border-radius: 15px;
+    
+    .frame-corner {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      z-index: 1;
+      
+      &.top-left {
+        top: -2px;
+        left: -2px;
+        border-right: none;
+        border-bottom: none;
+      }
+      
+      &.top-right {
+        top: -2px;
+        right: -2px;
+        border-left: none;
+        border-bottom: none;
+      }
+      
+      &.bottom-left {
+        bottom: -2px;
+        left: -2px;
+        border-right: none;
+        border-top: none;
+      }
+      
+      &.bottom-right {
+        bottom: -2px;
+        right: -2px;
+        border-left: none;
+        border-top: none;
+      }
+    }
+  }
+}
  
  // 深海聊天区域
- .deep-sea-chat-section {
-   .chat-frame {
-     position: relative;
-     height: 100%;
-     
-     .frame-glow {
-       position: absolute;
-       top: -5px;
-       left: -5px;
-       right: -5px;
-       bottom: -5px;
-       background: linear-gradient(45deg, 
-         rgba(102, 255, 204, 0.1) 0%, 
-         rgba(0, 255, 127, 0.05) 25%, 
-         rgba(102, 255, 204, 0.1) 50%, 
-         rgba(0, 255, 127, 0.05) 75%, 
-         rgba(102, 255, 204, 0.1) 100%);
-       border-radius: 20px;
-       animation: frame-glow-pulse 4s ease-in-out infinite;
-       z-index: 0;
-     }
-   }
- }
+.deep-sea-chat-section {
+  flex: 1;
+  
+  .chat-frame {
+    position: relative;
+    height: 100%;
+    background: rgba(0, 30, 25, 0.95);
+    border-radius: 15px;
+    
+    .frame-glow {
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      background: linear-gradient(45deg, 
+        rgba(102, 255, 204, 0.1) 0%, 
+        rgba(0, 255, 127, 0.05) 25%, 
+        rgba(102, 255, 204, 0.1) 50%, 
+        rgba(0, 255, 127, 0.05) 75%, 
+        rgba(102, 255, 204, 0.1) 100%);
+      border-radius: 20px;
+      animation: frame-glow-pulse 4s ease-in-out infinite;
+      z-index: 0;
+    }
+  }
+}
 
 // 深海底部栏
 .deep-sea-footer {
@@ -731,27 +763,21 @@ const handleSaveGame = async () => {
  // 响应式适配
  @media (max-width: 1024px) {
    .deep-sea-top-section {
-     grid-template-columns: 1fr 1fr;
-     gap: 0.8rem;
-     
-     .status-card, .fishing-card {
-       height: 180px;
+     .comprehensive-card {
+       height: 200px; // 中等屏幕上稍微增加高度
      }
    }
    
-        .deep-sea-main-content {
-       grid-template-columns: 1.5fr 1fr;
-       gap: 1.5rem;
-     }
+   .deep-sea-main-content {
+     grid-template-columns: 1.5fr 1fr;
+     gap: 1.5rem;
+   }
  }
  
  @media (max-width: 900px) {
    .deep-sea-top-section {
-     grid-template-columns: 1fr;
-     gap: 0.8rem;
-     
-     .status-card, .fishing-card {
-       height: 150px;
+     .comprehensive-card {
+       height: 180px; // 较小屏幕上减少高度
      }
    }
    
@@ -768,23 +794,23 @@ const handleSaveGame = async () => {
    }
    
    .deep-sea-top-section {
-     .status-card, .fishing-card {
-       height: 120px;
+     .comprehensive-card {
+       height: 160px; // 手机端进一步减少高度
      }
    }
    
-        .deep-sea-footer {
-       height: 100px;
+   .deep-sea-footer {
+     height: 100px;
+     
+     .footer-controls {
+       padding: 1rem;
+       flex-direction: column;
+       gap: 1rem;
        
-       .footer-controls {
-         padding: 1rem;
-         flex-direction: column;
-         gap: 1rem;
-         
-         .footer-center {
-           order: 1;
-         }
+       .footer-center {
+         order: 1;
        }
      }
+   }
  }
 </style> 

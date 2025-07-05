@@ -1,4 +1,4 @@
-<template>
+n<template>
   <div class="comprehensive-status">
     <!-- 综合状态头部 -->
     <div class="status-header">
@@ -125,17 +125,17 @@
         <div class="status-group fishing-group">
           <h4 class="group-title">钓鱼系统</h4>
           <div class="fishing-controls">
-            <el-button 
-              type="primary" 
-              size="small"
-              @click="startFishing"
-              :loading="fishingState.fishing"
-              :disabled="!canFish"
-              class="fishing-btn"
-            >
-              <el-icon><Fish /></el-icon>
-              {{ fishingState.fishing ? '钓鱼中...' : '开始钓鱼' }}
-            </el-button>
+                         <el-button 
+               type="primary" 
+               size="small"
+               @click="startFishing"
+               :loading="fishingState.fishing"
+               :disabled="!canFish"
+               class="fishing-btn"
+             >
+               <el-icon><Operation /></el-icon>
+               {{ fishingState.fishing ? '钓鱼中...' : '开始钓鱼' }}
+             </el-button>
             <div class="fishing-status">
               <span class="fishing-label">状态：</span>
               <span class="fishing-text">{{ fishingStatusText }}</span>
@@ -207,6 +207,7 @@
 import { ref, computed } from 'vue'
 import { useGameStore } from '@/stores/game'
 import { ElMessage } from 'element-plus'
+import { User, Ship, Coin, TrophyBase, Timer, Box, Operation } from '@element-plus/icons-vue'
 
 const gameStore = useGameStore()
 
@@ -353,12 +354,14 @@ const getFishRarityType = (rarity) => {
 <style lang="scss" scoped>
 .comprehensive-status {
   height: 100%;
-  background: rgba(0, 20, 40, 0.8);
+  background: rgba(0, 25, 20, 0.95);
   border-radius: 15px;
   padding: 1rem;
-  border: 1px solid rgba(102, 255, 204, 0.3);
-  color: #66ffcc;
-  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  backdrop-filter: blur(15px);
+  font-family: 'Consolas', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
+  box-shadow: 0 0 20px rgba(0, 80, 60, 0.3);
 }
 
 .status-header {
@@ -376,32 +379,38 @@ const getFishRarityType = (rarity) => {
     font-size: 0.9rem;
     
     .captain-icon, .ship-icon {
-      color: #66ffcc;
+      color: #ffffff;
     }
     
     .captain-name, .ship-name {
       font-weight: bold;
-      color: #66ffcc;
-      text-shadow: 0 0 3px rgba(102, 255, 204, 0.5);
+      color: #ffffff;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
     }
   }
 }
 
 .core-status {
   .status-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
+    justify-content: flex-start;
     gap: 1rem;
     margin-bottom: 1rem;
+    flex-wrap: wrap;
     
     .status-group {
+      flex: 0 0 auto;
+      min-width: 120px;
+      max-width: 150px;
+      
       .group-title {
         font-size: 0.8rem;
         margin: 0 0 0.5rem 0;
-        color: #66ffcc;
+        color: #ffffff;
         text-align: center;
         font-weight: bold;
-        text-shadow: 0 0 3px rgba(102, 255, 204, 0.5);
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+        letter-spacing: 0.5px;
       }
       
       .status-bars {
@@ -417,14 +426,18 @@ const getFishRarityType = (rarity) => {
           
           .status-label {
             min-width: 28px;
-            color: #66ffcc;
+            color: #ffffff;
+            font-weight: 500;
+            text-shadow: 0 0 3px rgba(255, 255, 255, 0.8);
           }
           
           .status-value {
             min-width: 45px;
             font-size: 0.65rem;
-            color: #66ffcc;
+            color: #ffffff;
             text-align: right;
+            font-weight: 600;
+            text-shadow: 0 0 3px rgba(255, 255, 255, 0.8);
           }
           
           .el-progress {
@@ -435,6 +448,10 @@ const getFishRarityType = (rarity) => {
     }
     
     .fishing-group {
+      flex: 0 0 auto;
+      min-width: 140px;
+      max-width: 180px;
+      
       .fishing-controls {
         display: flex;
         flex-direction: column;
@@ -451,20 +468,24 @@ const getFishRarityType = (rarity) => {
           font-size: 0.7rem;
           
           .fishing-label {
-            color: #66ffcc;
+            color: #00ff88;
+            font-weight: 500;
           }
           
           .fishing-text {
-            color: #00ff7f;
+            color: #00ffc8;
+            font-weight: 600;
+            text-shadow: 0 0 3px rgba(0, 255, 200, 0.6);
           }
         }
       }
       
       .fishing-result {
-        background: rgba(0, 40, 80, 0.4);
+        background: rgba(5, 25, 35, 0.8);
         border-radius: 8px;
         padding: 0.5rem;
-        border: 1px solid rgba(102, 255, 204, 0.2);
+        border: 1px solid rgba(0, 255, 136, 0.3);
+        box-shadow: 0 0 10px rgba(0, 255, 136, 0.1);
         
         .result-fish {
           display: flex;
@@ -474,8 +495,9 @@ const getFishRarityType = (rarity) => {
           font-size: 0.7rem;
           
           .fish-name {
-            color: #00ff7f;
+            color: #00ffc8;
             font-weight: bold;
+            text-shadow: 0 0 3px rgba(0, 255, 200, 0.8);
           }
         }
         
@@ -510,10 +532,13 @@ const getFishRarityType = (rarity) => {
       display: flex;
       align-items: center;
       gap: 0.2rem;
-      color: #66ffcc;
+      color: #00ff88;
+      font-weight: 500;
+      text-shadow: 0 0 3px rgba(0, 255, 136, 0.5);
       
       .el-icon {
         font-size: 0.8rem;
+        color: #00ffc8;
       }
     }
   }
@@ -524,8 +549,10 @@ const getFishRarityType = (rarity) => {
     flex-wrap: wrap;
     
     .attr-item {
-      color: #00ff7f;
+      color: #00ffc8;
       font-size: 0.65rem;
+      font-weight: 600;
+      text-shadow: 0 0 3px rgba(0, 255, 200, 0.6);
     }
   }
 }

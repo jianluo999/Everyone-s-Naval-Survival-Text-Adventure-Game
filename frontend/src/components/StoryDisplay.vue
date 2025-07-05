@@ -196,6 +196,9 @@ import { ElMessage } from 'element-plus'
 const router = useRouter()
 const gameStore = useGameStore()
 
+// 定义emit
+const emit = defineEmits(['choice-made'])
+
 // 响应式数据
 const selectedChoice = ref(null)
 const makingChoice = ref(false)
@@ -294,6 +297,12 @@ const confirmChoice = async () => {
   makingChoice.value = true
   
   try {
+    // 记录选择到航海日志
+    emit('choice-made', {
+      choice: choice,
+      storyTitle: currentStory.value?.title || '未知故事'
+    })
+    
     // 先更新玩家状态（如果有立即效果）
     const statusChanges = {}
     if (choice.goldCost > 0) statusChanges.gold = -choice.goldCost
@@ -393,12 +402,15 @@ const startNewAdventure = () => {
         .story-paragraph {
           margin-bottom: 1.2rem;
           line-height: 1.8;
-          color: #00ff7f;
+          color: #ffffff;
           font-size: 1rem;
           text-align: justify;
           opacity: 0;
           transform: translateY(20px);
-          text-shadow: 0 0 5px rgba(0, 255, 127, 0.5);
+          text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+          font-family: 'Consolas', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
+          font-weight: 400;
+          letter-spacing: 0.3px;
         
         &.animated {
           animation: fadeInUp 1s ease forwards;
@@ -466,29 +478,29 @@ const startNewAdventure = () => {
       align-items: center;
       justify-content: space-between;
       padding: 1rem;
-      border: 2px solid #e0e0e0;
+      border: 2px solid rgba(30, 144, 255, 0.4);
       border-radius: 10px;
       cursor: pointer;
       transition: all 0.3s ease;
-      background: #f9f9f9;
+      background: rgba(0, 40, 80, 0.8);
       
       &:hover:not(.disabled) {
-        border-color: #409EFF;
-        background: #f0f9ff;
+        border-color: #1E90FF;
+        background: rgba(30, 144, 255, 0.15);
         transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(64, 158, 255, 0.2);
+        box-shadow: 0 4px 12px rgba(30, 144, 255, 0.3);
       }
       
       &.selected {
-        border-color: #409EFF;
-        background: #ecf5ff;
-        box-shadow: 0 0 0 3px rgba(64, 158, 255, 0.1);
+        border-color: #1E90FF;
+        background: rgba(30, 144, 255, 0.25);
+        box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.2);
       }
       
       &.disabled {
         opacity: 0.5;
         cursor: not-allowed;
-        background: #f5f5f5;
+        background: rgba(0, 20, 40, 0.6);
       }
       
       .choice-content {
@@ -496,9 +508,10 @@ const startNewAdventure = () => {
         
         .choice-text {
           margin-bottom: 0.5rem;
-          color: #333;
+          color: #ffffff;
           font-weight: 500;
           line-height: 1.5;
+          text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
         }
         
         .choice-effects {
@@ -527,13 +540,14 @@ const startNewAdventure = () => {
         display: flex;
         align-items: center;
         justify-content: center;
-        background: #409EFF;
+        background: #1E90FF;
         color: white;
         border-radius: 50%;
         font-weight: bold;
         font-size: 0.9rem;
         margin-left: 1rem;
         flex-shrink: 0;
+        box-shadow: 0 0 8px rgba(30, 144, 255, 0.4);
       }
     }
   }

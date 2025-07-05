@@ -296,6 +296,36 @@ const addSystemMessage = (content) => {
   }
 }
 
+// 记录玩家选择
+const recordPlayerChoice = (choice, storyTitle) => {
+  let effectText = ''
+  
+  // 记录选择效果
+  const effects = []
+  if (choice.goldCost > 0) effects.push(`-${choice.goldCost}金币`)
+  if (choice.goldReward > 0) effects.push(`+${choice.goldReward}金币`)
+  if (choice.healthCost > 0) effects.push(`-${choice.healthCost}生命`)
+  if (choice.healthReward > 0) effects.push(`+${choice.healthReward}生命`)
+  if (choice.experienceReward > 0) effects.push(`+${choice.experienceReward}经验`)
+  
+  if (effects.length > 0) {
+    effectText = `<br/><span style="color: #00ffc8; font-size: 0.9em;">效果：${effects.join('，')}</span>`
+  }
+  
+  const choiceRecord = `<strong>🎯 选择记录：</strong><br/>` +
+    `<span style="color: #66ffcc;">「${storyTitle}」</span><br/>` +
+    `选择：${choice.text}${effectText}`
+  
+  addSystemMessage(choiceRecord)
+  
+  // 如果当前在系统频道，滚动到底部
+  if (activeTab.value === 'system') {
+    nextTick(() => {
+      scrollToBottom()
+    })
+  }
+}
+
 const scrollToBottom = () => {
   if (chatContentRef.value) {
     chatContentRef.value.scrollTop = chatContentRef.value.scrollHeight
@@ -335,6 +365,12 @@ const startMessageSimulation = () => {
     addSystemMessage('<strong>🌊 海况更新：</strong><br/>海面风力增强，建议加强船只防护')
   }, 45000)
 }
+
+// 暴露方法供外部组件调用
+defineExpose({
+  recordPlayerChoice,
+  addSystemMessage
+})
 </script>
 
 <style lang="scss" scoped>
@@ -342,12 +378,15 @@ const startMessageSimulation = () => {
   height: 100%;
   display: flex;
   flex-direction: column;
-  background: white;
+  background: rgba(0, 30, 25, 0.95);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
 }
 
 .chat-header {
   padding: 1rem;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   flex-shrink: 0;
   
   .chat-title {
@@ -355,12 +394,14 @@ const startMessageSimulation = () => {
     align-items: center;
     gap: 0.5rem;
     font-weight: bold;
-    color: #66ffcc;
+    color: #ffffff;
     margin-bottom: 1rem;
-    text-shadow: 0 0 5px rgba(102, 255, 204, 0.5);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+    font-family: 'Consolas', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
+    letter-spacing: 0.5px;
     
     .el-icon {
-      color: #66ffcc;
+      color: #ffffff;
     }
   }
   
@@ -401,9 +442,11 @@ const startMessageSimulation = () => {
       
       .player-name {
         font-weight: 500;
-        color: #00ff7f;
+        color: #ffffff;
         font-size: 0.9rem;
-        text-shadow: 0 0 3px rgba(0, 255, 127, 0.3);
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+        font-family: 'Consolas', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
+        letter-spacing: 0.3px;
       }
       
       .message-icon {
@@ -418,31 +461,34 @@ const startMessageSimulation = () => {
     
     .message-content {
       line-height: 1.5;
-      color: #00ff7f;
+      color: #ffffff;
       font-size: 0.9rem;
-      text-shadow: 0 0 3px rgba(0, 255, 127, 0.3);
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+      font-family: 'Consolas', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
+      font-weight: 400;
+      letter-spacing: 0.2px;
     }
   }
   
   .system-message {
-    background: #f0f9ff;
-    border-left: 4px solid #409EFF;
+    background: rgba(0, 80, 60, 0.6);
+    border-left: 4px solid #00ff88;
     
     .message-content {
       :deep(strong) {
-        color: #409EFF;
+        color: #00ff88;
       }
     }
   }
   
   .chat-message {
-    background: #f9f9f9;
-    border-left: 4px solid #e0e0e0;
+    background: rgba(0, 40, 35, 0.6);
+    border-left: 4px solid rgba(255, 255, 255, 0.3);
     transition: all 0.3s ease;
     
     &:hover {
-      background: #f0f0f0;
-      border-left-color: #409EFF;
+      background: rgba(0, 60, 50, 0.8);
+      border-left-color: #00ff88;
     }
   }
   
@@ -470,7 +516,7 @@ const startMessageSimulation = () => {
 
 .chat-input {
   padding: 1rem;
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
   flex-shrink: 0;
   
   .input-container {
