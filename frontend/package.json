@@ -1,0 +1,25 @@
+{
+  "name": "sailing-game-frontend",
+  "version": "1.0.0",
+  "description": "文字冒险航海游戏前端",
+  "private": true,
+  "scripts": {
+    "dev": "vite --port 3000",
+    "build": "vite build",
+    "preview": "vite preview",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.3.0",
+    "vue-router": "^4.2.0",
+    "pinia": "^2.1.0",
+    "axios": "^1.5.0",
+    "element-plus": "^2.4.0",
+    "@element-plus/icons-vue": "^2.3.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.4.0",
+    "vite": "^4.5.0",
+    "sass": "^1.69.0"
+  }
+} 

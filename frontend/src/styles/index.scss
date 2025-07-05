@@ -1,0 +1,590 @@
+// 全局样式文件
+
+// 深海恐怖风格 - 克苏鲁主题样式
+
+// 重置样式
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Creepster', 'Chiller', 'Nosifer', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  // 深海背景
+  background: 
+    radial-gradient(ellipse at center, rgba(0, 20, 40, 0.8) 0%, rgba(0, 5, 15, 0.95) 50%, #000000 100%),
+    linear-gradient(180deg, #001122 0%, #000511 25%, #000208 50%, #000000 100%);
+  
+  color: #66ffcc;
+  position: relative;
+  
+  // 深海粒子效果
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(2px 2px at 20px 30px, rgba(102, 255, 204, 0.3), transparent),
+      radial-gradient(2px 2px at 40px 70px, rgba(0, 255, 127, 0.2), transparent),
+      radial-gradient(1px 1px at 90px 40px, rgba(50, 200, 255, 0.4), transparent),
+      radial-gradient(1px 1px at 130px 80px, rgba(102, 255, 204, 0.2), transparent);
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    animation: floatParticles 20s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  // 深海水波效果
+  &::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 255, 127, 0.03) 2px,
+        rgba(0, 255, 127, 0.03) 4px
+      );
+    animation: waveEffect 15s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+@keyframes floatParticles {
+  0% { transform: translateY(0px) translateX(0px); }
+  25% { transform: translateY(-20px) translateX(10px); }
+  50% { transform: translateY(0px) translateX(-10px); }
+  75% { transform: translateY(20px) translateX(5px); }
+  100% { transform: translateY(0px) translateX(0px); }
+}
+
+@keyframes waveEffect {
+  0%, 100% { opacity: 0.3; transform: scaleY(1); }
+  50% { opacity: 0.6; transform: scaleY(1.1); }
+}
+
+#app {
+  min-height: 100vh;
+  position: relative;
+  z-index: 2;
+}
+
+// 深海玻璃效果卡片
+.el-card {
+  background: rgba(0, 20, 40, 0.7) !important;
+  border: 1px solid rgba(102, 255, 204, 0.3) !important;
+  border-radius: 15px !important;
+  backdrop-filter: blur(10px) !important;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(102, 255, 204, 0.1),
+    0 0 30px rgba(0, 255, 127, 0.1) !important;
+  
+  transition: all 0.3s ease !important;
+  
+  &:hover {
+    box-shadow: 
+      0 12px 40px rgba(0, 0, 0, 0.8),
+      inset 0 1px 0 rgba(102, 255, 204, 0.2),
+      0 0 50px rgba(0, 255, 127, 0.2) !important;
+    transform: translateY(-2px) !important;
+  }
+  
+  .el-card__header {
+    padding: 1rem 1.5rem !important;
+    border-bottom: 1px solid rgba(102, 255, 204, 0.2) !important;
+    background: rgba(0, 30, 60, 0.5) !important;
+    border-radius: 15px 15px 0 0 !important;
+    color: #66ffcc !important;
+    font-weight: bold !important;
+    text-shadow: 0 0 10px rgba(102, 255, 204, 0.5) !important;
+  }
+  
+  .el-card__body {
+    padding: 1.5rem !important;
+    color: #66ffcc !important;
+  }
+}
+
+// 深海按钮风格
+.el-button {
+  background: rgba(0, 40, 80, 0.8) !important;
+  border: 1px solid rgba(102, 255, 204, 0.4) !important;
+  color: #66ffcc !important;
+  border-radius: 10px !important;
+  transition: all 0.3s ease !important;
+  font-weight: bold !important;
+  text-shadow: 0 0 8px rgba(102, 255, 204, 0.3) !important;
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(102, 255, 204, 0.1) !important;
+  
+  &:hover {
+    background: rgba(0, 60, 120, 0.9) !important;
+    border-color: rgba(102, 255, 204, 0.6) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 
+      0 8px 25px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(102, 255, 204, 0.2),
+      0 0 30px rgba(0, 255, 127, 0.3) !important;
+  }
+  
+  &:active {
+    transform: translateY(-1px) !important;
+  }
+  
+  &.is-loading {
+    transform: none !important;
+  }
+  
+  // 危险按钮 - 血红色
+  &.el-button--danger {
+    background: rgba(139, 0, 0, 0.8) !important;
+    border-color: rgba(220, 20, 60, 0.6) !important;
+    color: #ff6b6b !important;
+    
+    &:hover {
+      background: rgba(178, 34, 34, 0.9) !important;
+      border-color: rgba(220, 20, 60, 0.8) !important;
+      box-shadow: 
+        0 8px 25px rgba(139, 0, 0, 0.4),
+        0 0 30px rgba(220, 20, 60, 0.3) !important;
+    }
+  }
+  
+  // 警告按钮 - 深海黄
+  &.el-button--warning {
+    background: rgba(184, 134, 11, 0.8) !important;
+    border-color: rgba(245, 158, 11, 0.6) !important;
+    color: #fbbf24 !important;
+    
+    &:hover {
+      background: rgba(217, 119, 6, 0.9) !important;
+      border-color: rgba(245, 158, 11, 0.8) !important;
+      box-shadow: 
+        0 8px 25px rgba(184, 134, 11, 0.4),
+        0 0 30px rgba(245, 158, 11, 0.3) !important;
+    }
+  }
+}
+
+// 深海进度条
+.el-progress {
+  .el-progress-bar__outer {
+    background-color: rgba(0, 20, 40, 0.6) !important;
+    border: 1px solid rgba(102, 255, 204, 0.2) !important;
+    border-radius: 10px !important;
+  }
+  
+  .el-progress-bar__inner {
+    border-radius: 10px !important;
+    background: linear-gradient(90deg, 
+      rgba(0, 255, 127, 0.8) 0%, 
+      rgba(102, 255, 204, 0.9) 50%, 
+      rgba(0, 255, 127, 1) 100%) !important;
+    box-shadow: 
+      0 0 20px rgba(0, 255, 127, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    transition: all 0.3s ease !important;
+    
+    // 血条特殊效果
+    &.health-bar {
+      background: linear-gradient(90deg, 
+        rgba(220, 20, 60, 0.8) 0%, 
+        rgba(255, 69, 0, 0.9) 50%, 
+        rgba(220, 20, 60, 1) 100%) !important;
+      box-shadow: 
+        0 0 20px rgba(220, 20, 60, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    }
+  }
+}
+
+// 深海输入框
+.el-input {
+  .el-input__wrapper {
+    background: rgba(0, 20, 40, 0.7) !important;
+    border: 1px solid rgba(102, 255, 204, 0.3) !important;
+    border-radius: 10px !important;
+    transition: all 0.3s ease !important;
+    
+    &:hover {
+      border-color: rgba(102, 255, 204, 0.5) !important;
+      box-shadow: 0 0 20px rgba(0, 255, 127, 0.2) !important;
+    }
+    
+    &.is-focus {
+      border-color: rgba(102, 255, 204, 0.7) !important;
+      box-shadow: 0 0 30px rgba(0, 255, 127, 0.3) !important;
+    }
+    
+    input {
+      color: #66ffcc !important;
+      
+      &::placeholder {
+        color: rgba(102, 255, 204, 0.5) !important;
+      }
+    }
+  }
+}
+
+// 深海标签
+.el-tag {
+  background: rgba(0, 40, 80, 0.8) !important;
+  border: 1px solid rgba(102, 255, 204, 0.4) !important;
+  color: #66ffcc !important;
+  border-radius: 12px !important;
+  font-weight: 500 !important;
+  text-shadow: 0 0 8px rgba(102, 255, 204, 0.3) !important;
+  
+  &.el-tag--success {
+    background: rgba(0, 100, 50, 0.8) !important;
+    border-color: rgba(34, 197, 94, 0.6) !important;
+    color: #22c55e !important;
+  }
+  
+  &.el-tag--warning {
+    background: rgba(184, 134, 11, 0.8) !important;
+    border-color: rgba(245, 158, 11, 0.6) !important;
+    color: #fbbf24 !important;
+  }
+  
+  &.el-tag--danger {
+    background: rgba(139, 0, 0, 0.8) !important;
+    border-color: rgba(220, 20, 60, 0.6) !important;
+    color: #ff6b6b !important;
+  }
+}
+
+// 深海警告框
+.el-alert {
+  background: rgba(0, 20, 40, 0.8) !important;
+  border: 1px solid rgba(102, 255, 204, 0.3) !important;
+  border-radius: 10px !important;
+  color: #66ffcc !important;
+  
+  .el-alert__content {
+    display: flex !important;
+    align-items: center !important;
+  }
+}
+
+// 深海滚动条
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 20, 40, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(102, 255, 204, 0.3);
+  border-radius: 4px;
+  
+  &:hover {
+    background: rgba(102, 255, 204, 0.5);
+  }
+}
+
+// 深海工具类
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-italic {
+  font-style: italic;
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(102, 255, 204, 0.8);
+}
+
+.text-danger-glow {
+  text-shadow: 0 0 10px rgba(220, 20, 60, 0.8);
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 2rem; }
+
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mt-4 { margin-top: 2rem; }
+
+.p-1 { padding: 0.5rem; }
+.p-2 { padding: 1rem; }
+.p-3 { padding: 1.5rem; }
+.p-4 { padding: 2rem; }
+
+// 深海动画效果
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes eldritch-glow {
+  0%, 100% { 
+    text-shadow: 0 0 10px rgba(102, 255, 204, 0.8);
+  }
+  50% { 
+    text-shadow: 0 0 20px rgba(102, 255, 204, 1), 0 0 30px rgba(0, 255, 127, 0.8);
+  }
+}
+
+@keyframes tentacle-wave {
+  0%, 100% { 
+    transform: rotate(0deg) scale(1);
+  }
+  25% { 
+    transform: rotate(1deg) scale(1.02);
+  }
+  50% { 
+    transform: rotate(0deg) scale(1.05);
+  }
+  75% { 
+    transform: rotate(-1deg) scale(1.02);
+  }
+}
+
+@keyframes deep-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(0, 255, 127, 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(0, 255, 127, 0.6), 0 0 60px rgba(102, 255, 204, 0.4);
+  }
+}
+
+// 特殊效果类
+.eldritch-text {
+  animation: eldritch-glow 3s ease-in-out infinite;
+  font-family: 'Creepster', cursive;
+}
+
+.tentacle-hover {
+  transition: all 0.3s ease;
+  
+  &:hover {
+    animation: tentacle-wave 2s ease-in-out infinite;
+  }
+}
+
+.deep-glow {
+  animation: deep-pulse 4s ease-in-out infinite;
+}
+
+// 深海角色状态样式
+.deep-sea-status {
+  background: rgba(0, 20, 40, 0.9);
+  border: 2px solid rgba(102, 255, 204, 0.3);
+  border-radius: 15px;
+  padding: 1rem;
+  backdrop-filter: blur(15px);
+  
+  .status-label {
+    color: #66ffcc;
+    font-weight: bold;
+    text-shadow: 0 0 8px rgba(102, 255, 204, 0.5);
+  }
+  
+  .status-value {
+    color: #00ff7f;
+    font-weight: bold;
+    text-shadow: 0 0 8px rgba(0, 255, 127, 0.5);
+  }
+}
+
+// 深海船只样式
+.deep-sea-ship {
+  background: rgba(0, 30, 60, 0.8);
+  border: 2px solid rgba(102, 255, 204, 0.4);
+  border-radius: 20px;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(102, 255, 204, 0.2);
+  
+  .ship-name {
+    color: #66ffcc;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-shadow: 0 0 15px rgba(102, 255, 204, 0.8);
+    margin-bottom: 1rem;
+  }
+  
+  .ship-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 0.5rem;
+    
+    .stat-item {
+      background: rgba(0, 40, 80, 0.6);
+      border: 1px solid rgba(102, 255, 204, 0.3);
+      border-radius: 8px;
+      padding: 0.5rem;
+      text-align: center;
+      
+      .stat-label {
+        color: #66ffcc;
+        font-size: 0.8rem;
+        margin-bottom: 0.25rem;
+      }
+      
+      .stat-value {
+        color: #00ff7f;
+        font-weight: bold;
+        font-size: 1.1rem;
+      }
+    }
+  }
+}
+
+// 深海故事文本
+.deep-sea-story {
+  background: rgba(0, 10, 20, 0.9);
+  border: 2px solid rgba(102, 255, 204, 0.2);
+  border-radius: 15px;
+  padding: 2rem;
+  backdrop-filter: blur(20px);
+  
+  .story-title {
+    color: #66ffcc;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 0 0 20px rgba(102, 255, 204, 0.8);
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .story-content {
+    color: #ccffee;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    text-shadow: 0 0 5px rgba(204, 255, 238, 0.3);
+    
+    p {
+      margin-bottom: 1rem;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// 深海选择按钮
+.deep-sea-choice {
+  background: rgba(0, 40, 80, 0.7);
+  border: 2px solid rgba(102, 255, 204, 0.3);
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(0, 60, 120, 0.8);
+    border-color: rgba(102, 255, 204, 0.6);
+    transform: translateX(10px);
+    box-shadow: 0 5px 20px rgba(0, 255, 127, 0.3);
+  }
+  
+  .choice-text {
+    color: #66ffcc;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .choice-cost {
+    color: #ff6b6b;
+    font-size: 0.9rem;
+  }
+  
+  .choice-reward {
+    color: #00ff7f;
+    font-size: 0.9rem;
+  }
+} 
