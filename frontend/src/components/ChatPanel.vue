@@ -355,11 +355,12 @@ const startMessageSimulation = () => {
     align-items: center;
     gap: 0.5rem;
     font-weight: bold;
-    color: #333;
+    color: #66ffcc;
     margin-bottom: 1rem;
+    text-shadow: 0 0 5px rgba(102, 255, 204, 0.5);
     
     .el-icon {
-      color: #409EFF;
+      color: #66ffcc;
     }
   }
   
@@ -400,8 +401,9 @@ const startMessageSimulation = () => {
       
       .player-name {
         font-weight: 500;
-        color: #409EFF;
+        color: #00ff7f;
         font-size: 0.9rem;
+        text-shadow: 0 0 3px rgba(0, 255, 127, 0.3);
       }
       
       .message-icon {
@@ -416,8 +418,9 @@ const startMessageSimulation = () => {
     
     .message-content {
       line-height: 1.5;
-      color: #333;
+      color: #00ff7f;
       font-size: 0.9rem;
+      text-shadow: 0 0 3px rgba(0, 255, 127, 0.3);
     }
   }
   

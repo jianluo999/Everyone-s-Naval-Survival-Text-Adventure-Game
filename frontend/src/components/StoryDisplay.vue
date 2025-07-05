@@ -389,15 +389,16 @@ const startNewAdventure = () => {
   overflow-y: auto;
   
   .story-text {
-    .story-paragraphs {
-      .story-paragraph {
-        margin-bottom: 1.2rem;
-        line-height: 1.8;
-        color: #333;
-        font-size: 1rem;
-        text-align: justify;
-        opacity: 0;
-        transform: translateY(20px);
+          .story-paragraphs {
+        .story-paragraph {
+          margin-bottom: 1.2rem;
+          line-height: 1.8;
+          color: #00ff7f;
+          font-size: 1rem;
+          text-align: justify;
+          opacity: 0;
+          transform: translateY(20px);
+          text-shadow: 0 0 5px rgba(0, 255, 127, 0.5);
         
         &.animated {
           animation: fadeInUp 1s ease forwards;

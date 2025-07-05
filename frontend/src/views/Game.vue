@@ -20,45 +20,43 @@
       <!-- 深海雾气层 -->
       <div class="mist-layer"></div>
       
-      <!-- 头部信息栏 -->
-      <div class="game-header deep-sea-header">
-        <div class="header-decoration left-decoration"></div>
-        <div class="header-content">
-          <PlayerStatus class="deep-sea-player-status" />
-          <ShipStatus class="deep-sea-ship-status" />
-        </div>
-        <div class="header-decoration right-decoration"></div>
-      </div>
+                    <!-- 游戏内容区域 -->
+       <div class="game-content deep-sea-content">
+         <!-- 顶部综合状态区域 -->
+         <div class="top-section deep-sea-top-section">
+           <div class="comprehensive-card deep-sea-comprehensive-card">
+             <div class="card-frame">
+               <div class="frame-corner top-left"></div>
+               <div class="frame-corner top-right"></div>
+               <div class="frame-corner bottom-left"></div>
+               <div class="frame-corner bottom-right"></div>
+               <ComprehensiveStatus />
+             </div>
+           </div>
+         </div>
 
-      <!-- 游戏内容区域 -->
-      <div class="game-content deep-sea-content">
-        <!-- 深海故事展示区 -->
-        <div class="story-section deep-sea-story-section">
-          <div class="story-frame">
-            <div class="frame-corner top-left"></div>
-            <div class="frame-corner top-right"></div>
-            <div class="frame-corner bottom-left"></div>
-            <div class="frame-corner bottom-right"></div>
-            <StoryDisplay class="deep-sea-story-display" />
-          </div>
-        </div>
+         <!-- 底部主要内容区域 -->
+         <div class="main-content-section deep-sea-main-content">
+           <!-- 深海故事展示区 -->
+           <div class="story-section deep-sea-story-section">
+             <div class="story-frame">
+               <div class="frame-corner top-left"></div>
+               <div class="frame-corner top-right"></div>
+               <div class="frame-corner bottom-left"></div>
+               <div class="frame-corner bottom-right"></div>
+               <StoryDisplay class="deep-sea-story-display" />
+             </div>
+           </div>
 
-        <!-- 深海聊天区域 -->
-        <div class="chat-section deep-sea-chat-section">
-          <div class="chat-frame">
-            <div class="frame-glow"></div>
-            <ChatPanel class="deep-sea-chat-panel" />
-          </div>
-        </div>
-
-        <!-- 深海钓鱼区域 -->
-        <div class="fishing-section deep-sea-fishing-section">
-          <div class="fishing-frame">
-            <div class="frame-glow fishing-glow"></div>
-            <FishingPanel class="deep-sea-fishing-panel" />
-          </div>
-        </div>
-      </div>
+           <!-- 深海聊天区域 -->
+           <div class="chat-section deep-sea-chat-section">
+             <div class="chat-frame">
+               <div class="frame-glow"></div>
+               <ChatPanel class="deep-sea-chat-panel" />
+             </div>
+           </div>
+         </div>
+       </div>
 
       <!-- 底部深海操作栏 -->
       <div class="game-footer deep-sea-footer">
@@ -126,11 +124,9 @@ import { ElMessage, ElMessageBox } from 'element-plus'
 import { ArrowLeft, Document, Loading } from '@element-plus/icons-vue'
 
 // 组件导入
-import PlayerStatus from '@/components/PlayerStatus.vue'
-import ShipStatus from '@/components/ShipStatus.vue'
 import StoryDisplay from '@/components/StoryDisplay.vue'
 import ChatPanel from '@/components/ChatPanel.vue'
-import FishingPanel from '@/components/FishingPanel.vue'
+import ComprehensiveStatus from '@/components/ComprehensiveStatus.vue'
 
 const router = useRouter()
 const gameStore = useGameStore()
@@ -364,148 +360,149 @@ const handleSaveGame = async () => {
   }
 }
 
-// 深海头部
-.deep-sea-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 2rem;
-  position: relative;
-  
-  .header-decoration {
-    width: 100px;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, rgba(102, 255, 204, 0.6), transparent);
-    position: relative;
-    
-    &::before {
-      content: '◆';
-      position: absolute;
-      top: -8px;
-      color: #66ffcc;
-      font-size: 1.2rem;
-      text-shadow: 0 0 10px rgba(102, 255, 204, 0.8);
-    }
-    
-    &.left-decoration::before {
-      left: 0;
-    }
-    
-    &.right-decoration::before {
-      right: 0;
-    }
-  }
-  
-  .header-content {
-    flex: 1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin: 0 2rem;
-  }
-}
 
-// 深海内容区域
-.deep-sea-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 2rem;
-  margin-bottom: 2rem;
-  min-height: 500px;
-}
 
-// 深海故事区域
-.deep-sea-story-section {
-  .story-frame {
-    position: relative;
-    height: 100%;
-    
-    .frame-corner {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      border: 2px solid rgba(102, 255, 204, 0.6);
-      z-index: 1;
-      
-      &.top-left {
-        top: -2px;
-        left: -2px;
-        border-right: none;
-        border-bottom: none;
-      }
-      
-      &.top-right {
-        top: -2px;
-        right: -2px;
-        border-left: none;
-        border-bottom: none;
-      }
-      
-      &.bottom-left {
-        bottom: -2px;
-        left: -2px;
-        border-right: none;
-        border-top: none;
-      }
-      
-      &.bottom-right {
-        bottom: -2px;
-        right: -2px;
-        border-left: none;
-        border-top: none;
-      }
-    }
-  }
-}
+ // 深海内容区域
+ .deep-sea-content {
+   display: flex;
+   flex-direction: column;
+   gap: 1.5rem;
+   margin-bottom: 2rem;
+ }
+ 
+  // 顶部综合状态区域
+ .deep-sea-top-section {
+   margin-bottom: 1rem;
+   
+   .comprehensive-card {
+     position: relative;
+     height: 220px; // 高度适中，能容纳所有信息
+     
+     .card-frame {
+       position: relative;
+       height: 100%;
+       background: rgba(0, 20, 40, 0.8);
+       border-radius: 15px;
+       backdrop-filter: blur(15px);
+       border: 1px solid rgba(102, 255, 204, 0.4);
+       
+       .frame-corner {
+         position: absolute;
+         width: 20px;
+         height: 20px;
+         border: 2px solid rgba(102, 255, 204, 0.8);
+         z-index: 1;
+         
+         &.top-left {
+           top: -2px;
+           left: -2px;
+           border-right: none;
+           border-bottom: none;
+         }
+         
+         &.top-right {
+           top: -2px;
+           right: -2px;
+           border-left: none;
+           border-bottom: none;
+         }
+         
+         &.bottom-left {
+           bottom: -2px;
+           left: -2px;
+           border-right: none;
+           border-top: none;
+         }
+         
+         &.bottom-right {
+           bottom: -2px;
+           right: -2px;
+           border-left: none;
+           border-top: none;
+         }
+       }
+     }
+   }
+ }
+   
 
-// 深海聊天区域
-.deep-sea-chat-section {
-  .chat-frame {
-    position: relative;
-    height: 100%;
-    
-    .frame-glow {
-      position: absolute;
-      top: -5px;
-      left: -5px;
-      right: -5px;
-      bottom: -5px;
-      background: linear-gradient(45deg, 
-        rgba(102, 255, 204, 0.1) 0%, 
-        rgba(0, 255, 127, 0.05) 25%, 
-        rgba(102, 255, 204, 0.1) 50%, 
-        rgba(0, 255, 127, 0.05) 75%, 
-        rgba(102, 255, 204, 0.1) 100%);
-      border-radius: 20px;
-      animation: frame-glow-pulse 4s ease-in-out infinite;
-      z-index: 0;
-    }
-  }
-}
-
-// 深海钓鱼区域
-.deep-sea-fishing-section {
-  .fishing-frame {
-    position: relative;
-    height: 100%;
-    
-    .frame-glow.fishing-glow {
-      position: absolute;
-      top: -5px;
-      left: -5px;
-      right: -5px;
-      bottom: -5px;
-      background: linear-gradient(45deg, 
-        rgba(255, 107, 107, 0.15) 0%, 
-        rgba(255, 140, 140, 0.08) 25%, 
-        rgba(255, 107, 107, 0.15) 50%, 
-        rgba(255, 140, 140, 0.08) 75%, 
-        rgba(255, 107, 107, 0.15) 100%);
-      border-radius: 20px;
-      animation: fishing-glow-pulse 3s ease-in-out infinite;
-      z-index: 0;
-    }
-  }
-}
+ 
+ // 底部主要内容区域
+ .deep-sea-main-content {
+   display: grid;
+   grid-template-columns: 2fr 1fr;
+   gap: 2rem;
+   min-height: 400px;
+ }
+ 
+ // 深海故事区域
+ .deep-sea-story-section {
+   .story-frame {
+     position: relative;
+     height: 100%;
+     
+     .frame-corner {
+       position: absolute;
+       width: 20px;
+       height: 20px;
+       border: 2px solid rgba(102, 255, 204, 0.6);
+       z-index: 1;
+       
+       &.top-left {
+         top: -2px;
+         left: -2px;
+         border-right: none;
+         border-bottom: none;
+       }
+       
+       &.top-right {
+         top: -2px;
+         right: -2px;
+         border-left: none;
+         border-bottom: none;
+       }
+       
+       &.bottom-left {
+         bottom: -2px;
+         left: -2px;
+         border-right: none;
+         border-top: none;
+       }
+       
+       &.bottom-right {
+         bottom: -2px;
+         right: -2px;
+         border-left: none;
+         border-top: none;
+       }
+     }
+   }
+ }
+ 
+ // 深海聊天区域
+ .deep-sea-chat-section {
+   .chat-frame {
+     position: relative;
+     height: 100%;
+     
+     .frame-glow {
+       position: absolute;
+       top: -5px;
+       left: -5px;
+       right: -5px;
+       bottom: -5px;
+       background: linear-gradient(45deg, 
+         rgba(102, 255, 204, 0.1) 0%, 
+         rgba(0, 255, 127, 0.05) 25%, 
+         rgba(102, 255, 204, 0.1) 50%, 
+         rgba(0, 255, 127, 0.05) 75%, 
+         rgba(102, 255, 204, 0.1) 100%);
+       border-radius: 20px;
+       animation: frame-glow-pulse 4s ease-in-out infinite;
+       z-index: 0;
+     }
+   }
+ }
 
 // 深海底部栏
 .deep-sea-footer {
@@ -721,63 +718,73 @@ const handleSaveGame = async () => {
   100% { transform: translateX(50px); }
 }
 
-@keyframes frame-glow-pulse {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.7; }
-}
-
-@keyframes fishing-glow-pulse {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.8; }
-}
-
-@keyframes portal-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-// 响应式适配
-@media (max-width: 1024px) {
-  .deep-sea-content {
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-  }
-  
-  .deep-sea-header .header-content {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-}
-
-@media (max-width: 900px) {
-  .deep-sea-content {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .game-container {
-    padding: 0.5rem;
-    padding-bottom: 100px;
-  }
-  
-  .deep-sea-footer {
-    height: 100px;
-    
-    .footer-controls {
-      padding: 1rem;
-      flex-direction: column;
-      gap: 1rem;
-      
-      .footer-center {
-        order: 1;
-      }
-    }
-  }
-  
-  .deep-sea-header .header-decoration {
-    display: none;
-  }
-}
+ @keyframes frame-glow-pulse {
+   0%, 100% { opacity: 0.3; }
+   50% { opacity: 0.7; }
+ }
+ 
+ @keyframes portal-spin {
+   from { transform: rotate(0deg); }
+   to { transform: rotate(360deg); }
+ }
+ 
+ // 响应式适配
+ @media (max-width: 1024px) {
+   .deep-sea-top-section {
+     grid-template-columns: 1fr 1fr;
+     gap: 0.8rem;
+     
+     .status-card, .fishing-card {
+       height: 180px;
+     }
+   }
+   
+        .deep-sea-main-content {
+       grid-template-columns: 1.5fr 1fr;
+       gap: 1.5rem;
+     }
+ }
+ 
+ @media (max-width: 900px) {
+   .deep-sea-top-section {
+     grid-template-columns: 1fr;
+     gap: 0.8rem;
+     
+     .status-card, .fishing-card {
+       height: 150px;
+     }
+   }
+   
+   .deep-sea-main-content {
+     grid-template-columns: 1fr;
+     gap: 1rem;
+   }
+ }
+ 
+ @media (max-width: 768px) {
+   .game-container {
+     padding: 0.5rem;
+     padding-bottom: 100px;
+   }
+   
+   .deep-sea-top-section {
+     .status-card, .fishing-card {
+       height: 120px;
+     }
+   }
+   
+        .deep-sea-footer {
+       height: 100px;
+       
+       .footer-controls {
+         padding: 1rem;
+         flex-direction: column;
+         gap: 1rem;
+         
+         .footer-center {
+           order: 1;
+         }
+       }
+     }
+ }
 </style> 
