@@ -68,12 +68,9 @@ public class DataInitializer implements CommandLineRunner {
             System.out.println("⚠️ 基础游戏故事已存在，跳过创建");
         }
 
-        // 检查并创建批量故事（story_1_19 开始）
-        if (storyRepository.findByStoryId("story_1_19").isEmpty()) {
-            createBatchStories();
-        } else {
-            System.out.println("⚠️ 批量故事已存在，跳过创建");
-        }
+        // 强制重新创建批量故事
+        System.out.println("🔄 强制重新导入批量故事数据...");
+        createBatchStories();
 
         // 检查并创建怪异鱼类
         if (fishRepository.count() == 0) {

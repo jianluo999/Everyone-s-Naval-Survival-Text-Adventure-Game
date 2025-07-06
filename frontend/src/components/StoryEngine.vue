@@ -146,384 +146,212 @@ import { ref, computed, watch, onMounted, nextTick } from 'vue'
 import { useGameStore } from '@/stores/game'
 import { ElMessage } from 'element-plus'
 import { ArrowLeft, ArrowRight } from '@element-plus/icons-vue'
-import { getChapter, getChapterContent, getChapterChoices, getNextChapter } from '@/data/chapters'
 
 const gameStore = useGameStore()
 
 // 响应式数据
-const currentChapterId = ref(13)
-const currentPage = ref(1)
-const autoPlay = ref(false)
-const autoPlaySpeed = ref(3)
-const showHistory = ref(false)
-const storyContent = ref(null)
+const currentStoryId = ref(gameStore.gameState?.currentStoryId || 'chapter_01_start');
+const currentChapter = ref({ title: '加载中...', totalPages: 1, content: {} });
+const currentChoices = ref([]);
+const currentPage = ref(1);
+const autoPlay = ref(false);
+const autoPlaySpeed = ref(3);
+const showHistory = ref(false);
+const storyContent = ref(null);
+const itemsGained = ref([]);
+const statusChanges = ref([]);
+const storyHistory = ref([]);
 
-// 当前章节数据
-const currentChapter = computed(() => {
-  return getChapter(currentChapterId.value)
-})
-    1: [
-      {
-        type: 'narrative',
-        text: '航海日志提供了很多方便的功能。但离开航海日志，这世界简直和现实没区别。'
-      },
-      {
-        type: 'action',
-        text: '像砍树，是个力气活，也是技术活，尤其石斧还不怎么锋利，震手。'
-      },
-      {
-        type: 'status',
-        text: '砍下这棵最大的椰子树，杨逸精力直接扣了13点，只剩30点。'
-      },
-      {
-        type: 'thought',
-        text: '满打满算，满精力，他最多也就砍个五六棵树。再多就不行了，精力低于30，有昏厥的风险。'
-      }
-    ],
-    2: [
-      {
-        type: 'discovery',
-        text: '树倒后，杨逸立刻去捡椰子，刚拿起来，脸上就露出喜色。'
-      },
-      {
-        type: 'item',
-        text: '【名称：活力椰子】【类型：食物】【简介：这是一种罕见的特殊椰子，富含维生素和矿物质，里面的椰汁可以提高精力恢复速度。】'
-      },
-      {
-        type: 'action',
-        text: '杨逸二话不说，劈开一个椰子痛饮起来，获得了精力恢复加速的buff。'
-      },
-      {
-        type: 'narrative',
-        text: '这东西，正是杨逸急缺的，这一趟算是赚大了。'
-      }
-    ],
-    3: [
-      {
-        type: 'discovery',
-        text: '他打开青铜宝箱，里面立刻掉出几个光球，触摸之后变成了三件道具。'
-      },
-      {
-        type: 'item',
-        text: '【名称：活力椰汁爽配方】【类型：配方】【品质：良品】【简介：使用后获得活力椰汁爽的配方，需要试剂瓶，盐，活力椰子。】'
-      },
-      {
-        type: 'item',
-        text: '【名称：可食用海盐500克】【类型：食物】【简介：调味品，可增加风味，补充盐分。】'
-      },
-      {
-        type: 'item',
-        text: '【名称：试剂架】【种类：工具】【品质：良品】【简介：制作各种试剂必不可缺的工具，可用水晶合成。它可以提供试剂瓶，试剂喝完后，试剂瓶将消失。】'
-      }
-    ],
-    4: [
-      {
-        type: 'action',
-        text: '一个宝箱，不仅有配方，还有配方所需的其他两种素材。杨逸大喜，立刻就用掉了配方，然后开始动手调配活力椰汁爽。'
-      },
-      {
-        type: 'crafting',
-        text: '所需素材：活力椰子*1，盐10克。必备工具：试剂架'
-      },
-      {
-        type: 'item',
-        text: '【名称：活力椰汁爽】【种类：消耗品】【品质：良品】【简介：一款让人活力四射的饮料。可恢复10精力，提高精力恢复速度50%，持续8小时。每次生效间隔24小时。】'
-      },
-      {
-        type: 'narrative',
-        text: '杨逸笑了，转头看向海岸线上，那满满当当的椰子，手里的斧头舞出了花。'
-      }
-    ]
-  },
-  choices: {
-    4: [
-      {
-        id: 'continue_chopping',
-        text: '继续砍伐椰子树，收集更多活力椰子',
-        energyCost: 15,
-        risk: 30,
-        requirement: '精力 > 30'
-      },
-      {
-        id: 'explore_island',
-        text: '探索岛屿内部，寻找更多资源',
-        energyCost: 20,
-        risk: 60,
-        requirement: '装备武器'
-      },
-      {
-        id: 'return_ship',
-        text: '返回船只，准备离开这个岛屿',
-        energyCost: 5,
-        risk: 10,
-        requirement: null
-      }
-    ]
-  }
-})
-
-// 物品获得数据
-const itemsGained = ref([
-  {
-    id: 'vitality_coconut',
-    name: '活力椰子',
-    icon: '🥥',
-    quality: 'rare',
-    description: '富含维生素和矿物质的特殊椰子',
-    effect: '提高精力恢复速度'
-  },
-  {
-    id: 'vitality_drink_recipe',
-    name: '活力椰汁爽配方',
-    icon: '📜',
-    quality: 'good',
-    description: '制作活力饮料的配方',
-    effect: '学会制作活力椰汁爽'
-  },
-  {
-    id: 'sea_salt',
-    name: '可食用海盐',
-    icon: '🧂',
-    quality: 'common',
-    description: '调味品，补充盐分',
-    effect: '制作材料'
-  },
-  {
-    id: 'reagent_rack',
-    name: '试剂架',
-    icon: '🧪',
-    quality: 'good',
-    description: '制作试剂的必备工具',
-    effect: '提供试剂瓶'
-  }
-])
-
-// 状态变化数据
-const statusChanges = ref([
-  {
-    id: 'energy_loss',
-    type: 'negative',
-    icon: '⚡',
-    text: '精力消耗',
-    value: '-13'
-  },
-  {
-    id: 'energy_buff',
-    type: 'positive',
-    icon: '✨',
-    text: '精力恢复加速',
-    value: '+50%'
-  }
-])
-
-// 剧情历史
-const storyHistory = ref([
-  {
-    id: 1,
-    chapter: '第12章',
-    summary: '发现椰林岛，开始探索...',
-    timestamp: new Date(Date.now() - 3600000)
-  },
-  {
-    id: 2,
-    chapter: '第11章',
-    summary: '占星预测，发现神秘岛屿...',
-    timestamp: new Date(Date.now() - 7200000)
-  }
-])
 
 // 计算属性
 const currentPageContent = computed(() => {
-  return getChapterContent(currentChapterId.value, currentPage.value) || []
-})
+  const content = currentChapter.value.content;
+  if (content && content[currentPage.value]) {
+    return content[currentPage.value];
+  }
+  return [];
+});
 
-const currentChoices = computed(() => {
-  return getChapterChoices(currentChapterId.value, currentPage.value) || []
-})
 
 // 方法
+const loadStory = async (storyId) => {
+  if (!storyId) {
+    ElMessage.error('无效的故事ID');
+    return;
+  }
+  try {
+    const response = await fetch(`http://localhost:8080/api/game/story/${storyId}`);
+    if (!response.ok) {
+      throw new Error('故事加载失败');
+    }
+    const data = await response.json();
+    if (data.success) {
+      const story = data.story;
+      // 后端返回的content是JSON字符串，需要解析
+      const parsedContent = JSON.parse(story.content);
+
+      currentChapter.value = {
+        id: story.storyId,
+        title: story.title,
+        content: parsedContent.pages, // 假设后端返回的content中有pages
+        totalPages: Object.keys(parsedContent.pages).length,
+      };
+      
+      // 后端直接返回choices数组
+      currentChoices.value = story.choices || []; 
+      
+      currentPage.value = 1;
+      gameStore.updateGameState({ currentStoryId: storyId });
+    } else {
+      ElMessage.error(data.error || '未知错误');
+    }
+  } catch (error) {
+    console.error('加载故事时出错:', error);
+    ElMessage.error('无法连接到服务器或加载故事失败');
+  }
+};
+
+
 const formatParagraph = (text) => {
-  // 格式化物品信息
-  text = text.replace(/【([^】]+)】/g, '<span class="item-tag">【$1】</span>')
-  
-  // 格式化数值变化
-  text = text.replace(/(\d+)点/g, '<span class="number-value">$1点</span>')
-  
-  // 格式化状态效果
-  text = text.replace(/(buff|debuff)/gi, '<span class="status-effect">$1</span>')
-  
-  return text
-}
+  text = text.replace(/【([^】]+)】/g, '<span class="item-tag">【$1】</span>');
+  text = text.replace(/(\d+)点/g, '<span class="number-value">$1点</span>');
+  text = text.replace(/(buff|debuff)/gi, '<span class="status-effect">$1</span>');
+  return text;
+};
 
 const nextPage = () => {
-  if (currentChoices.value.length > 0) {
-    ElMessage.warning('请先做出选择')
-    return
+  if (currentChoices.value.length > 0 && currentPage.value >= currentChapter.value.totalPages) {
+    ElMessage.warning('请先做出选择');
+    return;
   }
   
   if (currentPage.value < currentChapter.value.totalPages) {
-    currentPage.value++
-    scrollToTop()
-    
-    // 添加到历史记录
-    addToHistory()
+    currentPage.value++;
+    scrollToTop();
+    addToHistory();
   } else {
-    // 章节结束，跳转到下一章
-    loadNextChapter()
+    ElMessage.info('本章已结束，请做出选择或等待剧情自动推进。');
   }
-}
+};
 
 const previousPage = () => {
   if (currentPage.value > 1) {
-    currentPage.value--
-    scrollToTop()
+    currentPage.value--;
+    scrollToTop();
   }
-}
+};
 
-const makeChoice = (choice) => {
+const makeChoice = async (choice) => {
   if (choice.disabled) {
-    ElMessage.error('不满足选择条件')
-    return
+    ElMessage.error('不满足选择条件');
+    return;
   }
-  
-  // 检查精力要求
-  if (choice.energyCost && gameStore.player.energy < choice.energyCost) {
-    ElMessage.error('精力不足')
-    return
-  }
-  
-  // 执行选择结果
-  executeChoice(choice)
-  
-  // 继续剧情
-  nextPage()
-}
 
-const executeChoice = (choice) => {
-  switch (choice.id) {
-    case 'continue_chopping':
-      gameStore.player.energy -= choice.energyCost
-      gameStore.addResource('wood', 15)
-      gameStore.addResource('vitality_coconut', 8)
-      ElMessage.success('获得了更多椰子和木料')
-      break
-      
-    case 'explore_island':
-      gameStore.player.energy -= choice.energyCost
-      // 触发探索事件
-      triggerExplorationEvent()
-      break
-      
-    case 'return_ship':
-      gameStore.player.energy -= choice.energyCost
-      ElMessage.info('安全返回船只')
-      break
-  }
-}
+  try {
+    const response = await fetch('http://localhost:8080/api/game/choice', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        playerName: gameStore.player.name,
+        choiceId: choice.id,
+        nextStoryId: choice.nextStoryId,
+      }),
+    });
 
-const triggerExplorationEvent = () => {
-  // 这里会触发第14章的海妖事件
-  ElMessage.warning('发现了神秘的发光痕迹...')
-  
-  // 可能触发危险事件
-  if (Math.random() < 0.3) {
-    ElMessage.error('遭遇了未知生物！')
-    gameStore.player.sanity -= 5
+    const data = await response.json();
+
+    if (data.success) {
+      ElMessage.success('选择成功');
+      gameStore.updatePlayer(data.player);
+      // 加载下一个故事片段
+      loadStory(choice.nextStoryId);
+    } else {
+      ElMessage.error(data.error || '选择失败');
+    }
+  } catch (error) {
+    console.error('做出选择时出错:', error);
+    ElMessage.error('无法连接到服务器或处理选择失败');
   }
-}
+};
+
 
 const getRiskText = (risk) => {
-  if (risk < 30) return '低'
-  if (risk < 60) return '中'
-  if (risk < 80) return '高'
-  return '极高'
-}
+  if (risk < 30) return '低';
+  if (risk < 60) return '中';
+  if (risk < 80) return '高';
+  return '极高';
+};
 
 const toggleAutoPlay = (enabled) => {
   if (enabled) {
-    startAutoPlay()
+    startAutoPlay();
   } else {
-    stopAutoPlay()
+    stopAutoPlay();
   }
-}
+};
 
-let autoPlayTimer = null
+let autoPlayTimer = null;
 
 const startAutoPlay = () => {
   autoPlayTimer = setInterval(() => {
     if (currentChoices.value.length === 0) {
-      nextPage()
+      nextPage();
     }
-  }, (11 - autoPlaySpeed.value) * 1000)
-}
+  }, (11 - autoPlaySpeed.value) * 1000);
+};
 
 const stopAutoPlay = () => {
   if (autoPlayTimer) {
-    clearInterval(autoPlayTimer)
-    autoPlayTimer = null
+    clearInterval(autoPlayTimer);
+    autoPlayTimer = null;
   }
-}
+};
 
 const scrollToTop = () => {
   nextTick(() => {
     if (storyContent.value) {
-      storyContent.value.scrollTop = 0
+      storyContent.value.scrollTop = 0;
     }
-  })
-}
+  });
+};
 
 const addToHistory = () => {
   const entry = {
     id: Date.now(),
     chapter: currentChapter.value.title,
     summary: currentPageContent.value[0]?.text.substring(0, 30) + '...',
-    timestamp: new Date()
-  }
+    timestamp: new Date(),
+  };
   
-  storyHistory.value.unshift(entry)
+  storyHistory.value.unshift(entry);
   
-  // 限制历史记录数量
   if (storyHistory.value.length > 20) {
-    storyHistory.value = storyHistory.value.slice(0, 20)
+    storyHistory.value = storyHistory.value.slice(0, 20);
   }
-}
+};
 
 const jumpToHistory = (entry) => {
-  ElMessage.info(`跳转到：${entry.chapter}`)
-  // 这里可以实现历史回顾功能
-}
-
-const loadNextChapter = () => {
-  ElMessage.success('第13章完成！准备进入第14章...')
-  // 这里可以加载第14章内容
-}
+  ElMessage.info(`跳转到：${entry.chapter}`);
+};
 
 const formatTime = (timestamp) => {
   return timestamp.toLocaleTimeString('zh-CN', {
     hour: '2-digit',
-    minute: '2-digit'
-  })
-}
+    minute: '2-digit',
+  });
+};
 
-// 监听器
 watch(currentPage, () => {
-  // 页面变化时的处理
-  itemsGained.value = []
-  statusChanges.value = []
-  
-  // 根据当前页面显示相应的物品和状态变化
-  if (currentPage.value === 2) {
-    itemsGained.value = [itemsGained.value[0]] // 活力椰子
-    statusChanges.value = [statusChanges.value[1]] // 精力buff
-  } else if (currentPage.value === 3) {
-    itemsGained.value = itemsGained.value.slice(1) // 配方和材料
-  }
-})
+  itemsGained.value = [];
+  statusChanges.value = [];
+});
 
 onMounted(() => {
-  // 初始化
-  addToHistory()
-})
+  loadStory(currentStoryId.value);
+  addToHistory();
+});
 </script>
 
 <style lang="scss" scoped>
