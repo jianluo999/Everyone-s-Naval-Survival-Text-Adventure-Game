@@ -8,6 +8,8 @@ import com.adventure.model.GameState;
 import com.adventure.model.Fish;
 import com.adventure.service.GameService;
 import com.adventure.service.FishingService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +25,9 @@ import java.time.LocalDateTime;
 @RequestMapping("/game")
 @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3002"})
 public class GameController {
-    
+
+    private static final Logger logger = LoggerFactory.getLogger(GameController.class);
+
     @Autowired
     private GameService gameService;
     
@@ -254,20 +258,31 @@ public class GameController {
      */
     @PostMapping("/player")
     public ResponseEntity<Map<String, Object>> createPlayer(@RequestBody Map<String, String> request) {
+        logger.info("🎮 [API] 创建新玩家请求 - 请求数据: {}", request);
+
         try {
             String playerName = request.get("name");
+            logger.info("📝 [API] 提取玩家名称: '{}'", playerName);
+
             if (playerName == null || playerName.trim().isEmpty()) {
+                logger.warn("⚠️ [API] 玩家名称为空或无效");
                 return ResponseEntity.badRequest().body(Map.of("error", "玩家名称不能为空"));
             }
-            
+
+            logger.info("🚀 [API] 调用GameService创建玩家: '{}'", playerName.trim());
             Player player = gameService.createPlayer(playerName.trim());
+
             Map<String, Object> response = new HashMap<>();
             response.put("success", true);
             response.put("message", "玩家创建成功");
             response.put("player", PlayerDTO.fromEntity(player));
-            
+
+            logger.info("✅ [API] 玩家创建成功 - ID: {}, 名称: '{}', 初始故事: {}",
+                       player.getId(), player.getName(), player.getGameState().getCurrentStoryId());
+
             return ResponseEntity.ok(response);
         } catch (Exception e) {
+            logger.error("❌ [API] 创建玩家失败: {}", e.getMessage(), e);
             return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
         }
     }
@@ -297,17 +312,27 @@ public class GameController {
      */
     @GetMapping("/story/{storyId}")
     public ResponseEntity<Map<String, Object>> getStory(@PathVariable String storyId) {
+        logger.info("📖 [API] 获取故事请求 - storyId: '{}'", storyId);
+
         try {
+            logger.info("🔍 [API] 调用GameService查询故事和选择");
             GameService.StoryWithChoices storyWithChoices = gameService.getStoryWithChoices(storyId);
+
             if (storyWithChoices != null) {
+                logger.info("✅ [API] 故事查询成功 - 标题: '{}', 选择数量: {}",
+                           storyWithChoices.getStory().getTitle(),
+                           storyWithChoices.getChoices().size());
+
                 Map<String, Object> response = new HashMap<>();
                 response.put("success", true);
                 response.put("story", StoryDTO.fromEntity(storyWithChoices.getStory(), storyWithChoices.getChoices()));
                 return ResponseEntity.ok(response);
             } else {
-                return ResponseEntity.notFound().build();
+                logger.warn("⚠️ [API] 故事不存在 - storyId: '{}'", storyId);
+                return ResponseEntity.badRequest().body(Map.of("error", "故事不存在"));
             }
         } catch (Exception e) {
+            logger.error("❌ [API] 获取故事失败 - storyId: '{}', 错误: {}", storyId, e.getMessage(), e);
             return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
         }
     }
@@ -317,20 +342,32 @@ public class GameController {
      */
     @PostMapping("/choice")
     public ResponseEntity<Map<String, Object>> makeChoice(@RequestBody Map<String, Object> request) {
+        logger.info("🎯 [API] 玩家选择请求 - 请求数据: {}", request);
+
         try {
             String playerName = (String) request.get("playerName");
             Long choiceId = Long.valueOf(request.get("choiceId").toString());
             String nextStoryId = (String) request.get("nextStoryId");
-            
+
+            logger.info("📝 [API] 解析选择参数 - 玩家: '{}', 选择ID: {}, 下一故事: '{}'",
+                       playerName, choiceId, nextStoryId);
+
+            logger.info("🚀 [API] 调用GameService处理选择");
             Player player = gameService.makeChoice(playerName, choiceId, nextStoryId);
-            
+
             Map<String, Object> response = new HashMap<>();
             response.put("success", true);
             response.put("message", "选择成功");
             response.put("player", PlayerDTO.fromEntity(player));
-            
+
+            logger.info("✅ [API] 选择处理成功 - 玩家: '{}', 当前故事: '{}', 理智: {}/{}",
+                       player.getName(),
+                       player.getGameState().getCurrentStoryId(),
+                       player.getSanity(), player.getMaxSanity());
+
             return ResponseEntity.ok(response);
         } catch (Exception e) {
+            logger.error("❌ [API] 处理选择失败: {}", e.getMessage(), e);
             return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
         }
     }

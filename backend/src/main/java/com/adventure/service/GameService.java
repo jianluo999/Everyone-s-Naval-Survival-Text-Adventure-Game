@@ -4,6 +4,8 @@ import com.adventure.model.*;
 import com.adventure.repository.PlayerRepository;
 import com.adventure.repository.StoryRepository;
 import com.adventure.repository.ChoiceRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +17,9 @@ import java.util.Optional;
 @Service
 @Transactional
 public class GameService {
-    
+
+    private static final Logger logger = LoggerFactory.getLogger(GameService.class);
+
     @Autowired
     private PlayerRepository playerRepository;
     
@@ -29,10 +33,14 @@ public class GameService {
      * 创建新玩家
      */
     public Player createPlayer(String playerName) {
+        logger.info("🎮 [SERVICE] 开始创建玩家 - 名称: '{}'", playerName);
+
         if (playerRepository.existsByName(playerName)) {
+            logger.warn("⚠️ [SERVICE] 玩家名称已存在: '{}'", playerName);
             throw new RuntimeException("玩家名称已存在");
         }
-        
+
+        logger.info("🏗️ [SERVICE] 初始化玩家基础属性");
         Player player = new Player();
         player.setName(playerName);
         player.setGold(100);
@@ -62,6 +70,7 @@ public class GameService {
         player.setStatus("健康");
         player.setTalents("钢铁意志");
         
+        logger.info("🚢 [SERVICE] 创建初始船只 - 破旧木筏");
         // 创建初始船只
         Ship ship = new Ship();
         ship.setName("破旧木筏");
@@ -83,7 +92,8 @@ public class GameService {
         ship.setDescription("一艘破旧的木筏，勉强能在海上漂浮。需要尽快升级以应对更大的挑战。");
         ship.setEquipment("[]");
         player.setShip(ship);
-        
+
+        logger.info("🎯 [SERVICE] 初始化游戏状态 - 起始故事: story_1_1");
         // 创建游戏状态
         GameState gameState = new GameState();
         gameState.setCurrentChapter(1);
@@ -95,8 +105,11 @@ public class GameService {
         gameState.setLastPlayedAt(LocalDateTime.now());
         gameState.setTotalPlayTime(0);
         player.setGameState(gameState);
-        
-        return playerRepository.save(player);
+
+        Player savedPlayer = playerRepository.save(player);
+        logger.info("✅ [SERVICE] 玩家创建成功 - ID: {}, 名称: '{}'", savedPlayer.getId(), savedPlayer.getName());
+
+        return savedPlayer;
     }
     
     /**
@@ -124,14 +137,20 @@ public class GameService {
      * 获取故事和选择的完整信息
      */
     public StoryWithChoices getStoryWithChoices(String storyId) {
+        logger.info("📖 [SERVICE] 查询故事和选择 - storyId: '{}'", storyId);
+
         Optional<Story> storyOpt = storyRepository.findByStoryId(storyId);
         if (!storyOpt.isPresent()) {
+            logger.warn("⚠️ [SERVICE] 故事不存在 - storyId: '{}'", storyId);
             return null;
         }
-        
+
         Story story = storyOpt.get();
         List<Choice> choices = choiceRepository.findByStoryId(storyId);
-        
+
+        logger.info("✅ [SERVICE] 故事查询成功 - 标题: '{}', 章节: {}-{}, 选择数量: {}",
+                   story.getTitle(), story.getChapter(), story.getScene(), choices.size());
+
         return new StoryWithChoices(story, choices);
     }
     
@@ -139,15 +158,25 @@ public class GameService {
      * 玩家做出选择
      */
     public Player makeChoice(String playerName, Long choiceId, String nextStoryId) {
+        logger.info("🎯 [SERVICE] 处理玩家选择 - 玩家: '{}', 选择ID: {}, 目标故事: '{}'",
+                   playerName, choiceId, nextStoryId);
+
         Player player = playerRepository.findByName(playerName)
                 .orElseThrow(() -> new RuntimeException("玩家不存在"));
 
         Story nextStory = storyRepository.findByStoryId(nextStoryId)
                 .orElseThrow(() -> new RuntimeException("故事不存在"));
 
+        logger.info("📊 [SERVICE] 玩家当前状态 - 理智: {}/{}, 健康: {}/{}, 当前故事: '{}'",
+                   player.getSanity(), player.getMaxSanity(),
+                   player.getHealth(), player.getMaxHealth(),
+                   player.getGameState().getCurrentStoryId());
+
         // 循环检测：检查是否会导致无限循环
         GameState gameState = player.getGameState();
         if (detectStoryLoop(gameState.getCurrentStoryId(), nextStoryId)) {
+            logger.error("🔄 [SERVICE] 检测到故事循环 - 当前: '{}', 目标: '{}'",
+                        gameState.getCurrentStoryId(), nextStoryId);
             throw new RuntimeException("检测到故事循环，无法执行此选择");
         }
 
@@ -156,26 +185,33 @@ public class GameService {
             Choice choice = choiceRepository.findById(choiceId)
                     .orElseThrow(() -> new RuntimeException("选择不存在"));
 
+            logger.info("💰 [SERVICE] 应用选择效果 - 选择文本: '{}', 金币消耗/奖励: {}/{}, 经验奖励: {}",
+                       choice.getText(), choice.getGoldCost(), choice.getGoldReward(), choice.getExperienceReward());
+
             // 应用选择的影响
             applyChoiceEffects(player, choice);
         }
 
         // 更新游戏状态
-        
+
         // 检查是否可以执行行动
         if (!gameState.performAction()) {
+            logger.warn("⏰ [SERVICE] 今日行动次数已满 - 玩家: '{}'", playerName);
             throw new RuntimeException("今日行动次数已满，请等待明天");
         }
-        
+
         // 推进时间（每个选择消耗1-3小时）
         int timeAdvance = 1 + (int)(Math.random() * 3);
         gameState.advanceTime(timeAdvance);
-        
+        logger.info("⏰ [SERVICE] 时间推进 - {}小时, 当前时间: 第{}天 {}时",
+                   timeAdvance, gameState.getCurrentDay(), gameState.getCurrentHour());
+
         gameState.setCurrentStoryId(nextStoryId);
         gameState.setCurrentChapter(nextStory.getChapter());
         gameState.setCurrentScene(nextStory.getScene());
         gameState.setLastPlayedAt(LocalDateTime.now());
 
+        logger.info("🎭 [SERVICE] 处理故事特殊效果 - 故事: '{}'", nextStoryId);
         // 处理故事特殊效果（理智值变化等）
         processStoryEffects(player, nextStoryId);
 
@@ -184,11 +220,17 @@ public class GameService {
 
         // 检查是否游戏结束
         if (nextStory.getIsEnding()) {
+            logger.info("🏁 [SERVICE] 游戏结束 - 玩家: '{}', 结局故事: '{}'", playerName, nextStoryId);
             gameState.setIsGameCompleted(true);
             gameState.setIsGameActive(false);
         }
 
-        return playerRepository.save(player);
+        Player savedPlayer = playerRepository.save(player);
+        logger.info("✅ [SERVICE] 选择处理完成 - 玩家: '{}', 新故事: '{}', 理智: {}/{}",
+                   savedPlayer.getName(), nextStoryId,
+                   savedPlayer.getSanity(), savedPlayer.getMaxSanity());
+
+        return savedPlayer;
     }
 
     /**
@@ -216,20 +258,28 @@ public class GameService {
      * 处理理智值变化
      */
     public void applySanityChange(Player player, int sanityChange, String reason) {
+        int oldSanity = player.getSanity();
         int newSanity = Math.max(0, Math.min(player.getMaxSanity(), player.getSanity() + sanityChange));
         player.setSanity(newSanity);
+
+        logger.info("🧠 [SERVICE] 理智值变化 - 玩家: '{}', 变化: {} ({}→{}), 原因: '{}'",
+                   player.getName(), sanityChange, oldSanity, newSanity, reason);
 
         // 检查是否进入癫狂状态
         if (newSanity < 50 && !player.getIsMadness()) {
             player.setIsMadness(true);
+            logger.warn("😵 [SERVICE] 玩家进入癫狂状态 - 玩家: '{}', 理智: {}", player.getName(), newSanity);
             // 癫狂状态下的属性加成会在前端处理或通过特殊效果处理
         } else if (newSanity >= 50 && player.getIsMadness()) {
             player.setIsMadness(false);
+            logger.info("😌 [SERVICE] 玩家恢复理智 - 玩家: '{}', 理智: {}", player.getName(), newSanity);
         }
 
-        // 记录理智变化日志
-        if (sanityChange != 0) {
-            System.out.println("玩家 " + player.getName() + " 理智值变化: " + sanityChange + " 原因: " + reason);
+        // 检查危险状态
+        if (newSanity <= 10) {
+            logger.error("💀 [SERVICE] 玩家理智极度危险 - 玩家: '{}', 理智: {}", player.getName(), newSanity);
+        } else if (newSanity <= 30) {
+            logger.warn("⚠️ [SERVICE] 玩家理智危险 - 玩家: '{}', 理智: {}", player.getName(), newSanity);
         }
     }
 

@@ -52,32 +52,53 @@ public class DataInitializer implements CommandLineRunner {
     
     @Override
     public void run(String... args) throws Exception {
-        // 如果数据库中已有数据，则不重复初始化
-        if (storyRepository.count() > 0) {
-            return;
-        }
-        
         System.out.println("🎮 开始初始化游戏数据...");
-        
-        // 创建游戏装备
-        createGameEquipment();
 
-        // 创建基础游戏故事（story_1_1 到 story_1_17）
-        createGameStories();
+        // 检查并创建游戏装备
+        if (equipmentRepository.count() == 0) {
+            createGameEquipment();
+        } else {
+            System.out.println("⚠️ 游戏装备已存在，跳过创建");
+        }
 
-        // 创建游戏故事 - 使用批量加载系统（story_1_18 开始）
-        createBatchStories();
+        // 检查并创建基础游戏故事（story_1_1 到 story_1_3）
+        if (storyRepository.findByStoryId("story_1_1").isEmpty()) {
+            createBasicGameStories();
+        } else {
+            System.out.println("⚠️ 基础游戏故事已存在，跳过创建");
+        }
 
-        // 创建怪异鱼类
-        createStrangeFish();
-        
-        // 创建默认玩家
-        createDefaultPlayer();
-        
+        // 检查并创建批量故事（story_1_19 开始）
+        if (storyRepository.findByStoryId("story_1_19").isEmpty()) {
+            createBatchStories();
+        } else {
+            System.out.println("⚠️ 批量故事已存在，跳过创建");
+        }
+
+        // 检查并创建怪异鱼类
+        if (fishRepository.count() == 0) {
+            createStrangeFish();
+        } else {
+            System.out.println("⚠️ 怪异鱼类已存在，跳过创建");
+        }
+
+        // 检查并创建默认玩家
+        if (playerRepository.count() == 0) {
+            createDefaultPlayer();
+        } else {
+            System.out.println("⚠️ 默认玩家已存在，跳过创建");
+        }
+
         System.out.println("✅ 游戏数据初始化完成！");
+        System.out.println("📊 当前数据库状态：");
+        System.out.println("   - 故事数量: " + storyRepository.count());
+        System.out.println("   - 选择数量: " + choiceRepository.count());
+        System.out.println("   - 装备数量: " + equipmentRepository.count());
+        System.out.println("   - 鱼类数量: " + fishRepository.count());
+        System.out.println("   - 玩家数量: " + playerRepository.count());
     }
     
-    private void createGameStories() {
+    private void createBasicGameStories() {
         // 第一章第一场景：游戏开始（使用小说原文）
         Story story1_1 = new Story();
         story1_1.setStoryId("story_1_1");
@@ -133,12 +154,6 @@ public class DataInitializer implements CommandLineRunner {
         story1_3.setIsEnding(false);
         storyRepository.save(story1_3);
 
-        // 调用批量生成的故事内容
-        createBatchStories();
-
-        // 调用批量生成的选择内容
-        createBatchChoices();
-        
         // 第五个故事：世界聊天
         Story story1_5 = new Story();
         story1_5.setStoryId("story_1_5");
@@ -404,23 +419,23 @@ public class DataInitializer implements CommandLineRunner {
         Story story1_17 = new Story();
         story1_17.setStoryId("story_1_17");
         story1_17.setTitle("第一次噩梦");
-        story1_16.setContent("癫狂状态下，你的力量、敏捷和体质都得到了提升，同时免疫恐惧和疼痛。\n\n" +
+        story1_17.setContent("癫狂状态下，你的力量、敏捷和体质都得到了提升，同时免疫恐惧和疼痛。\n\n" +
                 "你冲进船舱，找到了人头章鱼的残骸，毫不犹豫地吞了下去。\n" +
                 "【你吞下了人头章鱼，力量+1，体质+1，精神-1，理智-20，持续1分钟】\n\n" +
                 "现在你的力量翻了一倍！你欺身上前，这时骷髅还在疑惑枪为何打不响。\n" +
                 "下一秒，它被你扑倒在地，两根臂骨被狠狠扯下。\n\n" +
                 "你得势不饶人，右手穿过骷髅颅骨的破口，抓向里面的灵魂之火...");
-        story1_16.setChapter(1);
-        story1_16.setScene(16);
-        story1_16.setStoryType("MADNESS_BATTLE");
-        story1_16.setIsEnding(false);
-        storyRepository.save(story1_16);
+        story1_17.setChapter(1);
+        story1_17.setScene(17);
+        story1_17.setStoryType("MADNESS_BATTLE");
+        story1_17.setIsEnding(false);
+        storyRepository.save(story1_17);
 
-        // 第十五个故事：夜晚的结束
-        Story story1_178 = new Story();
-        story1_17.setStoryId("story_1_17");
-        story1_17.setTitle("恐怖夜晚的结束");
-        story1_17.setContent("你握住了那团灵魂之火，并不烫手，反而很温暖。\n\n" +
+        // 第十八个故事：夜晚的结束
+        Story story1_18 = new Story();
+        story1_18.setStoryId("story_1_18");
+        story1_18.setTitle("恐怖夜晚的结束");
+        story1_18.setContent("你握住了那团灵魂之火，并不烫手，反而很温暖。\n\n" +
                 "骷髅反应剧烈，浑身战栗，很快散落一地，变成一摊平平无奇的骨头，\n" +
                 "灵魂之火也彻底熄灭。\n\n" +
                 "但你没有掉以轻心。保险起见，你将颅骨摆在船舷上，\n" +
@@ -430,11 +445,11 @@ public class DataInitializer implements CommandLineRunner {
                 "【枪声古怪，你理智下降1】\n\n" +
                 "终于，这恐怖的夜晚结束了。你虽然受了伤，但活了下来。\n" +
                 "更重要的是，你学会了在这个危险世界中生存的第一课...");
-        story1_17.setChapter(1);
-        story1_17.setScene(17);
-        story1_17.setStoryType("CHAPTER_END");
-        story1_17.setIsEnding(true);
-        storyRepository.save(story1_17);
+        story1_18.setChapter(1);
+        story1_18.setScene(18);
+        story1_18.setStoryType("CHAPTER_END");
+        story1_18.setIsEnding(true);
+        storyRepository.save(story1_18);
 
         // 创建选择（现在不再需要双向关联）
         createChoices();
@@ -1045,6 +1060,9 @@ public class DataInitializer implements CommandLineRunner {
             // 从文本文件加载故事数据
             loadStoriesFromTextFiles();
             System.out.println("✅ 批量故事内容加载完成！");
+
+            // 加载选择数据
+            createBatchChoices();
         } catch (Exception e) {
             System.err.println("❌ 批量加载故事失败: " + e.getMessage());
             e.printStackTrace();
@@ -1060,24 +1078,17 @@ public class DataInitializer implements CommandLineRunner {
         // 读取第1章的所有场景
         loadChapterFromFile(1, "novel_texts/chapter_1_data.txt");
 
-        // 读取第2章 - 深海探索
-        loadChapterFromFile(2, "novel_texts/chapter_2_data.txt");
-
-        // 读取第3章 - 商人与交易
-        loadChapterFromFile(3, "novel_texts/chapter_3_data.txt");
-
-        // 读取第4章 - 宝藏岛探险
-        loadChapterFromFile(4, "novel_texts/chapter_4_data.txt");
-
-        // 读取第5章 - 海怪之王
-        loadChapterFromFile(5, "novel_texts/chapter_5_data.txt");
+        // 读取第2章到第11章
+        for (int i = 2; i <= 11; i++) {
+            loadChapterFromFile(i, "novel_texts/chapter_" + i + "_data.txt");
+        }
 
         // 可以继续添加更多章节
-        // loadChapterFromFile(6, "novel_texts/chapter_6_data.txt");
-        // loadChapterFromFile(7, "novel_texts/chapter_7_data.txt");
+        // loadChapterFromFile(12, "novel_texts/chapter_12_data.txt");
+        // loadChapterFromFile(13, "novel_texts/chapter_13_data.txt");
         // ... 直到500章
 
-        System.out.println("📖 已加载5个章节，文本文件系统支持无限扩展！");
+        System.out.println("📖 已加载11个章节，文本文件系统支持无限扩展！");
     }
 
     /**
@@ -1179,13 +1190,13 @@ public class DataInitializer implements CommandLineRunner {
         System.out.println("📚 使用默认批量故事内容...");
 
         // 检查是否已经有批量故事，避免重复创建
-        if (storyRepository.findByStoryId("story_1_18").isPresent()) {
+        if (storyRepository.findByStoryId("story_1_19").isPresent()) {
             System.out.println("⚠️ 批量故事已存在，跳过默认创建");
             return;
         }
 
-        // 第1章第18场景：航海日志详细规则
-        createStoryFromData(1, 18, "航海日志详细规则",
+        // 第1章第23场景：航海日志详细规则（修复重复ID问题）
+        createStoryFromData(1, 23, "航海日志详细规则",
             "你将它拿起，打开，第一页写有规则。\n\n" +
             "【1.未经允许，其他人无法登上你的船只。】\n\n" +
             "【2.你船上的物品不会被其他玩家盗窃，除非你已死亡。】\n\n" +
@@ -1420,13 +1431,13 @@ public class DataInitializer implements CommandLineRunner {
         // 第1章默认选择
         if (chapter == 1) {
             // story_1_3 添加新选择：详细阅读航海日志规则
-            createChoiceFromData("story_1_3", "详细阅读航海日志的所有规则", "story_1_18",
+            createChoiceFromData("story_1_3", "详细阅读航海日志的所有规则", "story_1_23",
                                0, 0, 0, 0, 15, "", true);
 
-            // story_1_18 的选择：阅读完规则后的选择
-            createChoiceFromData("story_1_18", "翻到第三页，查看自己的属性详情", "story_1_19",
+            // story_1_23 的选择：阅读完规则后的选择
+            createChoiceFromData("story_1_23", "翻到第三页，查看自己的属性详情", "story_1_19",
                                0, 0, 0, 0, 10, "", true);
-            createChoiceFromData("story_1_18", "合上手册，开始探索船舱", "story_1_6",
+            createChoiceFromData("story_1_23", "合上手册，开始探索船舱", "story_1_6",
                                0, 0, 0, 0, 5, "", true);
         }
     }
@@ -1435,32 +1446,32 @@ public class DataInitializer implements CommandLineRunner {
     private void createLegacyBatchChoices() {
         System.out.println("🎯 开始加载传统硬编码选择内容...");
 
-        // story_1_18 的选择：阅读完规则后的选择
-        Choice choice1_18_1 = new Choice();
-        choice1_18_1.setText("翻到第三页，查看自己的属性详情");
-        choice1_18_1.setNextStoryId("story_1_19");
-        choice1_18_1.setGoldCost(0);
-        choice1_18_1.setGoldReward(0);
-        choice1_18_1.setHealthCost(0);
-        choice1_18_1.setHealthReward(0);
-        choice1_18_1.setExperienceReward(10);
-        choice1_18_1.setRequirements("");
-        choice1_18_1.setIsAvailable(true);
-        choice1_18_1.setStoryId("story_1_18");
-        choiceRepository.save(choice1_18_1);
+        // story_1_23 的选择：阅读完规则后的选择（修复重复ID问题）
+        Choice choice1_23_1 = new Choice();
+        choice1_23_1.setText("翻到第三页，查看自己的属性详情");
+        choice1_23_1.setNextStoryId("story_1_19");
+        choice1_23_1.setGoldCost(0);
+        choice1_23_1.setGoldReward(0);
+        choice1_23_1.setHealthCost(0);
+        choice1_23_1.setHealthReward(0);
+        choice1_23_1.setExperienceReward(10);
+        choice1_23_1.setRequirements("");
+        choice1_23_1.setIsAvailable(true);
+        choice1_23_1.setStoryId("story_1_23");
+        choiceRepository.save(choice1_23_1);
 
-        Choice choice1_18_2 = new Choice();
-        choice1_18_2.setText("合上手册，开始探索船舱");
-        choice1_18_2.setNextStoryId("story_1_6");
-        choice1_18_2.setGoldCost(0);
-        choice1_18_2.setGoldReward(0);
-        choice1_18_2.setHealthCost(0);
-        choice1_18_2.setHealthReward(0);
-        choice1_18_2.setExperienceReward(5);
-        choice1_18_2.setRequirements("");
-        choice1_18_2.setIsAvailable(true);
-        choice1_18_2.setStoryId("story_1_18");
-        choiceRepository.save(choice1_18_2);
+        Choice choice1_23_2 = new Choice();
+        choice1_23_2.setText("合上手册，开始探索船舱");
+        choice1_23_2.setNextStoryId("story_1_6");
+        choice1_23_2.setGoldCost(0);
+        choice1_23_2.setGoldReward(0);
+        choice1_23_2.setHealthCost(0);
+        choice1_23_2.setHealthReward(0);
+        choice1_23_2.setExperienceReward(5);
+        choice1_23_2.setRequirements("");
+        choice1_23_2.setIsAvailable(true);
+        choice1_23_2.setStoryId("story_1_23");
+        choiceRepository.save(choice1_23_2);
 
         // story_1_19 的选择：查看完属性后的选择
         Choice choice1_19_1 = new Choice();
