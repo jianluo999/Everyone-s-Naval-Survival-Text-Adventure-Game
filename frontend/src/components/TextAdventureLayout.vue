@@ -197,7 +197,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, nextTick } from 'vue'
 import { useGameStore } from '@/stores/game'
 import { Location, Notebook, Box, House } from '@element-plus/icons-vue'
 import StoryDisplay from './StoryDisplay.vue'
@@ -271,6 +271,10 @@ const getConditionColor = (percentage) => {
 }
 
 const handleChoiceMade = (choiceData) => {
+  console.log('handleChoiceMade called with:', choiceData)
+  console.log('navigationLogRef.value:', navigationLogRef.value)
+  console.log('activeStatusTab.value:', activeStatusTab.value)
+
   // 记录到聊天面板
   if (chatPanelRef.value && chatPanelRef.value.recordPlayerChoice) {
     chatPanelRef.value.recordPlayerChoice(choiceData.choice, choiceData.storyTitle)
@@ -281,28 +285,43 @@ const handleChoiceMade = (choiceData) => {
     }
   }
 
-  // 记录到航海日志
-  if (navigationLogRef.value && navigationLogRef.value.addLogEntry) {
-    navigationLogRef.value.addLogEntry({
-      type: 'choice',
-      title: `选择：${choiceData.choice.text}`,
-      content: choiceData.storyTitle,
-      timestamp: new Date(),
-      rewards: [
-        ...(choiceData.choice.goldReward > 0 ? [{ type: '金币', value: choiceData.choice.goldReward }] : []),
-        ...(choiceData.choice.experienceReward > 0 ? [{ type: '经验', value: choiceData.choice.experienceReward }] : [])
-      ]
-    })
+  // 先切换到航海日志标签页，确保NavigationLog组件被渲染
+  console.log('Setting timeout to switch to log tab...')
+  setTimeout(async () => {
+    console.log('Switching to log tab, current tab:', activeStatusTab.value)
+    activeStatusTab.value = 'log'
+    console.log('After switch, current tab:', activeStatusTab.value)
 
-    // 增加新日志条目计数
-    if (activeStatusTab.value !== 'log') {
-      newLogEntries.value++
+    // 等待DOM更新完成
+    await nextTick()
+
+    // 再等待一个tick确保组件完全渲染
+    await nextTick()
+
+    if (navigationLogRef.value && navigationLogRef.value.addLogEntry) {
+      console.log('Adding log entry...')
+      navigationLogRef.value.addLogEntry({
+        type: 'choice',
+        title: `选择：${choiceData.choice.text}`,
+        content: `在"${choiceData.storyTitle}"中做出了选择`,
+        effects: [
+          ...(choiceData.choice.goldReward > 0 ? [{ type: '金币', value: choiceData.choice.goldReward }] : []),
+          ...(choiceData.choice.experienceReward > 0 ? [{ type: '经验', value: choiceData.choice.experienceReward }] : []),
+          ...(choiceData.choice.healthReward > 0 ? [{ type: '生命', value: choiceData.choice.healthReward }] : []),
+          ...(choiceData.choice.goldCost > 0 ? [{ type: '金币', value: -choiceData.choice.goldCost }] : []),
+          ...(choiceData.choice.healthCost > 0 ? [{ type: '生命', value: -choiceData.choice.healthCost }] : [])
+        ]
+      })
+      console.log('Log entry added successfully')
+    } else {
+      console.log('navigationLogRef.value or addLogEntry still not available after tab switch')
     }
+  }, 500)
 
-    // 自动切换到航海日志（延迟一点时间让用户看到选择结果）
-    setTimeout(() => {
-      activeStatusTab.value = 'log'
-    }, 500)
+  // 增加新日志条目计数
+  if (activeStatusTab.value !== 'log') {
+    newLogEntries.value++
+    console.log('New log entries count:', newLogEntries.value)
   }
 }
 
