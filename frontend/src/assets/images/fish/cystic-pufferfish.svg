@@ -1,1 +1,46 @@
- 
+<svg width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+  <!-- 深海背景 -->
+  <defs>
+    <radialGradient id="darkGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#2c1810;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f0f0f;stop-opacity:1" />
+    </radialGradient>
+    <filter id="diseased">
+      <feGaussianBlur stdDeviation="1"/>
+    </filter>
+  </defs>
+  
+  <rect width="150" height="150" fill="url(#darkGradient)"/>
+  
+  <!-- 鱼身体 (膨胀的河豚) -->
+  <circle cx="75" cy="75" r="30" fill="#4a4a4a" stroke="#333" stroke-width="2"/>
+  
+  <!-- 疾病囊肿 -->
+  <circle cx="60" cy="65" r="4" fill="#1a1a1a" opacity="0.8"/>
+  <circle cx="85" cy="70" r="3" fill="#2a2a2a" opacity="0.9"/>
+  <circle cx="70" cy="90" r="5" fill="#1a1a1a" opacity="0.7"/>
+  <circle cx="90" cy="85" r="3" fill="#2a2a2a" opacity="0.8"/>
+  
+  <!-- 毒刺 -->
+  <path d="M55 60 L50 55 L52 58 Z" fill="#8b0000"/>
+  <path d="M95 70 L100 65 L98 68 Z" fill="#8b0000"/>
+  <path d="M75 50 L70 45 L72 48 Z" fill="#8b0000"/>
+  <path d="M80 95 L85 100 L83 97 Z" fill="#8b0000"/>
+  <path d="M60 95 L55 100 L57 97 Z" fill="#8b0000"/>
+  
+  <!-- 恶心的眼睛 -->
+  <circle cx="70" cy="70" r="5" fill="#darkred"/>
+  <circle cx="72" cy="68" r="2" fill="#fff" opacity="0.7"/>
+  
+  <!-- 嘴巴 -->
+  <path d="M75 80 Q80 85 75 87 Q70 85 75 80" fill="#000"/>
+  
+  <!-- 标题 -->
+  <text x="75" y="135" font-family="Arial" font-size="12" fill="#ff6b6b" text-anchor="middle">囊肿刺豚</text>
+  
+  <!-- 毒雾效果 -->
+  <circle cx="75" cy="75" r="40" fill="none" stroke="#8b0000" stroke-width="1" opacity="0.2">
+    <animate attributeName="r" values="40;50;40" dur="4s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.2;0.05;0.2" dur="4s" repeatCount="indefinite"/>
+  </circle>
+</svg> 
