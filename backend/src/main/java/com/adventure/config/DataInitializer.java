@@ -193,7 +193,50 @@ public class DataInitializer implements CommandLineRunner {
         story1_7.setStoryType("SAILING");
         story1_7.setIsEnding(false);
         storyRepository.save(story1_7);
-        
+
+        // 临时故事节点 - 等待新剧情内容
+        Story story1_8 = new Story();
+        story1_8.setStoryId("story_1_8");
+        story1_8.setTitle("东方小岛的发现");
+        story1_8.setContent("你驾驶着船只向东方的小岛航行...\n\n" +
+                "经过一段时间的航行，你终于接近了那座冒着轻烟的小岛。\n" +
+                "岛上似乎有人类活动的痕迹，这让你既兴奋又紧张。\n\n" +
+                "【待续...】\n" +
+                "更多精彩内容即将到来！");
+        story1_8.setChapter(1);
+        story1_8.setScene(8);
+        story1_8.setStoryType("EXPLORATION");
+        story1_8.setIsEnding(true); // 临时设为结束
+        storyRepository.save(story1_8);
+
+        Story story1_9 = new Story();
+        story1_9.setStoryId("story_1_9");
+        story1_9.setTitle("与其他船只的邂逅");
+        story1_9.setContent("你决定向北方的船只靠近...\n\n" +
+                "随着距离的缩短，你看清了那些船只的轮廓。\n" +
+                "它们看起来像是商船，船上的人似乎也注意到了你。\n\n" +
+                "【待续...】\n" +
+                "更多精彩内容即将到来！");
+        story1_9.setChapter(1);
+        story1_9.setScene(9);
+        story1_9.setStoryType("ENCOUNTER");
+        story1_9.setIsEnding(true); // 临时设为结束
+        storyRepository.save(story1_9);
+
+        Story story1_10 = new Story();
+        story1_10.setStoryId("story_1_10");
+        story1_10.setTitle("海上的观察与等待");
+        story1_10.setContent("你选择在当前位置等待，仔细观察周围的情况...\n\n" +
+                "在这片平静的海域中，你有时间思考接下来的计划。\n" +
+                "远处的景象让你对这个世界有了更多的了解。\n\n" +
+                "【待续...】\n" +
+                "更多精彩内容即将到来！");
+        story1_10.setChapter(1);
+        story1_10.setScene(10);
+        story1_10.setStoryType("OBSERVATION");
+        story1_10.setIsEnding(true); // 临时设为结束
+        storyRepository.save(story1_10);
+
         // 创建选择（现在不再需要双向关联）
         createChoices();
     }
@@ -387,10 +430,10 @@ public class DataInitializer implements CommandLineRunner {
         choice1_6_3.setStoryId("story_1_6");
         choiceRepository.save(choice1_6_3);
         
-        // story_1_7 的选择（初次航行）
+        // story_1_7 的选择（初次航行）- 修复循环引用
         Choice choice1_7_1 = new Choice();
         choice1_7_1.setText("向东方的小岛航行");
-        choice1_7_1.setNextStoryId("story_1_1");
+        choice1_7_1.setNextStoryId("story_1_8"); // 修复：指向新的故事节点
         choice1_7_1.setGoldCost(0);
         choice1_7_1.setGoldReward(0);
         choice1_7_1.setHealthCost(0);
@@ -400,10 +443,10 @@ public class DataInitializer implements CommandLineRunner {
         choice1_7_1.setIsAvailable(true);
         choice1_7_1.setStoryId("story_1_7");
         choiceRepository.save(choice1_7_1);
-        
+
         Choice choice1_7_2 = new Choice();
         choice1_7_2.setText("向北方的船只靠近");
-        choice1_7_2.setNextStoryId("story_1_1");
+        choice1_7_2.setNextStoryId("story_1_9"); // 修复：指向新的故事节点
         choice1_7_2.setGoldCost(0);
         choice1_7_2.setGoldReward(0);
         choice1_7_2.setHealthCost(0);
@@ -413,10 +456,10 @@ public class DataInitializer implements CommandLineRunner {
         choice1_7_2.setIsAvailable(true);
         choice1_7_2.setStoryId("story_1_7");
         choiceRepository.save(choice1_7_2);
-        
+
         Choice choice1_7_3 = new Choice();
         choice1_7_3.setText("在当前位置等待，观察情况");
-        choice1_7_3.setNextStoryId("story_1_1");
+        choice1_7_3.setNextStoryId("story_1_10"); // 修复：指向新的故事节点
         choice1_7_3.setGoldCost(0);
         choice1_7_3.setGoldReward(0);
         choice1_7_3.setHealthCost(0);

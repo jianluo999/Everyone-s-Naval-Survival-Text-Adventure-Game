@@ -141,21 +141,26 @@ public class GameService {
     public Player makeChoice(String playerName, Long choiceId, String nextStoryId) {
         Player player = playerRepository.findByName(playerName)
                 .orElseThrow(() -> new RuntimeException("玩家不存在"));
-        
+
         Story nextStory = storyRepository.findByStoryId(nextStoryId)
                 .orElseThrow(() -> new RuntimeException("故事不存在"));
-        
+
+        // 循环检测：检查是否会导致无限循环
+        GameState gameState = player.getGameState();
+        if (detectStoryLoop(gameState.getCurrentStoryId(), nextStoryId)) {
+            throw new RuntimeException("检测到故事循环，无法执行此选择");
+        }
+
         // 获取选择信息并应用影响
         if (choiceId != null) {
             Choice choice = choiceRepository.findById(choiceId)
                     .orElseThrow(() -> new RuntimeException("选择不存在"));
-            
+
             // 应用选择的影响
             applyChoiceEffects(player, choice);
         }
-        
+
         // 更新游戏状态
-        GameState gameState = player.getGameState();
         
         // 检查是否可以执行行动
         if (!gameState.performAction()) {
@@ -181,6 +186,27 @@ public class GameService {
         }
         
         return playerRepository.save(player);
+    }
+
+    /**
+     * 检测故事循环
+     * 简单的循环检测：如果当前故事和目标故事形成已知的循环模式，则返回true
+     */
+    private boolean detectStoryLoop(String currentStoryId, String nextStoryId) {
+        // 检测已知的循环模式
+        if ("story_1_7".equals(currentStoryId) && "story_1_1".equals(nextStoryId)) {
+            return true; // 这是之前的循环bug
+        }
+
+        // 检测直接回到自己的情况
+        if (currentStoryId != null && currentStoryId.equals(nextStoryId)) {
+            return true;
+        }
+
+        // 可以在这里添加更复杂的循环检测逻辑
+        // 比如维护一个最近访问的故事历史，检测是否在短时间内重复访问相同的故事序列
+
+        return false;
     }
     
     /**
