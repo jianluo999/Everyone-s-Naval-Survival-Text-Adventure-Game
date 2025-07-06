@@ -6,11 +6,6 @@
       <div class="bubble" v-for="i in 10" :key="i"></div>
     </div>
     <router-view class="app-content" />
-    <div class="eldritch-footer">
-      <div class="footer-text eldritch-text">
-        🌊 深海之下，古老的秘密正在苏醒... 🐙
-      </div>
-    </div>
   </div>
 </template>
 
@@ -193,32 +188,6 @@ onUnmounted(() => {
     z-index: 2;
     min-height: calc(100vh - 80px);
   }
-  
-  // 深海页脚
-  .eldritch-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 80px;
-    background: linear-gradient(to top, 
-      rgba(0, 0, 0, 0.9) 0%, 
-      rgba(0, 10, 20, 0.7) 50%, 
-      transparent 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 3;
-    
-    .footer-text {
-      color: #66ffcc;
-      font-size: 1.1rem;
-      font-weight: bold;
-      text-align: center;
-      opacity: 0.8;
-      animation: eldritch-glow 4s ease-in-out infinite;
-    }
-  }
 }
 
 // 深海模式下的body样式
@@ -306,15 +275,6 @@ body.deep-sea-mode {
       
       &.right-tentacle {
         right: -25px;
-      }
-    }
-    
-    .eldritch-footer {
-      height: 60px;
-      
-      .footer-text {
-        font-size: 0.9rem;
-        padding: 0 1rem;
       }
     }
   }

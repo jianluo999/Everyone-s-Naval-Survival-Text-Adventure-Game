@@ -1,657 +1,576 @@
 <template>
-  <div class="home-container">
-    <!-- 背景动画效果 -->
-    <div class="ocean-waves">
-      <div class="wave wave1"></div>
-      <div class="wave wave2"></div>
-      <div class="wave wave3"></div>
-    </div>
-    
-    <!-- 浮动粒子效果 -->
-    <div class="particles">
-      <div v-for="i in 20" :key="i" class="particle" :style="getParticleStyle(i)"></div>
-    </div>
-
-    <!-- 游戏标题 -->
-    <div class="game-header">
-      <h1 class="game-title">
-        <span class="ship-icon">🚢</span>
-        <span class="title-text">全民航海求生游戏</span>
-        <span class="ship-icon">⚓</span>
-      </h1>
-      <p class="game-subtitle typewriter">在无尽的海洋中，书写你的传奇故事</p>
-    </div>
-
-    <!-- 游戏介绍 -->
-    <div class="game-intro">
-      <el-card class="intro-card glass-effect">
-        <template #header>
-          <div class="card-header">
-            <el-icon class="header-icon"><Compass /></el-icon>
-            <span>游戏背景</span>
-            <el-icon class="header-icon"><Compass /></el-icon>
+  <div class="retro-game-container">
+    <!-- CRT显示器效果 -->
+    <div class="crt-screen">
+      <div class="scanlines"></div>
+      <div class="crt-content">
+        
+        <!-- 游戏标题 -->
+        <div class="game-header">
+          <div class="title-line">==============<br></div>
+          <div class="game-title">
+            <span class="blink">►</span> 全民航海求生游戏 <span class="blink">◄</span>
           </div>
-        </template>
-        <div class="intro-content">
+          <div class="subtitle">[ 在无尽的海洋中，书写你的传奇故事 ]</div>
+          <div class="title-line">==============<br></div>
+        </div>
+
+        <!-- 游戏介绍 -->
+        <div v-if="showIntro" class="game-intro" @click="showIntro = false" @keyup="showIntro = false">
           <div class="intro-text">
-            <p class="highlight-text">「欢迎来到全民航海求生游戏...」</p>
-            <p>接下来，你们将在海上度过余生...</p>
-            <p>不必担心你们身体有疾病或者残缺，本系统会帮你们通通治好，给你们一个相对公平的起点...</p>
-            <p class="highlight danger-text">
-              <el-icon class="warning-icon"><Warning /></el-icon>
-              保持前进，不要被背后的黑雾追上。
-            </p>
-            <p class="warning critical-text">
-              <el-icon class="danger-icon pulse"><Lightning /></el-icon>
-              黑雾的速度目前为十节！
-            </p>
-          </div>
-          
-          <!-- 添加装饰性元素 -->
-          <div class="decoration-elements">
-            <div class="compass-decoration">🧭</div>
-            <div class="anchor-decoration">⚓</div>
-            <div class="wheel-decoration rotating">⛵</div>
+            <div class="title">游戏介绍</div>
+            <div class="welcome">「欢迎来到航海求生的危险海域！」</div>
+            <div class="description">
+              这里没有怯懦者的立足之地，只有勇敢的冒险者才能在<br>
+              这无情的大海中生存下来。您将面临种种挑战：
+            </div>
+            <div class="challenges">
+              <div>▲ 饥饿、口渴、海怪</div>
+              <div>▲ 无数不可预知的危险</div>
+              <div>▲ 生存还是毁灭？</div>
+            </div>
+            <div class="ready">准备好开始您的传奇航程了吗？</div>
+            <div class="continue blink">[ 按任意键继续 ]</div>
           </div>
         </div>
-      </el-card>
-    </div>
 
-    <!-- 玩家操作区域 -->
-    <div class="player-actions">
-      <el-card class="action-card glass-effect">
-        <template #header>
-          <div class="card-header">
-            <el-icon class="header-icon"><Sail /></el-icon>
-            <span>开始你的航海之旅</span>
-            <el-icon class="header-icon"><Sail /></el-icon>
+        <!-- 主菜单 -->
+        <div class="main-menu" v-if="!showIntro">
+          <div class="menu-header">
+                                    主菜单 - MAIN MENU<br>
           </div>
-        </template>
-        
-        <div class="action-content">
+
+          <!-- 输入区域 -->
           <div class="input-section">
-            <div class="input-wrapper">
-              <el-input
-                v-model="playerName"
-                placeholder="请输入你的船长名字"
-                size="large"
+            <div class="input-label">
+              ▶ 输入船长名字 (CAPTAIN NAME):
+            </div>
+            <div class="input-field">
+              <input 
+                v-model="playerName" 
+                type="text" 
+                placeholder="请输入船长名字"
+                class="retro-input"
                 maxlength="20"
-                show-word-limit
-                :disabled="loading"
-                @keyup.enter="handleStartGame"
-                class="captain-input"
-              >
-                <template #prepend>
-                  <el-icon><User /></el-icon>
-                  <span>船长</span>
-                </template>
-              </el-input>
+                @keypress.enter="handleStartGame"
+              />
             </div>
           </div>
 
-          <div class="button-section">
-            <el-button 
-              type="primary" 
-              size="large" 
-              :loading="loading"
-              :disabled="!playerName.trim()"
-              @click="handleStartGame"
-              class="start-btn magical-btn"
-            >
-              <el-icon class="btn-icon"><Promotion /></el-icon>
-              <span>开始新游戏</span>
-              <div class="btn-effects"></div>
-            </el-button>
-
-            <el-button 
-              type="success" 
-              size="large" 
-              :loading="loading"
-              :disabled="!playerName.trim()"
-              @click="handleContinueGame"
-              class="continue-btn magical-btn"
-            >
-              <el-icon class="btn-icon"><RefreshRight /></el-icon>
-              <span>继续游戏</span>
-              <div class="btn-effects"></div>
-            </el-button>
+          <!-- 菜单选项 -->
+          <div class="menu-options">
+            <div class="option-item" @click="handleStartGame" :class="{ disabled: !playerName.trim() }">
+              <span class="option-arrow">►</span> 1. 开始新游戏 (NEW GAME)
+            </div>
+            <div class="option-item" @click="handleContinueGame" :class="{ disabled: !playerName.trim() }">
+              <span class="option-arrow">►</span> 2. 继续游戏 (CONTINUE)
+            </div>
+            <div class="option-item" @click="showFeatures = !showFeatures">
+              <span class="option-arrow">►</span> 3. 游戏特色 (FEATURES)
+            </div>
+            <div class="option-item" @click="showHelp = !showHelp">
+              <span class="option-arrow">►</span> 4. 帮助说明 (HELP)
+            </div>
           </div>
 
-          <!-- 错误提示 -->
-          <div v-if="error" class="error-message">
-            <el-alert
-              :title="error"
-              type="error"
-              :closable="false"
-              show-icon
-              effect="dark"
-            />
+          <!-- 游戏特色 -->
+          <div class="features-section" v-if="showFeatures">
+            <div class="section-border">
+                                    游戏特色 - FEATURES<br>
+                                                                         <br>
+                ▲ 装备系统: 力量、精神、敏捷、体质、感知五大属性<br>
+                ▲ 理智机制: 保持理智，避免船员暴动<br>
+                ▲ 船只升级: 从破旧小舢板到海上王者<br>
+                ▲ 海洋探索: 神秘海域等待探索<br>
+            </div>
+          </div>
+
+          <!-- 帮助说明 -->
+          <div class="help-section" v-if="showHelp">
+            <div class="section-border">
+                                    帮助说明 - HELP<br>
+                                                                         <br>
+                ▲ 使用方向键或鼠标选择菜单项<br>
+                ▲ 按 ENTER 键确认选择<br>
+                ▲ 在游戏中保持理智值和生命值<br>
+                ▲ 合理分配资源，规划航线<br>
+            </div>
+          </div>
+
+          <!-- 状态信息 -->
+          <div class="status-bar">
+            <div class="status-left">
+              STATUS: {{ getGameStatus() }}
+            </div>
+            <div class="status-right">
+              PLAYER: {{ playerName || 'UNKNOWN' }}
+            </div>
           </div>
         </div>
-      </el-card>
-    </div>
 
-    <!-- 游戏特色 -->
-    <div class="game-features">
-      <div class="feature-grid">
-        <div class="feature-item glass-effect" v-for="(feature, index) in features" :key="index">
-          <div class="feature-icon" :style="{ animationDelay: (index * 0.2) + 's' }">
-            {{ feature.icon }}
+        <!-- 底部信息 -->
+        <div class="footer-info">
+          <div class="version-info">
+            VERSION 1.0.0 | 8-BIT SAILING SURVIVAL GAME
           </div>
-          <h3>{{ feature.title }}</h3>
-          <p>{{ feature.description }}</p>
-          <div class="feature-decoration"></div>
+          <div class="copyright">
+            © 2024 RETRO GAMING STUDIOS
+          </div>
         </div>
+
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useGameStore } from '@/stores/game'
-import { ElMessage } from 'element-plus'
 
 const router = useRouter()
 const gameStore = useGameStore()
 
-// 响应式数据
 const playerName = ref('')
+const showIntro = ref(true)
+const showFeatures = ref(false)
+const showHelp = ref(false)
 const loading = ref(false)
-const error = ref('')
 
-// 游戏特色数据
-const features = [
-  {
-    icon: '⚔️',
-    title: '属性系统',
-    description: '力量、精神、敏捷、体质、感知五大属性，打造专属角色'
-  },
-  {
-    icon: '🧠',
-    title: '理智机制',
-    description: '保持理智，避免陷入疯狂，钢铁意志助你渡过难关'
-  },
-  {
-    icon: '⛵',
-    title: '船只升级',
-    description: '从破旧木筏到强大战舰，不断升级你的海上家园'
-  },
-  {
-    icon: '🌊',
-    title: '海洋探索',
-    description: '神秘的海域等待你的探索，每个选择都影响命运'
-  }
-]
-
-// 粒子样式生成
-const getParticleStyle = (index) => {
-  const delay = Math.random() * 20
-  const duration = 15 + Math.random() * 10
-  const left = Math.random() * 100
-  const size = 2 + Math.random() * 3
-  
-  return {
-    left: left + '%',
-    animationDelay: delay + 's',
-    animationDuration: duration + 's',
-    width: size + 'px',
-    height: size + 'px'
-  }
-}
-
-// 开始新游戏
 const handleStartGame = async () => {
   if (!playerName.value.trim()) {
-    ElMessage.warning('请输入船长名字')
+    playBeep()
     return
   }
-
+  
   loading.value = true
-  error.value = ''
-
+  playStartSound()
+  
   try {
     await gameStore.createPlayer(playerName.value.trim())
-    ElMessage.success('欢迎登船，船长！')
     router.push('/game')
-  } catch (err) {
-    error.value = err.message || '发生未知错误'
-    ElMessage.error(err.message || '发生未知错误')
+  } catch (error) {
+    console.error('Failed to start game:', error)
+    playErrorSound()
   } finally {
     loading.value = false
   }
 }
 
-// 继续游戏
 const handleContinueGame = async () => {
   if (!playerName.value.trim()) {
-    ElMessage.warning('请输入船长名字')
+    playBeep()
     return
   }
-
+  
   loading.value = true
-  error.value = ''
-
+  playStartSound()
+  
   try {
     await gameStore.loadPlayer(playerName.value.trim())
-    ElMessage.success('欢迎回来，船长！')
     router.push('/game')
-  } catch (err) {
-    error.value = err.message || '发生未知错误'
-    ElMessage.error(err.message || '发生未知错误')
+  } catch (error) {
+    console.error('Failed to continue game:', error)
+    playErrorSound()
   } finally {
     loading.value = false
   }
 }
+
+const getGameStatus = () => {
+  if (loading.value) return 'LOADING...'
+  if (!playerName.value.trim()) return 'WAITING FOR INPUT'
+  return 'READY'
+}
+
+// 8-bit音效
+const playBeep = () => {
+  try {
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext
+    const audioContext = new AudioContextClass()
+    const oscillator = audioContext.createOscillator()
+    const gainNode = audioContext.createGain()
+    
+    oscillator.connect(gainNode)
+    gainNode.connect(audioContext.destination)
+    
+    oscillator.frequency.value = 800
+    oscillator.type = 'square'
+    gainNode.gain.value = 0.1
+    
+    oscillator.start()
+    oscillator.stop(audioContext.currentTime + 0.1)
+  } catch (e) {
+    console.log('Audio not supported')
+  }
+}
+
+const playStartSound = () => {
+  try {
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext
+    const audioContext = new AudioContextClass()
+    const oscillator = audioContext.createOscillator()
+    const gainNode = audioContext.createGain()
+    
+    oscillator.connect(gainNode)
+    gainNode.connect(audioContext.destination)
+    
+    oscillator.frequency.value = 440
+    oscillator.type = 'square'
+    gainNode.gain.value = 0.1
+    
+    oscillator.start()
+    oscillator.stop(audioContext.currentTime + 0.2)
+  } catch (e) {
+    console.log('Audio not supported')
+  }
+}
+
+const playErrorSound = () => {
+  try {
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext
+    const audioContext = new AudioContextClass()
+    const oscillator = audioContext.createOscillator()
+    const gainNode = audioContext.createGain()
+    
+    oscillator.connect(gainNode)
+    gainNode.connect(audioContext.destination)
+    
+    oscillator.frequency.value = 200
+    oscillator.type = 'square'
+    gainNode.gain.value = 0.1
+    
+    oscillator.start()
+    oscillator.stop(audioContext.currentTime + 0.3)
+  } catch (e) {
+    console.log('Audio not supported')
+  }
+}
+
+onMounted(() => {
+  playBeep()
+})
 </script>
 
 <style lang="scss" scoped>
-.home-container {
-  min-height: 100vh;
-  position: relative;
-  padding: 2rem;
+.retro-game-container {
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Courier New', 'Lucida Console', monospace;
   overflow: hidden;
-  background: linear-gradient(135deg, #0f2027 0%, #203a43 25%, #2c5364 75%, #1e3c72 100%);
 }
 
-// 海浪动画
-.ocean-waves {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100px;
-  z-index: 1;
+.crt-screen {
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+  height: 90%;
+  background: #001100;
+  border: 8px solid #333;
+  border-radius: 20px;
+  box-shadow: 
+    0 0 50px rgba(0, 255, 0, 0.3),
+    inset 0 0 50px rgba(0, 255, 0, 0.1);
+  overflow: hidden;
   
-  .wave {
+  &::before {
+    content: '';
     position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     bottom: 0;
-    left: 50%;
-    width: 200%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    border-radius: 50%;
-    transform: translateX(-50%);
-    animation: wave 6s ease-in-out infinite;
-    
-    &.wave1 {
-      animation-delay: 0s;
-      opacity: 0.3;
-    }
-    
-    &.wave2 {
-      animation-delay: 2s;
-      opacity: 0.2;
-      animation-duration: 8s;
-    }
-    
-    &.wave3 {
-      animation-delay: 4s;
-      opacity: 0.1;
-      animation-duration: 10s;
-    }
+    background: 
+      radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.4) 100%),
+      linear-gradient(90deg, transparent 50%, rgba(0, 255, 0, 0.03) 50%);
+    background-size: 100% 100%, 2px 2px;
+    pointer-events: none;
+    z-index: 1;
   }
 }
 
-@keyframes wave {
-  0%, 100% {
-    transform: translateX(-50%) translateY(0);
-  }
-  50% {
-    transform: translateX(-50%) translateY(-20px);
-  }
-}
-
-// 粒子效果
-.particles {
+.scanlines {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(transparent 50%, rgba(0, 255, 0, 0.05) 50%);
+  background-size: 100% 4px;
   pointer-events: none;
-  
-  .particle {
-    position: absolute;
-    background: rgba(255, 255, 255, 0.6);
-    border-radius: 50%;
-    animation: float-up linear infinite;
-  }
+  z-index: 2;
+  animation: scanline 0.1s linear infinite;
 }
 
-@keyframes float-up {
-  0% {
-    opacity: 0;
-    transform: translateY(100vh) rotate(0deg);
+@keyframes scanline {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 4px; }
+}
+
+.crt-content {
+  position: relative;
+  padding: 20px;
+  height: 100%;
+  color: #00ff00;
+  font-size: 18px;
+  line-height: 1.4;
+  z-index: 3;
+  text-shadow: 0 0 10px #00ff00;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: auto;
+  
+  &::-webkit-scrollbar {
+    width: 8px;
   }
-  10% {
-    opacity: 1;
+  
+  &::-webkit-scrollbar-track {
+    background: #001100;
   }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-100px) rotate(360deg);
+  
+  &::-webkit-scrollbar-thumb {
+    background: #00ff00;
+    border-radius: 4px;
   }
 }
 
 .game-header {
   text-align: center;
-  margin-bottom: 3rem;
-  position: relative;
-  z-index: 10;
+  margin-bottom: 20px;
+  
+  .title-line {
+    color: #00ff00;
+    font-size: 16px;
+    margin: 5px 0;
+  }
   
   .game-title {
-    font-size: 4rem;
-    font-weight: 900;
-    margin-bottom: 1rem;
-    color: #ffffff;
-    text-shadow: 
-      0 0 10px rgba(255, 255, 255, 0.5),
-      0 0 20px rgba(64, 158, 255, 0.3),
-      0 0 30px rgba(64, 158, 255, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    
-    .ship-icon {
-      animation: float 3s ease-in-out infinite;
-      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
-    }
-    
-    .title-text {
-      background: linear-gradient(45deg, #ffffff, #64b5f6, #ffffff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: shimmer 3s ease-in-out infinite;
-    }
+    font-size: 28px;
+    font-weight: bold;
+    color: #00ff00;
+    margin: 10px 0;
+    text-shadow: 0 0 15px #00ff00;
   }
   
-  .game-subtitle {
-    font-size: 1.3rem;
-    color: #b3d4fc;
-    margin: 0;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  .subtitle {
+    font-size: 16px;
+    color: #00aa00;
+    margin: 10px 0;
   }
 }
 
-@keyframes shimmer {
-  0%, 100% { filter: brightness(1); }
-  50% { filter: brightness(1.2); }
+.blink {
+  animation: blink 1s infinite;
 }
 
-// 玻璃效果
-.glass-effect {
-  background: rgba(255, 255, 255, 0.1) !important;
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
 }
 
-.game-intro, .player-actions {
-  position: relative;
-  z-index: 10;
-  max-width: 800px;
-  margin: 0 auto 3rem;
-  
-  .intro-card, .action-card {
-    position: relative;
-    overflow: hidden;
-    
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-      animation: slide 3s infinite;
-    }
-  }
-}
-
-@keyframes slide {
-  0% { left: -100%; }
-  100% { left: 100%; }
-}
-
-.decoration-elements {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  opacity: 0.3;
-  
-  div {
-    font-size: 2rem;
-    animation: float 4s ease-in-out infinite;
-    
-    &.rotating {
-      animation: rotate 8s linear infinite;
-    }
-  }
-}
-
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-// 魔法按钮效果
-.magical-btn {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
-  border: none;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-  transition: all 0.3s ease;
-  
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
-  }
-  
-  .btn-effects {
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    animation: shimmer-btn 2s infinite;
-  }
-}
-
-@keyframes shimmer-btn {
-  0% { left: -100%; }
-  100% { left: 100%; }
-}
-
-.start-btn {
-  background: linear-gradient(45deg, #667eea 0%, #764ba2 100%) !important;
-}
-
-.continue-btn {
-  background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%) !important;
-}
-
-.captain-input {
-  .el-input__wrapper {
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    color: white;
-    
-    .el-input__inner {
-      color: white;
-      
-      &::placeholder {
-        color: rgba(255, 255, 255, 0.6);
-      }
-    }
-  }
-}
-
-// 特色功能区域
-.game-features {
-  position: relative;
-  z-index: 10;
-  max-width: 1200px;
-  margin: 0 auto;
-  
-  .feature-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    
-    .feature-item {
-      position: relative;
-      padding: 2.5rem;
-      border-radius: 20px;
-      text-align: center;
-      transition: all 0.4s ease;
-      overflow: hidden;
-      
-      &:hover {
-        transform: translateY(-10px) scale(1.02);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-      }
-      
-      .feature-icon {
-        font-size: 4rem;
-        margin-bottom: 1.5rem;
-        animation: bounce 2s infinite;
-        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
-      }
-      
-      h3 {
-        color: #ffffff;
-        margin-bottom: 1rem;
-        font-size: 1.5rem;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-      }
-      
-      p {
-        color: rgba(255, 255, 255, 0.8);
-        line-height: 1.6;
-        margin: 0;
-      }
-      
-      .feature-decoration {
-        position: absolute;
-        bottom: -50px;
-        right: -50px;
-        width: 100px;
-        height: 100px;
-        background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
-        border-radius: 50%;
-        animation: pulse 3s infinite;
-      }
-    }
-  }
-}
-
-// 高亮文本样式
-.highlight-text {
-  color: #64b5f6;
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-
-.danger-text {
-  color: #ff7043;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  
-  .warning-icon {
-    animation: pulse 2s infinite;
-  }
-}
-
-.critical-text {
-  color: #f44336;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  
-  .danger-icon {
-    color: #ffeb3b;
-  }
-}
-
-.typewriter {
-  border-right: 2px solid #64b5f6;
-  overflow: hidden;
-  white-space: nowrap;
-  animation: typing 4s steps(20, end), blink-caret 0.75s step-end infinite;
-}
-
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-@keyframes blink-caret {
-  from, to { border-color: transparent; }
-  50% { border-color: #64b5f6; }
-}
-
-.card-header {
+.game-intro {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
-  font-weight: bold;
-  font-size: 1.3rem;
-  color: #ffffff;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  text-align: center;
   
-  .header-icon {
-    font-size: 1.5rem;
-    color: #64b5f6;
-    animation: pulse 2s infinite;
+  .intro-border {
+    font-size: 32px !important;
+    line-height: 2 !important;
+    text-align: center;
+    margin: 20px auto;
+    max-width: 1000px;
+  }
+  
+  .press-key {
+    font-size: 32px !important;
+    margin-top: 30px;
+    cursor: pointer;
+    
+    &:hover {
+      .blink {
+        color: #ffff00;
+        text-shadow: 0 0 15px #ffff00;
+      }
+    }
+  }
+}
+
+.main-menu {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  
+  .menu-header {
+    text-align: center;
+    font-size: 14px;
+    color: #00ff00;
+    margin-bottom: 10px;
+  }
+  
+  .input-section {
+    margin-bottom: 20px;
+    
+    .input-label {
+      color: #00ff00;
+      margin-bottom: 5px;
+      font-size: 12px;
+    }
+    
+    .input-field {
+      .retro-input {
+        background: #000;
+        border: 2px solid #00ff00;
+        color: #00ff00;
+        padding: 8px 12px;
+        font-family: 'Courier New', monospace;
+        font-size: 14px;
+        width: 100%;
+        max-width: 300px;
+        text-shadow: 0 0 5px #00ff00;
+        
+        &:focus {
+          outline: none;
+          border-color: #ffff00;
+          box-shadow: 0 0 10px #ffff00;
+          color: #ffff00;
+          text-shadow: 0 0 10px #ffff00;
+        }
+        
+        &::placeholder {
+          color: #006600;
+        }
+      }
+    }
+  }
+  
+  .menu-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+    .option-item {
+      cursor: pointer;
+      color: #00ff00;
+      font-size: 18px;
+      padding: 5px 0;
+      transition: all 0.2s ease;
+      
+      &:hover:not(.disabled) {
+        color: #ffff00;
+        text-shadow: 0 0 10px #ffff00;
+        transform: translateX(10px);
+      }
+      
+      &.disabled {
+        color: #004400;
+        cursor: not-allowed;
+      }
+      
+      .option-arrow {
+        display: inline-block;
+        width: 20px;
+      }
+    }
+  }
+  
+  .features-section,
+  .help-section {
+    margin-top: 20px;
+    
+    .section-border {
+      font-size: 12px;
+      line-height: 1.2;
+      white-space: pre-line;
+      font-family: 'Courier New', monospace;
+      color: #00aa00;
+    }
+  }
+  
+  .status-bar {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    color: #00aa00;
+    border-top: 1px solid #00aa00;
+    padding-top: 10px;
+  }
+}
+
+.footer-info {
+  text-align: center;
+  font-size: 14px;
+  color: #006600;
+  margin-top: 20px;
+  
+  .version-info {
+    margin-bottom: 5px;
+  }
+  
+  .copyright {
+    margin-top: 5px;
   }
 }
 
 // 响应式设计
 @media (max-width: 768px) {
-  .home-container {
-    padding: 1rem;
+  .crt-screen {
+    width: 95%;
+    height: 95%;
   }
   
-  .game-header .game-title {
-    font-size: 2.5rem;
-    flex-direction: column;
-    gap: 0.5rem;
+  .crt-content {
+    padding: 15px;
+    font-size: 16px;
   }
   
-  .button-section {
-    flex-direction: column;
-    align-items: center;
+  .game-title {
+    font-size: 24px !important;
   }
   
-  .feature-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+  .menu-options .option-item {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .crt-content {
+    padding: 10px;
+    font-size: 14px;
   }
   
-  .decoration-elements {
-    display: none;
+  .game-title {
+    font-size: 20px !important;
+  }
+}
+
+.large-text {
+  font-size: 32px;
+  line-height: 2;
+}
+
+.intro-border {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 1000px;
+}
+
+.press-key {
+  margin-top: 30px;
+  cursor: pointer;
+  
+  &:hover {
+    .blink {
+      color: #ffff00;
+      text-shadow: 0 0 15px #ffff00;
+    }
   }
 }
 </style> 
