@@ -196,12 +196,9 @@
           </span>
         </div>
         
-        <div class="attributes-info">
-          <span class="attr-item">力量{{ player.strength }}</span>
-          <span class="attr-item">精神{{ player.spirit }}</span>
-          <span class="attr-item">敏捷{{ player.agility }}</span>
-          <span class="attr-item">体质{{ player.constitution }}</span>
-          <span class="attr-item">感知{{ player.perception }}</span>
+        <!-- 五维属性雷达图 -->
+        <div class="attributes-radar">
+          <AttributeRadar :player-data="player" />
         </div>
       </div>
     </div>
@@ -241,6 +238,7 @@ import { ref, computed } from 'vue'
 import { useGameStore } from '@/stores/game'
 import { ElMessage } from 'element-plus'
 import { User, Ship, Coin, TrophyBase, Timer, Box, Operation, Clock } from '@element-plus/icons-vue'
+import AttributeRadar from './AttributeRadar.vue'
 
 const gameStore = useGameStore()
 
@@ -643,16 +641,32 @@ const advanceTime = async () => {
     }
   }
   
-  .attributes-info {
-    display: flex;
-    gap: 0.8rem;
-    flex-wrap: wrap;
-    
-    .attr-item {
-      color: #00ffc8;
-      font-size: 0.65rem;
-      font-weight: 600;
-      text-shadow: 0 0 3px rgba(0, 255, 200, 0.6);
+  .attributes-radar {
+    margin-top: 0.5rem;
+
+    :deep(.attribute-radar) {
+      background: transparent;
+      border: 1px solid rgba(102, 255, 204, 0.3);
+      padding: 0.5rem;
+    }
+
+    :deep(.radar-container) {
+      max-width: 200px;
+    }
+
+    :deep(.attribute-legend) {
+      margin-top: 0.5rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px;
+
+      .legend-item {
+        font-size: 10px;
+
+        .legend-color {
+          width: 8px;
+          height: 8px;
+        }
+      }
     }
   }
 }

@@ -1,7 +1,14 @@
 <template>
   <div class="game-container deep-sea-game">
+    <!-- 船舱第一视角环境 -->
+    <ShipCabin
+      ref="shipCabinRef"
+      class="cabin-environment"
+      :class="{ 'cabin-active': showCabin }"
+    />
+
     <!-- 深海迷雾效果 -->
-    <div class="deep-sea-fog"></div>
+    <div class="deep-sea-fog" :class="{ 'fog-reduced': showCabin }"></div>
     
     <!-- 游戏加载中 -->
     <div v-if="loading && !gameStore.player" class="loading-container deep-sea-loading">
@@ -19,50 +26,12 @@
     <div v-else-if="gameStore.player" class="game-main deep-sea-main">
       <!-- 深海雾气层 -->
       <div class="mist-layer"></div>
-      
-                    <!-- 游戏内容区域 -->
-       <div class="game-content deep-sea-content">
-         <!-- 主要内容区域 - 左右分列 -->
-         <div class="main-content-section deep-sea-main-content">
-           <!-- 左侧区域：状态面板 + 故事区域 -->
-           <div class="left-section deep-sea-left-section">
-             <!-- 顶部综合状态区域 -->
-             <div class="top-section deep-sea-top-section">
-               <div class="comprehensive-card deep-sea-comprehensive-card">
-                 <div class="card-frame">
-                   <div class="frame-corner top-left"></div>
-                   <div class="frame-corner top-right"></div>
-                   <div class="frame-corner bottom-left"></div>
-                   <div class="frame-corner bottom-right"></div>
-                   <ComprehensiveStatus />
-                 </div>
-               </div>
-             </div>
-             
-             <!-- 深海故事展示区 -->
-             <div class="story-section deep-sea-story-section">
-               <div class="story-frame">
-                 <div class="frame-corner top-left"></div>
-                 <div class="frame-corner top-right"></div>
-                 <div class="frame-corner bottom-left"></div>
-                 <div class="frame-corner bottom-right"></div>
-                 <StoryDisplay class="deep-sea-story-display" @choice-made="handleChoiceMade" />
-               </div>
-             </div>
-           </div>
 
-           <!-- 右侧区域：聊天面板占据整个高度 -->
-           <div class="right-section deep-sea-right-section">
-             <!-- 深海聊天区域 -->
-             <div class="chat-section deep-sea-chat-section">
-               <div class="chat-frame">
-                 <div class="frame-glow"></div>
-                 <ChatPanel ref="chatPanelRef" class="deep-sea-chat-panel" />
-               </div>
-             </div>
-           </div>
-         </div>
-       </div>
+      <!-- 使用新的文字冒险布局 -->
+      <TextAdventureLayout
+        ref="textAdventureRef"
+        @choice-made="handleChoiceMade"
+      />
 
       <!-- 底部深海操作栏 -->
       <div class="game-footer deep-sea-footer">
@@ -82,6 +51,17 @@
           </el-button>
           
           <div class="footer-center">
+            <div class="cabin-controls">
+              <el-button
+                size="small"
+                :type="showCabin ? 'primary' : 'default'"
+                @click="toggleCabin"
+                class="cabin-toggle-btn"
+              >
+                <el-icon><House /></el-icon>
+                {{ showCabin ? '隐藏船舱' : '显示船舱' }}
+              </el-button>
+            </div>
             <div class="eldritch-symbol">⚝</div>
             <div class="status-text">深海探索中...</div>
           </div>
@@ -127,12 +107,15 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useGameStore } from '@/stores/game'
 import { ElMessage, ElMessageBox } from 'element-plus'
-import { ArrowLeft, Document, Loading } from '@element-plus/icons-vue'
+import { ArrowLeft, Document, Loading, ChatDotRound, Notebook, House } from '@element-plus/icons-vue'
 
 // 组件导入
 import StoryDisplay from '@/components/StoryDisplay.vue'
 import ChatPanel from '@/components/ChatPanel.vue'
 import ComprehensiveStatus from '@/components/ComprehensiveStatus.vue'
+import NavigationLog from '@/components/NavigationLog.vue'
+import ShipCabin from '@/components/ShipCabin.vue'
+import TextAdventureLayout from '@/components/TextAdventureLayout.vue'
 
 const router = useRouter()
 const gameStore = useGameStore()
@@ -140,7 +123,12 @@ const gameStore = useGameStore()
 // 响应式数据
 const loading = ref(false)
 const saving = ref(false)
+const showCabin = ref(true) // 控制船舱环境显示
 const chatPanelRef = ref(null)
+const navigationLogRef = ref(null)
+const shipCabinRef = ref(null)
+const textAdventureRef = ref(null)
+const activeRightTab = ref('chat')
 
 // 生命周期
 onMounted(() => {
@@ -226,10 +214,37 @@ const handleSaveGame = async () => {
   }
 }
 
+// 切换船舱显示
+const toggleCabin = () => {
+  if (textAdventureRef.value && textAdventureRef.value.toggleCabin) {
+    textAdventureRef.value.toggleCabin()
+  } else {
+    showCabin.value = !showCabin.value
+    ElMessage.info(showCabin.value ? '船舱环境已显示' : '船舱环境已隐藏')
+  }
+}
+
 // 处理选择记录
 const handleChoiceMade = (choiceData) => {
+  // 记录到聊天面板
   if (chatPanelRef.value && chatPanelRef.value.recordPlayerChoice) {
     chatPanelRef.value.recordPlayerChoice(choiceData.choice, choiceData.storyTitle)
+  }
+
+  // 记录到航海日志
+  if (navigationLogRef.value && navigationLogRef.value.addLogEntry) {
+    navigationLogRef.value.addLogEntry({
+      type: 'choice',
+      title: `选择：${choiceData.choice.text}`,
+      content: `在"${choiceData.storyTitle}"中做出了选择。`,
+      effects: [
+        ...(choiceData.choice.goldCost > 0 ? [{ type: '金币', value: -choiceData.choice.goldCost }] : []),
+        ...(choiceData.choice.goldReward > 0 ? [{ type: '金币', value: choiceData.choice.goldReward }] : []),
+        ...(choiceData.choice.healthCost > 0 ? [{ type: '生命', value: -choiceData.choice.healthCost }] : []),
+        ...(choiceData.choice.healthReward > 0 ? [{ type: '生命', value: choiceData.choice.healthReward }] : []),
+        ...(choiceData.choice.experienceReward > 0 ? [{ type: '经验', value: choiceData.choice.experienceReward }] : [])
+      ]
+    })
   }
 }
 </script>
@@ -257,12 +272,35 @@ const handleChoiceMade = (choiceData) => {
     left: 0;
     width: 100%;
     height: 100%;
-    background: 
+    background:
       radial-gradient(ellipse at 20% 30%, rgba(0, 255, 136, 0.08) 0%, transparent 40%),
       radial-gradient(ellipse at 80% 70%, rgba(0, 255, 200, 0.06) 0%, transparent 40%);
     animation: fog-drift 25s ease-in-out infinite;
     pointer-events: none;
     z-index: 1;
+    transition: opacity 0.5s ease;
+
+    &.fog-reduced {
+      opacity: 0.3;
+    }
+  }
+}
+
+// 船舱环境 - 重新设计为背景装饰
+.cabin-environment {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.15; // 大幅降低透明度，作为背景
+  transition: opacity 0.5s ease;
+  pointer-events: none; // 禁用交互，避免干扰主界面
+  filter: blur(1px); // 轻微模糊，增强背景感
+
+  &.cabin-active {
+    opacity: 0.25; // 即使激活也保持低透明度
   }
 }
 
@@ -610,13 +648,42 @@ const handleChoiceMade = (choiceData) => {
       flex-direction: column;
       align-items: center;
       gap: 0.5rem;
-      
+
+      .cabin-controls {
+        margin-bottom: 0.5rem;
+
+        .cabin-toggle-btn {
+          background: rgba(102, 255, 204, 0.1);
+          border: 1px solid #66ffcc;
+          color: #66ffcc;
+          font-size: 12px;
+          padding: 4px 8px;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background: rgba(102, 255, 204, 0.2);
+            box-shadow: 0 0 10px rgba(102, 255, 204, 0.5);
+          }
+
+          &.el-button--primary {
+            background: rgba(102, 255, 204, 0.3);
+            border-color: #FFD700;
+            color: #FFD700;
+
+            &:hover {
+              background: rgba(255, 215, 0, 0.2);
+              box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            }
+          }
+        }
+      }
+
       .eldritch-symbol {
         font-size: 2rem;
         color: #66ffcc;
         animation: eldritch-glow 3s ease-in-out infinite;
       }
-      
+
       .status-text {
         color: #66ffcc;
         font-size: 0.9rem;
@@ -797,6 +864,89 @@ const handleChoiceMade = (choiceData) => {
      .comprehensive-card {
        height: 160px; // 手机端进一步减少高度
      }
+   }
+
+   .right-panel-container {
+     height: 100%;
+   }
+
+   .deep-sea-tabs {
+     height: 100%;
+     display: flex;
+     flex-direction: column;
+
+     :deep(.el-tabs__header) {
+       background: rgba(0, 40, 80, 0.8);
+       border-bottom: 2px solid #66ffcc;
+       margin: 0;
+       flex-shrink: 0;
+     }
+
+     :deep(.el-tabs__nav-wrap) {
+       background: transparent;
+     }
+
+     :deep(.el-tabs__item) {
+       color: #66ffcc;
+       border: none;
+       background: transparent;
+
+       &.is-active {
+         color: #FFD700;
+         background: rgba(255, 215, 0, 0.1);
+       }
+
+       &:hover {
+         color: #FFD700;
+       }
+     }
+
+     :deep(.el-tabs__active-bar) {
+       background: #FFD700;
+     }
+
+     :deep(.el-tabs__content) {
+       flex: 1;
+       overflow: hidden;
+       height: 0; // 强制flex子元素计算高度
+     }
+
+     :deep(.el-tab-pane) {
+       height: 100%;
+       overflow: hidden;
+     }
+   }
+
+   .tab-label {
+     display: flex;
+     align-items: center;
+     gap: 4px;
+   }
+
+   .log-section {
+     height: 100%;
+   }
+
+   .log-frame {
+     height: 100%;
+     position: relative;
+
+     .frame-glow {
+       position: absolute;
+       top: -2px;
+       left: -2px;
+       right: -2px;
+       bottom: -2px;
+       background: linear-gradient(45deg, #66ffcc, #FFD700, #66ffcc);
+       border-radius: 8px;
+       opacity: 0.3;
+       z-index: -1;
+       animation: glow-pulse 3s ease-in-out infinite;
+     }
+   }
+
+   .deep-sea-navigation-log {
+     height: 100%;
    }
    
    .deep-sea-footer {

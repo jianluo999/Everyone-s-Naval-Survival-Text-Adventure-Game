@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/views/Home.vue'
 import Game from '@/views/Game.vue'
+import CabinDemo from '@/views/CabinDemo.vue'
 
 const routes = [
   {
@@ -17,6 +18,14 @@ const routes = [
     component: Game,
     meta: {
       title: '游戏中 - 航海求生'
+    }
+  },
+  {
+    path: '/cabin-demo',
+    name: 'CabinDemo',
+    component: CabinDemo,
+    meta: {
+      title: '船舱环境演示 - 航海求生'
     }
   }
 ]

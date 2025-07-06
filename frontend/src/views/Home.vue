@@ -71,6 +71,9 @@
             <div class="option-item" @click="showHelp = !showHelp">
               <span class="option-arrow">►</span> 4. 帮助说明 (HELP)
             </div>
+            <div class="option-item" @click="handleCabinDemo">
+              <span class="option-arrow">►</span> 5. 船舱环境演示 (CABIN DEMO)
+            </div>
           </div>
 
           <!-- 游戏特色 -->
@@ -175,6 +178,11 @@ const handleContinueGame = async () => {
   } finally {
     loading.value = false
   }
+}
+
+const handleCabinDemo = () => {
+  playStartSound()
+  router.push('/cabin-demo')
 }
 
 const getGameStatus = () => {
