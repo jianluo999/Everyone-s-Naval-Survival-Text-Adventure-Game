@@ -200,6 +200,21 @@
         <div class="attributes-radar">
           <AttributeRadar :player-data="player" />
         </div>
+
+        <!-- 状态效果 -->
+        <div class="status-effects-section">
+          <StatusEffects ref="statusEffectsRef" />
+        </div>
+
+        <!-- 毒素系统 -->
+        <div class="poison-system-section">
+          <PoisonSystem ref="poisonSystemRef" />
+        </div>
+
+        <!-- PvP战斗 -->
+        <div class="pvp-combat-section">
+          <PvPCombat ref="pvpCombatRef" />
+        </div>
       </div>
     </div>
 
@@ -239,6 +254,9 @@ import { useGameStore } from '@/stores/game'
 import { ElMessage } from 'element-plus'
 import { User, Ship, Coin, TrophyBase, Timer, Box, Operation, Clock } from '@element-plus/icons-vue'
 import AttributeRadar from './AttributeRadar.vue'
+import StatusEffects from './StatusEffects.vue'
+import PoisonSystem from './PoisonSystem.vue'
+import PvPCombat from './PvPCombat.vue'
 
 const gameStore = useGameStore()
 

@@ -251,23 +251,23 @@ export const useGameStore = defineStore('game', () => {
       error.value = '无法钓鱼：精力不足或理智过低'
       return
     }
-    
+
     loading.value = true
     error.value = ''
-    
+
     try {
       const response = await gameApi.goFishing(player.value.name)
       fishingResult.value = response
-      
+
       if (response.fish) {
         caughtFish.value = response.fish
       }
-      
+
       // 更新玩家状态
       if (response.playerChanges) {
         applyPlayerChanges(response.playerChanges)
       }
-      
+
       return response
     } catch (err) {
       error.value = err.message
@@ -276,6 +276,75 @@ export const useGameStore = defineStore('game', () => {
       loading.value = false
     }
   }
+
+  // 扩展钓鱼系统 - 添加新的物品类型
+  const extendedFishingItems = ref([
+    {
+      id: 'eyeball_fruit',
+      name: '眼球果',
+      type: 'consumable',
+      rarity: 'uncommon',
+      description: '虽然外表诡异，但它是一种产自深渊的水果，微甜，可补充维生素、盐分和水分。',
+      effects: {
+        sanity: -2,
+        health: 5,
+        thirst: 15,
+        hunger: 10
+      },
+      consumable: true
+    },
+    {
+      id: 'cyst_pufferfish',
+      name: '囊肿刺豚',
+      type: 'consumable',
+      rarity: 'rare',
+      description: '一种奇特的深海鱼类，身上长满了囊肿，但肉质鲜美。生吃可能有风险。',
+      effects: {
+        sanity: -5,
+        health: -10, // 可能中毒
+        hunger: 20
+      },
+      consumable: true,
+      cookable: true
+    },
+    {
+      id: 'long_leg_sardine',
+      name: '长腿沙丁鱼',
+      type: 'consumable',
+      rarity: 'common',
+      description: '一种奇异的沙丁鱼，长着细长的腿。虽然看起来诡异，但营养丰富。',
+      effects: {
+        sanity: -1,
+        hunger: 8,
+        thirst: 3
+      },
+      consumable: true,
+      cookable: true
+    },
+    {
+      id: 'medical_bandage',
+      name: '医疗绷带',
+      type: 'medical',
+      rarity: 'uncommon',
+      description: '具有加速愈合和消炎效果的医疗用品。',
+      effects: {
+        health: 15,
+        infection: -1 // 减少感染程度
+      },
+      consumable: true
+    },
+    {
+      id: 'fresh_water',
+      name: '淡水',
+      type: 'consumable',
+      rarity: 'common',
+      description: '珍贵的淡水资源。',
+      effects: {
+        thirst: 25
+      },
+      consumable: true
+    }
+  ])
 
   async function eatFish(fishId) {
     if (!player.value || !fishId) return

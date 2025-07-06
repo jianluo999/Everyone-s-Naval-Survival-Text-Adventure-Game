@@ -35,6 +35,15 @@
             </span>
           </template>
         </el-tab-pane>
+
+        <el-tab-pane label="交易" name="trade">
+          <template #label>
+            <span class="tab-label">
+              <el-icon><ShoppingBag /></el-icon>
+              交易
+            </span>
+          </template>
+        </el-tab-pane>
       </el-tabs>
     </div>
 
@@ -56,10 +65,15 @@
           </div>
         </div>
 
+        <!-- 交易频道 -->
+        <div v-else-if="activeTab === 'trade'" class="trade-panel">
+          <EnhancedTrading />
+        </div>
+
         <!-- 世界/区域聊天 -->
         <div v-else class="chat-messages">
-          <div 
-            v-for="message in currentMessages" 
+          <div
+            v-for="message in currentMessages"
             :key="message.id"
             class="message-item chat-message"
           >
@@ -69,7 +83,7 @@
             </div>
             <div class="message-content">{{ message.content }}</div>
           </div>
-          
+
           <!-- 无消息提示 -->
           <div v-if="currentMessages.length === 0" class="no-messages">
             <el-icon class="empty-icon"><ChatRound /></el-icon>
@@ -130,6 +144,7 @@
 import { ref, computed, onMounted, nextTick, watch } from 'vue'
 import { useGameStore } from '@/stores/game'
 import { ElMessage } from 'element-plus'
+import EnhancedTrading from './EnhancedTrading.vue'
 
 // Emits
 const emit = defineEmits(['messages-read'])
@@ -191,6 +206,26 @@ const systemMessages = ref([
   }
 ])
 
+// 交易消息数据
+const tradeMessages = ref([
+  {
+    id: 1,
+    playerName: '商人船长',
+    tradeType: 'sell',
+    offering: ['白骨令牌', '锯齿匕首'],
+    wanting: ['淡水', '食物'],
+    time: new Date(Date.now() - 600000)
+  },
+  {
+    id: 2,
+    playerName: '深海探险家',
+    tradeType: 'buy',
+    offering: ['钢铁 x50'],
+    wanting: ['医疗绷带', '眼球果'],
+    time: new Date(Date.now() - 300000)
+  }
+])
+
 // 快捷消息
 const quickMessages = [
   '有人吗？',
@@ -209,6 +244,8 @@ const currentMessages = computed(() => {
       return regionMessages.value
     case 'system':
       return systemMessages.value
+    case 'trade':
+      return tradeMessages.value
     default:
       return []
   }
@@ -371,10 +408,37 @@ const startMessageSimulation = () => {
   }, 45000)
 }
 
+// 交易相关方法
+const getTradeTypeText = (type) => {
+  return type === 'sell' ? '🏪 出售' : '🛒 求购'
+}
+
+const contactTrader = (tradeMessage) => {
+  ElMessage.info(`正在联系 ${tradeMessage.playerName}...`)
+  // 这里可以实现私聊或交易界面
+}
+
+const addTradeMessage = (tradeData) => {
+  tradeMessages.value.push({
+    id: Date.now(),
+    playerName: gameStore.player?.name || '匿名船长',
+    ...tradeData,
+    time: new Date()
+  })
+
+  // 如果当前在交易频道，滚动到底部
+  if (activeTab.value === 'trade') {
+    nextTick(() => {
+      scrollToBottom()
+    })
+  }
+}
+
 // 暴露方法供外部组件调用
 defineExpose({
   recordPlayerChoice,
-  addSystemMessage
+  addSystemMessage,
+  addTradeMessage
 })
 </script>
 

@@ -20,6 +20,15 @@
               <el-icon><Box /></el-icon>
               物品
             </el-button>
+            <el-button size="small" @click="openPanel('gachapon')">
+              🎰 扭蛋机
+            </el-button>
+            <el-button size="small" @click="openPanel('talents')">
+              ✨ 天赋
+            </el-button>
+            <el-button size="small" @click="openPanel('capture')" v-if="showCaptureButton">
+              🚢 占领
+            </el-button>
             <el-button size="small" @click="toggleCabin">
               <el-icon><House /></el-icon>
               {{ showCabin ? '隐藏' : '显示' }}船舱
@@ -170,6 +179,20 @@
         <h3>📦 物品清单</h3>
         <p>物品系统开发中...</p>
       </div>
+      <div v-else-if="activePanel === 'gachapon'" class="gachapon-panel">
+        <MonsterGachapon />
+      </div>
+      <div v-else-if="activePanel === 'talents'" class="talents-panel">
+        <TalentSystem />
+      </div>
+      <div v-else-if="activePanel === 'capture'" class="capture-panel">
+        <ShipCapture
+          :target-ship="captureTargetShip"
+          @capture-complete="handleCaptureComplete"
+          @dismantle-complete="handleDismantleComplete"
+          @cancel="closeCapturePanel"
+        />
+      </div>
     </el-drawer>
   </div>
 </template>
@@ -182,6 +205,9 @@ import StoryDisplay from './StoryDisplay.vue'
 import ComprehensiveStatus from './ComprehensiveStatus.vue'
 import ChatPanel from './ChatPanel.vue'
 import NavigationLog from './NavigationLog.vue'
+import MonsterGachapon from './MonsterGachapon.vue'
+import TalentSystem from './TalentSystem.vue'
+import ShipCapture from './ShipCapture.vue'
 
 const gameStore = useGameStore()
 
@@ -192,6 +218,8 @@ const activePanel = ref('')
 const activeStatusTab = ref('status') // 状态面板切换
 const newLogEntries = ref(0) // 新日志条目计数
 const newChatMessages = ref(0) // 新聊天消息计数
+const showCaptureButton = ref(false)
+const captureTargetShip = ref(null)
 const chatPanelRef = ref(null)
 const navigationLogRef = ref(null)
 
@@ -219,7 +247,10 @@ const shipCondition = ref({
 const drawerTitle = computed(() => {
   const titles = {
     map: '🗺️ 海域地图',
-    inventory: '📦 物品清单'
+    inventory: '📦 物品清单',
+    gachapon: '🎰 怪物扭蛋机',
+    talents: '✨ 神秘天赋',
+    capture: '🚢 船只占领'
   }
   return titles[activePanel.value] || ''
 })
@@ -276,10 +307,69 @@ const handleChoiceMade = (choiceData) => {
   }
 }
 
+// 船只占领相关方法
+const handleCaptureComplete = (data) => {
+  ElMessage.success(`成功占领了${data.ship.name}！`)
+  showCaptureButton.value = false
+  captureTargetShip.value = null
+  drawerVisible.value = false
+}
+
+const handleDismantleComplete = (data) => {
+  ElMessage.success(`成功分解了${data.ship.name}，获得了大量资源！`)
+  showCaptureButton.value = false
+  captureTargetShip.value = null
+  drawerVisible.value = false
+}
+
+const closeCapturePanel = () => {
+  showCaptureButton.value = false
+  captureTargetShip.value = null
+  drawerVisible.value = false
+}
+
+// 模拟发现敌方船只
+const discoverEnemyShip = () => {
+  captureTargetShip.value = {
+    name: '海盗号',
+    type: 'pirate',
+    level: 1,
+    durability: 800,
+    maxDurability: 1000,
+    capacity: 800,
+    speed: 45,
+    usedCapacity: 200,
+    flag: '🏴‍☠️',
+    abilities: [
+      {
+        id: 'extra_hooks',
+        name: '额外爪钩',
+        icon: '🪝',
+        description: '左右两侧各有两个爪钩，可以抓取物体或其他船只'
+      },
+      {
+        id: 'pirate_assault',
+        name: '海盗强袭',
+        icon: '⚡',
+        description: '航速提高25%，持续15分钟'
+      }
+    ],
+    cargo: [
+      { id: 'wood', name: '木料', icon: '🪵', amount: 125, quality: 'common' },
+      { id: 'cloth', name: '布料', icon: '🧵', amount: 98, quality: 'common' },
+      { id: 'bread', name: '黑面包', icon: '🍞', amount: 2, quality: 'common' },
+      { id: 'water', name: '淡水', icon: '💧', amount: 5, quality: 'common' }
+    ]
+  }
+  showCaptureButton.value = true
+  ElMessage.info('发现了一艘无主船只！')
+}
+
 // 暴露方法给父组件
 defineExpose({
   toggleCabin,
-  openPanel
+  openPanel,
+  discoverEnemyShip
 })
 </script>
 
