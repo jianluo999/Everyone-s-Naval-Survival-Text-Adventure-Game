@@ -7,11 +7,13 @@ import com.adventure.model.Player;
 import com.adventure.model.Ship;
 import com.adventure.model.GameState;
 import com.adventure.model.Fish;
+import com.adventure.model.Monster;
 import com.adventure.repository.StoryRepository;
 import com.adventure.repository.ChoiceRepository;
 import com.adventure.repository.EquipmentRepository;
 import com.adventure.repository.PlayerRepository;
 import com.adventure.repository.FishRepository;
+import com.adventure.repository.MonsterRepository;
 import com.adventure.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -38,7 +40,10 @@ public class DataInitializer implements CommandLineRunner {
     
     @Autowired
     private FishRepository fishRepository;
-    
+
+    @Autowired
+    private MonsterRepository monsterRepository;
+
     @Autowired
     private GameService gameService;
     
@@ -194,19 +199,20 @@ public class DataInitializer implements CommandLineRunner {
         story1_7.setIsEnding(false);
         storyRepository.save(story1_7);
 
-        // 临时故事节点 - 等待新剧情内容
+        // 第八个故事：东方小岛的夜晚 - 第一次噩梦
         Story story1_8 = new Story();
         story1_8.setStoryId("story_1_8");
-        story1_8.setTitle("东方小岛的发现");
-        story1_8.setContent("你驾驶着船只向东方的小岛航行...\n\n" +
-                "经过一段时间的航行，你终于接近了那座冒着轻烟的小岛。\n" +
-                "岛上似乎有人类活动的痕迹，这让你既兴奋又紧张。\n\n" +
-                "【待续...】\n" +
-                "更多精彩内容即将到来！");
+        story1_8.setTitle("东方小岛的夜晚");
+        story1_8.setContent("你驾驶着船只向东方的小岛航行，经过一段时间的航行，你终于接近了那座冒着轻烟的小岛。\n\n" +
+                "夜幕降临，你将船只停靠在小岛附近的浅滩。岛上似乎有人类活动的痕迹，但现在一片寂静。\n" +
+                "你决定在船上过夜，明天再上岛探索。\n\n" +
+                "海上的第一个夜晚，注定难眠。你躺在船长室的床上，听着海浪拍打船体的声音。\n" +
+                "不知躺了多久才睡着，在床上辗转反侧，额头不停冒出冷汗。\n\n" +
+                "你开始做噩梦...");
         story1_8.setChapter(1);
         story1_8.setScene(8);
-        story1_8.setStoryType("EXPLORATION");
-        story1_8.setIsEnding(true); // 临时设为结束
+        story1_8.setStoryType("NIGHT_ENCOUNTER");
+        story1_8.setIsEnding(false);
         storyRepository.save(story1_8);
 
         Story story1_9 = new Story();
@@ -237,8 +243,133 @@ public class DataInitializer implements CommandLineRunner {
         story1_10.setIsEnding(true); // 临时设为结束
         storyRepository.save(story1_10);
 
+        // 第九个故事：噩梦中的溺尸
+        Story story1_11 = new Story();
+        story1_11.setStoryId("story_1_11");
+        story1_11.setTitle("噩梦中的溺尸");
+        story1_11.setContent("在梦中，你看见一具肿胀的溺尸，悄无声息地推开门，走了进来。\n\n" +
+                "梦境是如此真实，仿佛亲眼所见。你记得那溺尸走动的声音——啪叽、啪叽！\n" +
+                "就好像湿润的拖把拍在地上。\n\n" +
+                "梦中的你拿起床头的燧发枪朝溺尸打去，但枪哑火了。\n" +
+                "下一瞬，你被这溺尸按在了床上，成了板上鱼肉，被开膛破肚...\n\n" +
+                "【你体验了死亡，被虐杀吞噬，理智下降15】\n\n" +
+                "\"啊！\"你突然惊醒，用手摸向自己的腹部，发现完好无损后，才长舒一口气。\n" +
+                "还好是梦！但忽然，你发现船长室的门居然是开着的...");
+        story1_11.setChapter(1);
+        story1_11.setScene(11);
+        story1_11.setStoryType("NIGHTMARE");
+        story1_11.setIsEnding(false);
+        storyRepository.save(story1_11);
+
+        // 第十个故事：真实的威胁
+        Story story1_12 = new Story();
+        story1_12.setStoryId("story_1_12");
+        story1_12.setTitle("真实的威胁");
+        story1_12.setContent("你立刻把燧发枪抓在手中。\"是风吗？不可能，今天海上就没什么风！\"\n\n" +
+                "啪叽、啪叽！熟悉的脚步声传来。\n\n" +
+                "一具浮肿的溺尸出现在门口。它似乎在海里泡了很久，已经被泡得肿胀发臭，\n" +
+                "身上还穿着烂成碎布的水手服，挂满海藻。\n" +
+                "此刻，它正用惨白的眼眸看向你...\n\n" +
+                "【看见不明生物，你的理智下降5】\n\n" +
+                "\"FXXK！\"你怒骂一声，必须立刻做出选择！");
+        story1_12.setChapter(1);
+        story1_12.setScene(12);
+        story1_12.setStoryType("BATTLE_START");
+        story1_12.setIsEnding(false);
+        storyRepository.save(story1_12);
+
+        // 第十一个故事：枪械失效
+        Story story1_13 = new Story();
+        story1_13.setStoryId("story_1_13");
+        story1_13.setTitle("枪械失效");
+        story1_13.setContent("你立刻开枪射击，但咔的一声——枪卡壳了！\n\n" +
+                "溺尸似乎还留有几分神智，看见手枪哑火，便咧开大嘴笑了起来。\n" +
+                "嘴里没几颗牙，一只螃蟹从中爬出。\n\n" +
+                "【恶心的景象，你理智下降3】\n\n" +
+                "这一幕和噩梦非常像，所以你早有准备。枪没响的同时，\n" +
+                "你就把燧发枪当石头砸了出去，正中溺尸头部。\n\n" +
+                "趁溺尸被砸的间隙，你必须立刻行动！");
+        story1_13.setChapter(1);
+        story1_13.setScene(13);
+        story1_13.setStoryType("BATTLE_CONTINUE");
+        story1_13.setIsEnding(false);
+        storyRepository.save(story1_13);
+
+        // 第十二个故事：甲板战斗
+        Story story1_14 = new Story();
+        story1_14.setStoryId("story_1_14");
+        story1_14.setTitle("甲板上的生死搏斗");
+        story1_14.setContent("你抄起长矛，对溺尸发起冲锋，一矛扎进腐尸脖子，然后身体也撞了上去。\n\n" +
+                "你并非要造成杀伤，而是急着离开船长室。只有逃出这狭窄的空间，\n" +
+                "去到甲板，你才有和溺尸一战的可能！\n\n" +
+                "冲刺的力量很大，加上体重，你勉强从溺尸身旁挤了出去。\n" +
+                "那腥臭腐烂的味道，差点让你吐出来。\n\n" +
+                "【恶心的臭味，你理智下降5】\n\n" +
+                "你马不停蹄，跑到了船头甲板。在这里，你有足够的空间周旋！");
+        story1_14.setChapter(1);
+        story1_14.setScene(14);
+        story1_14.setStoryType("BATTLE_CONTINUE");
+        story1_14.setIsEnding(false);
+        storyRepository.save(story1_14);
+
+        // 第十三个故事：战斗胜利
+        Story story1_15 = new Story();
+        story1_15.setStoryId("story_1_15");
+        story1_15.setTitle("第一场胜利");
+        story1_15.setContent("经过激烈的战斗，你终于击败了溺尸。但就在你以为危险结束时，\n" +
+                "船舱内传来了嘎吱嘎吱的骨骼摩擦声...\n\n" +
+                "那具船长骸骨站了起来，手持钓竿，眼眶中燃烧着惨绿色的灵魂之火。\n" +
+                "它悄无声息地走到你身后，趁你不备发起偷袭！\n\n" +
+                "【被亡者偷袭，你理智下降10】\n" +
+                "【理智低于50，你进入癫狂状态！】\n\n" +
+                "愤怒和疯狂充斥着你的大脑，但同时也带来了超越常人的力量...");
+        story1_15.setChapter(1);
+        story1_15.setScene(15);
+        story1_15.setStoryType("BOSS_BATTLE");
+        story1_15.setIsEnding(false);
+        storyRepository.save(story1_15);
+
+        // 第十四个故事：癫狂状态下的战斗
+        Story story1_16 = new Story();
+        story1_16.setStoryId("story_1_16");
+        story1_16.setTitle("癫狂的力量");
+        story1_16.setContent("癫狂状态下，你的力量、敏捷和体质都得到了提升，同时免疫恐惧和疼痛。\n\n" +
+                "你冲进船舱，找到了人头章鱼的残骸，毫不犹豫地吞了下去。\n" +
+                "【你吞下了人头章鱼，力量+1，体质+1，精神-1，理智-20，持续1分钟】\n\n" +
+                "现在你的力量翻了一倍！你欺身上前，这时骷髅还在疑惑枪为何打不响。\n" +
+                "下一秒，它被你扑倒在地，两根臂骨被狠狠扯下。\n\n" +
+                "你得势不饶人，右手穿过骷髅颅骨的破口，抓向里面的灵魂之火...");
+        story1_16.setChapter(1);
+        story1_16.setScene(16);
+        story1_16.setStoryType("MADNESS_BATTLE");
+        story1_16.setIsEnding(false);
+        storyRepository.save(story1_16);
+
+        // 第十五个故事：夜晚的结束
+        Story story1_17 = new Story();
+        story1_17.setStoryId("story_1_17");
+        story1_17.setTitle("恐怖夜晚的结束");
+        story1_17.setContent("你握住了那团灵魂之火，并不烫手，反而很温暖。\n\n" +
+                "骷髅反应剧烈，浑身战栗，很快散落一地，变成一摊平平无奇的骨头，\n" +
+                "灵魂之火也彻底熄灭。\n\n" +
+                "但你没有掉以轻心。保险起见，你将颅骨摆在船舷上，\n" +
+                "两分钟后，果不其然，颅骨内重新亮起惨绿色的光芒。\n\n" +
+                "你二话不说，果断开枪。\"嘭！\"火光迸射，枪声尖厉。\n" +
+                "这颅骨直接被燧发枪轰成了碎渣。\n\n" +
+                "【枪声古怪，你理智下降1】\n\n" +
+                "终于，这恐怖的夜晚结束了。你虽然受了伤，但活了下来。\n" +
+                "更重要的是，你学会了在这个危险世界中生存的第一课...");
+        story1_17.setChapter(1);
+        story1_17.setScene(17);
+        story1_17.setStoryType("CHAPTER_END");
+        story1_17.setIsEnding(true);
+        storyRepository.save(story1_17);
+
         // 创建选择（现在不再需要双向关联）
         createChoices();
+
+        // 创建怪物数据
+        createMonsters();
     }
     
     private void createChoices() {
@@ -469,6 +600,170 @@ public class DataInitializer implements CommandLineRunner {
         choice1_7_3.setIsAvailable(true);
         choice1_7_3.setStoryId("story_1_7");
         choiceRepository.save(choice1_7_3);
+
+        // story_1_8 的选择（东方小岛的夜晚）
+        Choice choice1_8_1 = new Choice();
+        choice1_8_1.setText("尝试继续入睡，忽略不安的感觉");
+        choice1_8_1.setNextStoryId("story_1_11");
+        choice1_8_1.setGoldCost(0);
+        choice1_8_1.setGoldReward(0);
+        choice1_8_1.setHealthCost(0);
+        choice1_8_1.setHealthReward(0);
+        choice1_8_1.setExperienceReward(5);
+        choice1_8_1.setRequirements("");
+        choice1_8_1.setIsAvailable(true);
+        choice1_8_1.setStoryId("story_1_8");
+        choiceRepository.save(choice1_8_1);
+
+        Choice choice1_8_2 = new Choice();
+        choice1_8_2.setText("保持警觉，检查船舱周围");
+        choice1_8_2.setNextStoryId("story_1_12");
+        choice1_8_2.setGoldCost(0);
+        choice1_8_2.setGoldReward(0);
+        choice1_8_2.setHealthCost(0);
+        choice1_8_2.setHealthReward(0);
+        choice1_8_2.setExperienceReward(10);
+        choice1_8_2.setRequirements("");
+        choice1_8_2.setIsAvailable(true);
+        choice1_8_2.setStoryId("story_1_8");
+        choiceRepository.save(choice1_8_2);
+
+        // story_1_11 的选择（噩梦后）
+        Choice choice1_11_1 = new Choice();
+        choice1_11_1.setText("立刻检查门口，看看是否有危险");
+        choice1_11_1.setNextStoryId("story_1_12");
+        choice1_11_1.setGoldCost(0);
+        choice1_11_1.setGoldReward(0);
+        choice1_11_1.setHealthCost(0);
+        choice1_11_1.setHealthReward(0);
+        choice1_11_1.setExperienceReward(15);
+        choice1_11_1.setRequirements("");
+        choice1_11_1.setIsAvailable(true);
+        choice1_11_1.setStoryId("story_1_11");
+        choiceRepository.save(choice1_11_1);
+
+        // story_1_12 的选择（面对溺尸）
+        Choice choice1_12_1 = new Choice();
+        choice1_12_1.setText("立刻开枪射击溺尸");
+        choice1_12_1.setNextStoryId("story_1_13");
+        choice1_12_1.setGoldCost(0);
+        choice1_12_1.setGoldReward(0);
+        choice1_12_1.setHealthCost(0);
+        choice1_12_1.setHealthReward(0);
+        choice1_12_1.setExperienceReward(20);
+        choice1_12_1.setRequirements("");
+        choice1_12_1.setIsAvailable(true);
+        choice1_12_1.setStoryId("story_1_12");
+        choiceRepository.save(choice1_12_1);
+
+        Choice choice1_12_2 = new Choice();
+        choice1_12_2.setText("冲出船长室，到甲板上战斗");
+        choice1_12_2.setNextStoryId("story_1_14");
+        choice1_12_2.setGoldCost(0);
+        choice1_12_2.setGoldReward(0);
+        choice1_12_2.setHealthCost(0);
+        choice1_12_2.setHealthReward(0);
+        choice1_12_2.setExperienceReward(25);
+        choice1_12_2.setRequirements("");
+        choice1_12_2.setIsAvailable(true);
+        choice1_12_2.setStoryId("story_1_12");
+        choiceRepository.save(choice1_12_2);
+
+        // story_1_13 的选择（枪械失效后）
+        Choice choice1_13_1 = new Choice();
+        choice1_13_1.setText("抄起长矛冲向溺尸，突破到甲板");
+        choice1_13_1.setNextStoryId("story_1_14");
+        choice1_13_1.setGoldCost(0);
+        choice1_13_1.setGoldReward(0);
+        choice1_13_1.setHealthCost(5);
+        choice1_13_1.setHealthReward(0);
+        choice1_13_1.setExperienceReward(20);
+        choice1_13_1.setRequirements("");
+        choice1_13_1.setIsAvailable(true);
+        choice1_13_1.setStoryId("story_1_13");
+        choiceRepository.save(choice1_13_1);
+
+        // story_1_14 的选择（甲板战斗）
+        Choice choice1_14_1 = new Choice();
+        choice1_14_1.setText("利用甲板空间与溺尸周旋，寻找机会反击");
+        choice1_14_1.setNextStoryId("story_1_15");
+        choice1_14_1.setGoldCost(0);
+        choice1_14_1.setGoldReward(0);
+        choice1_14_1.setHealthCost(10);
+        choice1_14_1.setHealthReward(0);
+        choice1_14_1.setExperienceReward(30);
+        choice1_14_1.setRequirements("");
+        choice1_14_1.setIsAvailable(true);
+        choice1_14_1.setStoryId("story_1_14");
+        choiceRepository.save(choice1_14_1);
+
+        // story_1_15 的选择（面对船长骸骨）
+        Choice choice1_15_1 = new Choice();
+        choice1_15_1.setText("进入癫狂状态，寻找能增强力量的物品");
+        choice1_15_1.setNextStoryId("story_1_16");
+        choice1_15_1.setGoldCost(0);
+        choice1_15_1.setGoldReward(0);
+        choice1_15_1.setHealthCost(0);
+        choice1_15_1.setHealthReward(0);
+        choice1_15_1.setExperienceReward(40);
+        choice1_15_1.setRequirements("");
+        choice1_15_1.setIsAvailable(true);
+        choice1_15_1.setStoryId("story_1_15");
+        choiceRepository.save(choice1_15_1);
+
+        // story_1_16 的选择（癫狂战斗）
+        Choice choice1_16_1 = new Choice();
+        choice1_16_1.setText("抓住灵魂之火，彻底消灭船长骸骨");
+        choice1_16_1.setNextStoryId("story_1_17");
+        choice1_16_1.setGoldCost(0);
+        choice1_16_1.setGoldReward(50);
+        choice1_16_1.setHealthCost(0);
+        choice1_16_1.setHealthReward(0);
+        choice1_16_1.setExperienceReward(100);
+        choice1_16_1.setRequirements("");
+        choice1_16_1.setIsAvailable(true);
+        choice1_16_1.setStoryId("story_1_16");
+        choiceRepository.save(choice1_16_1);
+    }
+
+    private void createMonsters() {
+        // 创建溺亡者
+        Monster drownedSailor = new Monster();
+        drownedSailor.setMonsterId("drowned_sailor");
+        drownedSailor.setName("溺亡者");
+        drownedSailor.setDescription("溺亡在海里的不幸之人，怀着对生者的怨念，重新站了起来。身体肿胀发臭，行动缓慢但力量惊人。");
+        drownedSailor.setHealth(80);
+        drownedSailor.setMaxHealth(80);
+        drownedSailor.setAttack(15);
+        drownedSailor.setDefense(5);
+        drownedSailor.setSpeed(3);
+        drownedSailor.setMonsterType("UNDEAD");
+        drownedSailor.setAbilities("{\"self_destruct\": true, \"grab_attack\": true}");
+        drownedSailor.setLoot("{\"experience\": 30, \"materials\": [\"腐烂的水手服\", \"海藻\"]}");
+        drownedSailor.setSanityDamage(5);
+        drownedSailor.setCanRevive(false);
+        drownedSailor.setCanExplode(true);
+        drownedSailor.setEncounterStoryId("story_1_12");
+        monsterRepository.save(drownedSailor);
+
+        // 创建船长遗骸
+        Monster captainSkeleton = new Monster();
+        captainSkeleton.setMonsterId("captain_skeleton");
+        captainSkeleton.setName("船长的遗骸");
+        captainSkeleton.setDescription("他曾经是一位酷爱钓鱼的船长，直到他钓到了不该钓的东西...现在他的骸骨重新站了起来。");
+        captainSkeleton.setHealth(60);
+        captainSkeleton.setMaxHealth(60);
+        captainSkeleton.setAttack(12);
+        captainSkeleton.setDefense(8);
+        captainSkeleton.setSpeed(4);
+        captainSkeleton.setMonsterType("UNDEAD");
+        captainSkeleton.setAbilities("{\"fishing_rod_attack\": true, \"stealth\": true}");
+        captainSkeleton.setLoot("{\"experience\": 40, \"materials\": [\"船长帽\", \"钓鱼竿\"]}");
+        captainSkeleton.setSanityDamage(10);
+        captainSkeleton.setCanRevive(true);
+        captainSkeleton.setCanExplode(false);
+        captainSkeleton.setEncounterStoryId("story_1_15");
+        monsterRepository.save(captainSkeleton);
     }
     
     private void createGameEquipment() {

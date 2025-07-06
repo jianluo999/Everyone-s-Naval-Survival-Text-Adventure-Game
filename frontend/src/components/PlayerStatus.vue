@@ -22,6 +22,14 @@
             />
             <span class="stat-value">{{ player.sanity }}/{{ player.maxSanity }}</span>
           </div>
+          <!-- 癫狂状态指示器 -->
+          <div v-if="player.isMadness" class="madness-indicator">
+            <el-tag type="danger" effect="dark" class="madness-tag">
+              <el-icon><Warning /></el-icon>
+              癫狂状态
+            </el-tag>
+            <span class="madness-desc">力量+2，敏捷+1，体质+1，精神-2，无视疼痛</span>
+          </div>
         </div>
 
         <div class="stat-row">
@@ -340,6 +348,42 @@ const statusType = computed(() => {
     margin: 0.5rem 0 0 0;
     font-size: 0.9rem;
     color: #666;
+  }
+}
+
+// 癫狂状态样式
+.madness-indicator {
+  margin-top: 8px;
+  padding: 8px;
+  background: rgba(245, 108, 108, 0.1);
+  border-radius: 4px;
+  border-left: 3px solid #F56C6C;
+
+  .madness-tag {
+    margin-bottom: 4px;
+    animation: madness-pulse 2s ease-in-out infinite;
+
+    .el-icon {
+      margin-right: 4px;
+    }
+  }
+
+  .madness-desc {
+    font-size: 12px;
+    color: #F56C6C;
+    display: block;
+    margin-top: 4px;
+  }
+}
+
+@keyframes madness-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
   }
 }
 

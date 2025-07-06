@@ -81,7 +81,13 @@ public class Player {
     
     @Column(nullable = false)
     private String status = "健康"; // 玩家状态
-    
+
+    @Column(nullable = false)
+    private Boolean isMadness = false; // 是否处于癫狂状态
+
+    @Column(columnDefinition = "TEXT")
+    private String injuryStatus = ""; // 受伤状态，JSON格式存储身体部位伤势
+
     @Column(columnDefinition = "TEXT")
     private String talents = "钢铁意志"; // 天赋，JSON格式存储
     

@@ -42,6 +42,8 @@ public class GameController {
         public Integer perception;
         public Integer sanity;
         public Integer maxSanity;
+        public Boolean isMadness;
+        public String injuryStatus;
         public Integer energy;
         public Integer maxEnergy;
         public Integer health;
@@ -72,6 +74,8 @@ public class GameController {
             dto.perception = player.getPerception();
             dto.sanity = player.getSanity();
             dto.maxSanity = player.getMaxSanity();
+            dto.isMadness = player.getIsMadness();
+            dto.injuryStatus = player.getInjuryStatus();
             dto.energy = player.getEnergy();
             dto.maxEnergy = player.getMaxEnergy();
             dto.health = player.getHealth();

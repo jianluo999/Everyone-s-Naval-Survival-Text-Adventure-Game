@@ -175,16 +175,19 @@ public class GameService {
         gameState.setCurrentChapter(nextStory.getChapter());
         gameState.setCurrentScene(nextStory.getScene());
         gameState.setLastPlayedAt(LocalDateTime.now());
-        
+
+        // 处理故事特殊效果（理智值变化等）
+        processStoryEffects(player, nextStoryId);
+
         // 应用每日消耗
         applyDailyConsumption(player, gameState);
-        
+
         // 检查是否游戏结束
         if (nextStory.getIsEnding()) {
             gameState.setIsGameCompleted(true);
             gameState.setIsGameActive(false);
         }
-        
+
         return playerRepository.save(player);
     }
 
@@ -207,6 +210,80 @@ public class GameService {
         // 比如维护一个最近访问的故事历史，检测是否在短时间内重复访问相同的故事序列
 
         return false;
+    }
+
+    /**
+     * 处理理智值变化
+     */
+    public void applySanityChange(Player player, int sanityChange, String reason) {
+        int newSanity = Math.max(0, Math.min(player.getMaxSanity(), player.getSanity() + sanityChange));
+        player.setSanity(newSanity);
+
+        // 检查是否进入癫狂状态
+        if (newSanity < 50 && !player.getIsMadness()) {
+            player.setIsMadness(true);
+            // 癫狂状态下的属性加成会在前端处理或通过特殊效果处理
+        } else if (newSanity >= 50 && player.getIsMadness()) {
+            player.setIsMadness(false);
+        }
+
+        // 记录理智变化日志
+        if (sanityChange != 0) {
+            System.out.println("玩家 " + player.getName() + " 理智值变化: " + sanityChange + " 原因: " + reason);
+        }
+    }
+
+    /**
+     * 处理受伤状态
+     */
+    public void applyInjury(Player player, String bodyPart, String severity) {
+        // 这里可以实现复杂的受伤系统
+        // 暂时简化为更新状态描述
+        String currentStatus = player.getStatus();
+        if (!"健康".equals(currentStatus)) {
+            player.setStatus("受伤");
+        }
+
+        // 可以扩展为JSON格式存储具体的受伤部位和程度
+        String injuryData = "{\"" + bodyPart + "\": \"" + severity + "\"}";
+        player.setInjuryStatus(injuryData);
+    }
+
+    /**
+     * 检查并处理特殊故事效果
+     */
+    public void processStoryEffects(Player player, String storyId) {
+        switch (storyId) {
+            case "story_1_11":
+                // 噩梦：理智下降15
+                applySanityChange(player, -15, "体验死亡噩梦");
+                break;
+            case "story_1_12":
+                // 看见溺尸：理智下降5
+                applySanityChange(player, -5, "看见不明生物");
+                break;
+            case "story_1_13":
+                // 恶心景象：理智下降3
+                applySanityChange(player, -3, "恶心的景象");
+                break;
+            case "story_1_14":
+                // 恶臭：理智下降5
+                applySanityChange(player, -5, "恶心的臭味");
+                break;
+            case "story_1_15":
+                // 被偷袭：理智下降10
+                applySanityChange(player, -10, "被亡者偷袭");
+                break;
+            case "story_1_16":
+                // 吞食人头章鱼：理智下降20
+                applySanityChange(player, -20, "吞食邪恶生物");
+                // 这里可以添加临时属性加成的逻辑
+                break;
+            case "story_1_17":
+                // 古怪枪声：理智下降1
+                applySanityChange(player, -1, "古怪的枪声");
+                break;
+        }
     }
     
     /**
