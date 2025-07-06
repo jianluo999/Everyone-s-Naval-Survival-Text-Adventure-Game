@@ -1,0 +1,9 @@
+# 处理后的游戏剧情文件夹
+
+这里存放转换后的游戏剧情文件。
+
+文件格式：
+- chapter_01_game.md
+- chapter_02_game.md
+- chapter_03_game.md
+- ...

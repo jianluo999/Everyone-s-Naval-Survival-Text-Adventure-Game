@@ -3,6 +3,7 @@ D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\model\
 D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\model\Choice.java
 D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\model\GameState.java
 D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\model\Material.java
+D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\config\CorsConfig.java
 D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\service\GameService.java
 D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\repository\MaterialRepository.java
 D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\sailinggame\model\Material.java

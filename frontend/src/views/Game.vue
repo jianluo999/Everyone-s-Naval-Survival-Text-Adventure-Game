@@ -249,6 +249,122 @@
               </div>
             </div>
           </div>
+
+          <!-- 船只升级系统 -->
+          <div class="sidebar-section">
+            <div class="section-title" @click="toggleSection('shipUpgrade')">
+              <span class="section-icon">🚢</span>
+              <span class="section-name">船只升级</span>
+              <span class="expand-icon">{{ expandedSections.shipUpgrade ? '▼' : '▶' }}</span>
+            </div>
+            <div class="section-content" v-if="expandedSections.shipUpgrade">
+              <div class="feature-grid">
+                <div class="feature-item" @click="handleFeature('ship-materials')">
+                  <span class="feature-icon">🪵</span>
+                  <span class="feature-name">升级材料</span>
+                </div>
+                <div class="feature-item" @click="handleFeature('ship-skills')">
+                  <span class="feature-icon">⚡</span>
+                  <span class="feature-name">船只技能</span>
+                </div>
+                <div class="feature-item" @click="handleFeature('ship-stats')">
+                  <span class="feature-icon">📊</span>
+                  <span class="feature-name">船只属性</span>
+                </div>
+                <div class="feature-item" @click="handleFeature('ship-repair')">
+                  <span class="feature-icon">🔧</span>
+                  <span class="feature-name">船只维修</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 爪钩抓取系统 -->
+          <div class="sidebar-section">
+            <div class="section-title" @click="toggleSection('grappling')">
+              <span class="section-icon">🪝</span>
+              <span class="section-name">爪钩抓取</span>
+              <span class="expand-icon">{{ expandedSections.grappling ? '▼' : '▶' }}</span>
+            </div>
+            <div class="section-content" v-if="expandedSections.grappling">
+              <div class="feature-grid">
+                <div class="feature-item" @click="handleFeature('auto-grab')">
+                  <span class="feature-icon">🎯</span>
+                  <span class="feature-name">自动抓取</span>
+                </div>
+                <div class="feature-item" @click="handleFeature('grab-filter')">
+                  <span class="feature-icon">🔍</span>
+                  <span class="feature-name">抓取筛选</span>
+                </div>
+                <div class="feature-item" @click="handleFeature('grab-range')">
+                  <span class="feature-icon">📏</span>
+                  <span class="feature-name">抓取范围</span>
+                </div>
+                <div class="feature-item" @click="handleFeature('grab-history')">
+                  <span class="feature-icon">📋</span>
+                  <span class="feature-name">抓取记录</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 海螺币系统 -->
+          <div class="sidebar-section">
+            <div class="section-title" @click="toggleSection('currency')">
+              <span class="section-icon">🐚</span>
+              <span class="section-name">海螺币系统</span>
+              <span class="expand-icon">{{ expandedSections.currency ? '▼' : '▶' }}</span>
+            </div>
+            <div class="section-content" v-if="expandedSections.currency">
+              <div class="feature-grid">
+                <div class="feature-item" @click="handleFeature('conch-wallet')">
+                  <span class="feature-icon">💰</span>
+                  <span class="feature-name">海螺钱包</span>
+                </div>
+                <div class="feature-item" @click="handleFeature('chat-payment')">
+                  <span class="feature-icon">💬</span>
+                  <span class="feature-name">聊天付费</span>
+                </div>
+                <div class="feature-item" @click="handleFeature('earn-conch')">
+                  <span class="feature-icon">⭐</span>
+                  <span class="feature-name">获取途径</span>
+                </div>
+                <div class="feature-item" @click="handleFeature('conch-shop')">
+                  <span class="feature-icon">🏪</span>
+                  <span class="feature-name">海螺商店</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 黑雾追击系统 -->
+          <div class="sidebar-section">
+            <div class="section-title" @click="toggleSection('blackFog')">
+              <span class="section-icon">🌫️</span>
+              <span class="section-name">黑雾追击</span>
+              <span class="expand-icon">{{ expandedSections.blackFog ? '▼' : '▶' }}</span>
+            </div>
+            <div class="section-content" v-if="expandedSections.blackFog">
+              <div class="feature-grid">
+                <div class="feature-item" @click="handleFeature('fog-distance')">
+                  <span class="feature-icon">📏</span>
+                  <span class="feature-name">距离监控</span>
+                </div>
+                <div class="feature-item" @click="handleFeature('speed-warning')">
+                  <span class="feature-icon">⚠️</span>
+                  <span class="feature-name">速度警告</span>
+                </div>
+                <div class="feature-item" @click="handleFeature('escape-route')">
+                  <span class="feature-icon">🗺️</span>
+                  <span class="feature-name">逃生路线</span>
+                </div>
+                <div class="feature-item" @click="handleFeature('fog-effects')">
+                  <span class="feature-icon">💀</span>
+                  <span class="feature-name">黑雾效果</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -383,7 +499,11 @@ const expandedSections = ref({
   talents: false,
   equipment: false,
   infection: false,
-  dialogue: false
+  dialogue: false,
+  shipUpgrade: false,
+  grappling: false,
+  currency: false,
+  blackFog: false
 })
 
 // 装备效果数据
@@ -587,9 +707,66 @@ const openFeature = (feature) => {
     case 'talent-points':
       ElMessage.info('💫 天赋点数系统开发中...')
       break
+    // 新增功能
+    case 'ship-materials':
+      ElMessage.info('🪵 船只升级材料系统开发中...')
+      break
+    case 'ship-skills':
+      ElMessage.info('⚡ 船只技能系统开发中...')
+      break
+    case 'ship-stats':
+      ElMessage.info('📊 船只属性面板开发中...')
+      break
+    case 'ship-repair':
+      ElMessage.info('🔧 船只维修系统开发中...')
+      break
+    case 'auto-grab':
+      ElMessage.info('🎯 自动抓取功能开发中...')
+      break
+    case 'grab-filter':
+      ElMessage.info('🔍 抓取筛选系统开发中...')
+      break
+    case 'grab-range':
+      ElMessage.info('📏 抓取范围设置开发中...')
+      break
+    case 'grab-history':
+      ElMessage.info('📋 抓取记录查看开发中...')
+      break
+    case 'conch-wallet':
+      ElMessage.info('💰 海螺币钱包开发中...')
+      break
+    case 'chat-payment':
+      ElMessage.info('💬 聊天付费系统开发中...')
+      break
+    case 'earn-conch':
+      ElMessage.info('⭐ 海螺币获取途径开发中...')
+      break
+    case 'conch-shop':
+      ElMessage.info('🏪 海螺币商店开发中...')
+      break
+    case 'fog-distance':
+      ElMessage.info('📏 黑雾距离监控开发中...')
+      break
+    case 'speed-warning':
+      ElMessage.info('⚠️ 速度警告系统开发中...')
+      break
+    case 'escape-route':
+      ElMessage.info('🗺️ 逃生路线规划开发中...')
+      break
+    case 'fog-effects':
+      ElMessage.info('💀 黑雾效果系统开发中...')
+      break
     default:
       ElMessage.info('功能开发中...')
   }
+}
+
+// 处理侧边栏功能点击（新增功能专用）
+const handleFeature = (feature) => {
+  console.log('点击功能:', feature)
+
+  // 直接调用openFeature来处理
+  openFeature(feature)
 }
 
 // 处理选择记录

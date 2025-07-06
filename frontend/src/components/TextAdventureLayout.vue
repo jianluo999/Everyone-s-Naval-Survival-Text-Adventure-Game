@@ -271,10 +271,6 @@ const getConditionColor = (percentage) => {
 }
 
 const handleChoiceMade = (choiceData) => {
-  console.log('handleChoiceMade called with:', choiceData)
-  console.log('navigationLogRef.value:', navigationLogRef.value)
-  console.log('activeStatusTab.value:', activeStatusTab.value)
-
   // 记录到聊天面板
   if (chatPanelRef.value && chatPanelRef.value.recordPlayerChoice) {
     chatPanelRef.value.recordPlayerChoice(choiceData.choice, choiceData.storyTitle)
@@ -286,11 +282,8 @@ const handleChoiceMade = (choiceData) => {
   }
 
   // 先切换到航海日志标签页，确保NavigationLog组件被渲染
-  console.log('Setting timeout to switch to log tab...')
   setTimeout(async () => {
-    console.log('Switching to log tab, current tab:', activeStatusTab.value)
     activeStatusTab.value = 'log'
-    console.log('After switch, current tab:', activeStatusTab.value)
 
     // 等待DOM更新完成
     await nextTick()
@@ -299,7 +292,6 @@ const handleChoiceMade = (choiceData) => {
     await nextTick()
 
     if (navigationLogRef.value && navigationLogRef.value.addLogEntry) {
-      console.log('Adding log entry...')
       navigationLogRef.value.addLogEntry({
         type: 'choice',
         title: `选择：${choiceData.choice.text}`,
@@ -312,16 +304,12 @@ const handleChoiceMade = (choiceData) => {
           ...(choiceData.choice.healthCost > 0 ? [{ type: '生命', value: -choiceData.choice.healthCost }] : [])
         ]
       })
-      console.log('Log entry added successfully')
-    } else {
-      console.log('navigationLogRef.value or addLogEntry still not available after tab switch')
     }
   }, 500)
 
   // 增加新日志条目计数
   if (activeStatusTab.value !== 'log') {
     newLogEntries.value++
-    console.log('New log entries count:', newLogEntries.value)
   }
 }
 

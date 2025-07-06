@@ -19,6 +19,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -58,10 +61,13 @@ public class DataInitializer implements CommandLineRunner {
         
         // 创建游戏装备
         createGameEquipment();
-        
-        // 创建游戏故事
+
+        // 创建基础游戏故事（story_1_1 到 story_1_17）
         createGameStories();
-        
+
+        // 创建游戏故事 - 使用批量加载系统（story_1_18 开始）
+        createBatchStories();
+
         // 创建怪异鱼类
         createStrangeFish();
         
@@ -72,267 +78,332 @@ public class DataInitializer implements CommandLineRunner {
     }
     
     private void createGameStories() {
-        // 第一章：觉醒
+        // 第一章第一场景：游戏开始（使用小说原文）
         Story story1_1 = new Story();
         story1_1.setStoryId("story_1_1");
-        story1_1.setTitle("神秘的觉醒");
-        story1_1.setContent("「欢迎来到全民航海求生游戏...」\n\n" +
-                "奇特的声音从脑海响起。你苏醒过来，发现自己正躺在一张老旧的床上。" +
-                "你试着起身，竟然奇迹般地站了起来！身体的疾病和残缺都已经完全治愈。\n\n" +
-                "环顾四周，你发现自己在一处狭窄昏暗的船舱里。不远处的桌子上躺着一具干枯的骸骨，" +
-                "看起来是自杀身亡的前任船主。窗外是一望无际的大海，时不时荡起浪涛。\n\n" +
-                "在床上，你发现了一本散发微光的小册子——「航海日志」。现在，你需要做出第一个决定...");
+        story1_1.setTitle("全民航海求生游戏");
+        story1_1.setContent("「欢迎来到全民航海求生游戏....」\n\n" +
+                "「接下来，你们将在海上度过余生.....」\n\n" +
+                "「不必担心你们身体有疾病或者残缺，本系统会帮你们通通治好，给你们一个相对公平的起点.....」\n\n" +
+                "「你们可以在海上自由航行，做你们想做的一切....」\n\n" +
+                "「是成为无名小卒，还是名扬天下，这都取决于你自己....」\n\n" +
+                "「大海会给你无限可能，你需要注意的事也只有一点。」\n\n" +
+                "「保持前进，不要被背后的黑雾追上。」\n\n" +
+                "「黑雾的速度目前为十节！」\n\n" +
+                "奇特的声音从脑海响起。你苏醒过来，发现自己正躺在一张陈旧的床上。");
         story1_1.setChapter(1);
         story1_1.setScene(1);
         story1_1.setStoryType("AWAKENING");
         story1_1.setIsEnding(false);
         storyRepository.save(story1_1);
-        
-        // 第二个故事：航海日志
+
+        // 第一章第二场景：苏醒
         Story story1_2 = new Story();
         story1_2.setStoryId("story_1_2");
-        story1_2.setTitle("航海日志的秘密");
-        story1_2.setContent("你打开了航海日志，里面记录着游戏的规则和你的状态信息。\n\n" +
-                "【游戏规则】\n" +
-                "1. 未经允许，其他人无法登上你的船只\n" +
-                "2. 你船上的物品不会被其他玩家盗窃，除非你已死亡\n" +
-                "3. 每艘船都装有爪钩，可以抓取飘来的物品\n" +
-                "4. 你需要升级强化你的船只，让它看起来足够安全\n" +
-                "5. 要小心夜晚，当心雾气，一旦陷入后方黑雾，你将会死亡\n\n" +
-                "【你的状态】\n" +
-                "力量：3，精神：7+1，敏捷：4，体质：3，感知：5\n" +
-                "理智：100/100，精力：100/100，气血：100/100\n" +
-                "天赋：钢铁意志 - 你永不服输，理智至少会保留1点\n\n" +
-                "你还发现了聊天频道，里面有世界聊天、区域聊天和私密聊天。现在你需要决定下一步行动...");
+        story1_2.setTitle("苏醒");
+        story1_2.setContent("奇特的声音从脑海响起。\n\n" +
+                "你苏醒过来，发现自己正躺在一张陈旧的床上。\n" +
+                "你试着起身，却被带起的灰尘呛得咳嗽起来。\n\n" +
+                "环顾四周，你发现自己在一处狭窄昏暗的破房子里。\n" +
+                "不远处有一张桌子，上面躺着一具干枯的骸骨，左手还握着一把锈蚀的燧发枪，大半个颅骨不翼而飞，看起来是自杀身亡。\n\n" +
+                "\"这是...？\"\n" +
+                "你没有表露害怕，反倒看向自己消瘦的双手。\n" +
+                "你竟然站起来了，这简直是奇迹！");
         story1_2.setChapter(1);
         story1_2.setScene(2);
-        story1_2.setStoryType("TUTORIAL");
+        story1_2.setStoryType("AWAKENING");
         story1_2.setIsEnding(false);
         storyRepository.save(story1_2);
-        
-        // 第三个故事：船舱探索
+
+        // 第一章第三场景：身体恢复
         Story story1_3 = new Story();
         story1_3.setStoryId("story_1_3");
-        story1_3.setTitle("船舱探索");
-        story1_3.setContent("你仔细搜查船舱，发现了一些有用的物品：\n\n" +
-                "- 一把生锈的匕首\n" +
-                "- 几块干硬的面包\n" +
-                "- 一个装着淡水的木桶\n" +
-                "- 一些破旧的绳索\n\n" +
-                "这些物品虽然简陋，但在海上求生中可能会派上用场。");
+        story1_3.setTitle("身体恢复");
+        story1_3.setContent("数分钟前，你还是瘫痪在床的病人，现在却奇迹般的恢复了健康！\n\n" +
+                "在十二岁时，你被诊断出患有多发性硬化，到二十岁时，已完全瘫痪。\n" +
+                "但你没有放弃自己的人生，一直用嘴玩游戏并直播，靠自己的赚的钱养活自己，一直到二十五岁。\n\n" +
+                "你经常玩恐怖游戏，对不会动的骸骨尸体，没多大反应。\n\n" +
+                "\"这声音说的....是真的！\"\n" +
+                "你自语道，看向窗外。\n" +
+                "那是一望无际的大海，时不时荡起浪涛。\n\n" +
+                "与此同时，奇特的声音再度响起，男女难辨。");
         story1_3.setChapter(1);
         story1_3.setScene(3);
-        story1_3.setStoryType("NORMAL");
+        story1_3.setStoryType("BACKGROUND");
         story1_3.setIsEnding(false);
         storyRepository.save(story1_3);
+
+        // 调用批量生成的故事内容
+        createBatchStories();
+
+        // 调用批量生成的选择内容
+        createBatchChoices();
         
-        // 第四个故事：观察海况
-        Story story1_4 = new Story();
-        story1_4.setStoryId("story_1_4");
-        story1_4.setTitle("观察海况");
-        story1_4.setContent("你走到窗边，透过破旧的玻璃观察外面的海况。\n\n" +
-                "海面相对平静，阳光透过云层洒在深蓝色的海水上。" +
-                "远处似乎有几艘船只在航行，但距离太远看不清楚。\n\n" +
-                "你注意到船只似乎在缓慢漂移，也许是受到了海流的影响。" +
-                "现在是了解更多信息的时候了。");
-        story1_4.setChapter(1);
-        story1_4.setScene(4);
-        story1_4.setStoryType("NORMAL");
-        story1_4.setIsEnding(false);
-        storyRepository.save(story1_4);
-        
-        // 第五个故事：聊天频道
+        // 第五个故事：世界聊天
         Story story1_5 = new Story();
         story1_5.setStoryId("story_1_5");
-        story1_5.setTitle("聊天频道");
-        story1_5.setContent("你打开了聊天频道，看到了各种信息在不断滚动着...\n\n" +
-                "【世界聊天】\n" +
-                "🌊 张三：有人知道怎么升级船只吗？\n" +
-                "⚓ 李四：小心夜晚的雾气！我昨天差点死掉！\n" +
-                "🚢 王五：有人看到漂浮的宝箱了吗？\n" +
-                "💀 神秘玩家：黑雾正在加速...大家要小心了\n\n" +
-                "你意识到这个世界中还有很多其他玩家，每个人都在为生存而努力。" +
-                "现在你需要决定是否要和他们互动。");
+        story1_5.setTitle("世界聊天");
+        story1_5.setContent("十几分钟后，混乱的发言渐渐变少，聊天变得有营养起来。\n\n" +
+                "「你们手册的规则也是7条吗？」\n" +
+                "「求抱团，有没有组队的！」\n" +
+                "「距离太远，又没坐标，现在根本没法抱团！」\n" +
+                "「我们应该分享情报，彼此帮助！」\n" +
+                "「你们有检查过船了吗，我发现了一件装备。」\n\n" +
+                "下面配了装备的信息。\n" +
+                "【名称：染血的鱼叉】\n" +
+                "【种类：遗物】\n" +
+                "【品质：良品】（物品等级：普通，良品，精品，珍品，极品，英雄，大师.....）\n" +
+                "【简介：很锋利，可对异魔造成微量伤害，然后激怒它们。】\n" +
+                "注意：使用遗物，有降低理智的风险。\n\n" +
+                "然后世界频道炸开了锅。\n" +
+                "「异魔是什么？这世界有怪物？」\n" +
+                "「我怎么啥都没有，只在船舱里找到了一些淡水，面包和蔬菜。」\n" +
+                "「你有蔬菜？我怎么只有香肠？」");
         story1_5.setChapter(1);
         story1_5.setScene(5);
-        story1_5.setStoryType("SOCIAL");
+        story1_5.setStoryType("CHAT");
         story1_5.setIsEnding(false);
         storyRepository.save(story1_5);
         
-        // 第六个故事：船只探索
+        // 第六个故事：梦魇号
         Story story1_6 = new Story();
         story1_6.setStoryId("story_1_6");
-        story1_6.setTitle("船只探索");
-        story1_6.setContent("你开始仔细探索这艘破旧的木筏。\n\n" +
-                "【船只状态】\n" +
-                "- 船名：破旧木筏\n" +
-                "- 耐久度：100/100\n" +
-                "- 速度：8节\n" +
-                "- 载货量：20/20\n" +
-                "- 防御力：2\n" +
-                "- 装备：爪钩×1\n\n" +
-                "你发现船上有一个简单的操作台，上面有几个按钮和一个舵轮。" +
-                "窗外的海水在阳光下闪闪发光，但你知道平静的表面下隐藏着未知的危险。\n\n" +
-                "你需要决定第一步该做什么。");
-        story1_6.setChapter(1);
-        story1_6.setScene(6);
-        story1_6.setStoryType("EXPLORATION");
+        story1_6.setTitle("幽灵船梦魇号");
+        story1_6.setContent("杨逸合上日志，也开始在房间翻找起来。\n" +
+                "他发现骸骨手里的燧发枪是一件装备。\n\n" +
+                "【名称：浸水锈蚀的燧发枪】\n" +
+                "【种类：遗物】\n" +
+                "【品质：精品】\n" +
+                "【简介：这曾是一把大师之作，但泡水太久，锈蚀严重，只有五成概率能打响，可对异魔造成中量伤害。" +
+                "这枪不需要子弹，自动装填时间为一分钟，弹容为1。】\n\n" +
+                "杨逸表情严肃起来。正如公告所言，开局条件都是公平的。" +
+                "那他得到这把枪，岂不是意味着地狱开局？\n\n" +
+                "他推开桌上的骸骨，发现骸骨下方还压着一张纸，已经腐烂了，只有部分字迹勉强可以辨认。\n" +
+                "\".....船上没补给了，我只能尝试钓鱼。\"\n" +
+                "\"....今天运气不错，钓到一条老虎斑，足够吃两天了。\"\n" +
+                "\".....嘿嘿，我钓到一把古董手枪，虽然枪声古怪，但看起来值不少钱！\"\n" +
+                "后面是大片血迹，只看得见最后一行。\n" +
+                "\"海里怎么会有这种东西？\"");
+        story1_6.setChapter(2);
+        story1_6.setScene(1);
+        story1_6.setStoryType("DISCOVERY");
         story1_6.setIsEnding(false);
         storyRepository.save(story1_6);
-        
-        // 第七个故事：开始航行
+
+        // 第七个故事：船只状态
         Story story1_7 = new Story();
         story1_7.setStoryId("story_1_7");
-        story1_7.setTitle("初次航行");
-        story1_7.setContent("你启动了船只，开始了你的第一次航行。\n\n" +
-                "船只缓慢地开始移动，海水在船底发出轻柔的声音。" +
-                "你紧握着舵轮，感受着海风拂过面颊。\n\n" +
-                "前方的海域看起来平静而神秘。你注意到：\n" +
-                "- 东方有一座小岛，冒着轻烟\n" +
-                "- 北方有几艘船只在航行\n" +
-                "- 南方的海水颜色较深，可能有危险\n" +
-                "- 西方远处有乌云聚集\n\n" +
-                "这是你人生的新开始，每个选择都将决定你的命运。");
-        story1_7.setChapter(1);
-        story1_7.setScene(7);
-        story1_7.setStoryType("SAILING");
+        story1_7.setTitle("船只状态");
+        story1_7.setContent("杨逸看完后微微皱眉，起身走出船长室。\n" +
+                "外边是甲板走廊，他抬头仔细打量自己的船只。\n\n" +
+                "【梦魇号，一级，耐久300/300，容量400单位，航速40节】\n" +
+                "【船体技能：\n" +
+                "梦魇：船上睡觉会做噩梦，精力恢复效率-75%。\n" +
+                "垂钓者的诅咒：这艘船被诅咒，钓不到正常的鱼。】\n" +
+                "【简介：这艘船在海上漂了数百年，终于迎来了它的新主人....】\n\n" +
+                "杨逸看完船只信息，脸色变得难看起来。这船是一艘幽灵船。\n" +
+                "船体外侧布满藤壶海藻，不知多少年没清理了。\n" +
+                "甲板也湿漉漉的，踩上去会发出嘎吱嘎吱的响声。\n" +
+                "他玩过不少恐怖游戏。像这种场景，大概率藏有怪！\n" +
+                "好在他搜了个遍，也没发现第二个能动的东西。");
+        story1_7.setChapter(2);
+        story1_7.setScene(2);
+        story1_7.setStoryType("SHIP_STATUS");
         story1_7.setIsEnding(false);
         storyRepository.save(story1_7);
 
-        // 第八个故事：东方小岛的夜晚 - 第一次噩梦
+        // 第八个故事：钓鱼开始
         Story story1_8 = new Story();
         story1_8.setStoryId("story_1_8");
-        story1_8.setTitle("东方小岛的夜晚");
-        story1_8.setContent("你驾驶着船只向东方的小岛航行，经过一段时间的航行，你终于接近了那座冒着轻烟的小岛。\n\n" +
-                "夜幕降临，你将船只停靠在小岛附近的浅滩。岛上似乎有人类活动的痕迹，但现在一片寂静。\n" +
-                "你决定在船上过夜，明天再上岛探索。\n\n" +
-                "海上的第一个夜晚，注定难眠。你躺在船长室的床上，听着海浪拍打船体的声音。\n" +
-                "不知躺了多久才睡着，在床上辗转反侧，额头不停冒出冷汗。\n\n" +
-                "你开始做噩梦...");
-        story1_8.setChapter(1);
-        story1_8.setScene(8);
-        story1_8.setStoryType("NIGHT_ENCOUNTER");
+        story1_8.setTitle("你管这叫鱼？");
+        story1_8.setContent("杨逸长舒一口气。他也不想刚开局，就和莫名其妙的生物，来一场酣畅淋漓的对决。\n\n" +
+                "船只情况他也摸索清楚了。这船大概十二米长，由船舵，船长室、甲板、船舱几部分组成。\n" +
+                "船舵位于船头甲板的平台，高出一截，视线良好。\n" +
+                "后方则是船长室，里面有床和简单的家具。\n" +
+                "再后面，则是船的中庭，竖立有一根高大的桅杆。\n" +
+                "尾部则是船舱，直通船体内部，用于囤积货物。\n\n" +
+                "杨逸进船舱看过，里面空无一物，连虫子都没有，只有一股潮湿恶心的霉味扑面而来。\n" +
+                "他的开局，补给为0....毕竟这幽灵船在海上漂了不知多少年，如果有吃有喝，那才奇怪了！\n\n" +
+                "杨逸打开日志，继续查看世界频道，想看看其他人有什么发现。");
+        story1_8.setChapter(3);
+        story1_8.setScene(1);
+        story1_8.setStoryType("FISHING_START");
         story1_8.setIsEnding(false);
         storyRepository.save(story1_8);
 
+        // 第九个故事：钓鱼发现
         Story story1_9 = new Story();
         story1_9.setStoryId("story_1_9");
-        story1_9.setTitle("与其他船只的邂逅");
-        story1_9.setContent("你决定向北方的船只靠近...\n\n" +
-                "随着距离的缩短，你看清了那些船只的轮廓。\n" +
-                "它们看起来像是商船，船上的人似乎也注意到了你。\n\n" +
-                "【待续...】\n" +
-                "更多精彩内容即将到来！");
-        story1_9.setChapter(1);
-        story1_9.setScene(9);
-        story1_9.setStoryType("ENCOUNTER");
-        story1_9.setIsEnding(true); // 临时设为结束
+        story1_9.setTitle("钓鱼发现");
+        story1_9.setContent("聊天的人基本都在晒自己的船。大部分是普通船只，也有特殊船，其中有几艘船格外亮眼。\n\n" +
+                "【疾风号，一级，耐久800/800，容量500单位，航速70节】\n" +
+                "【船体技能：乘风破浪：船速增加100%，持续时间5分钟。】\n" +
+                "【简介：你们连它尾气都吸不到，信我！】\n\n" +
+                "这应该是目前最快的一艘船。其他白板船只，根据大小，船速都在30到40节左右，大的船只一般耐久高些，但速度慢一些。\n" +
+                "杨逸的梦魇号，速度算是中等偏上。\n\n" +
+                "通过查看聊天记录，可以判断。在这里钓鱼，能钓到很多不可思议的东西。甚至还有怪物。\n" +
+                "杨逸已经有了心理准备，如果浮上来的东西不对劲，他立刻就切线。\n\n" +
+                "他抄起鱼竿，准备钓鱼。");
+        story1_9.setChapter(3);
+        story1_9.setScene(2);
+        story1_9.setStoryType("FISHING_PREP");
+        story1_9.setIsEnding(false);
         storyRepository.save(story1_9);
 
+        // 第十个故事：第一次钓鱼
         Story story1_10 = new Story();
         story1_10.setStoryId("story_1_10");
-        story1_10.setTitle("海上的观察与等待");
-        story1_10.setContent("你选择在当前位置等待，仔细观察周围的情况...\n\n" +
-                "在这片平静的海域中，你有时间思考接下来的计划。\n" +
-                "远处的景象让你对这个世界有了更多的了解。\n\n" +
-                "【待续...】\n" +
-                "更多精彩内容即将到来！");
-        story1_10.setChapter(1);
-        story1_10.setScene(10);
-        story1_10.setStoryType("OBSERVATION");
-        story1_10.setIsEnding(true); // 临时设为结束
+        story1_10.setTitle("第一次钓鱼");
+        story1_10.setContent("杨逸深吸一口气，看了一眼自己的状态。\n" +
+                "理智：100/100\n" +
+                "精力：90/100\n\n" +
+                "他还用日志的简易合成功能，用5木料做了一把简易长矛，以备不时之需。\n" +
+                "同时燧发枪别在腰后。待会钓到巨物后，说不定要用物理手段降服。\n\n" +
+                "钓饵的话，杨逸已经在日志里确认过了，这里钓鱼不需要鱼饵，应该是系统之力。\n" +
+                "但挂上鱼饵的话，能提高钓鱼效率。\n\n" +
+                "准备工作就绪。现在....开钓！\n" +
+                "杨逸甩竿，鱼钩划出一道弧线，落入海里。\n" +
+                "他并不是很擅长钓鱼，但现在...他有的是时间学习！\n\n" +
+                "十五分钟过去，浮标一点动静都没有。");
+        story1_10.setChapter(3);
+        story1_10.setScene(3);
+        story1_10.setStoryType("FIRST_FISHING");
+        story1_10.setIsEnding(false);
         storyRepository.save(story1_10);
 
-        // 第九个故事：噩梦中的溺尸
+        // 第十一个故事：长腿沙丁鱼
         Story story1_11 = new Story();
         story1_11.setStoryId("story_1_11");
-        story1_11.setTitle("噩梦中的溺尸");
-        story1_11.setContent("在梦中，你看见一具肿胀的溺尸，悄无声息地推开门，走了进来。\n\n" +
-                "梦境是如此真实，仿佛亲眼所见。你记得那溺尸走动的声音——啪叽、啪叽！\n" +
-                "就好像湿润的拖把拍在地上。\n\n" +
-                "梦中的你拿起床头的燧发枪朝溺尸打去，但枪哑火了。\n" +
-                "下一瞬，你被这溺尸按在了床上，成了板上鱼肉，被开膛破肚...\n\n" +
-                "【你体验了死亡，被虐杀吞噬，理智下降15】\n\n" +
-                "\"啊！\"你突然惊醒，用手摸向自己的腹部，发现完好无损后，才长舒一口气。\n" +
-                "还好是梦！但忽然，你发现船长室的门居然是开着的...");
-        story1_11.setChapter(1);
-        story1_11.setScene(11);
-        story1_11.setStoryType("NIGHTMARE");
+        story1_11.setTitle("长腿沙丁鱼");
+        story1_11.setContent("几分钟后，浮标终于开始抖动，似乎有东西在咬钩。\n" +
+                "杨逸屏息凝神。他手头有长矛，有手枪，只要是条鱼，应该就问题不大.....\n\n" +
+                "浮标沉入，就是现在，拉竿！\n" +
+                "杨逸大力一拉，死死盯着蔚蓝色的海面。\n" +
+                "他没有看见什么巨大阴影，仅随手一拉就将那东西扯出了海面，简直毫无阻力。\n\n" +
+                "甩上来的，是一条拇指粗细的小鱼，但不完全是鱼。\n" +
+                "体长约三厘米，鱼身呈流线型，和一般沙丁鱼差不多。\n" +
+                "可这鱼，两侧生有四条五厘米的大长腿，四足站立，站在船甲板上。\n\n" +
+                "杨逸呆了，和这条鱼对视起来....\n" +
+                "\"这是鱼?\"\n" +
+                "【你发现一条怪鱼，理智下降2点。】\n\n" +
+                "下一秒，这鱼娴熟使用自己的大长腿，往大海逃去，被杨逸一矛拍死在地上。");
+        story1_11.setChapter(3);
+        story1_11.setScene(4);
+        story1_11.setStoryType("STRANGE_FISH");
         story1_11.setIsEnding(false);
         storyRepository.save(story1_11);
 
-        // 第十个故事：真实的威胁
+        // 第十二个故事：鱼类信息
         Story story1_12 = new Story();
         story1_12.setStoryId("story_1_12");
-        story1_12.setTitle("真实的威胁");
-        story1_12.setContent("你立刻把燧发枪抓在手中。\"是风吗？不可能，今天海上就没什么风！\"\n\n" +
-                "啪叽、啪叽！熟悉的脚步声传来。\n\n" +
-                "一具浮肿的溺尸出现在门口。它似乎在海里泡了很久，已经被泡得肿胀发臭，\n" +
-                "身上还穿着烂成碎布的水手服，挂满海藻。\n" +
-                "此刻，它正用惨白的眼眸看向你...\n\n" +
-                "【看见不明生物，你的理智下降5】\n\n" +
-                "\"FXXK！\"你怒骂一声，必须立刻做出选择！");
-        story1_12.setChapter(1);
-        story1_12.setScene(12);
-        story1_12.setStoryType("BATTLE_START");
+        story1_12.setTitle("鱼类信息");
+        story1_12.setContent("【名称：长腿沙丁鱼】\n" +
+                "【种类：食物】\n" +
+                "【简介：深渊鱼种，据说经常吃它，可以变成大长腿。" +
+                "可以吃，无毒，味道鲜美，但吃它需要勇气，可能降低理智。】\n\n" +
+                "杨逸将鱼捏起，重量应该不到一百克，四条惨白的长腿已经骨折，结构和人类的腿一模一样，触感QQ弹弹。\n" +
+                "\"这能吃？\"\n\n" +
+                "杨逸想起了这艘船带的技能——垂钓者诅咒：将钓不到正常鱼类。\n" +
+                "他用日志，拍下这条鱼的照片，分享到了世界频道。\n" +
+                "\"请问你们有谁钓到过这种鱼吗？\"\n\n" +
+                "一石激起千层浪。\n" +
+                "\"卧槽，你这是什么东西，精神污染啊，理智-8。\"\n" +
+                "\"你管这叫鱼？\"\n" +
+                "\"你为什么要伤害我的眼睛，理智-10！\"\n" +
+                "\"拉黑了！\"\n" +
+                "\"拉黑！\"\n" +
+                "\"此生不复见！\"");
+        story1_12.setChapter(3);
+        story1_12.setScene(5);
+        story1_12.setStoryType("FISH_INFO");
         story1_12.setIsEnding(false);
         storyRepository.save(story1_12);
 
-        // 第十一个故事：枪械失效
+        // 第十三个故事：好友申请
         Story story1_13 = new Story();
         story1_13.setStoryId("story_1_13");
-        story1_13.setTitle("枪械失效");
-        story1_13.setContent("你立刻开枪射击，但咔的一声——枪卡壳了！\n\n" +
-                "溺尸似乎还留有几分神智，看见手枪哑火，便咧开大嘴笑了起来。\n" +
-                "嘴里没几颗牙，一只螃蟹从中爬出。\n\n" +
-                "【恶心的景象，你理智下降3】\n\n" +
-                "这一幕和噩梦非常像，所以你早有准备。枪没响的同时，\n" +
-                "你就把燧发枪当石头砸了出去，正中溺尸头部。\n\n" +
-                "趁溺尸被砸的间隙，你必须立刻行动！");
-        story1_13.setChapter(1);
-        story1_13.setScene(13);
-        story1_13.setStoryType("BATTLE_CONTINUE");
+        story1_13.setTitle("好友申请");
+        story1_13.setContent("杨逸瞬间被上十亿人拉黑，这些人或多或少，都有理智下降。\n" +
+                "但有一人忽然私聊了过来。\n" +
+                "\"你所在海域的海水是不是黑的？最好快些离开，否则可能遭到一些正体不明的怪物袭击！\"\n\n" +
+                "杨逸看了一眼自己船下蔚蓝一片的大海，有几分无语。\n" +
+                "\"并不是，我的船是幽灵船...\"\n\n" +
+                "\"哇，你可以啊！加个好友呗！\"\n" +
+                "疾风号船长徐达提交好友申请。\n\n" +
+                "杨逸同意了，加个好友而已，并不会有任何损失。\n" +
+                "\"你最好不要再发这种照片了，我理智只有54了，再跌就要发疯了。\"\n" +
+                "\"知道了。\"\n\n" +
+                "杨逸也意识到了事情的严重性，但为了食物和淡水，他必须继续钓鱼！");
+        story1_13.setChapter(3);
+        story1_13.setScene(6);
+        story1_13.setStoryType("FRIEND_REQUEST");
         story1_13.setIsEnding(false);
         storyRepository.save(story1_13);
 
-        // 第十二个故事：甲板战斗
+        // 第十四个故事：浸水的宝箱
         Story story1_14 = new Story();
         story1_14.setStoryId("story_1_14");
-        story1_14.setTitle("甲板上的生死搏斗");
-        story1_14.setContent("你抄起长矛，对溺尸发起冲锋，一矛扎进腐尸脖子，然后身体也撞了上去。\n\n" +
-                "你并非要造成杀伤，而是急着离开船长室。只有逃出这狭窄的空间，\n" +
-                "去到甲板，你才有和溺尸一战的可能！\n\n" +
-                "冲刺的力量很大，加上体重，你勉强从溺尸身旁挤了出去。\n" +
-                "那腥臭腐烂的味道，差点让你吐出来。\n\n" +
-                "【恶心的臭味，你理智下降5】\n\n" +
-                "你马不停蹄，跑到了船头甲板。在这里，你有足够的空间周旋！");
-        story1_14.setChapter(1);
-        story1_14.setScene(14);
-        story1_14.setStoryType("BATTLE_CONTINUE");
+        story1_14.setTitle("浸水的宝箱");
+        story1_14.setContent("这次钓了一个多小时，天色都开始变暗了。第一个夜晚即将到来。\n" +
+                "杨逸现在饥肠辘辘，散落在一旁的长腿沙丁鱼在他眼中变得可口起来。\n" +
+                "但吃这种鱼....大概率会掉理智。除非万不得已，他并不是很想吃，而且这船上，并也没有火炉，只能生吃....\n\n" +
+                "浮标抖动，杨逸立刻有了精神。他用力一拉，一条黑色的鱼被拉了上来。\n" +
+                "这次的鱼没大长腿，全是尖刺，体表黏糊糊的，像水肿的黏膜，刚掉在甲板上，那些黏膜就破掉了，流出黑色腥臭的脓液。\n\n" +
+                "【这鱼很恶心，你理智下降2】\n" +
+                "杨逸还没用长矛扎它，这鱼就抢先一步断了气。\n\n" +
+                "【名称：囊肿刺豚】\n" +
+                "【种类：食物】\n" +
+                "【简介：深渊鱼类，它的体液含有剧毒，正常人不会吃它的，除非....不想活了。】");
+        story1_14.setChapter(4);
+        story1_14.setScene(1);
+        story1_14.setStoryType("TREASURE_BOX");
         story1_14.setIsEnding(false);
         storyRepository.save(story1_14);
 
-        // 第十三个故事：战斗胜利
+        // 第十五个故事：发现宝箱
         Story story1_15 = new Story();
         story1_15.setStoryId("story_1_15");
-        story1_15.setTitle("第一场胜利");
-        story1_15.setContent("经过激烈的战斗，你终于击败了溺尸。但就在你以为危险结束时，\n" +
-                "船舱内传来了嘎吱嘎吱的骨骼摩擦声...\n\n" +
-                "那具船长骸骨站了起来，手持钓竿，眼眶中燃烧着惨绿色的灵魂之火。\n" +
-                "它悄无声息地走到你身后，趁你不备发起偷袭！\n\n" +
-                "【被亡者偷袭，你理智下降10】\n" +
-                "【理智低于50，你进入癫狂状态！】\n\n" +
-                "愤怒和疯狂充斥着你的大脑，但同时也带来了超越常人的力量...");
-        story1_15.setChapter(1);
-        story1_15.setScene(15);
-        story1_15.setStoryType("BOSS_BATTLE");
+        story1_15.setTitle("发现宝箱");
+        story1_15.setContent("\"有毒？\"杨逸不敢上手，用长矛将其刺穿，丢入了船舱。\n" +
+                "同时，他还刻意把多刺了几次，直到把矛尖染成黑色，变成了一把剧毒木矛。\n\n" +
+                "天色渐暗，离天黑只剩不到一小时了。系统强调过，夜晚会有危险，所以杨逸并不打算在晚上钓鱼。\n" +
+                "可就在他收起钓竿，准备回船长室时，海面突然飘过一个特殊物体。\n\n" +
+                "那是一个箱子，确切来说是一个宝箱，只有公文包大小，从梦魇号侧面飘过。\n" +
+                "杨逸心头一紧，立刻来到船舵前，调转船头，追向那宝箱。\n" +
+                "这机遇，可绝对不能错过了！\n\n" +
+                "他操控船头的爪钩，抓向宝箱。可这宝箱却像活物一般，滑不溜秋，不断闪躲。\n" +
+                "废了不少功夫，他才把宝箱抓了上来，立刻跑进船舱查看。");
+        story1_15.setChapter(4);
+        story1_15.setScene(2);
+        story1_15.setStoryType("TREASURE_FOUND");
         story1_15.setIsEnding(false);
         storyRepository.save(story1_15);
 
-        // 第十四个故事：癫狂状态下的战斗
+        // 第十六个故事：人头章鱼
         Story story1_16 = new Story();
         story1_16.setStoryId("story_1_16");
-        story1_16.setTitle("癫狂的力量");
+        story1_16.setTitle("人头章鱼");
+        story1_16.setContent("【名称：浸水的腐木宝箱】\n" +
+                "【种类：宝箱】\n" +
+                "【简介：这或许不是你想要的那种宝箱】\n\n" +
+                "杨逸留了个心眼，一手持燧发枪对准宝箱，用长矛将其挑开。\n" +
+                "里面装着的....是一个死人头，没有头发，皮肤呈灰白色，似乎有一层粘液附着在上面。\n\n" +
+                "刚打开，这死人头就有了反应，睁开自己浑浊的眼眸，开始说话。\n" +
+                "\"先生，能不能耽搁您几分钟，容我给您介绍一下全知全能的主？\"\n\n" +
+                "【你不能理解它的话，理智下降5点】\n" +
+                "杨逸头皮发麻，身体微颤。\n" +
+                "\"先生，能不能...\"\n" +
+                "下一瞬，这人头跳了出来，杨逸这才看清它的真身，那是一条章鱼，只是脑袋换成了人头，下面是一堆扭曲的触须。");
+        story1_16.setChapter(4);
+        story1_16.setScene(3);
+        story1_16.setStoryType("HUMAN_HEAD_OCTOPUS");
+        story1_16.setIsEnding(false);
+        storyRepository.save(story1_16);
+
+        // 第十七个故事：第一次噩梦
+        Story story1_17 = new Story();
+        story1_17.setStoryId("story_1_17");
+        story1_17.setTitle("第一次噩梦");
         story1_16.setContent("癫狂状态下，你的力量、敏捷和体质都得到了提升，同时免疫恐惧和疼痛。\n\n" +
                 "你冲进船舱，找到了人头章鱼的残骸，毫不犹豫地吞了下去。\n" +
                 "【你吞下了人头章鱼，力量+1，体质+1，精神-1，理智-20，持续1分钟】\n\n" +
@@ -346,7 +417,7 @@ public class DataInitializer implements CommandLineRunner {
         storyRepository.save(story1_16);
 
         // 第十五个故事：夜晚的结束
-        Story story1_17 = new Story();
+        Story story1_178 = new Story();
         story1_17.setStoryId("story_1_17");
         story1_17.setTitle("恐怖夜晚的结束");
         story1_17.setContent("你握住了那团灵魂之火，并不烫手，反而很温暖。\n\n" +
@@ -962,4 +1033,543 @@ public class DataInitializer implements CommandLineRunner {
         
         System.out.println("🐟 怪异鱼类创建完成！");
     }
-} 
+
+    // ==================== 批量生成的故事内容 ====================
+    /**
+     * 数据驱动的故事创建方法 - 从文本文件批量加载
+     */
+    private void createBatchStories() {
+        System.out.println("📚 开始从文本文件批量加载故事内容...");
+
+        try {
+            // 从文本文件加载故事数据
+            loadStoriesFromTextFiles();
+            System.out.println("✅ 批量故事内容加载完成！");
+        } catch (Exception e) {
+            System.err.println("❌ 批量加载故事失败: " + e.getMessage());
+            e.printStackTrace();
+            // 如果批量加载失败，使用默认故事
+            createDefaultBatchStories();
+        }
+    }
+
+    /**
+     * 从文本文件加载故事
+     */
+    private void loadStoriesFromTextFiles() {
+        // 读取第1章的所有场景
+        loadChapterFromFile(1, "novel_texts/chapter_1_data.txt");
+
+        // 读取第2章 - 深海探索
+        loadChapterFromFile(2, "novel_texts/chapter_2_data.txt");
+
+        // 读取第3章 - 商人与交易
+        loadChapterFromFile(3, "novel_texts/chapter_3_data.txt");
+
+        // 读取第4章 - 宝藏岛探险
+        loadChapterFromFile(4, "novel_texts/chapter_4_data.txt");
+
+        // 读取第5章 - 海怪之王
+        loadChapterFromFile(5, "novel_texts/chapter_5_data.txt");
+
+        // 可以继续添加更多章节
+        // loadChapterFromFile(6, "novel_texts/chapter_6_data.txt");
+        // loadChapterFromFile(7, "novel_texts/chapter_7_data.txt");
+        // ... 直到500章
+
+        System.out.println("📖 已加载5个章节，文本文件系统支持无限扩展！");
+    }
+
+    /**
+     * 从文件加载指定章节的故事
+     */
+    private void loadChapterFromFile(int chapter, String filePath) {
+        try {
+            // 尝试从类路径读取文件
+            InputStream inputStream = getClass().getClassLoader().getResourceAsStream(filePath);
+            if (inputStream == null) {
+                System.out.println("⚠️ 文件不存在，使用默认数据: " + filePath);
+                loadDefaultChapterData(chapter);
+                return;
+            }
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
+            String line;
+            int sceneCount = 0;
+
+            while ((line = reader.readLine()) != null) {
+                line = line.trim();
+                // 跳过注释和空行
+                if (line.startsWith("#") || line.isEmpty()) {
+                    continue;
+                }
+
+                // 解析数据行：场景号|标题|内容|类型|是否结局
+                String[] parts = line.split("\\|", 5);
+                if (parts.length >= 5) {
+                    int scene = Integer.parseInt(parts[0]);
+                    String title = parts[1];
+                    String content = parts[2].replace("\\n\\n", "\n\n");
+                    String type = parts[3];
+                    boolean isEnding = Boolean.parseBoolean(parts[4]);
+
+                    createStoryFromData(chapter, scene, title, content, type, isEnding);
+                    sceneCount++;
+                }
+            }
+            reader.close();
+
+            System.out.println("✅ 从文件加载第" + chapter + "章，共" + sceneCount + "个场景");
+
+        } catch (Exception e) {
+            System.err.println("❌ 读取文件失败: " + filePath + " - " + e.getMessage());
+            loadDefaultChapterData(chapter);
+        }
+    }
+
+    /**
+     * 加载默认章节数据（备用方案）
+     */
+    private void loadDefaultChapterData(int chapter) {
+        System.out.println("📚 使用第" + chapter + "章默认数据...");
+
+        // 第1章默认数据
+        if (chapter == 1) {
+            createStoryFromData(1, 18, "航海日志详细规则",
+                "你将它拿起，打开，第一页写有规则。\n\n" +
+                "【1.未经允许，其他人无法登上你的船只。】\n\n" +
+                "【2.你船上的物品不会被其他玩家盗窃，除非你已死亡。】\n\n" +
+                "【3.每艘船都装有爪钩，耐久无限，大胆抓向飘来的物品吧！】\n\n" +
+                "【4.你需要升级强化您的船只，让它看起来足够安全。】\n\n" +
+                "【5.要小心夜晚，当心雾气，一旦陷入后方黑雾，你将会死亡。】\n\n" +
+                "【6.本手册灵魂绑定，可在脑海中翻阅。】\n\n" +
+                "【7.在海上，你永远不会感到寂寞。】",
+                "TUTORIAL", false);
+
+            createStoryFromData(1, 19, "属性详情",
+                "这册子摸起来像皮肤，你往后翻去。\n\n" +
+                "第二页，是当天的天气情况，暂且略过。\n\n" +
+                "第三页，则是状态信息。\n\n" +
+                "你\n\n状态：健康『一个大字型人体图案，全部是绿色』",
+                "TUTORIAL", false);
+        }
+    }
+
+    /**
+     * 通用的故事创建方法 - 消除重复代码
+     */
+    private void createStoryFromData(int chapter, int scene, String title, String content, String type, boolean isEnding) {
+        Story story = new Story();
+        story.setStoryId("story_" + chapter + "_" + scene);
+        story.setTitle(title);
+        story.setContent(content);
+        story.setChapter(chapter);
+        story.setScene(scene);
+        story.setStoryType(type);
+        story.setIsEnding(isEnding);
+        storyRepository.save(story);
+
+        System.out.println("✅ 创建故事: " + title + " (第" + chapter + "章第" + scene + "场景)");
+    }
+
+    /**
+     * 默认的批量故事创建（备用方案）
+     */
+    private void createDefaultBatchStories() {
+        System.out.println("📚 使用默认批量故事内容...");
+
+        // 检查是否已经有批量故事，避免重复创建
+        if (storyRepository.findByStoryId("story_1_18").isPresent()) {
+            System.out.println("⚠️ 批量故事已存在，跳过默认创建");
+            return;
+        }
+
+        // 第1章第18场景：航海日志详细规则
+        createStoryFromData(1, 18, "航海日志详细规则",
+            "你将它拿起，打开，第一页写有规则。\n\n" +
+            "【1.未经允许，其他人无法登上你的船只。】\n\n" +
+            "【2.你船上的物品不会被其他玩家盗窃，除非你已死亡。】\n\n" +
+            "【3.每艘船都装有爪钩，耐久无限，大胆抓向飘来的物品吧！】\n\n" +
+            "【4.你需要升级强化您的船只，让它看起来足够安全。】\n\n" +
+            "【5.要小心夜晚，当心雾气，一旦陷入后方黑雾，你将会死亡。】\n\n" +
+            "【6.本手册灵魂绑定，可在脑海中翻阅。】\n\n" +
+            "【7.在海上，你永远不会感到寂寞。】",
+            "TUTORIAL", false);
+
+        // 第1章第19场景：属性详情
+        Story story1_19 = new Story();
+        story1_19.setStoryId("story_1_19");
+        story1_19.setTitle("属性详情");
+        story1_19.setContent("这册子摸起来像皮肤，你往后翻去。\n\n" +
+                "第二页，是当天的天气情况，暂且略过。\n\n" +
+                "第三页，则是状态信息。\n\n" +
+                "你\n\n" +
+                "状态：健康『一个大字型人体图案，全部是绿色』\n\n" +
+                "（成年人属性各项平均值为5，可以通过后天锻炼提升到10。）\n\n" +
+                "（属性10是凡物的极限。）\n\n" +
+                "力量：3（0/50）\n\n" +
+                "精神：7+1（0/8000）  （精神越高，理智抗性越高，同时理智恢复速度加快）\n\n" +
+                "敏捷：4（0/100）\n\n" +
+                "体质：3（0/50）\n\n" +
+                "感知：5（0/200）");
+        story1_19.setChapter(1);
+        story1_19.setScene(19);
+        story1_19.setStoryType("STATUS");
+        story1_19.setIsEnding(false);
+        storyRepository.save(story1_19);
+
+        // 第1章第20场景：理智与天赋
+        Story story1_20 = new Story();
+        story1_20.setStoryId("story_1_20");
+        story1_20.setTitle("理智与天赋");
+        story1_20.setContent("理智：100/100（理智低于50将疯狂，低于30将产生自杀念头，低于10....）\n\n" +
+                "精力：100/100（精力低于50将困倦，低于30可能昏厥。）\n\n" +
+                "气血：100/100\n\n" +
+                "天赋：\n\n" +
+                "钢铁意志：你永不服输，精神上限+1，你理智至少会保留1点，且不会自杀，理智大量降低（低于50），会进入癫狂状态。\n\n" +
+                "你看完属性界面，稍微安心。\n\n" +
+                "低属性所需经验很少，这样你追属性也不会太难。\n\n" +
+                "你继续往后翻，找到了聊天频道。");
+        story1_20.setChapter(1);
+        story1_20.setScene(20);
+        story1_20.setStoryType("STATUS");
+        story1_20.setIsEnding(false);
+        storyRepository.save(story1_20);
+
+        // 第1章第21场景：世界聊天
+        Story story1_21 = new Story();
+        story1_21.setStoryId("story_1_21");
+        story1_21.setTitle("世界聊天");
+        story1_21.setContent("里面分为世界聊天，区域聊天，和私密聊天。\n\n" +
+                "目前世界频道最热闹，陆续有人发言。\n\n" +
+                "\"有人吗？\"\n\n" +
+                "\"这到底是什么情况？\"\n\n" +
+                "\"我刚刚在拉屎，还没擦屁股呢，转眼间就到船上了！\"\n\n" +
+                "\"这里就我一个人，你们谁有手机吗，帮我报个警！\"\n\n" +
+                "\"谁绑架的我，你知道我爸是谁吗？\"\n\n" +
+                "\"说不定你爸也一起过来了！\"\n\n" +
+                "\"儿子，是你吗？\"\n\n" +
+                "\"别瞎认！\"\n\n" +
+                "\"我骨折的手居然好了....\"\n\n" +
+                "\"有痛觉...这不是梦！\"");
+        story1_21.setChapter(1);
+        story1_21.setScene(21);
+        story1_21.setStoryType("CHAT");
+        story1_21.setIsEnding(false);
+        storyRepository.save(story1_21);
+
+        // 第1章第22场景：情报收集
+        Story story1_22 = new Story();
+        story1_22.setStoryId("story_1_22");
+        story1_22.setTitle("情报收集");
+        story1_22.setContent("在线人数高达几十亿，估计所有人都被拉了进来。\n\n" +
+                "你没有急着发话，而是在看聊天信息，收集潜在的情报。\n\n" +
+                "每人每天，只能发10条世界信息，再多就得支付海螺币了，一百海螺币一条\n\n" +
+                "这海螺币是什么东西，你不清楚，手上也没有。\n\n" +
+                "十几分钟后，混乱的发言渐渐变少，聊天变得有营养起来。\n\n" +
+                "\"你们手册的规则也是7条吗？\"\n\n" +
+                "\"求抱团，有没有组队的！\"\n\n" +
+                "\"距离太远，又没坐标，现在根本没法抱团！\"\n\n" +
+                "\"我们应该分享情报，彼此帮助！\"");
+        story1_22.setChapter(1);
+        story1_22.setScene(22);
+        story1_22.setStoryType("CHAT");
+        story1_22.setIsEnding(false);
+        storyRepository.save(story1_22);
+
+        System.out.println("✅ 批量故事内容加载完成！");
+    }
+
+    // ==================== 批量生成的选择内容 ====================
+    /**
+     * 数据驱动的选择创建方法 - 从文本文件批量加载
+     */
+    private void createBatchChoices() {
+        System.out.println("🎯 开始从文本文件批量加载选择内容...");
+
+        try {
+            // 从文本文件加载选择数据
+            loadChoicesFromTextFiles();
+            System.out.println("✅ 批量选择内容加载完成！");
+        } catch (Exception e) {
+            System.err.println("❌ 批量加载选择失败: " + e.getMessage());
+            e.printStackTrace();
+            // 如果批量加载失败，使用默认选择
+            createDefaultBatchChoices();
+        }
+    }
+
+    /**
+     * 从文本文件加载选择
+     */
+    private void loadChoicesFromTextFiles() {
+        // 读取第1章的所有选择
+        loadChapterChoicesFromFile(1, "novel_texts/chapter_1_choices.txt");
+
+        // 读取第2章的选择 - 深海探索
+        loadChapterChoicesFromFile(2, "novel_texts/chapter_2_choices.txt");
+
+        // 读取第3章的选择 - 商人与交易
+        loadChapterChoicesFromFile(3, "novel_texts/chapter_3_choices.txt");
+
+        // 读取第4章的选择 - 宝藏岛探险
+        loadChapterChoicesFromFile(4, "novel_texts/chapter_4_choices.txt");
+
+        // 读取第5章的选择 - 海怪之王
+        loadChapterChoicesFromFile(5, "novel_texts/chapter_5_choices.txt");
+
+        // 可以继续添加更多章节的选择
+        // loadChapterChoicesFromFile(6, "novel_texts/chapter_6_choices.txt");
+        // loadChapterChoicesFromFile(7, "novel_texts/chapter_7_choices.txt");
+        // ... 直到500章
+
+        System.out.println("🎯 已加载5个章节的选择，选择文件系统支持无限扩展！");
+    }
+
+    /**
+     * 从文件加载指定章节的选择
+     */
+    private void loadChapterChoicesFromFile(int chapter, String filePath) {
+        try {
+            // 尝试从类路径读取文件
+            InputStream inputStream = getClass().getClassLoader().getResourceAsStream(filePath);
+            if (inputStream == null) {
+                System.out.println("⚠️ 选择文件不存在，使用默认数据: " + filePath);
+                loadDefaultChapterChoices(chapter);
+                return;
+            }
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
+            String line;
+            int choiceCount = 0;
+
+            while ((line = reader.readLine()) != null) {
+                line = line.trim();
+                // 跳过注释和空行
+                if (line.startsWith("#") || line.isEmpty()) {
+                    continue;
+                }
+
+                // 解析数据行：故事ID|选择文本|下一个故事ID|金币消耗|金币奖励|生命消耗|生命奖励|经验奖励|要求|是否可用
+                String[] parts = line.split("\\|", 10);
+                if (parts.length >= 10) {
+                    String storyId = parts[0];
+                    String text = parts[1];
+                    String nextStoryId = parts[2];
+                    int goldCost = Integer.parseInt(parts[3]);
+                    int goldReward = Integer.parseInt(parts[4]);
+                    int healthCost = Integer.parseInt(parts[5]);
+                    int healthReward = Integer.parseInt(parts[6]);
+                    int experienceReward = Integer.parseInt(parts[7]);
+                    String requirements = parts[8];
+                    boolean isAvailable = Boolean.parseBoolean(parts[9]);
+
+                    createChoiceFromData(storyId, text, nextStoryId, goldCost, goldReward,
+                                       healthCost, healthReward, experienceReward, requirements, isAvailable);
+                    choiceCount++;
+                }
+            }
+            reader.close();
+
+            System.out.println("✅ 从文件加载第" + chapter + "章选择，共" + choiceCount + "个选择");
+
+        } catch (Exception e) {
+            System.err.println("❌ 读取选择文件失败: " + filePath + " - " + e.getMessage());
+            loadDefaultChapterChoices(chapter);
+        }
+    }
+
+    /**
+     * 通用的选择创建方法 - 消除重复代码
+     */
+    private void createChoiceFromData(String storyId, String text, String nextStoryId,
+                                    int goldCost, int goldReward, int healthCost, int healthReward,
+                                    int experienceReward, String requirements, boolean isAvailable) {
+        Choice choice = new Choice();
+        choice.setText(text);
+        choice.setNextStoryId(nextStoryId);
+        choice.setGoldCost(goldCost);
+        choice.setGoldReward(goldReward);
+        choice.setHealthCost(healthCost);
+        choice.setHealthReward(healthReward);
+        choice.setExperienceReward(experienceReward);
+        choice.setRequirements(requirements);
+        choice.setIsAvailable(isAvailable);
+        choice.setStoryId(storyId);
+        choiceRepository.save(choice);
+
+        System.out.println("✅ 创建选择: " + text + " (从 " + storyId + " 到 " + nextStoryId + ")");
+    }
+
+    /**
+     * 默认的批量选择创建（备用方案）
+     */
+    private void createDefaultBatchChoices() {
+        System.out.println("🎯 使用默认批量选择内容...");
+
+        // 第1章默认选择
+        loadDefaultChapterChoices(1);
+    }
+
+    /**
+     * 加载默认章节选择数据（备用方案）
+     */
+    private void loadDefaultChapterChoices(int chapter) {
+        System.out.println("🎯 使用第" + chapter + "章默认选择数据...");
+
+        // 第1章默认选择
+        if (chapter == 1) {
+            // story_1_3 添加新选择：详细阅读航海日志规则
+            createChoiceFromData("story_1_3", "详细阅读航海日志的所有规则", "story_1_18",
+                               0, 0, 0, 0, 15, "", true);
+
+            // story_1_18 的选择：阅读完规则后的选择
+            createChoiceFromData("story_1_18", "翻到第三页，查看自己的属性详情", "story_1_19",
+                               0, 0, 0, 0, 10, "", true);
+            createChoiceFromData("story_1_18", "合上手册，开始探索船舱", "story_1_6",
+                               0, 0, 0, 0, 5, "", true);
+        }
+    }
+
+    // ==================== 原有的硬编码选择内容（保留作为备用） ====================
+    private void createLegacyBatchChoices() {
+        System.out.println("🎯 开始加载传统硬编码选择内容...");
+
+        // story_1_18 的选择：阅读完规则后的选择
+        Choice choice1_18_1 = new Choice();
+        choice1_18_1.setText("翻到第三页，查看自己的属性详情");
+        choice1_18_1.setNextStoryId("story_1_19");
+        choice1_18_1.setGoldCost(0);
+        choice1_18_1.setGoldReward(0);
+        choice1_18_1.setHealthCost(0);
+        choice1_18_1.setHealthReward(0);
+        choice1_18_1.setExperienceReward(10);
+        choice1_18_1.setRequirements("");
+        choice1_18_1.setIsAvailable(true);
+        choice1_18_1.setStoryId("story_1_18");
+        choiceRepository.save(choice1_18_1);
+
+        Choice choice1_18_2 = new Choice();
+        choice1_18_2.setText("合上手册，开始探索船舱");
+        choice1_18_2.setNextStoryId("story_1_6");
+        choice1_18_2.setGoldCost(0);
+        choice1_18_2.setGoldReward(0);
+        choice1_18_2.setHealthCost(0);
+        choice1_18_2.setHealthReward(0);
+        choice1_18_2.setExperienceReward(5);
+        choice1_18_2.setRequirements("");
+        choice1_18_2.setIsAvailable(true);
+        choice1_18_2.setStoryId("story_1_18");
+        choiceRepository.save(choice1_18_2);
+
+        // story_1_19 的选择：查看完属性后的选择
+        Choice choice1_19_1 = new Choice();
+        choice1_19_1.setText("继续往后翻，查看理智和天赋详情");
+        choice1_19_1.setNextStoryId("story_1_20");
+        choice1_19_1.setGoldCost(0);
+        choice1_19_1.setGoldReward(0);
+        choice1_19_1.setHealthCost(0);
+        choice1_19_1.setHealthReward(0);
+        choice1_19_1.setExperienceReward(15);
+        choice1_19_1.setRequirements("");
+        choice1_19_1.setIsAvailable(true);
+        choice1_19_1.setStoryId("story_1_19");
+        choiceRepository.save(choice1_19_1);
+
+        Choice choice1_19_2 = new Choice();
+        choice1_19_2.setText("合上手册，开始探索船舱");
+        choice1_19_2.setNextStoryId("story_1_6");
+        choice1_19_2.setGoldCost(0);
+        choice1_19_2.setGoldReward(0);
+        choice1_19_2.setHealthCost(0);
+        choice1_19_2.setHealthReward(0);
+        choice1_19_2.setExperienceReward(10);
+        choice1_19_2.setRequirements("");
+        choice1_19_2.setIsAvailable(true);
+        choice1_19_2.setStoryId("story_1_19");
+        choiceRepository.save(choice1_19_2);
+
+        // story_1_20 的选择：查看完理智天赋后的选择
+        Choice choice1_20_1 = new Choice();
+        choice1_20_1.setText("继续往后翻，查看聊天频道");
+        choice1_20_1.setNextStoryId("story_1_21");
+        choice1_20_1.setGoldCost(0);
+        choice1_20_1.setGoldReward(0);
+        choice1_20_1.setHealthCost(0);
+        choice1_20_1.setHealthReward(0);
+        choice1_20_1.setExperienceReward(10);
+        choice1_20_1.setRequirements("");
+        choice1_20_1.setIsAvailable(true);
+        choice1_20_1.setStoryId("story_1_20");
+        choiceRepository.save(choice1_20_1);
+
+        Choice choice1_20_2 = new Choice();
+        choice1_20_2.setText("合上手册，开始探索船舱");
+        choice1_20_2.setNextStoryId("story_1_6");
+        choice1_20_2.setGoldCost(0);
+        choice1_20_2.setGoldReward(0);
+        choice1_20_2.setHealthCost(0);
+        choice1_20_2.setHealthReward(0);
+        choice1_20_2.setExperienceReward(5);
+        choice1_20_2.setRequirements("");
+        choice1_20_2.setIsAvailable(true);
+        choice1_20_2.setStoryId("story_1_20");
+        choiceRepository.save(choice1_20_2);
+
+        // story_1_21 的选择：看完聊天后的选择
+        Choice choice1_21_1 = new Choice();
+        choice1_21_1.setText("继续观察聊天，收集更多情报");
+        choice1_21_1.setNextStoryId("story_1_22");
+        choice1_21_1.setGoldCost(0);
+        choice1_21_1.setGoldReward(0);
+        choice1_21_1.setHealthCost(0);
+        choice1_21_1.setHealthReward(0);
+        choice1_21_1.setExperienceReward(15);
+        choice1_21_1.setRequirements("");
+        choice1_21_1.setIsAvailable(true);
+        choice1_21_1.setStoryId("story_1_21");
+        choiceRepository.save(choice1_21_1);
+
+        Choice choice1_21_2 = new Choice();
+        choice1_21_2.setText("合上手册，开始行动");
+        choice1_21_2.setNextStoryId("story_1_6");
+        choice1_21_2.setGoldCost(0);
+        choice1_21_2.setGoldReward(0);
+        choice1_21_2.setHealthCost(0);
+        choice1_21_2.setHealthReward(0);
+        choice1_21_2.setExperienceReward(10);
+        choice1_21_2.setRequirements("");
+        choice1_21_2.setIsAvailable(true);
+        choice1_21_2.setStoryId("story_1_21");
+        choiceRepository.save(choice1_21_2);
+
+        // story_1_22 的选择：收集完情报后的选择
+        Choice choice1_22_1 = new Choice();
+        choice1_22_1.setText("合上手册，开始探索船舱");
+        choice1_22_1.setNextStoryId("story_1_6");
+        choice1_22_1.setGoldCost(0);
+        choice1_22_1.setGoldReward(0);
+        choice1_22_1.setHealthCost(0);
+        choice1_22_1.setHealthReward(0);
+        choice1_22_1.setExperienceReward(15);
+        choice1_22_1.setRequirements("");
+        choice1_22_1.setIsAvailable(true);
+        choice1_22_1.setStoryId("story_1_22");
+        choiceRepository.save(choice1_22_1);
+
+        Choice choice1_22_2 = new Choice();
+        choice1_22_2.setText("准备开始钓鱼");
+        choice1_22_2.setNextStoryId("story_1_10");
+        choice1_22_2.setGoldCost(0);
+        choice1_22_2.setGoldReward(0);
+        choice1_22_2.setHealthCost(0);
+        choice1_22_2.setHealthReward(0);
+        choice1_22_2.setExperienceReward(20);
+        choice1_22_2.setRequirements("");
+        choice1_22_2.setIsAvailable(true);
+        choice1_22_2.setStoryId("story_1_22");
+        choiceRepository.save(choice1_22_2);
+
+        System.out.println("✅ 批量选择内容加载完成！");
+    }
+}
