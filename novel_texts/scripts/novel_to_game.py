@@ -73,8 +73,8 @@ class NovelToGameConverter:
         # 替换常见的第三人称为第二人称
         replacements = {
             r'杨逸': '你',
-            r'他': '你',
-            r'她': '你',
+            r'(?<!其)他(?!人)': '你',  # 避免替换"其他"中的"他"
+            r'(?<!其)她(?!人)': '你',  # 避免替换"其她"中的"她"
             r'主角': '你',
             r'少年': '你',
             r'青年': '你',
@@ -110,44 +110,67 @@ class NovelToGameConverter:
     def generate_choices(self, content):
         """生成选择分支"""
         choices = []
-        
+
         # 根据内容关键词生成选择
-        if "发现" in content or "看到" in content:
+        if "发现" in content or "看到" in content or "观察" in content:
             choices.extend([
                 "仔细观察",
                 "谨慎接近",
                 "保持距离"
             ])
-        
-        if "说话" in content or "对话" in content:
+
+        if "说话" in content or "对话" in content or "声音" in content:
             choices.extend([
                 "友善回应",
                 "保持警惕",
                 "直接询问"
             ])
-        
-        if "战斗" in content or "攻击" in content:
+
+        if "战斗" in content or "攻击" in content or "怪物" in content or "危险" in content:
             choices.extend([
                 "主动攻击",
                 "防御反击",
                 "尝试逃跑"
             ])
-        
-        if "物品" in content or "装备" in content:
+
+        if "物品" in content or "装备" in content or "拿起" in content or "获得" in content:
             choices.extend([
                 "拿取物品",
                 "检查陷阱",
                 "暂时不动"
             ])
-        
-        # 通用选择
+
+        if "船" in content or "航行" in content or "海上" in content:
+            choices.extend([
+                "检查船只",
+                "开始航行",
+                "停留观察"
+            ])
+
+        if "聊天" in content or "频道" in content or "信息" in content:
+            choices.extend([
+                "发送消息",
+                "继续观察",
+                "关闭聊天"
+            ])
+
+        if "规则" in content or "手册" in content or "日志" in content:
+            choices.extend([
+                "详细阅读",
+                "快速浏览",
+                "先收起来"
+            ])
+
+        # 通用选择（减少重复）
         if not choices:
-            choices = [
-                "继续前进",
-                "停下思考",
-                "查看状态"
+            import random
+            general_choices = [
+                ["继续前进", "停下思考", "查看状态"],
+                ["仔细考虑", "立即行动", "寻找线索"],
+                ["保持冷静", "快速决定", "观察环境"]
             ]
-        
+            choices = random.choice(general_choices)
+
         return choices[:3]  # 最多3个选择
 
 def batch_convert(input_dir, output_dir):
