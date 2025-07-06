@@ -236,7 +236,6 @@ const getSelectedFunctionComponent = () => {
   const components = {
     exploration: IslandExploration,
     trading: EnhancedTrading,
-    combat: PvPCombat,
     astrology: AstrologySystem,
     talents: TalentSystem
   }

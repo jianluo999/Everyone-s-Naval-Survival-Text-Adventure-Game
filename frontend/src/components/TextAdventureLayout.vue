@@ -39,6 +39,76 @@
 
       <!-- 右侧：状态和信息面板 -->
       <div class="info-panel">
+        <!-- 环境信息 -->
+        <div class="environment-card">
+          <h3>🌊 环境状况</h3>
+          <div class="env-grid">
+            <div class="env-item">
+              <span class="label">天气:</span>
+              <span class="value">{{ weatherInfo.label }}</span>
+            </div>
+            <div class="env-item">
+              <span class="label">海况:</span>
+              <span class="value">{{ seaCondition }}</span>
+            </div>
+            <div class="env-item">
+              <span class="label">时间:</span>
+              <span class="value">{{ timeInfo.label }}</span>
+            </div>
+            <div class="env-item">
+              <span class="label">位置:</span>
+              <span class="value">{{ currentLocation }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 船舶信息 -->
+        <div class="ship-card">
+          <h3>⚓ 船舶状态</h3>
+          <div class="ship-stats">
+            <div class="stat-item">
+              <div class="stat-label">船体完整度</div>
+              <el-progress
+                :percentage="shipCondition.hull"
+                :color="getConditionColor(shipCondition.hull)"
+                :show-text="false"
+                size="small"
+              />
+              <span class="stat-value">{{ shipCondition.hull }}%</span>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">帆布状况</div>
+              <el-progress
+                :percentage="shipCondition.sails"
+                :color="getConditionColor(shipCondition.sails)"
+                :show-text="false"
+                size="small"
+              />
+              <span class="stat-value">{{ shipCondition.sails }}%</span>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">淡水储量</div>
+              <el-progress
+                :percentage="shipCondition.water"
+                color="#4fc3f7"
+                :show-text="false"
+                size="small"
+              />
+              <span class="stat-value">{{ shipCondition.water }}%</span>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">食物储量</div>
+              <el-progress
+                :percentage="shipCondition.food"
+                color="#81c784"
+                :show-text="false"
+                size="small"
+              />
+              <span class="stat-value">{{ shipCondition.food }}%</span>
+            </div>
+          </div>
+        </div>
+
         <!-- 玩家状态、航海日志和船员对话切换 -->
         <div class="status-card">
           <div class="status-header">
@@ -81,77 +151,6 @@
             />
           </div>
         </div>
-
-        <!-- 环境信息 -->
-        <div class="environment-card">
-          <h3>🌊 环境状况</h3>
-          <div class="env-grid">
-            <div class="env-item">
-              <span class="label">天气:</span>
-              <span class="value">{{ weatherInfo.label }}</span>
-            </div>
-            <div class="env-item">
-              <span class="label">海况:</span>
-              <span class="value">{{ seaCondition }}</span>
-            </div>
-            <div class="env-item">
-              <span class="label">时间:</span>
-              <span class="value">{{ timeInfo.label }}</span>
-            </div>
-            <div class="env-item">
-              <span class="label">位置:</span>
-              <span class="value">{{ currentLocation }}</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 船舶信息 -->
-        <div class="ship-card">
-          <h3>⚓ 船舶状态</h3>
-          <div class="ship-stats">
-            <div class="stat-item">
-              <div class="stat-label">船体完整度</div>
-              <el-progress 
-                :percentage="shipCondition.hull" 
-                :color="getConditionColor(shipCondition.hull)"
-                :show-text="false"
-                size="small"
-              />
-              <span class="stat-value">{{ shipCondition.hull }}%</span>
-            </div>
-            <div class="stat-item">
-              <div class="stat-label">帆布状况</div>
-              <el-progress 
-                :percentage="shipCondition.sails" 
-                :color="getConditionColor(shipCondition.sails)"
-                :show-text="false"
-                size="small"
-              />
-              <span class="stat-value">{{ shipCondition.sails }}%</span>
-            </div>
-            <div class="stat-item">
-              <div class="stat-label">淡水储量</div>
-              <el-progress 
-                :percentage="shipCondition.water" 
-                color="#4fc3f7"
-                :show-text="false"
-                size="small"
-              />
-              <span class="stat-value">{{ shipCondition.water }}%</span>
-            </div>
-            <div class="stat-item">
-              <div class="stat-label">食物储量</div>
-              <el-progress 
-                :percentage="shipCondition.food" 
-                color="#81c784"
-                :show-text="false"
-                size="small"
-              />
-              <span class="stat-value">{{ shipCondition.food }}%</span>
-            </div>
-          </div>
-        </div>
-
 
       </div>
     </div>
