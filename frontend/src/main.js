@@ -19,4 +19,16 @@ app.use(pinia)
 app.use(router)
 app.use(ElementPlus)
 
-app.mount('#app') 
+// 全局错误处理
+app.config.errorHandler = (err, vm, info) => {
+  console.error('Vue全局错误:', err, info)
+  // 防止原生弹窗
+}
+
+// 处理未捕获的Promise rejection
+window.addEventListener('unhandledrejection', event => {
+  console.error('未处理的Promise rejection:', event.reason)
+  event.preventDefault() // 防止原生弹窗
+})
+
+app.mount('#app')

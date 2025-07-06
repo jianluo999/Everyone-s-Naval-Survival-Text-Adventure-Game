@@ -16,10 +16,6 @@
               <el-icon><Location /></el-icon>
               海图
             </el-button>
-            <el-button size="small" @click="openPanel('log')">
-              <el-icon><Notebook /></el-icon>
-              日志
-            </el-button>
             <el-button size="small" @click="openPanel('inventory')">
               <el-icon><Box /></el-icon>
               物品
@@ -34,10 +30,47 @@
 
       <!-- 右侧：状态和信息面板 -->
       <div class="info-panel">
-        <!-- 玩家状态 -->
+        <!-- 玩家状态、航海日志和船员对话切换 -->
         <div class="status-card">
-          <h3>🧭 船长状态</h3>
-          <ComprehensiveStatus />
+          <div class="status-header">
+            <div class="tab-buttons">
+              <button
+                :class="['tab-btn', { active: activeStatusTab === 'status' }]"
+                @click="activeStatusTab = 'status'"
+              >
+                🧭 船长状态
+              </button>
+              <button
+                :class="['tab-btn', { active: activeStatusTab === 'log' }]"
+                @click="activeStatusTab = 'log'"
+              >
+                📖 航海日志
+                <span v-if="newLogEntries > 0" class="log-badge">{{ newLogEntries }}</span>
+              </button>
+              <button
+                :class="['tab-btn', { active: activeStatusTab === 'chat' }]"
+                @click="activeStatusTab = 'chat'"
+              >
+                💬 船员对话
+                <span v-if="newChatMessages > 0" class="chat-badge">{{ newChatMessages }}</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="status-content">
+            <ComprehensiveStatus v-if="activeStatusTab === 'status'" />
+            <NavigationLog
+              v-else-if="activeStatusTab === 'log'"
+              ref="navigationLogRef"
+              :compact="true"
+              @entries-read="newLogEntries = 0"
+            />
+            <ChatPanel
+              v-else-if="activeStatusTab === 'chat'"
+              ref="chatPanelRef"
+              @messages-read="newChatMessages = 0"
+            />
+          </div>
         </div>
 
         <!-- 环境信息 -->
@@ -110,11 +143,7 @@
           </div>
         </div>
 
-        <!-- 聊天面板 -->
-        <div class="chat-card">
-          <h3>💬 船员对话</h3>
-          <ChatPanel ref="chatPanelRef" />
-        </div>
+
       </div>
     </div>
 
@@ -133,8 +162,7 @@
       direction="rtl"
       size="40%"
     >
-      <NavigationLog v-if="activePanel === 'log'" ref="navigationLogRef" />
-      <div v-else-if="activePanel === 'map'" class="map-panel">
+      <div v-if="activePanel === 'map'" class="map-panel">
         <h3>🗺️ 海域地图</h3>
         <p>地图功能开发中...</p>
       </div>
@@ -161,6 +189,9 @@ const gameStore = useGameStore()
 const showCabin = ref(false)
 const drawerVisible = ref(false)
 const activePanel = ref('')
+const activeStatusTab = ref('status') // 状态面板切换
+const newLogEntries = ref(0) // 新日志条目计数
+const newChatMessages = ref(0) // 新聊天消息计数
 const chatPanelRef = ref(null)
 const navigationLogRef = ref(null)
 
@@ -188,7 +219,6 @@ const shipCondition = ref({
 const drawerTitle = computed(() => {
   const titles = {
     map: '🗺️ 海域地图',
-    log: '📖 航海日志',
     inventory: '📦 物品清单'
   }
   return titles[activePanel.value] || ''
@@ -214,6 +244,11 @@ const handleChoiceMade = (choiceData) => {
   // 记录到聊天面板
   if (chatPanelRef.value && chatPanelRef.value.recordPlayerChoice) {
     chatPanelRef.value.recordPlayerChoice(choiceData.choice, choiceData.storyTitle)
+
+    // 增加新聊天消息计数
+    if (activeStatusTab.value !== 'chat') {
+      newChatMessages.value++
+    }
   }
 
   // 记录到航海日志
@@ -228,6 +263,16 @@ const handleChoiceMade = (choiceData) => {
         ...(choiceData.choice.experienceReward > 0 ? [{ type: '经验', value: choiceData.choice.experienceReward }] : [])
       ]
     })
+
+    // 增加新日志条目计数
+    if (activeStatusTab.value !== 'log') {
+      newLogEntries.value++
+    }
+
+    // 自动切换到航海日志（延迟一点时间让用户看到选择结果）
+    setTimeout(() => {
+      activeStatusTab.value = 'log'
+    }, 500)
   }
 }
 
@@ -250,9 +295,9 @@ defineExpose({
 .main-content {
   flex: 1;
   display: grid;
-  grid-template-columns: 3fr 1fr; // 增加故事区域比例
-  gap: 1rem;
-  padding: 1rem;
+  grid-template-columns: 2.5fr 1fr; // 调整比例，给右侧更多空间
+  gap: 0.75rem; // 减少间距
+  padding: 0.75rem; // 减少内边距
   overflow: hidden;
 }
 
@@ -281,7 +326,7 @@ defineExpose({
 .info-panel {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem; // 减少间距
+  gap: 0.5rem; // 进一步减少间距
   overflow-y: auto;
   min-height: 0;
 }
@@ -290,16 +335,83 @@ defineExpose({
   background: rgba(0, 20, 40, 0.9);
   border: 1px solid #66ffcc;
   border-radius: 6px;
-  padding: 0.75rem; // 减少内边距
+  padding: 0.5rem; // 进一步减少内边距
   backdrop-filter: blur(10px);
 
   h3 {
-    margin: 0 0 0.5rem 0; // 减少标题间距
+    margin: 0 0 0.4rem 0; // 减少标题间距
     color: #66ffcc;
-    font-size: 0.85rem; // 稍微减小字体
+    font-size: 0.8rem; // 进一步减小字体
     border-bottom: 1px solid rgba(102, 255, 204, 0.3);
     padding-bottom: 0.2rem;
   }
+}
+
+// 状态面板标签样式
+.status-header {
+  margin-bottom: 0.5rem;
+}
+
+.tab-buttons {
+  display: flex;
+  gap: 2px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  padding: 2px;
+}
+
+.tab-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #66ffcc;
+  padding: 0.4rem 0.6rem;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+
+  &:hover {
+    background: rgba(102, 255, 204, 0.1);
+  }
+
+  &.active {
+    background: rgba(102, 255, 204, 0.2);
+    color: #fff;
+    box-shadow: 0 0 8px rgba(102, 255, 204, 0.3);
+  }
+}
+
+.log-badge, .chat-badge {
+  background: #ff4757;
+  color: white;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.2rem;
+  animation: pulse-badge 2s infinite;
+}
+
+.chat-badge {
+  background: #2ed573; // 聊天徽章用绿色区分
+}
+
+@keyframes pulse-badge {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.status-content {
+  min-height: 200px; // 确保内容区域有足够高度
 }
 
 .env-grid {
@@ -465,6 +577,67 @@ defineExpose({
   
   &:hover {
     background: #FFD700;
+  }
+}
+
+// 响应式布局
+@media (max-width: 1200px) {
+  .main-content {
+    grid-template-columns: 2fr 1fr; // 中等屏幕调整比例
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    grid-template-columns: 1fr; // 移动端单列布局
+    grid-template-rows: 1fr auto;
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .info-panel {
+    max-height: 40vh; // 限制右侧面板高度
+    gap: 0.4rem;
+  }
+
+  .status-card, .environment-card, .ship-card, .chat-card {
+    padding: 0.4rem;
+
+    h3 {
+      font-size: 0.75rem;
+      margin-bottom: 0.3rem;
+    }
+  }
+
+  .quick-actions {
+    padding: 0.4rem;
+
+    .el-button-group .el-button {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.6rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    padding: 0.3rem;
+    gap: 0.3rem;
+  }
+
+  .info-panel {
+    max-height: 35vh;
+  }
+
+  .quick-actions .el-button-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.3rem;
+
+    .el-button {
+      margin: 0;
+      border-radius: 4px;
+    }
   }
 }
 </style>

@@ -341,8 +341,10 @@ const startFishing = async () => {
   try {
     // 调用真正的后端钓鱼API
     const result = await gameStore.goFishing()
-    
-    if (result.success) {
+
+    console.log('钓鱼结果:', result) // 添加调试信息
+
+    if (result && result.success) {
       if (result.fish) {
         // 钓到鱼了
         fishingState.value.lastResult = {
@@ -356,13 +358,18 @@ const startFishing = async () => {
       } else {
         // 没钓到鱼
         fishingState.value.lastResult = null
-        ElMessage.info(result.message || '没有钓到鱼，再试试吧')
+        const message = result.message || '没有钓到鱼，再试试吧'
+        console.log('显示钓鱼消息:', message) // 添加调试信息
+        ElMessage.info(message)
       }
     } else {
-      ElMessage.error(result.message || '钓鱼失败')
+      const errorMsg = (result && result.message) || '钓鱼失败'
+      console.log('钓鱼失败:', errorMsg) // 添加调试信息
+      ElMessage.error(errorMsg)
     }
-    
+
   } catch (err) {
+    console.error('钓鱼异常:', err) // 添加调试信息
     ElMessage.error(err.message || '钓鱼失败')
   } finally {
     fishingState.value.fishing = false

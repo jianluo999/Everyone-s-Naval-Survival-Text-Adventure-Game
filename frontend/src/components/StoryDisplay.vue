@@ -143,29 +143,7 @@
         </div>
       </div>
 
-      <!-- 确认按钮 -->
-      <div class="choice-actions">
-        <el-button 
-          type="primary" 
-          size="large"
-          :disabled="!selectedChoice || makingChoice"
-          :loading="makingChoice"
-          @click="confirmChoice"
-          class="confirm-btn"
-        >
-          <el-icon><Check /></el-icon>
-          确认选择
-        </el-button>
-        
-        <el-button 
-          size="large"
-          :disabled="makingChoice"
-          @click="clearSelection"
-          class="clear-btn"
-        >
-          重新选择
-        </el-button>
-      </div>
+
     </div>
 
     <!-- 游戏结束界面 -->
@@ -193,6 +171,7 @@ import { ref, computed, watch, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 import { useGameStore } from '@/stores/game'
 import { ElMessage } from 'element-plus'
+import { Star, Lock, Check, Coin, Warning, InfoFilled } from '@element-plus/icons-vue'
 
 const router = useRouter()
 const gameStore = useGameStore()
@@ -591,29 +570,27 @@ const startNewAdventure = () => {
       }
     }
   }
-  
-  .choice-actions {
+
+  .choice-hint {
+    text-align: center;
+    color: #66ffcc;
+    font-size: 0.85rem;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    background: rgba(102, 255, 204, 0.1);
+    border: 1px solid rgba(102, 255, 204, 0.3);
+    border-radius: 6px;
     display: flex;
-    gap: 1rem;
+    align-items: center;
     justify-content: center;
-    
-    .confirm-btn {
-      background: linear-gradient(45deg, #67C23A, #85CE61);
-      border: none;
-      border-radius: 25px;
-      padding: 0.8rem 2rem;
-      
-      &:hover:not(:disabled) {
-        background: linear-gradient(45deg, #5daf34, #7bc952);
-        transform: translateY(-2px);
-      }
-    }
-    
-    .clear-btn {
-      border-radius: 25px;
-      padding: 0.8rem 2rem;
+    gap: 0.5rem;
+
+    .el-icon {
+      font-size: 1rem;
     }
   }
+
+
 }
 
 .game-ending {
@@ -670,9 +647,7 @@ const startNewAdventure = () => {
     }
   }
   
-  .choice-actions {
-    flex-direction: column;
-  }
+
   
   .ending-content {
     padding: 2rem;

@@ -131,6 +131,9 @@ import { ref, computed, onMounted, nextTick, watch } from 'vue'
 import { useGameStore } from '@/stores/game'
 import { ElMessage } from 'element-plus'
 
+// Emits
+const emit = defineEmits(['messages-read'])
+
 const gameStore = useGameStore()
 
 // 响应式数据
@@ -211,11 +214,13 @@ const currentMessages = computed(() => {
   }
 })
 
-// 监听tab切换，滚动到底部
+// 监听tab切换，滚动到底部并触发消息已读事件
 watch(activeTab, () => {
   nextTick(() => {
     scrollToBottom()
   })
+  // 触发消息已读事件
+  emit('messages-read')
 })
 
 // 生命周期

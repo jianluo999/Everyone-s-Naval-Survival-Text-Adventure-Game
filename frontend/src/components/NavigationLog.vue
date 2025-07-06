@@ -1,13 +1,13 @@
 <template>
-  <div class="navigation-log">
-    <el-card class="log-card">
-      <template #header>
+  <div class="navigation-log" :class="{ compact }">
+    <el-card class="log-card" :class="{ compact }">
+      <template #header v-if="!compact">
         <div class="card-header">
           <el-icon><Notebook /></el-icon>
           <span>航海日志</span>
           <div class="header-actions">
             <el-button-group>
-              <el-button 
+              <el-button
                 :type="activeTab === 'log' ? 'primary' : ''"
                 size="small"
                 @click="activeTab = 'log'"
@@ -15,7 +15,7 @@
                 <el-icon><Document /></el-icon>
                 日志
               </el-button>
-              <el-button 
+              <el-button
                 :type="activeTab === 'map' ? 'primary' : ''"
                 size="small"
                 @click="activeTab = 'map'"
@@ -23,7 +23,7 @@
                 <el-icon><Location /></el-icon>
                 地图
               </el-button>
-              <el-button 
+              <el-button
                 :type="activeTab === 'stats' ? 'primary' : ''"
                 size="small"
                 @click="activeTab = 'stats'"
@@ -35,6 +35,30 @@
           </div>
         </div>
       </template>
+
+      <!-- 紧凑模式的标签切换 -->
+      <div v-if="compact" class="compact-tabs">
+        <div class="tab-buttons">
+          <button
+            :class="['tab-btn', { active: activeTab === 'log' }]"
+            @click="activeTab = 'log'"
+          >
+            📖 日志
+          </button>
+          <button
+            :class="['tab-btn', { active: activeTab === 'map' }]"
+            @click="activeTab = 'map'"
+          >
+            🗺️ 地图
+          </button>
+          <button
+            :class="['tab-btn', { active: activeTab === 'stats' }]"
+            @click="activeTab = 'stats'"
+          >
+            📊 统计
+          </button>
+        </div>
+      </div>
 
       <!-- 日志内容 -->
       <div v-if="activeTab === 'log'" class="log-content">
@@ -137,9 +161,20 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useGameStore } from '@/stores/game'
 import NavigationMap from './NavigationMap.vue'
+
+// Props
+const props = defineProps({
+  compact: {
+    type: Boolean,
+    default: false
+  }
+})
+
+// Emits
+const emit = defineEmits(['entries-read'])
 
 const gameStore = useGameStore()
 const activeTab = ref('log')
@@ -232,6 +267,13 @@ const addLogEntry = (entry) => {
     ...entry
   })
 }
+
+// 监听activeTab变化，当切换到日志时触发entries-read事件
+watch(activeTab, (newTab) => {
+  if (newTab === 'log' && props.compact) {
+    emit('entries-read')
+  }
+})
 
 // 暴露方法给父组件
 defineExpose({
@@ -434,6 +476,101 @@ onMounted(() => {
     
     &.negative {
       color: #F56C6C;
+    }
+  }
+}
+
+// 紧凑模式样式
+.navigation-log.compact {
+  .log-card.compact {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+
+    :deep(.el-card__body) {
+      padding: 0;
+      height: 100%;
+    }
+  }
+}
+
+.compact-tabs {
+  margin-bottom: 0.5rem;
+
+  .tab-buttons {
+    display: flex;
+    gap: 2px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    padding: 2px;
+  }
+
+  .tab-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #66ffcc;
+    padding: 0.3rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: rgba(102, 255, 204, 0.1);
+    }
+
+    &.active {
+      background: rgba(102, 255, 204, 0.2);
+      color: #fff;
+      box-shadow: 0 0 6px rgba(102, 255, 204, 0.3);
+    }
+  }
+}
+
+// 紧凑模式下的日志条目样式
+.navigation-log.compact {
+  .log-entries {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+
+  .log-entry {
+    padding: 0.4rem;
+    margin-bottom: 0.3rem;
+    font-size: 0.75rem;
+
+    .entry-header {
+      margin-bottom: 0.2rem;
+
+      .entry-time {
+        font-size: 0.65rem;
+      }
+
+      .el-tag {
+        font-size: 0.6rem;
+        height: 18px;
+        line-height: 16px;
+      }
+    }
+
+    .entry-title {
+      font-size: 0.8rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .entry-content {
+      font-size: 0.7rem;
+      line-height: 1.3;
+    }
+
+    .entry-effects {
+      margin-top: 0.3rem;
+
+      .effect-item {
+        font-size: 0.65rem;
+        padding: 0.1rem 0.3rem;
+      }
     }
   }
 }

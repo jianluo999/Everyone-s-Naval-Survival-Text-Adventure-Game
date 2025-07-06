@@ -51,17 +51,6 @@
           </el-button>
           
           <div class="footer-center">
-            <div class="cabin-controls">
-              <el-button
-                size="small"
-                :type="showCabin ? 'primary' : 'default'"
-                @click="toggleCabin"
-                class="cabin-toggle-btn"
-              >
-                <el-icon><House /></el-icon>
-                {{ showCabin ? '隐藏船舱' : '显示船舱' }}
-              </el-button>
-            </div>
             <div class="eldritch-symbol">⚝</div>
             <div class="status-text">深海探索中...</div>
           </div>
