@@ -164,7 +164,6 @@ import ChatPanel from './ChatPanel.vue'
 // 导入次要功能组件
 import IslandExploration from './IslandExploration.vue'
 import EnhancedTrading from './EnhancedTrading.vue'
-import PvPCombat from './PvPCombat.vue'
 import AstrologySystem from './AstrologySystem.vue'
 import TalentSystem from './TalentSystem.vue'
 

@@ -173,6 +173,82 @@
               </div>
             </div>
           </div>
+
+          <!-- 装备效果 -->
+          <div class="sidebar-section">
+            <div class="section-title" @click="toggleSection('equipment')">
+              <span class="section-icon">⚔️</span>
+              <span class="section-name">装备效果</span>
+              <span class="expand-icon">{{ expandedSections.equipment ? '▼' : '▶' }}</span>
+            </div>
+            <div class="section-content" v-if="expandedSections.equipment">
+              <div class="equipment-effects">
+                <div class="effect-item" v-for="effect in equipmentEffects" :key="effect.id">
+                  <span class="effect-icon">{{ effect.icon }}</span>
+                  <div class="effect-info">
+                    <div class="effect-name">{{ effect.name }}</div>
+                    <div class="effect-value">{{ effect.value }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 寻求与感染 -->
+          <div class="sidebar-section">
+            <div class="section-title" @click="toggleSection('infection')">
+              <span class="section-icon">🦠</span>
+              <span class="section-name">寻求与感染</span>
+              <span class="expand-icon">{{ expandedSections.infection ? '▼' : '▶' }}</span>
+            </div>
+            <div class="section-content" v-if="expandedSections.infection">
+              <div class="infection-status">
+                <div class="status-item">
+                  <span class="status-icon">🔍</span>
+                  <div class="status-info">
+                    <div class="status-name">寻求度</div>
+                    <div class="status-bar">
+                      <div class="bar-fill" :style="{ width: seekingLevel + '%' }"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="status-item">
+                  <span class="status-icon">☣️</span>
+                  <div class="status-info">
+                    <div class="status-name">感染度</div>
+                    <div class="status-bar infection">
+                      <div class="bar-fill" :style="{ width: infectionLevel + '%' }"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 玩家对话 -->
+          <div class="sidebar-section">
+            <div class="section-title" @click="toggleSection('dialogue')">
+              <span class="section-icon">💬</span>
+              <span class="section-name">玩家对话</span>
+              <span class="expand-icon">{{ expandedSections.dialogue ? '▼' : '▶' }}</span>
+            </div>
+            <div class="section-content" v-if="expandedSections.dialogue">
+              <div class="dialogue-options">
+                <div class="dialogue-item" @click="openFeature('chat')">
+                  <span class="dialogue-icon">💭</span>
+                  <span class="dialogue-name">聊天</span>
+                </div>
+                <div class="dialogue-item" @click="openFeature('trade')">
+                  <span class="dialogue-icon">🤝</span>
+                  <span class="dialogue-name">交易</span>
+                </div>
+                <div class="dialogue-item" @click="openFeature('alliance')">
+                  <span class="dialogue-icon">⚔️</span>
+                  <span class="dialogue-name">结盟</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -304,8 +380,23 @@ const expandedSections = ref({
   storm: false,
   pvp: false,
   trading: false,
-  talents: false
+  talents: false,
+  equipment: false,
+  infection: false,
+  dialogue: false
 })
+
+// 装备效果数据
+const equipmentEffects = ref([
+  { id: 1, icon: '⚔️', name: '攻击力', value: '+15' },
+  { id: 2, icon: '🛡️', name: '防御力', value: '+12' },
+  { id: 3, icon: '💨', name: '速度', value: '+8' },
+  { id: 4, icon: '🔥', name: '火焰伤害', value: '+5' }
+])
+
+// 寻求与感染状态
+const seekingLevel = ref(35)
+const infectionLevel = ref(12)
 
 // 生命周期
 onMounted(() => {
@@ -530,9 +621,9 @@ const handleChoiceMade = (choiceData) => {
 // 移动侧边栏样式
 .mobile-sidebar {
   position: fixed;
-  left: 0;
+  left: -350px; // 默认完全隐藏
   top: 0;
-  width: 60px;
+  width: 350px;
   height: 100vh;
   background: rgba(0, 20, 40, 0.95);
   border-right: 2px solid #00ff00;
@@ -541,17 +632,28 @@ const handleChoiceMade = (choiceData) => {
   overflow: hidden;
 
   &.expanded {
-    width: 350px;
+    left: 0; // 展开时显示
   }
 
   .sidebar-toggle {
-    position: absolute;
-    top: 20px;
-    right: 15px;
+    position: fixed;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
     color: #00ff00;
     font-size: 1.2rem;
     cursor: pointer;
     z-index: 1001;
+    background: rgba(0, 20, 40, 0.8);
+    padding: 8px;
+    border-radius: 0 8px 8px 0;
+    border: 1px solid #00ff00;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: rgba(0, 255, 0, 0.2);
+      transform: translateY(-50%) scale(1.1);
+    }
   }
 
   .sidebar-content {
@@ -641,6 +743,117 @@ const handleChoiceMade = (choiceData) => {
             }
           }
         }
+      }
+    }
+  }
+
+  // 装备效果样式
+  .equipment-effects {
+    .effect-item {
+      display: flex;
+      align-items: center;
+      padding: 6px 8px;
+      margin: 3px 0;
+      background: rgba(0, 60, 120, 0.2);
+      border-radius: 4px;
+
+      .effect-icon {
+        margin-right: 8px;
+        font-size: 1rem;
+      }
+
+      .effect-info {
+        flex: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .effect-name {
+          color: #00ccff;
+          font-size: 0.85rem;
+        }
+
+        .effect-value {
+          color: #00ff00;
+          font-weight: bold;
+          font-size: 0.85rem;
+        }
+      }
+    }
+  }
+
+  // 感染状态样式
+  .infection-status {
+    .status-item {
+      display: flex;
+      align-items: center;
+      padding: 8px;
+      margin: 6px 0;
+      background: rgba(0, 40, 80, 0.3);
+      border-radius: 4px;
+
+      .status-icon {
+        margin-right: 10px;
+        font-size: 1.1rem;
+      }
+
+      .status-info {
+        flex: 1;
+
+        .status-name {
+          color: #00ccff;
+          font-size: 0.85rem;
+          margin-bottom: 4px;
+        }
+
+        .status-bar {
+          height: 8px;
+          background: rgba(0, 0, 0, 0.5);
+          border-radius: 4px;
+          overflow: hidden;
+          border: 1px solid rgba(0, 255, 0, 0.3);
+
+          .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00ff00, #00cc00);
+            transition: width 0.3s ease;
+          }
+
+          &.infection .bar-fill {
+            background: linear-gradient(90deg, #ff4444, #cc0000);
+          }
+        }
+      }
+    }
+  }
+
+  // 对话选项样式
+  .dialogue-options {
+    .dialogue-item {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      margin: 4px 0;
+      background: rgba(0, 40, 80, 0.3);
+      border: 1px solid rgba(0, 255, 0, 0.3);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: rgba(0, 255, 0, 0.1);
+        border-color: #00ff00;
+        transform: translateX(5px);
+      }
+
+      .dialogue-icon {
+        margin-right: 8px;
+        font-size: 1.1rem;
+      }
+
+      .dialogue-name {
+        color: #00ff00;
+        font-size: 0.9rem;
       }
     }
   }
