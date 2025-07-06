@@ -21,7 +21,7 @@ import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/game")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3002"})
 public class GameController {
     
     @Autowired

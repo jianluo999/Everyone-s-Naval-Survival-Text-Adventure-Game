@@ -140,6 +140,8 @@ const showFeatures = ref(false)
 const showHelp = ref(false)
 const loading = ref(false)
 
+
+
 const handleStartGame = async () => {
   if (!playerName.value.trim()) {
     playBeep()
@@ -255,6 +257,8 @@ const playErrorSound = () => {
   }
 }
 
+
+
 onMounted(() => {
   playBeep()
 })
@@ -270,7 +274,10 @@ onMounted(() => {
   align-items: center;
   font-family: 'Courier New', 'Lucida Console', monospace;
   overflow: hidden;
+  position: relative;
 }
+
+
 
 .crt-screen {
   position: relative;

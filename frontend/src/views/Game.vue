@@ -1,5 +1,182 @@
 <template>
   <div class="game-container deep-sea-game">
+    <!-- 隐藏的移动侧边栏 -->
+    <div class="mobile-sidebar" :class="{ 'expanded': sidebarExpanded }" @mouseenter="expandSidebar" @mouseleave="collapseSidebar">
+      <div class="sidebar-toggle">
+        <span class="toggle-icon">{{ sidebarExpanded ? '◄' : '►' }}</span>
+      </div>
+
+      <div class="sidebar-content" v-if="sidebarExpanded">
+        <div class="sidebar-header">
+          <h3>🎮 扩展功能</h3>
+        </div>
+
+        <div class="sidebar-sections">
+          <!-- 岛屿探索系统 -->
+          <div class="sidebar-section">
+            <div class="section-title" @click="toggleSection('island')">
+              <span class="section-icon">🏝️</span>
+              <span class="section-name">岛屿探索</span>
+              <span class="expand-icon">{{ expandedSections.island ? '▼' : '▶' }}</span>
+            </div>
+            <div class="section-content" v-if="expandedSections.island">
+              <div class="feature-item" @click="openFeature('island-map')">
+                <span class="feature-icon">🗺️</span>
+                <span class="feature-name">交互式地图</span>
+              </div>
+              <div class="feature-item" @click="openFeature('resource-collect')">
+                <span class="feature-icon">🥥</span>
+                <span class="feature-name">资源收集</span>
+              </div>
+              <div class="feature-item" @click="openFeature('tool-craft')">
+                <span class="feature-icon">🪓</span>
+                <span class="feature-name">工具制作</span>
+              </div>
+              <div class="feature-item" @click="openFeature('treasure-hunt')">
+                <span class="feature-icon">📦</span>
+                <span class="feature-name">宝箱探索</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 占星系统 -->
+          <div class="sidebar-section">
+            <div class="section-title" @click="toggleSection('astrology')">
+              <span class="section-icon">🔮</span>
+              <span class="section-name">占星系统</span>
+              <span class="expand-icon">{{ expandedSections.astrology ? '▼' : '▶' }}</span>
+            </div>
+            <div class="section-content" v-if="expandedSections.astrology">
+              <div class="feature-item" @click="openFeature('sea-map')">
+                <span class="feature-icon">🌊</span>
+                <span class="feature-name">海域地图</span>
+              </div>
+              <div class="feature-item" @click="openFeature('spy-ships')">
+                <span class="feature-icon">👁️</span>
+                <span class="feature-name">窥探船只</span>
+              </div>
+              <div class="feature-item" @click="openFeature('prophecy')">
+                <span class="feature-icon">⭐</span>
+                <span class="feature-name">预言系统</span>
+              </div>
+              <div class="feature-item" @click="openFeature('crystal-ball')">
+                <span class="feature-icon">🔮</span>
+                <span class="feature-name">水晶球</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 风暴系统 -->
+          <div class="sidebar-section">
+            <div class="section-title" @click="toggleSection('storm')">
+              <span class="section-icon">⛈️</span>
+              <span class="section-name">风暴系统</span>
+              <span class="expand-icon">{{ expandedSections.storm ? '▼' : '▶' }}</span>
+            </div>
+            <div class="section-content" v-if="expandedSections.storm">
+              <div class="feature-item" @click="openFeature('storm-warning')">
+                <span class="feature-icon">⚠️</span>
+                <span class="feature-name">风暴预警</span>
+              </div>
+              <div class="feature-item" @click="openFeature('storm-effects')">
+                <span class="feature-icon">⚡</span>
+                <span class="feature-name">风暴特效</span>
+              </div>
+              <div class="feature-item" @click="openFeature('damage-system')">
+                <span class="feature-icon">🔧</span>
+                <span class="feature-name">损伤系统</span>
+              </div>
+              <div class="feature-item" @click="openFeature('storm-rewards')">
+                <span class="feature-icon">💎</span>
+                <span class="feature-name">风暴奖励</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PvP战斗系统 -->
+          <div class="sidebar-section">
+            <div class="section-title" @click="toggleSection('pvp')">
+              <span class="section-icon">⚔️</span>
+              <span class="section-name">PvP战斗</span>
+              <span class="expand-icon">{{ expandedSections.pvp ? '▼' : '▶' }}</span>
+            </div>
+            <div class="section-content" v-if="expandedSections.pvp">
+              <div class="feature-item" @click="openFeature('multi-weapon')">
+                <span class="feature-icon">🗡️</span>
+                <span class="feature-name">多武器系统</span>
+              </div>
+              <div class="feature-item" @click="openFeature('poison-attack')">
+                <span class="feature-icon">☠️</span>
+                <span class="feature-name">毒素攻击</span>
+              </div>
+              <div class="feature-item" @click="openFeature('ship-capture')">
+                <span class="feature-icon">🚢</span>
+                <span class="feature-name">船只占领</span>
+              </div>
+              <div class="feature-item" @click="openFeature('battle-log')">
+                <span class="feature-icon">📋</span>
+                <span class="feature-name">战斗日志</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 增强交易系统 -->
+          <div class="sidebar-section">
+            <div class="section-title" @click="toggleSection('trading')">
+              <span class="section-icon">🏪</span>
+              <span class="section-name">交易系统</span>
+              <span class="expand-icon">{{ expandedSections.trading ? '▼' : '▶' }}</span>
+            </div>
+            <div class="section-content" v-if="expandedSections.trading">
+              <div class="feature-item" @click="openFeature('trade-hall')">
+                <span class="feature-icon">🏛️</span>
+                <span class="feature-name">交易大厅</span>
+              </div>
+              <div class="feature-item" @click="openFeature('private-trade')">
+                <span class="feature-icon">🤝</span>
+                <span class="feature-name">私人交易</span>
+              </div>
+              <div class="feature-item" @click="openFeature('friend-system')">
+                <span class="feature-icon">👥</span>
+                <span class="feature-name">好友系统</span>
+              </div>
+              <div class="feature-item" @click="openFeature('reputation')">
+                <span class="feature-icon">⭐</span>
+                <span class="feature-name">声誉系统</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 天赋系统 -->
+          <div class="sidebar-section">
+            <div class="section-title" @click="toggleSection('talents')">
+              <span class="section-icon">✨</span>
+              <span class="section-name">天赋系统</span>
+              <span class="expand-icon">{{ expandedSections.talents ? '▼' : '▶' }}</span>
+            </div>
+            <div class="section-content" v-if="expandedSections.talents">
+              <div class="feature-item" @click="openFeature('talent-tree')">
+                <span class="feature-icon">🌳</span>
+                <span class="feature-name">天赋树</span>
+              </div>
+              <div class="feature-item" @click="openFeature('unlock-conditions')">
+                <span class="feature-icon">🔓</span>
+                <span class="feature-name">解锁条件</span>
+              </div>
+              <div class="feature-item" @click="openFeature('mysterious-abilities')">
+                <span class="feature-icon">🎭</span>
+                <span class="feature-name">神秘能力</span>
+              </div>
+              <div class="feature-item" @click="openFeature('talent-points')">
+                <span class="feature-icon">💫</span>
+                <span class="feature-name">天赋点数</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- 船舱第一视角环境 -->
     <ShipCabin
       ref="shipCabinRef"
@@ -119,6 +296,17 @@ const shipCabinRef = ref(null)
 const textAdventureRef = ref(null)
 const activeRightTab = ref('chat')
 
+// 侧边栏相关状态
+const sidebarExpanded = ref(false)
+const expandedSections = ref({
+  island: false,
+  astrology: false,
+  storm: false,
+  pvp: false,
+  trading: false,
+  talents: false
+})
+
 // 生命周期
 onMounted(() => {
   // 如果没有玩家数据，重定向到主页
@@ -213,6 +401,106 @@ const toggleCabin = () => {
   }
 }
 
+// 侧边栏相关方法
+const expandSidebar = () => {
+  sidebarExpanded.value = true
+}
+
+const collapseSidebar = () => {
+  sidebarExpanded.value = false
+  // 收起时也收起所有展开的分类
+  Object.keys(expandedSections.value).forEach(key => {
+    expandedSections.value[key] = false
+  })
+}
+
+const toggleSection = (section) => {
+  expandedSections.value[section] = !expandedSections.value[section]
+}
+
+const openFeature = (feature) => {
+  console.log('打开功能:', feature)
+  ElMessage.info(`${feature} 功能开发中...`)
+
+  // 这里可以添加具体的功能实现
+  switch (feature) {
+    case 'island-map':
+      ElMessage.info('🏝️ 交互式岛屿地图功能开发中...')
+      break
+    case 'resource-collect':
+      ElMessage.info('🥥 资源收集系统开发中...')
+      break
+    case 'tool-craft':
+      ElMessage.info('🪓 工具制作系统开发中...')
+      break
+    case 'treasure-hunt':
+      ElMessage.info('📦 宝箱探索功能开发中...')
+      break
+    case 'sea-map':
+      ElMessage.info('🌊 海域地图功能开发中...')
+      break
+    case 'spy-ships':
+      ElMessage.info('👁️ 船只窥探功能开发中...')
+      break
+    case 'prophecy':
+      ElMessage.info('⭐ 预言系统开发中...')
+      break
+    case 'crystal-ball':
+      ElMessage.info('🔮 水晶球功能开发中...')
+      break
+    case 'storm-warning':
+      ElMessage.info('⚠️ 风暴预警系统开发中...')
+      break
+    case 'storm-effects':
+      ElMessage.info('⚡ 风暴特效系统开发中...')
+      break
+    case 'damage-system':
+      ElMessage.info('🔧 损伤系统开发中...')
+      break
+    case 'storm-rewards':
+      ElMessage.info('💎 风暴奖励系统开发中...')
+      break
+    case 'multi-weapon':
+      ElMessage.info('🗡️ 多武器系统开发中...')
+      break
+    case 'poison-attack':
+      ElMessage.info('☠️ 毒素攻击系统开发中...')
+      break
+    case 'ship-capture':
+      ElMessage.info('🚢 船只占领系统开发中...')
+      break
+    case 'battle-log':
+      ElMessage.info('📋 战斗日志系统开发中...')
+      break
+    case 'trade-hall':
+      ElMessage.info('🏛️ 交易大厅功能开发中...')
+      break
+    case 'private-trade':
+      ElMessage.info('🤝 私人交易系统开发中...')
+      break
+    case 'friend-system':
+      ElMessage.info('👥 好友系统开发中...')
+      break
+    case 'reputation':
+      ElMessage.info('⭐ 声誉系统开发中...')
+      break
+    case 'talent-tree':
+      ElMessage.info('🌳 天赋树系统开发中...')
+      break
+    case 'unlock-conditions':
+      ElMessage.info('🔓 解锁条件系统开发中...')
+      break
+    case 'mysterious-abilities':
+      ElMessage.info('🎭 神秘能力系统开发中...')
+      break
+    case 'talent-points':
+      ElMessage.info('💫 天赋点数系统开发中...')
+      break
+    default:
+      ElMessage.info('功能开发中...')
+  }
+}
+
 // 处理选择记录
 const handleChoiceMade = (choiceData) => {
   // 记录到聊天面板
@@ -239,6 +527,143 @@ const handleChoiceMade = (choiceData) => {
 </script>
 
 <style lang="scss" scoped>
+// 移动侧边栏样式
+.mobile-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 60px;
+  height: 100vh;
+  background: rgba(0, 20, 40, 0.95);
+  border-right: 2px solid #00ff00;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  overflow: hidden;
+
+  &.expanded {
+    width: 350px;
+  }
+
+  .sidebar-toggle {
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    color: #00ff00;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  .sidebar-content {
+    padding: 60px 20px 20px 20px;
+    height: 100%;
+    overflow-y: auto;
+
+    .sidebar-header {
+      margin-bottom: 20px;
+
+      h3 {
+        color: #00ff00;
+        font-size: 1.1rem;
+        margin: 0;
+        text-align: center;
+        border-bottom: 1px solid #00ff00;
+        padding-bottom: 10px;
+      }
+    }
+
+    .sidebar-sections {
+      .sidebar-section {
+        margin-bottom: 15px;
+        border: 1px solid rgba(0, 255, 0, 0.3);
+        border-radius: 5px;
+        overflow: hidden;
+
+        .section-title {
+          background: rgba(0, 255, 0, 0.1);
+          padding: 12px 15px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          transition: all 0.2s ease;
+
+          &:hover {
+            background: rgba(0, 255, 0, 0.2);
+          }
+
+          .section-icon {
+            font-size: 1.2rem;
+          }
+
+          .section-name {
+            flex: 1;
+            color: #00ff00;
+            font-weight: bold;
+            font-size: 0.9rem;
+          }
+
+          .expand-icon {
+            color: #00ff00;
+            font-size: 0.8rem;
+          }
+        }
+
+        .section-content {
+          background: rgba(0, 0, 0, 0.3);
+
+          .feature-item {
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid rgba(0, 255, 0, 0.1);
+
+            &:hover {
+              background: rgba(0, 255, 0, 0.1);
+              transform: translateX(5px);
+            }
+
+            &:last-child {
+              border-bottom: none;
+            }
+
+            .feature-icon {
+              font-size: 1rem;
+            }
+
+            .feature-name {
+              color: #ffffff;
+              font-size: 0.85rem;
+              opacity: 0.9;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // 滚动条样式
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 0, 0.5);
+    border-radius: 3px;
+
+    &:hover {
+      background: rgba(0, 255, 0, 0.7);
+    }
+  }
+}
+
 .game-container {
   min-height: 100vh;
   position: relative;
