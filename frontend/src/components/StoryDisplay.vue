@@ -58,18 +58,19 @@
 
     <!-- 选择区域 -->
     <div class="choices-section" v-if="currentStory && !currentStory.isEnding">
-      <h3 class="choices-title">你的选择：</h3>
+      <h3 class="choices-title">你的选择：<span class="choice-hint">（单击选中，双击执行）</span></h3>
       
       <div class="choices-list">
-        <div 
-          v-for="(choice, index) in availableChoices" 
+        <div
+          v-for="(choice, index) in availableChoices"
           :key="choice.id"
           class="choice-item"
-          :class="{ 
+          :class="{
             'disabled': !canMakeChoice(choice),
-            'selected': selectedChoice === choice.id 
+            'selected': selectedChoice === choice.id
           }"
           @click="selectChoice(choice)"
+          @dblclick="executeChoice(choice)"
         >
           <div class="choice-content">
             <div class="choice-text">
@@ -259,8 +260,23 @@ const selectChoice = (choice) => {
     ElMessage.warning('不满足选择条件')
     return
   }
-  
+
   selectedChoice.value = choice.id
+}
+
+// 双击直接执行选择
+const executeChoice = async (choice) => {
+  if (!canMakeChoice(choice)) {
+    ElMessage.warning('不满足选择条件')
+    return
+  }
+
+  if (makingChoice.value) {
+    return // 防止重复点击
+  }
+
+  selectedChoice.value = choice.id
+  await confirmChoice()
 }
 
 const canMakeChoice = (choice) => {
@@ -463,6 +479,13 @@ const startNewAdventure = () => {
     color: #333;
     font-size: 1.2rem;
     font-weight: bold;
+
+    .choice-hint {
+      font-size: 0.8rem;
+      color: #666;
+      font-weight: normal;
+      margin-left: 8px;
+    }
   }
   
   .choices-list {
@@ -483,12 +506,29 @@ const startNewAdventure = () => {
       cursor: pointer;
       transition: all 0.3s ease;
       background: rgba(0, 40, 80, 0.8);
+      position: relative;
+
+      // 双击提示
+      &::after {
+        content: '双击执行';
+        position: absolute;
+        top: 4px;
+        right: 8px;
+        font-size: 10px;
+        color: rgba(102, 255, 204, 0.6);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
       
       &:hover:not(.disabled) {
         border-color: #1E90FF;
         background: rgba(30, 144, 255, 0.15);
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(30, 144, 255, 0.3);
+
+        &::after {
+          opacity: 1;
+        }
       }
       
       &.selected {
