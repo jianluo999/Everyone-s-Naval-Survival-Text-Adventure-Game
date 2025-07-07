@@ -59,6 +59,9 @@ public class GameState {
     
     @Column(nullable = false)
     private Integer maxActionsPerDay = 10; // 每日最大行动次数
+
+    @Column(nullable = false)
+    private Boolean needsDailyRecovery = false; // 是否需要每日恢复
     
     @PreUpdate
     public void preUpdate() {
@@ -67,11 +70,17 @@ public class GameState {
     
     // 时间推进方法
     public void advanceTime(int hours) {
+        int oldDay = this.currentDay;
         this.currentHour += hours;
         while (this.currentHour >= 24) {
             this.currentHour -= 24;
             this.currentDay++;
             this.actionsToday = 0; // 新的一天重置行动次数
+        }
+
+        // 如果跨天了，标记需要恢复
+        if (this.currentDay > oldDay) {
+            this.needsDailyRecovery = true;
         }
     }
     

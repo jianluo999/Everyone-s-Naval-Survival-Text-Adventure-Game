@@ -215,6 +215,12 @@ public class GameService {
         // 处理故事特殊效果（理智值变化等）
         processStoryEffects(player, nextStoryId);
 
+        // 检查是否需要每日恢复
+        if (gameState.getNeedsDailyRecovery()) {
+            applyDailyRecovery(player, gameState);
+            gameState.setNeedsDailyRecovery(false);
+        }
+
         // 应用每日消耗
         applyDailyConsumption(player, gameState);
 
@@ -414,6 +420,51 @@ public class GameService {
         player.setEnergy(Math.max(0, player.getEnergy() - energyCost));
     }
     
+    /**
+     * 应用每日恢复
+     */
+    public void applyDailyRecovery(Player player, GameState gameState) {
+        logger.info("🌅 [SERVICE] 应用每日恢复 - 玩家: '{}', 第{}天", player.getName(), gameState.getCurrentDay());
+
+        // 精力恢复 (恢复30-50点)
+        int energyRecovery = 30 + (int)(Math.random() * 21);
+        player.setEnergy(Math.min(player.getMaxEnergy(), player.getEnergy() + energyRecovery));
+        logger.info("⚡ [SERVICE] 精力恢复 - 玩家: '{}', 恢复: {}点, 当前: {}/{}",
+                   player.getName(), energyRecovery, player.getEnergy(), player.getMaxEnergy());
+
+        // 健康恢复 (恢复10-20点)
+        int healthRecovery = 10 + (int)(Math.random() * 11);
+        player.setHealth(Math.min(player.getMaxHealth(), player.getHealth() + healthRecovery));
+        logger.info("❤️ [SERVICE] 健康恢复 - 玩家: '{}', 恢复: {}点, 当前: {}/{}",
+                   player.getName(), healthRecovery, player.getHealth(), player.getMaxHealth());
+
+        // 理智恢复 (恢复5-15点)
+        int sanityRecovery = 5 + (int)(Math.random() * 11);
+        player.setSanity(Math.min(player.getMaxSanity(), player.getSanity() + sanityRecovery));
+        logger.info("🧠 [SERVICE] 理智恢复 - 玩家: '{}', 恢复: {}点, 当前: {}/{}",
+                   player.getName(), sanityRecovery, player.getSanity(), player.getMaxSanity());
+
+        // 饥饿和口渴恢复 (如果有食物和水)
+        Ship ship = player.getShip();
+        if (ship != null) {
+            if (ship.getFood() > 0) {
+                int hungerRecovery = 20 + (int)(Math.random() * 21);
+                player.setHunger(Math.min(player.getMaxHunger(), player.getHunger() + hungerRecovery));
+                ship.setFood(Math.max(0, ship.getFood() - 1));
+                logger.info("🍖 [SERVICE] 饥饿恢复 - 玩家: '{}', 恢复: {}点, 消耗食物1单位",
+                           player.getName(), hungerRecovery);
+            }
+
+            if (ship.getWater() > 0) {
+                int thirstRecovery = 25 + (int)(Math.random() * 21);
+                player.setThirst(Math.min(player.getMaxThirst(), player.getThirst() + thirstRecovery));
+                ship.setWater(Math.max(0, ship.getWater() - 1));
+                logger.info("💧 [SERVICE] 口渴恢复 - 玩家: '{}', 恢复: {}点, 消耗淡水1单位",
+                           player.getName(), thirstRecovery);
+            }
+        }
+    }
+
     /**
      * 应用每日消耗
      */
