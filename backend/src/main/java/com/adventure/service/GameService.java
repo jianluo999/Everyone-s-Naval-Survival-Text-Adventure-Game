@@ -194,17 +194,8 @@ public class GameService {
 
         // 更新游戏状态
 
-        // 检查是否可以执行行动
-        if (!gameState.performAction()) {
-            logger.warn("⏰ [SERVICE] 今日行动次数已满 - 玩家: '{}'", playerName);
-            throw new RuntimeException("今日行动次数已满，请等待明天");
-        }
-
-        // 推进时间（每个选择消耗1-3小时）
-        int timeAdvance = 1 + (int)(Math.random() * 3);
-        gameState.advanceTime(timeAdvance);
-        logger.info("⏰ [SERVICE] 时间推进 - {}小时, 当前时间: 第{}天 {}时",
-                   timeAdvance, gameState.getCurrentDay(), gameState.getCurrentHour());
+        // 故事选择不消耗行动次数，不推进时间，不应用每日消耗
+        // 只更新故事状态和处理故事特殊效果
 
         gameState.setCurrentStoryId(nextStoryId);
         gameState.setCurrentChapter(nextStory.getChapter());
@@ -215,14 +206,7 @@ public class GameService {
         // 处理故事特殊效果（理智值变化等）
         processStoryEffects(player, nextStoryId);
 
-        // 检查是否需要每日恢复
-        if (gameState.getNeedsDailyRecovery()) {
-            applyDailyRecovery(player, gameState);
-            gameState.setNeedsDailyRecovery(false);
-        }
-
-        // 应用每日消耗
-        applyDailyConsumption(player, gameState);
+        // 故事选择不触发每日恢复和消耗机制
 
         // 检查是否游戏结束
         if (nextStory.getIsEnding()) {
@@ -414,10 +398,9 @@ public class GameService {
             player.setExperience(player.getExperience() + choice.getExperienceReward());
             checkLevelUp(player);
         }
-        
-        // 选择会消耗一定精力
-        int energyCost = 5 + (int)(Math.random() * 10);
-        player.setEnergy(Math.max(0, player.getEnergy() - energyCost));
+
+        // 故事选择不应该消耗精力 - 只有特定的行动（如钓鱼、探索等）才消耗精力
+        // 移除了自动精力消耗逻辑
     }
     
     /**
