@@ -87,17 +87,17 @@
                 size="small"
                 effect="dark"
               >
-                <el-icon><Coin /></el-icon>
+                <el-icon><Money /></el-icon>
                 -{{ choice.goldCost }}
               </el-tag>
-              
-              <el-tag 
-                v-if="choice.goldReward > 0" 
-                type="success" 
+
+              <el-tag
+                v-if="choice.goldReward > 0"
+                type="success"
                 size="small"
                 effect="dark"
               >
-                <el-icon><Coin /></el-icon>
+                <el-icon><Money /></el-icon>
                 +{{ choice.goldReward }}
               </el-tag>
               
@@ -110,10 +110,10 @@
                 <el-icon><Heart /></el-icon>
                 -{{ choice.healthCost }}
               </el-tag>
-              
-              <el-tag 
-                v-if="choice.healthReward > 0" 
-                type="success" 
+
+              <el-tag
+                v-if="choice.healthReward > 0"
+                type="success"
                 size="small"
                 effect="dark"
               >
@@ -143,6 +143,7 @@
             {{ index + 1 }}
           </div>
         </div>
+      </div>
       </div>
 
       <!-- 死路处理：没有选择时显示结束冒险选项 -->
@@ -200,7 +201,7 @@ import { ref, computed, watch, nextTick, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useGameStore } from '@/stores/game'
 import { ElMessage, ElMessageBox } from 'element-plus'
-import { Star, Lock, Check, Coin, Warning, InfoFilled, Trophy } from '@element-plus/icons-vue'
+import { Star, Lock, Check, Money, Warning, InfoFilled, Trophy, InfoFilled as Heart } from '@element-plus/icons-vue'
 
 const router = useRouter()
 const gameStore = useGameStore()

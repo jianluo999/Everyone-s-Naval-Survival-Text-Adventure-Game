@@ -120,7 +120,7 @@
       <!-- 经验和金币 -->
       <div class="resources">
         <div class="resource-item">
-          <el-icon><Coin /></el-icon>
+          <el-icon><Money /></el-icon>
           <span>金币：{{ player.gold }}</span>
         </div>
         <div class="resource-item">
@@ -149,6 +149,15 @@
 <script setup>
 import { computed } from 'vue'
 import { useGameStore } from '@/stores/game'
+import {
+  User,
+  Warning,
+  InfoFilled,
+  Money,
+  TrendCharts,
+  Ship,
+  Timer
+} from '@element-plus/icons-vue'
 
 const gameStore = useGameStore()
 const player = computed(() => gameStore.player)

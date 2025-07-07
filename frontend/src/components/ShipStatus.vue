@@ -156,6 +156,16 @@
 <script setup>
 import { computed } from 'vue'
 import { useGameStore } from '@/stores/game'
+import {
+  Ship,
+  Flag,
+  Timer,
+  Box,
+  Sword,
+  Shield,
+  Connection,
+  Warning
+} from '@element-plus/icons-vue'
 
 const gameStore = useGameStore()
 const ship = computed(() => gameStore.player?.ship)

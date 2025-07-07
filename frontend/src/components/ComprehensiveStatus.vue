@@ -179,7 +179,7 @@
       <div class="bottom-info">
         <div class="resource-info">
           <span class="resource-item">
-            <el-icon><Coin /></el-icon>
+            <el-icon><Money /></el-icon>
             {{ player.gold }}金币
           </span>
           <span class="resource-item">
@@ -239,7 +239,7 @@
 import { ref, computed } from 'vue'
 import { useGameStore } from '@/stores/game'
 import { ElMessage } from 'element-plus'
-import { User, Ship, Coin, TrophyBase, Timer, Box, Operation, Clock } from '@element-plus/icons-vue'
+import { User, Ship, Money, TrophyBase, Timer, Box, Operation, Clock } from '@element-plus/icons-vue'
 import AttributeRadar from './AttributeRadar.vue'
 
 const gameStore = useGameStore()
