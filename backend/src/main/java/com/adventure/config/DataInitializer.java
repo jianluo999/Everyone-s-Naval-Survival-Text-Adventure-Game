@@ -151,6 +151,22 @@ public class DataInitializer implements CommandLineRunner {
         story1_3.setIsEnding(false);
         storyRepository.save(story1_3);
 
+        // 第四个故事：观察海况
+        Story story1_4 = new Story();
+        story1_4.setStoryId("story_1_4");
+        story1_4.setTitle("观察海况");
+        story1_4.setContent("你走到窗边，透过破旧的玻璃窗向外望去。\n\n" +
+                "外面是一望无际的蔚蓝大海，海面平静得出奇，没有一丝波澜。\n" +
+                "远处的天空呈现出诡异的深紫色，仿佛永远不会天亮。\n\n" +
+                "你注意到海水的颜色有些不对劲，虽然看起来是蔚蓝色，但仔细观察会发现其中似乎有什么东西在缓缓流动。\n\n" +
+                "更令人不安的是，你没有看到任何其他的船只或陆地，这里就像是世界的尽头。\n\n" +
+                "一阵寒意从脊背升起，你意识到自己真的被困在了这个陌生的世界中。");
+        story1_4.setChapter(1);
+        story1_4.setScene(4);
+        story1_4.setStoryType("OBSERVATION");
+        story1_4.setIsEnding(false);
+        storyRepository.save(story1_4);
+
         // 第五个故事：世界聊天
         Story story1_5 = new Story();
         story1_5.setStoryId("story_1_5");
@@ -807,6 +823,47 @@ public class DataInitializer implements CommandLineRunner {
         choice1_16_1.setIsAvailable(true);
         choice1_16_1.setStoryId("story_1_16");
         choiceRepository.save(choice1_16_1);
+
+        // story_1_17 的选择（第一次噩梦后）
+        Choice choice1_17_1 = new Choice();
+        choice1_17_1.setText("继续战斗，彻底消灭骷髅");
+        choice1_17_1.setNextStoryId("story_1_18");
+        choice1_17_1.setGoldCost(0);
+        choice1_17_1.setGoldReward(0);
+        choice1_17_1.setHealthCost(5);
+        choice1_17_1.setHealthReward(0);
+        choice1_17_1.setExperienceReward(50);
+        choice1_17_1.setRequirements("");
+        choice1_17_1.setIsAvailable(true);
+        choice1_17_1.setStoryId("story_1_17");
+        choiceRepository.save(choice1_17_1);
+
+        // story_1_18 的选择（恐怖夜晚结束后）
+        Choice choice1_18_1 = new Choice();
+        choice1_18_1.setText("开始新的一天，继续冒险");
+        choice1_18_1.setNextStoryId("story_1_19");
+        choice1_18_1.setGoldCost(0);
+        choice1_18_1.setGoldReward(0);
+        choice1_18_1.setHealthCost(0);
+        choice1_18_1.setHealthReward(20);
+        choice1_18_1.setExperienceReward(100);
+        choice1_18_1.setRequirements("");
+        choice1_18_1.setIsAvailable(true);
+        choice1_18_1.setStoryId("story_1_18");
+        choiceRepository.save(choice1_18_1);
+
+        Choice choice1_18_2 = new Choice();
+        choice1_18_2.setText("查看航海日志，总结经验");
+        choice1_18_2.setNextStoryId("story_1_19");
+        choice1_18_2.setGoldCost(0);
+        choice1_18_2.setGoldReward(10);
+        choice1_18_2.setHealthCost(0);
+        choice1_18_2.setHealthReward(10);
+        choice1_18_2.setExperienceReward(80);
+        choice1_18_2.setRequirements("");
+        choice1_18_2.setIsAvailable(true);
+        choice1_18_2.setStoryId("story_1_18");
+        choiceRepository.save(choice1_18_2);
     }
 
     private void createMonsters() {

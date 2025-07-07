@@ -12,7 +12,7 @@ const api = axios.create({
 // 请求拦截器
 api.interceptors.request.use(
   (config) => {
-    console.log('发送请求:', config.method?.toUpperCase(), config.url)
+    console.log('发送请求:', config.method?.toUpperCase(), config.url, config.data)
     return config
   },
   (error) => {
@@ -28,7 +28,7 @@ api.interceptors.response.use(
     return response.data
   },
   (error) => {
-    console.error('响应错误:', error)
+    console.error('响应错误:', error.response || error)
     
     let errorMessage = '网络错误，请稍后重试'
     
@@ -41,13 +41,13 @@ api.interceptors.response.use(
           errorMessage = data.error || '请求参数错误'
           break
         case 404:
-          errorMessage = '资源不存在'
+          errorMessage = data.message || '资源不存在'
           break
         case 500:
-          errorMessage = '服务器内部错误'
+          errorMessage = data.message || '服务器内部错误'
           break
         default:
-          errorMessage = data.error || `服务器错误 (${status})`
+          errorMessage = data.message || `服务器错误 (${status})`
       }
     } else if (error.request) {
       // 请求已发送但没有收到响应
