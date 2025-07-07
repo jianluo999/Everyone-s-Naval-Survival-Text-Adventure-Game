@@ -167,7 +167,7 @@
 </template>
 
 <script setup>
-import { ref, computed, watch, nextTick } from 'vue'
+import { ref, computed, watch, nextTick, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useGameStore } from '@/stores/game'
 import { ElMessage } from 'element-plus'
@@ -331,6 +331,52 @@ const startNewAdventure = () => {
   gameStore.resetGame()
   router.push('/')
 }
+
+// 组件挂载时添加额外的文本选择保护
+onMounted(() => {
+  // 禁用文本选择的额外保护
+  const preventSelection = (e) => {
+    if (e.target.closest('.story-display')) {
+      e.preventDefault()
+      return false
+    }
+  }
+
+  const preventDrag = (e) => {
+    if (e.target.closest('.story-display')) {
+      e.preventDefault()
+      return false
+    }
+  }
+
+  const preventContextMenu = (e) => {
+    if (e.target.closest('.story-text')) {
+      e.preventDefault()
+      return false
+    }
+  }
+
+  // 添加事件监听器
+  document.addEventListener('selectstart', preventSelection)
+  document.addEventListener('dragstart', preventDrag)
+  document.addEventListener('contextmenu', preventContextMenu)
+
+  // 禁用键盘选择快捷键
+  document.addEventListener('keydown', (e) => {
+    if (e.target.closest('.story-display')) {
+      // 禁用 Ctrl+A (全选)
+      if (e.ctrlKey && e.key === 'a') {
+        e.preventDefault()
+        return false
+      }
+      // 禁用 Ctrl+C (复制)
+      if (e.ctrlKey && e.key === 'c') {
+        e.preventDefault()
+        return false
+      }
+    }
+  })
+})
 </script>
 
 <style lang="scss" scoped>
@@ -340,6 +386,58 @@ const startNewAdventure = () => {
   flex-direction: column;
   padding: 1.5rem;
   overflow: hidden;
+
+  // 彻底禁用整个组件的文本选择和各种高亮效果
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+
+  // 禁用点击高亮
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none !important;
+
+  // 禁用outline
+  outline: none !important;
+
+  // 禁用所有可能的选择效果
+  &::selection {
+    background: transparent !important;
+    color: transparent !important;
+  }
+
+  &::-moz-selection {
+    background: transparent !important;
+    color: transparent !important;
+  }
+
+  // 确保所有子元素也不会有选择效果
+  * {
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+    outline: none !important;
+
+    &::selection {
+      background: transparent !important;
+      color: transparent !important;
+    }
+
+    &::-moz-selection {
+      background: transparent !important;
+      color: transparent !important;
+    }
+
+    &::selection {
+      background: transparent;
+    }
+
+    &::-moz-selection {
+      background: transparent;
+    }
+  }
 }
 
 .story-header {
@@ -393,19 +491,68 @@ const startNewAdventure = () => {
   overflow-y: auto;
   
   .story-text {
-          .story-paragraphs {
-        .story-paragraph {
-          margin-bottom: 1.2rem;
-          line-height: 1.8;
-          color: #ffffff;
-          font-size: 1rem;
-          text-align: justify;
-          opacity: 0;
-          transform: translateY(20px);
-          text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
-          font-family: 'Consolas', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
-          font-weight: 400;
-          letter-spacing: 0.3px;
+    // 彻底禁用故事内容的文本选择
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+
+    // 禁用点击高亮和各种交互效果
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-touch-callout: none !important;
+
+    // 禁用右键菜单
+    pointer-events: none;
+
+    // 禁用outline和focus
+    outline: none !important;
+
+    // 禁用所有选择效果
+    &::selection {
+      background: transparent !important;
+    }
+
+    &::-moz-selection {
+      background: transparent !important;
+    }
+
+    .story-paragraphs {
+      // 禁用整个段落容器的选择
+      user-select: none !important;
+      -webkit-user-select: none !important;
+      -moz-user-select: none !important;
+      -ms-user-select: none !important;
+      pointer-events: none;
+
+      .story-paragraph {
+        margin-bottom: 1.2rem;
+        line-height: 1.8;
+        color: #ffffff;
+        font-size: 1rem;
+        text-align: justify;
+        opacity: 0;
+        transform: translateY(20px);
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+        font-family: 'Consolas', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
+        font-weight: 400;
+        letter-spacing: 0.3px;
+
+        // 彻底禁用段落的选择和交互
+        user-select: none !important;
+        -webkit-user-select: none !important;
+        -moz-user-select: none !important;
+        -ms-user-select: none !important;
+        -webkit-tap-highlight-color: transparent !important;
+        pointer-events: none;
+
+        // 禁用所有选择效果
+        &::selection {
+          background: transparent !important;
+        }
+
+        &::-moz-selection {
+          background: transparent !important;
+        }
         
         &.animated {
           animation: fadeInUp 1s ease forwards;
@@ -474,6 +621,15 @@ const startNewAdventure = () => {
     margin-bottom: 1.5rem;
     max-height: 300px;
     overflow-y: auto;
+
+    // 禁用整个选择列表的文本选择
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+
+    // 禁用点击高亮
+    -webkit-tap-highlight-color: transparent;
     
     .choice-item {
       display: flex;
@@ -486,6 +642,35 @@ const startNewAdventure = () => {
       transition: all 0.3s ease;
       background: rgba(0, 40, 80, 0.8);
       position: relative;
+
+      // 彻底禁用文本选择和各种高亮效果
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+
+      // 禁用点击高亮
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none;
+      -webkit-appearance: none;
+
+      // 禁用outline
+      outline: none !important;
+
+      // 禁用focus样式
+      &:focus {
+        outline: none !important;
+        box-shadow: none !important;
+      }
+
+      // 禁用所有可能的选择效果
+      &::selection {
+        background: transparent;
+      }
+
+      &::-moz-selection {
+        background: transparent;
+      }
 
       // 双击提示
       &::after {
@@ -509,6 +694,12 @@ const startNewAdventure = () => {
           opacity: 1;
         }
       }
+
+      // 双击时的反馈效果
+      &:active {
+        transform: translateY(0px) scale(0.98);
+        transition: transform 0.1s ease;
+      }
       
       &.selected {
         border-color: #1E90FF;
@@ -531,6 +722,24 @@ const startNewAdventure = () => {
           font-weight: 500;
           line-height: 1.5;
           text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+
+          // 彻底确保选择文本不会被选中
+          user-select: none;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+
+          // 禁用点击高亮
+          -webkit-tap-highlight-color: transparent;
+
+          // 禁用选择效果
+          &::selection {
+            background: transparent;
+          }
+
+          &::-moz-selection {
+            background: transparent;
+          }
         }
         
         .choice-effects {
@@ -538,15 +747,27 @@ const startNewAdventure = () => {
           gap: 0.3rem;
           flex-wrap: wrap;
           margin-bottom: 0.5rem;
+
+          // 禁用选择
+          user-select: none;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
         }
-        
+
         .choice-requirements {
           display: flex;
           align-items: center;
           gap: 0.3rem;
           color: #f56c6c;
           font-size: 0.8rem;
-          
+
+          // 禁用选择
+          user-select: none;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+
           .req-icon {
             font-size: 0.7rem;
           }

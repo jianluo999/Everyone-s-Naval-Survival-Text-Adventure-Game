@@ -1,0 +1,2474 @@
+USE sailing_game;
+SET NAMES utf8mb4;
+
+-- 场景批次 15/17
+-- 包含 500 个场景
+
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_405_3', '第405章 - 苏娜相关', '苏娜查看系统活动日志，上面显示出了这株植物的情报。
+【名称：结晶植物（灌木）】
+【简介：感染结晶病的植物，已转化成结晶体。
+小的结晶植物烧熔聚合后可转化为水晶。
+大的结晶植物砍伐收集后，也可转化成水晶。
+个别结晶植物砍伐后可转化成晶钻。】', 405, 3, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_405_4', '第405章 - 苏娜相关', '-----------
+苏娜读完信息，眼眸微眯，算是明白怎么回事了。
+这里应该是此次远航的终点，一个到处都是水晶和晶钻的特殊岛屿。
+而且土地都结晶化了，只是比较浑浊，隐约可见地里面的一些结晶化的顽石和昆虫以及植物的根须。
+这结晶病不仅感染生命体，连非生命体也会一起感染，已彻底失控。', 405, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_405_5', '第405章 - 苏娜相关', '苏娜忽然有了一丝不妙的感觉，不确定自己是否也被感染了。
+但按常理来说，这里是梦境，即便感染了结晶病应该也不会传播到现实才对。
+苏娜检查自己的面板，和现实里的面板差不多，但因场景特殊除了精神属性外，其他属性经验都暂停了成长。
+状态也是显示的健康。', 405, 5, 'NIGHTMARE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_405_6', '第405章 - 苏娜相关', '苏娜没纠结多久，又撕了一块布裹住手，折下来一小截结晶灌木，习惯性的塞入百宝袋中。
+“对了，没有百宝袋。”
+她懊恼道，把这截灌木丢在地上，朝前走去。
+路边陆续出现一些结晶大树，和之前的灌木一样，也是由水晶构成的，砍伐后可以转换成水晶或者晶钻。', 405, 6, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_405_7', '第405章 - 苏娜相关', '不过因为梦境的关系，这些东西只有研究价值，本体是带不回现实的。
+而且靠得近，不留神的话，还会被锋利的水晶叶片和树枝划伤，必须留意才行。
+走了百余米后，苏娜停下了脚步，因为她也不知道该往哪走，视线严重受限，拿不准方向。
+如果杨逸在就好了，他的三眼估计能看得更远，而且他应该也在这个梦里，只是不确定在哪。', 405, 7, 'NIGHTMARE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_405_8', '第405章 - 关键决策', '苏娜思考了一会，决定先弄一些装备保护自己，在这种环境里行走，很容易被一些结晶化的植物伤到，走也走不快。
+她来到一株小臂粗细的矮树前，利用从雪下面捡起的结晶石块，敲断了所有细小的树枝，只留下了相对较粗的树木主干。
+接着她奋力砸断了这根主干，差不多花了半小时才砸断，远比看起来结实。
+她将收集来的的水晶碎石和水晶矮树的主干拼接在一起，用撕开的裙子和衣服包裹了好几层固定，制作出了一个简易的锤子。', 405, 8, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_405_9', '第405章 - 苏娜相关', '代价就是她的衣服变得破破烂烂了，好在这是梦境，穿的烂一点也无所谓，根本没人看。
+苏娜咬破自己的右手的食指，用血液在这简易锤身上画了个法阵，发动了名为活化兵装的魔法。
+这魔法原本是要用深渊魂石内部的灵魂溶液作画才能发动的，但随着苏娜变成魔女，对魔法的认识加深，使用生灵的血液绘制也能发动这个魔法，只是持续时间短了很多，只有两到三个小时。
+于是一根会自己活动的简易水晶锤被制作了出来，负责开路，敲碎沿途一些拦路的灌木树枝啥的。
+五小时后。', 405, 9, 'NIGHTMARE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_405_10', '第405章 - 重要发现', '苏娜已经是第二次发动活化兵装了，驱使的锤子也经过了改良，比之前更坚固耐用，重量减轻了一些。
+就在前不久，她有了新的发现——一座水晶雕像或者说变成结晶的活人。
+【名称：结晶人】
+【简介：感染结晶病，进入晚期彻底转化成结晶的人类。', 405, 10, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_405_11', '第405章 - 苏娜相关', '他还活着，但已彻底失去了行动力，只有思维仍在运转。
+可转化为水晶甚至晶钻等基础物资使用。】
+----------
+苏娜看完信息，再联系杨逸做梦的状态，怀疑他也感染了结晶病变成了一座活体水晶雕像。', 405, 11, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_405_12', '第405章 - 苏娜相关', '也是因为这个原因，杨逸在梦里才无法行动，没有感官，甚至连时间观念都没了，只剩思绪在运转或者说灵魂封印在水晶雕像内。
+“这难道是死疫？”
+苏娜读过那本死诞会所著、专教人自杀的书，对死疫也有所了解。
+而且杨逸也和她交谈过。
+所以这结晶病，近乎不死的特性，很可能是死疫的亚种，一种让人无法死亡的特殊瘟疫。
+“这种疾病无法治愈，除非消灭传染源.....”', 405, 12, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_405_13', '第405章 - 苏娜相关', '苏娜回忆读过的内容，继续漫无目的的朝前走去。
+...........
+三天后。（梦里）
+苏娜确定时间应该过去了三天，虽然天色没有变过，但她对时间的流逝还是比较敏感的。', 405, 13, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_405_14', '第405章 - 场景14', '她最开始还感到了饥渴，但在三小时前，这股饥渴感已经彻底消失，系统面板的内容也有了改变，她.....发病了。
+状态：结晶病【轻症】『一个大字型人体图案，绿色』，身高165c体重57KG
+虽然不清楚病灶的位置在哪，但她可以肯定，自己的身体的某处已经结晶化，只是目前没有表现出任何异常而已。
+而且发病后，她冥冥之中有了感觉，似乎知道该往哪里走了，那里似乎存在着什么，和自己呼应着。', 405, 14, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_405_15', '第405章 - 重要发现', '苏娜考虑一下，转头朝感觉到的方向走去，因为她已经迷路几天了。
+............
+五天后。
+苏娜发现自己体表第一处结晶化的位点，在右肩膀上。', 405, 15, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_405_16', '第405章 - 场景16', '她没有慌乱，反而很镇定的坐了下来，在雪下摸出一片锋利的结晶杂草叶片充当手术刀，尝试切除该病灶......', 405, 16, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_406_1', '第406章 - 苏娜相关', '“出血量明显下降，痛感迟钝，周边组织出现纤维化，可能是结晶化早期症状......”
+苏娜使用水晶叶片划开了右肩的皮肤，一边尝试切除，一边记录自己看见的异常，全记录在系统日志里。
+一块附有水晶的皮肤被剥离，丢弃，露出下面的骨骼，半透明，发出水晶般的光泽，被肌肉包裹，因血液而泛红。
+“骨骼结晶化程度更深，可能是最先发病的位置。”', 406, 1, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_406_2', '第406章 - 苏娜相关', '苏娜试着活动肩关节，暂时还是能活动，但有些微的异物感伴随疼痛。
+她没有切除这部分骨头，因为手头没有合适的工具，另外处境也不允许她这么做。
+在切除表层的附着结晶的皮肤和部分结晶化、纤维化严重的肌肉后，她用所剩不多的布条包扎了伤口，接着站起。
+伤口并没有消毒，因为没有条件，只能期待她的超再生能力能发挥作用了。
+次日。', 406, 2, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_406_3', '第406章 - 重要发现', '苏娜检查伤口。
+她的超再生能力起了作用，伤口并没有感染，甚至恢复了七八成，长出了新的皮肤。
+新生的皮肤表面并没有结晶化的迹象。
+她进一步检查伤口内部，发现肌肉有结晶化或纤维化的症状，但比之前要轻很多，关节活动无明显异常。
+“及时切除病灶，对病情延缓有一定的效果，新生的组织依旧是血肉组织。
+但不断切除病变组织会对患者的身体和精神造成严重损害，同时对患者肉体的恢复能力要求也很高。”', 406, 3, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_406_4', '第406章 - 重要发现', '苏娜把自己视作实验体，代入医生的视角，将信息记录下来，继续前进。
+如果能用到实验工具就好了，那样可以进行更多的尝试。
+第七天。
+苏娜刚睡醒就发现了不对劲，自己的右手小拇指没有了知觉，也无法弯曲，但从表面看，并没有异常。', 406, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_406_5', '第406章 - 苏娜相关', '她切开皮肤，很快触碰到了硬的异物，那是高度结晶化的肌肉，已经失去弹性和收缩的效果，更不可能拉动骨骼关节做出动作了。
+肌肉下面则是水晶一样的骨骼，可直接透过透明的肌肉和血管看见。
+而且透明的血管里还有红色的血液在流淌，乍一看还挺漂亮的。
+苏娜凝视了一会，接着检查右手其他指关节，包括感受到异常的右腿膝关节以及踝关节。', 406, 5, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_406_6', '第406章 - 苏娜相关', '这些关节处都不同程度的出现了结晶化的迹象，病程发展的速度超出了苏娜的预料，可能和所处的环境有关。
+毕竟自昨天起，周围结晶人的数量就变多了，部分已经破碎，肢体不全，甚至只剩躯干连头颅都没有。
+苏娜简单处理了下，切掉了部分病变的组织，继续前进。
+第十天。
+天空飘下的“雪花”明显变小，可能这里的“雪”是会停的，不然地上的积雪不可能只有二十厘米厚。', 406, 6, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_406_7', '第406章 - 苏娜相关', '视野也好了不少，能见度已经超过百米了，周围到处都是活体水晶雕塑，除了人类以外，还有其他物种。
+像苏娜认识的就有独眼巨人、海妖、吸血鬼、深潜者，除此外还有些叫不出名字的生物，个别体型庞大，身高甚至在二十米以上高，体表布满鳞片。
+但这些看起来很厉害的生物无一例外全都变成了水晶雕塑。
+苏娜来到一名人类水晶雕塑前，微微喘气，有些疲惫。
+这人类雕塑穿有精良的盔甲，手持一柄长剑，但头颅不翼而飞，可能被谁碰掉了，因为断面像是玻璃折断的结晶面。', 406, 7, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_406_8', '第406章 - 关键决策', '而且他的装备无一例外都成了通透的水晶，可以直接取下。
+苏娜拿走了那柄长剑，并不是用作武器，而是因为它的长度很适合用来支撑地面，维持平衡。
+三天过去，她的结晶病进一步恶化了，右臂和右腿已经严重结晶化，无法弯曲，苏娜正考虑是否应该截肢以及截肢是否会让接下来的行动变得艰难。
+毕竟截肢的伤口是需要处理的，不然大失血必然影响接下来的活动。
+而且右腿虽然结晶化了，但依旧可以用于支撑，勉强进行站立。', 406, 8, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_406_9', '第406章 - 场景9', '她查看自己的属性面板。
+状态：结晶病【中症】『一个大字型人体图案，身体多处黄点，右臂和右腿为深黄色』，身高165c体重81KG
+【结晶病：一种传播能力极强可怕的特殊瘟疫，是死疫的亚种，可感染绝大部分实体，对没有实体的生物无感染性。
+感染发病后，身体内脏、骨骼、肌肉、皮肤等结构都会逐步转化成结晶，最终将变成无法动弹的活体水晶雕像。
+精神属性越高，病情发展越慢。
+当前为中症，肉体多处转化为结晶，活动严重受限，敏捷-4，体质+2，感觉迟钝，精力损耗下降，无再需要进食，要害部位受到损伤也不会即死。】
+--------', 406, 9, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_406_10', '第406章 - 苏娜相关', '苏娜把这些信息都记录在系统的聊天频道里，避免遗忘，杵着长剑继续前进，一柄锤子在前方开路，敲碎一些拦路的障碍物。
+忽然，一阵强风袭来，地上像雪一样的晶体颗粒被吹开，露出下面埋藏的残破水晶雕像。
+活体水晶并不止站立的那些，更多的已经倒下、碎裂，变成苏娜脚下凹凸不平的地面。
+所以苏娜其实是在尸堆上行走，尽管这些“水晶尸堆”并没死，也无法作为缝合怪的血肉素材。
+第十二天。', 406, 10, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_406_11', '第406章 - 重要发现', '苏娜发现自己身上的衣服也开始结晶化了。
+“如果我一开始就被感染了，那么非生命实体结晶化大概会在十天后出现。”
+第十四天。
+苏娜的情况更糟糕了，右半边身子几乎完全结晶化，已经蔓延到了右脸。', 406, 11, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_406_12', '第406章 - 场景12', '她现在只能靠着左半边身子，用长剑支撑地面艰难行走，速度很慢。
+而且从今天开始，她有了幻听的症状，总能听见一些含糊不清、意义不明的声音从周边，尤其是脚下传来，像有人在讲话。
+仔细听的话，还能听明白几个词汇。
+“死亡.....我....”
+“时间.......需终结......”
+“还差......一步.....”
+“前进.......”', 406, 12, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_406_13', '第406章 - 苏娜相关', '苏娜甩甩头，大脑有股强烈的晕眩感，理智随之下降。
+她的右眼已经失明，嘴唇也无法开合，甚至不怎么需要呼吸。
+“理智57......”
+她检查自己的理智值，后面索性豁出去了，继续听这些缥缈虚无的声音。
+十几秒后。', 406, 13, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_406_14', '第406章 - 苏娜相关', '她的头发完全变成了白色，周围的结晶微粒，包括一些碎裂的水晶雕像都跟着漂浮了起来。
+而苏娜自己，也离开了地面，以极快的速度往前飘去。', 406, 14, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_407_1', '第407章 - 苏娜相关', '第十五天。
+苏娜这一天飞过的路程怕是比之前五六天走的路程还要远。
+“这岛可真大。”
+苏娜漂浮于空中感慨道。
+光凭感觉，这座结晶岛的直径应该不会低于500公里，估计是魇星号迄今为止遇到过的面积最大的岛屿。
+当然，这可能是未来遇到的，目前魇星号能在前往这座岛的路上。', 407, 1, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_407_2', '第407章 - 苏娜相关', '苏娜撕掉了结晶化的右半边嘴唇，暂时恢复了说话能力，但声音有点怪，且有点漏风。
+“应该提前想办法激活魔女姿态，效率会高得多，反正是梦，杨逸也管不到。”
+她停在距离地面约三十米的高度，俯视地面，寻找可能是杨逸的水晶雕像。
+梦中系统功能受限，地图和聊天功能全锁了，她只能靠肉眼慢慢找。', 407, 2, 'EXPLORATION', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_407_3', '第407章 - 苏娜相关', '不过直觉告诉她，杨逸应该离传染源不远。
+以那个男人的执着劲，感染后肯定会去找传染源，但避免错过，她还是每飞一段距离就扫视一遍地面。
+降雪变小给她提供了便利，视线比之前好了不少，可视范围已经超过了200米。
+停留数秒后，苏娜再度出发，半边身子结晶化对漂浮飞行无影响。', 407, 3, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_407_4', '第407章 - 重要发现', '两小时后。
+苏娜终于找到了目标，在地上发现一尊疑似杨逸的雕像。
+之所以找的这么顺利，是因为苏娜发现了一条被破坏的路径，沿途挡路碍事的水晶全部被敲碎。
+这应该是近期发生的事，因为痕迹较新，没完全被雪覆盖。', 407, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_407_5', '第407章 - 场景5', '而在这个路径的尽头，有一尊与众不同的水晶雕像，长度在三米左右，看脑袋应该是狼人，和杨逸的特征相符。
+之所以说与众不同，是因为这雕像布满裂纹，像被人为刻意破坏过。
+体表结晶也几乎剥光了，露出下面的肌肉骨骼结构，栩栩如生。
+“通过破坏肌肉，重新再生来延缓结晶病的进程，保留移动能力......”', 407, 5, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_407_6', '第407章 - 物品获得', '苏娜很熟悉这具身体，尽管已经结晶化，但只是大致观察了一圈就看明白杨逸做了什么。
+“这不失为一种应对结晶病的策略，可惜治标不治本。”她判断道。
+在雕像的身上还有装备，苏娜看见了自己的百宝袋，绑在右臂上，不过已经结晶化，损失了空间存储的功能，但调用实验室工具的功能还在，可以花钱拿出实验工具。
+苏娜检查后没急着操作，继续打量这尊雕像。', 407, 6, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_407_7', '第407章 - 场景7', '她之所以对这尊雕像的身份存疑，是因为这尊神似杨逸的雕像和真正的杨逸存在显著区别。
+没有三眼，左眼和右眼一致都是结晶化的狼目。
+腹部没有暴食之口，就是正常的小腹，上面有六块隆起的腹肌，已经变成了水晶。
+而且这雕像右手已经断裂，不见踪迹。
+“难道掉地上了？”', 407, 7, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_407_8', '第407章 - 物品获得', '苏娜飘落下来，发动漂浮能力，周围的晶体颗粒全部漂浮起来，跟着漂浮的还有一些常见的瓶瓶罐罐，杂物补给，笔记本电脑，活力沙丁鱼腿和杨逸的装备。
+包括一把疑似炎蛇之牙的水晶短剑，一套拆散的赎罪者水晶铠甲，一把水晶三叉戟，一面冰晶大盾，和一把枪管有裂纹，表面有精美纹饰的古董燧发枪和一些不那么常用的装备。
+“这把枪居然没有结晶化？”
+苏娜不敢置信，接过这把咆哮燧发枪，属性信息和之前一样，拥有普通模式，霰弹模式和咆哮模式三种开火模式，可以正常使用。', 407, 8, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_407_9', '第407章 - 重要发现', '其他武器装备因结晶化的缘故，属性或多或少有了变化，防具受影响较小，而冰晶大盾则因为材质的缘故，也不受结晶化的影响。
+“那把大到夸张的剑呢？”
+苏娜扫视四周，并没有发现断铁巨剑。
+“可能是因为焦黑蠕虫戒指的存储功能失效，不方便携带就落在某处了......”她推测道。', 407, 9, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_407_10', '第407章 - 苏娜相关', '一番观察下来，可以确定这雕像就是杨逸，但局部细节有缺失，基本和污染器官有关。
+梦里的杨逸，似乎不是污染者，原因暂时不清楚。
+“差不多花了我半个月的时间，你可真能藏，能不能听见我说的话？”
+苏娜对结晶化的杨逸道，能动的左手拂过他的脸颊，触感冰凉，但后者没有任何反应，宛若死物。', 407, 10, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_407_11', '第407章 - 苏娜相关', '不过这难不倒苏娜，她现在可以借助百宝袋花钱造出实验工具，而且花的还是梦里的钱，一点都不心疼。
+她直接花费五十万海螺币，账上的钱顿时少了一半多，弄了一台和之前差不多的脑电波检测仪，不过这次是带屏幕的，使用电池单独供电。
+将电机贴在杨逸头上后，苏娜的注意力就转移到了屏幕上，不过上面啥都没显示。
+这有两种可能，
+其一，种脑电波极其微弱，用寻常的仪器已经检测不出，加上肉体已经结晶化，就更难检测了。
+其二，脑电波不存在，不能用这套仪器来监测思维活动。', 407, 11, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_407_12', '第407章 - 苏娜相关', '苏娜思索了一会，忽然左手指尖出现一个高亮度的细小圆球，散发强烈的光和热，周围环境温度则骤降，转眼间凝结出了冰霜。
+这是名为聚能球的原创魔法，通过聚集周围的热量，形成一个高热高破坏力的高能弹丸。
+她把用这颗小球烘烤杨逸的脑袋，直到狼头微微融化，仪器显示屏上终于出现了电信号。
+咻！
+一颗散发高热刺眼亮球被扔了出去，击中附近一座二十几米高的水晶雕像，融化了一半。
+“思维保留，像灵魂一样封印在雕像头颅内，肉体化作结晶，摧毁雕像的头颅说不定可以结束其生命，但不好验证.......”', 407, 12, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_407_13', '第407章 - 重要发现', '苏娜将信息记下，接着开始着手进行其他检测，对象变成了自己。
+她抽了自己些许血液，在病变位置取了些组织，放在显微镜下观察，企图找到致病原，看到底是细菌还是病毒。
+...........
+“没有致病原.....”
+“病变组织和血液里都没有，就像组织在自发的更改自己的生理结构，这也太奇怪了。”', 407, 13, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_407_14', '第407章 - 苏娜相关', '苏娜虽然疑惑，但表情却有了几分兴奋，未结晶化的左脸微微紧绷颤抖。
+“难道这是诅咒而非疾病，但诅咒的话，又会是以何种行驶传播的呢？”
+她自言自语道。
+忽然，苏娜感觉有些冷，好像又风从身后传来。', 407, 14, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_407_15', '第407章 - 苏娜相关', '不知何时，雪已经完全停了，她的视野不再受限，能看出很远。
+鬼使神差下，她看向身后，也就是杨逸看过去的方向。
+“那是....什么？”
+场面过于震撼，苏娜一时不能理解或接受，理智迅速下降，同时结晶病迅速恶化，于数秒之间化作一尊水晶雕像，呼吸也停止了。', 407, 15, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_407_16', '第407章 - 场景16', '视野消失前，她只依稀记得自己看见了一座山，上面插满了各种结晶化的武器。
+其中还包括一条断臂，手里握着一把漆黑、厚重的巨剑，在一众武器中尤为显眼。', 407, 16, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_408_1', '第408章 - 翠西雅相关', '回到现实。
+虽然苏娜在梦里待了差不多半个月，但梦和现实的时间流速完全不一样。
+翠西雅已经从小房子里飞了出来，站在杨逸的额头上，抱着迷你左轮手枪，枪托对准杨逸的鼻子。
+她没忘记杨逸的吩咐，要密切关注苏娜的状态，及时把杨逸喊醒，结束这场梦境。', 408, 1, 'NIGHTMARE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_408_2', '第408章 - 翠西雅相关', '所以翠西雅一直在关注苏娜的状态，查看其船员面板气血和理智的变化。
+“气血97，应该没问题。”
+翠西雅看向苏娜。
+她的右肩出现几道划伤，流出鲜血，但很快结痂止血。', 408, 2, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_408_3', '第408章 - 翠西雅相关', '不过才刚一会的功夫，苏娜的气血又掉了几点，而且是频繁下降，前后加起来掉了17点气血，理智也在缓缓下降。
+她的右臂和右腿不断出现新的伤口，然后愈合，但尚在安全范围内。
+翠西雅有点紧张，盯着苏娜的状态数值，随时准备将杨逸唤醒。
+时间过去了一分钟。', 408, 3, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_408_4', '第408章 - 翠西雅相关', '苏娜的理智下降速度突然变快，一瞬间就从60多理智来到了47点理智，让翠西雅始料未及。
+“完啦！”
+翠西雅想用枪托砸杨逸的鼻尖但砸了个空，身体失去平衡开始不由自主的往上飘去。
+苏娜进入了魔女状态，房间内质量较轻的物体都不由自主的漂浮了起来，包括翠西雅。', 408, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_408_5', '第408章 - 翠西雅相关', '好在翠西雅是有翅膀的，她扇动翅膀踩在杨逸的脸上，对准他的鼻尖就是一记砸击。
+啪。
+声音很小，杨逸也没什么反应。
+可能是因为体质属性高或者脸皮练的比较厚，这一击没对杨逸造成任何伤害，甚至痛感都没有，他压根没醒来。
+“这.....这下该怎么办？”', 408, 5, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_408_6', '第408章 - 翠西雅相关', '翠西雅慌了，一时没了主意，身体再度漂浮起来。
+反观苏娜，状态还是挺稳定的，气血没有进一步降低，理智也没有进一步下降。
+但突然，苏娜的身体骤然紧绷，理智断崖式下跌，直接从47跌到了16，呼吸也停止了。
+这是相当危险的状态，如果再不采取措施只怕会产生不可逆的后果。', 408, 6, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_408_7', '第408章 - 翠西雅相关', '危机之下，翠西雅做出了一个相当危险的举动，对杨逸的耳廓开了一枪。
+噗~
+枪声几乎不可闻。
+但杨逸在开枪的瞬间就醒了过来，右眼睁开，随后耳廓中弹，炸开一片血花，耳朵被子弹削掉了一小部分，连带床板都多了个洞。', 408, 7, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_408_8', '第408章 - 翠西雅相关', '飘在空中开枪的翠西雅被杨逸一把抓住。
+“不.....不是，我....”
+翠西雅被一只大手抓住，心底不由得产生一股恐惧感。
+但实际上，抓她的力道并不大，反而把她从漂浮的状态中解放了。', 408, 8, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_408_9', '第408章 - 翠西雅相关', '“你做的很好。”
+杨逸坐了起来，左耳廓仍在流血，对翠西雅道。
+接着他的注意力就转移到了苏娜身上，毕竟那一头白发，加上周遭漂浮的物体，很难不让人注意。
+“理智12？”', 408, 9, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_408_10', '第408章 - 物品获得', '杨逸查看船员界面，很快掌握了现状。
+他不明白苏娜遭遇了什么，在梦里一直处于面壁坐牢的状态，啥也感受不到，更没见过苏娜。
+但眼下若不采取进一步措施，苏娜只怕会变成污染者。
+他立刻抽出一支安眠魔药注入苏娜的脖子，后者微微一颤，紧绷的身体逐渐放松，睡了过去。
+“呼.......”', 408, 10, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_408_11', '第408章 - 苏娜相关', '杨逸长舒一口气。
+“这样就行了，具体等她睡醒后再问好了。”
+他下床来到床边，将苏娜抱起，在甲板绕了一圈来到隔壁房间，将苏娜安置在床上。
+“还有别的特殊表现么？”', 408, 11, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_408_12', '第408章 - 翠西雅相关', '杨逸询问翠西雅，路上她把苏娜身上的异常表现都如实汇报给了杨逸。
+“没了。
+就最后理智骤降，呼吸也和你一样停了。”翠西雅回道。
+杨逸点头，看向床上的苏娜，右臂和腿上都有不少划开的伤口，可能是在梦里遭遇了袭击。', 408, 12, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_408_13', '第408章 - 苏娜相关', '不过比较奇怪的是，这些伤口都集中在关节活动处。
+他检查了下伤口，总觉得哪里不对。
+这伤不像是怪物抓咬留下的，反倒像被小刀之类的利器割了，创口细，但比较深。
+杨逸一时没头绪，索性就不再想了，反正等苏娜睡醒就知道了。
+房间里漂浮的物体随着一些藤蔓从墙体或地面钻出、捆住，又重新固定在了地上。', 408, 13, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_408_14', '第408章 - 苏娜相关', '他准备离开，但临走前，视线在苏娜的手上稍作停留。
+不知何时起，苏娜有了戴手套的习惯，从不离手，明明最开始时她是不会戴的，除非在进行实验。
+杨逸犹豫了一会，脱下了苏娜的手套。
+“这是.......”', 408, 14, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_408_15', '第408章 - 苏娜相关', '视野里，苏娜的右手食指和中指明显更长，大概比左手手指长了1厘米，且有四个指关节，怎么看怎么怪。
+之所以戴手套不明显，是因为苏娜在手套里动了手脚，在其他手指前段塞了东西，导致差异不明显。
+“魔女的特征。
+女巫成长为魔女会伴有体貌体征的改变，对魔素的亲和率上升，常见的部位有头发、手指、眼睛、鼻子、嘴巴、舌头等。”', 408, 15, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_408_16', '第408章 - 翠西雅相关', '翠西雅适时开口道，并不感到意外，知道魔女的身体会有改变。
+“不过她发生改变的部位还是挺少的，很罕见，可能在刻意回避这种良性畸变。”
+苏娜处在睡眠状态，翠西雅一点也不怕，话也比之前多了很多。
+杨逸听完沉默了一会，帮苏娜戴上手套，之后关门离开了房间。
+.........
+次日。
+魇星号朝既定目标进发，将大型黑暗之核挂在处刑架上，航速一直维持在70节左右。', 408, 16, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_408_17', '第408章 - 翠西雅相关', '不过苏娜还没睡醒，但理智已经提上来了，有八十多点。
+杨逸现在正在钓鱼，看这次深渊之爪能钓到什么，已经等了差不多两个钟头了。
+至于翠西雅，她钓鱼的劲头已经过了，现在无所事事的躺在甲板上，支了一张小床，提供照明。
+又过了一小时。
+猎物终于上钩了，深渊之爪上的绕线轮疯狂旋转。', 408, 17, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_408_18', '第408章 - 场景18', '杨逸一把抓紧，险些被扯下海去，好在反应及时，将钓竿拉起，小臂粗的钓竿被硬生生拉扯着弯曲了近180度，发出咯吱咯吱的响声，仿佛随时都会断裂。
+“什么东西，力气这么大！”
+他疑惑道，感觉钓到的是活物，可能非常大。
+“我还就不信了！”', 408, 18, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_408_19', '第408章 - 场景19', '他变身成狼人，身躯拔高到三米，同时发动肢体强化术，双臂和双腿粗大了一圈，准备将这巨物强行扯上来。
+为维持平衡，不少藤蔓和古骸手臂都缠在了他的身上。
+但即便这样，杨逸感觉自己在力气上还是不如对方，魇星号的航向都歪了，甚至停了下来，甲板倾斜。
+终于，钓竿发出一声清脆的响声，小指粗的线缆居然断了。', 408, 19, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_408_20', '第408章 - 场景20', '杨逸失去平衡，直接躺在了甲板上，魇星号船体剧烈摇晃。
+“这钓竿到底怎么回事，钓了个啥玩意儿？”
+杨逸躺在甲板上自言自语，手臂肌肉已经撕裂，微微颤抖着。', 408, 20, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_409_1', '第409章 - 重要发现', '杨逸检查深渊之爪，发现线缆的确断了，而且是因为不堪重负才断裂的。
+如果想要钓起那个不明物，估计杨逸还得使更大的劲才行，而且钓竿也要升级强化一下。
+经几天的试用，他也明白了这根钓竿信息里的那几个概率是怎么一回事了。
+其实这是一根绝不会空军的钓竿，之所以空军，是因为钓到的东西根本扯不上来，如果不及时切线撒手，甚至可能反被拖到海里去。
+“等以后再试好了。”', 409, 1, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_409_2', '第409章 - 关键决策', '杨逸决定不再强行钓鱼，因为条件不够，还容易把自己的身体弄伤。
+之后如果再遇到这种情况不如直接切线更省事。
+他来到船头，调整好航向。
+老船长正拿着杨逸给的信钓竿钓的不亦乐乎，一旁的木桶已经钓满，里面全是新钓到的鱼，大多可以食用。', 409, 2, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_409_3', '第409章 - 激烈战斗', '杨逸把木桶清理了下，留下长腿沙丁鱼，放回了船长室并换了个新的空桶给老船长，让他继续钓。
+他自己则返回了船长室，丢了几条活的长腿沙丁鱼进生命壁炉，激活了生命之光的属性经验加成。
+接着他喝下成长魔药开始了久违的锻炼，还准备稍后练习一下戟法，为水下战斗做准备。
+..........
+三小时过去。
+“不行不行！', 409, 3, 'BATTLE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_409_4', '第409章 - 翠西雅相关', '老实说，你没有用长柄武器的天赋。
+简单的扎都扎不利索，拖泥带水的。”
+翠西雅拿着一根木棍演示，一手持杆，另一手握棍尾，用力推出，做着显示。
+“眼睛要看准，靠前的手来控制方向，另一只手推杆刺出，练个一千遍，如果都能刺在同一个地方就算你合格了。”
+“额......”', 409, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_409_5', '第409章 - 重要发现', '杨逸有些不忿，看翠西雅一脸神气的模样就想把她抓在手里揉搓一番。
+但为了不打击她的积极性，杨逸还是没选择这么做。
+扎了几百下后，杨逸依旧没找到感觉，但力量是用足了，面前黑木搭的靶子被扎的千疮百孔。
+“这武器真不干脆，还是巨剑好使。”', 409, 5, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_409_6', '第409章 - 场景6', '他吐槽道，感觉长柄武器很难学。
+如果能使用赎罪者铠甲，让铠甲里自带的技巧来使用长柄武器，他可能才能有较快的提升。
+但总的来说，杨逸还是更喜欢巨剑，抡中就是大伤害。
+时间很快来到傍晚，临近晚餐时间了。', 409, 6, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_409_7', '第409章 - 苏娜相关', '但苏娜依旧没睡醒，但理智已经回满了，估计很快就会醒来。
+杨逸结束了一天的练习，自认为戟法有了长足的进步。
+很快，小几跑了过来。
+按理说它这会应该在准备晚饭才对，但并没有，事出反常必有妖。', 409, 7, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_409_8', '第409章 - 场景8', '小几停在杨逸跟前，敬了个礼，然后用电子合成声汇报道：
+“杨逸船长，不好了，船上出现了特殊状况。”
+“特殊状况？”杨逸皱起眉头。
+“是的，你看这个。”
+小几拿出来一个水晶模型，看模样是条长腿沙丁鱼，非常逼真，雕刻之人的手艺恐怕非常高。', 409, 8, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_409_9', '第409章 - 场景9', '“你雕的？”
+“不是，这是今晚准备的食材，但不知怎的，突然变成了水晶。”
+“什么！”
+杨逸一把接过这条长腿沙丁鱼，获得了物品信息。
+【名称：结晶长腿沙丁鱼】
+【简介：感染结晶病，转化成结晶的长腿沙丁鱼，并没有死亡，具备一定的观赏价值，但可能成为结晶病传播的媒介。】
+--------
+“结晶病...？”', 409, 9, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_409_10', '第409章 - 苏娜相关', '杨逸眉毛一挑，诧异道，还是第一次听闻这种疾病。
+“这是死疫的亚种。
+如果出现在这，那说明我们都已经被感染了。”
+苏娜的声音突然从后方传来，她醒了，刚出来恰好看见了这一幕。
+“死疫......', 409, 10, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_409_11', '第409章 - 翠西雅相关', '苏娜，你知道这种病？”
+杨逸顿觉不妙，看了过去。
+“死疫.....”
+翠西雅也跟着紧张起来，连忙飞过来抢走了杨逸手里的结晶长腿沙丁鱼，一脚踹进了海里。
+“完了完了！
+如果感染死疫就彻底完了。
+为何死疫会出现在这，明明应该被限制在死疫之海及其周边才对。”', 409, 11, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_409_12', '第409章 - 苏娜相关', '她碎碎念道，眼中满是恐惧。
+“应该是梦里带过来的，我可能是结晶病致病原的携带者。”
+苏娜解释道，但其他人还是一头雾水。
+............', 409, 12, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_409_13', '第409章 - 苏娜相关', '半小时后。
+苏娜把梦里的情景解释了一遍。
+“我抵达了目标岛屿，感染了结晶病，变成了一座水晶雕塑。
+也是因这个原因，所以我每次做梦都被困在雕塑内，无法感知外界。”杨逸复述道。
+“是这样没错。”', 409, 13, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_409_14', '第409章 - 苏娜相关', '杨逸眉头皱成了麻花。
+早知道梦里是这样一个情况，他就不让苏娜进入了。
+但苏娜如果不进入梦境，魇星号估计会照计划抵达那座有用不完的水晶和晶钻的特殊岛屿，让梦里出现的场景变成现实。
+可现在......
+很难说情况变好了。', 409, 14, 'NIGHTMARE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_409_15', '第409章 - 苏娜相关', '因为他们可能都感染了结晶病，哪怕放弃前往目标岛屿也无济于事，甚至在抵达前，他们就会一个个变成活体雕塑。
+“这是我在梦里对结晶病进行调查得出的一些结论，已经发在了船团频道里。
+小几的话，待会我会以数据的形式传入你的数据库。”
+苏娜依旧冷静，但手在微微颤抖，显然这种情况已超出了她的预期。
+这结晶病竟然能从梦中带出来，说明其致病原绝不是简单的细菌病毒，甚至都不是物质，而是某种更深层次的东西。
+情况似乎比之前更加糟糕了。', 409, 15, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_410_1', '第410章 - 关键决策', '杨逸重新读了一遍苏娜发的记录。
+内容言简意赅，甚至有图片，记录着结晶病从发病到中症，病情逐渐恶化的过程。
+但图片已经变成了马赛克，只有文字信息保留了下来。
+苏娜在其中既扮演医生的角色，又是唯一一例可供参考的病例，其记录难度可想而知。
+“......约三天后发病，十天后病症恶化为中症。
+考虑梦中环境因素带来的影响，现实病程的进展速度应该会比梦里慢。”', 410, 1, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_410_2', '第410章 - 场景2', '杨逸记住了这几个关键的时间节点，检查自己的状态信息。
+当前为健康，并没有发病，应该处于潜伏期。
+其他非生命实体可能在十天后，陆续转化为结晶。
+至于一些精神属性极低的弱小个体，已经先一步发病，转化成了结晶，例如长腿沙丁鱼。', 410, 2, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_410_3', '第410章 - 翠西雅相关', '杨逸掌握了现状，随即进行了一系列布置，安排小几和翠西雅巡视检查整艘船，把感染结晶病的个体收集隔离到船舱的第二层。
+至于丢掉结晶化的东西，杨逸感觉没必要，因为用不了多久，船上就会到处都是结晶化的物品了，甚至整艘船都会结晶化。
+弄完安排，甲板顿时只剩杨逸一人。
+苏娜先一步去了女巫实验室，拿了几条长腿沙丁鱼作为实验用的样本。
+这些鱼大部分都已经发病，但病情和结晶化的程度存在差别。', 410, 3, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_410_4', '第410章 - 关键决策', '总体表现为：体型小、活力弱的病情更严重，但具体情况得等苏娜检查后才能确定。
+杨逸来到船头吹了会晚风，最后还是决定保持既定目标航向不变。
+因为现在那座岛不仅意味着海量晶钻，同时也是现阶段解决结晶病的唯一希望。
+“一座插满武器的山峦.......”', 410, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_410_5', '第410章 - 苏娜相关', '杨逸默念道，右眼眯成一条缝。
+这是有关结晶病源头的唯一线索，苏娜在梦中彻底转化成结晶前，看见了这么个庞然大物，理智迅速下降。
+那东西具体是啥还不好说，但肯定不容易对付，无数感染者都饮恨当场。
+杨逸想了一阵，心底莫名烦闷，只想尽快抵达那座岛。', 410, 5, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_410_6', '第410章 - 场景6', '为了不胡思乱想，他索性拿出断铁巨剑站在船头练习起剑法。
+...........
+时间来到11点，世界聊天开放。
+杨逸刚结束练习不久，擦了擦汗，在船长室里浏览论坛，收集着有关死疫的情报。
+没找有价值的情报，绝大部分玩家都不了解死疫。', 410, 6, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_410_7', '第410章 - 场景7', '他们谈的多的反倒是杨逸上传的那本教人自杀的古怪书籍，因为书里的内容比较猎奇。
+杨逸在发出昨晚编辑好的有关大海肺的帖子后，就立刻联络了宋英文，想借助大报社的情报网，寻求更多有关死疫的情报。
+“宋兄，关于死疫，你那边有没有情报或者说线索？”
+“死疫...？！', 410, 7, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_410_8', '第410章 - 场景8', '难道你也感染了？”
+宋英文很快回信，并附上了夸张惊讶的表情图案。
+他们在通过论坛进行私聊，里面新增了表情包功能，还支持DIY自定义表情。
+“你知道其他感染者？”杨逸察觉端倪，立刻进行追问。
+“算是吧。', 410, 8, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_410_9', '第410章 - 场景9', '有关死疫的情报很少，前段时间钢铁雄心号船长余大伟也来问过类似的问题，具体内容你可以联络他，我这边不方便透露。”
+宋英文并没有明讲，但已经足够了，杨逸转为联络余大伟，双方曾加过好友。
+...........
+无光之海，距离魇星号极其遥远的某处。
+一支船队默默航行着，靠前的几乎都是木质船只，但甲板上很少有人活动，都挂着光之容器。
+后方则是一堆锈迹斑斑的铁甲船，一共十几艘，全部失去了动力，靠前方船只拖动才能航行。
+其中一艘较大的铁甲船上有两人正在交谈。
+“老大，现在还能正常活动的弟兄只剩不到六十人了，再这么下去恐怕......”
+“没事，到时我亲自掌舵。”', 410, 9, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_410_10', '第410章 - 场景10', '“可是......”
+交谈之人正是钢铁兄弟会的团长余大伟和他的副官张志。
+两人均模样大变。
+其中余大伟变成了方方正正的铁甲机器人，右太阳穴嵌入了一个类似螺丝的巨大齿轮，身体棱角分明，厚实又坚硬，几乎没有人类的特征。', 410, 10, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_410_11', '第410章 - 场景11', '他现在正抽着雪茄，看样子大脑和心肺系统并没有完全转化成机械，不然就不会抽烟了。
+反观张志，他除了脸以外，其他部位都变成了机械，尤其耳朵，变成两根伸出老长的天线，末端发着光，似乎正接收着信号。
+但他丧失了语言能力，说话并不会张嘴，而是喉咙部位发光，传出机械合成声。
+他们的锈蚀病都进入了重症阶段，身体高度机械化，机械化程度均在70%以上，身体已经不剩多少人类的零部件了。', 410, 11, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_410_12', '第410章 - 场景12', '而且他们身上的机械部分严重锈蚀，每天都需要饮下一定量的机油，然后除锈才能正常行走活动。
+“发给新世界的样本怎么样了，他们应该回信了吧？”
+余大伟突然提起另一件事。
+“回了，他们刚发来了信息。
+新世界船团的生化实验室对我们提交的生锈样本进行了一系列测试，现已确定它们就是普通的生锈零件，不具备任何特殊性质，也不具备传染性。', 410, 12, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_410_13', '第410章 - 场景13', '他们测试了近10天时间。”张志汇报道。
+这提案是他提出的，也由他负责和新世界船团对接联络。
+但没取得任何成效，因为对方收到的样本根本无传染性，一点用都没有。
+咔、咔、咔。
+余大伟右脑门上的齿轮转动，发出咔咔声。', 410, 13, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_410_14', '第410章 - 场景14', '当他心情烦闷或兴奋时，齿轮都会不由自主的转动，发出不同节奏的声响。
+突然，齿轮的转速陡然加快，余大伟一把将其揪住，反方向猛拧了两圈，靠着这股不协调的刺痛感，迅速镇定下来。
+“老大？”张志立刻询问。
+“独眼发私信过来了，他要求共享有关死疫的情报，他那边可能也中招了。”', 410, 14, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_410_15', '第410章 - 场景15', '余大伟回道，试着起身，但他机械化的身躯不同意。
+“不行不行。
+你赶紧拿些机油和除锈剂过来，我膝关节卡死了，现在站不直。”', 410, 15, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_411_1', '第411章 - 场景1', '魇星号这边。
+杨逸联络了余大伟，交流了一番，获得了有关锈蚀病和蒸汽岛的情报，包括大量感染案例的图片和发病周期的数据。
+他则把有关死疫之海，死诞会，结晶病的情报分享给了余大伟。
+“........如果推测无误，蒸汽岛应该在死疫之海外围。', 411, 1, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_411_2', '第411章 - 场景2', '但结晶岛（暂命名），大概率在死疫之海内部，因为天空不是黑的。”杨逸总结道。
+“嗯，那到时候咱们就可以聚一下，好好喝一个。
+毕竟上次见面时还是在风暴之海，现在都过去近一年的时间了。
+你绝对想象不到我现在是怎么一副鬼样子。”余大伟半开玩笑道。
+“额......”', 411, 2, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_411_3', '第411章 - 场景3', '杨逸不知该怎么回，因为他的形象也不太友好。
+但如果控制好体重，穿好衣服，戴好眼罩，从外表看，杨逸还是很像一名人类的。
+两人又聊了一阵，都保持着相当的默契，没有追问一些细节。
+像蒸汽岛的具体位置、杨逸为何能知道这么多隐秘知识、以及他为何连远方的结晶岛都能了解的这么清楚。
+...........
+“那就这样，到时候我自备酒水，机油我可不喝。”
+“哈哈哈哈哈.....”', 411, 3, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_411_4', '第411章 - 激烈战斗', '杨逸结束联络。
+他整理了下获得的情报，主要是有关锈蚀病的情报。
+这也是死疫亚型的一种，但和结晶病不同，只感染生命体和金属机械，传播面相对较窄。
+但其危险性，可能还在结晶病之上。
+因为锈蚀病会先先一步把有机生命体转化成机械体，导致该生命体的身体素质、除精神外各基础属性全面提升。
+然后因锈蚀和机械化的影响，患者会深陷痛苦之中，理智迅速下降，开始胡乱攻击周围的生命体。
+这样一堆机械疯子如果胡乱游走，恐怕会导致锈蚀病放肆传播，死疫横行。
+反观结晶病，对患者威胁更大，一旦发展成重症，患者就基本失去行动能力了。
+但好处是.....传播途径也会因此切断，只要做好隔离防护，就不会大面积传播。', 411, 4, 'BATTLE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_411_5', '第411章 - 苏娜相关', '杨逸把有关锈蚀病的情报和图片打包转发给苏娜，应该对死疫的研究有帮助。
+刚发完，不断闪烁的私信就引起了他的注意。
+除了一些前来购买店铺商品的玩家外，还有一人的私信格外引人瞩目，发了好几条，来自光辉女神号船长周黛。
+“新鲜的脑浆准备好了吗？”
+“在不在，急急急！”
+“一定要新鲜，打包好，运送过程中不会变质的。”
+.........
+“在吗？”
+“看见尽快回我，我有点饿了。”
+“不对！”
+“上面那句话当我没说！我没说过！撤回！”', 411, 5, 'TRADE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_411_6', '第411章 - 场景6', '杨逸读完信息，脑中浮出一名金发碧眼、身材高挑丰腴的女子守着扭蛋机，等待新鲜脑浆的形象。
+不过面孔他想不起来了，模糊一片，毕竟隔这么久了。
+对了，她好像有两只右脚。
+但这个脑补出的场景，怎么想都觉得奇怪。
+实际上.......
+远在奇迹之海，离圣都不远的海上。
+这里停有一艘通体洁白的巨型三桅帆船，正是许久未曾露面的光辉女神号。
+目前该船已经升到了五级，甲板上有一座哥特式风格装修，神圣庄严的大教堂。', 411, 6, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_411_7', '第411章 - 场景7', '周黛就在教堂内，不过是在侧面的一个小房间里，被她当成卧室在用。
+自从来到奇迹之海后，她的船就很少有亡灵袭扰了，毕竟夜晚的时间缩的很短，亡灵出现的频率很低。
+在周边海域，光照时长已经超过了23小时，当地土著几乎没有晚上的概念。
+房间内。
+一具无头尸体坐在书桌前，看身材应该是名女性，高挑挺拔，穿着洁白的修女服，可惜没有脑袋。
+周围墙壁都是一些玻璃罐，里面泡有头颅，多为人类，但也有一些异魔的头颅。', 411, 7, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_411_8', '第411章 - 翠西雅相关', '如果翠西雅在这一定会大声惊呼：“这是何等邪恶的房间，竟摆满了邪恶容器！”
+不过这不是女巫的房间，而是一名虔诚的光辉女神信徒的房间。
+里面还有祷告声传来。
+“慈悲的光辉女神，我很快就会正式投入您的怀抱了。
+这将是我最后一次破戒。
+今后，我将作为一名光辉圣教的见习修女侍奉您，愿光辉庇佑世人.......”
+书桌上，一颗脑袋对面前花重金购买的镀金光辉女神像虔诚祷告着。', 411, 8, 'TRADE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_411_9', '第411章 - 场景9', '她有着一头璀璨耀眼的金发，一副精致诱人的面孔，和脖子下方伸出的十余根末端为锋利镰刀的触手。
+要是杨逸在这，一眼就会认出，这玩意儿是一只噬脑魔。
+她祈祷完，看了一眼私信。
+杨逸仍没有回信。', 411, 9, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_411_10', '第411章 - 场景10', '于是她又感谢赞颂了一番光辉女神，感觉心灵得到洗涤后，触手伸向不远处的人头罐头，熟练将其打开，伸出一根用于吮吸的触手刺入其耳洞，贪婪的吸食起来。
+这人头似乎没死，脸部表情因痛苦而扭曲，眼球上翻。
+“啊~赞美光辉女神！请原谅我此刻的放纵！”
+周黛吸食完了这颗大脑，浑身战栗般颤抖着，兴奋大喊。', 411, 10, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_411_11', '第411章 - 物品获得', '她已经逐渐适应了自己噬脑魔的身份。
+就像曾经那位女巫说的，时间久后，随着一次次吮吸脑髓，其原本人类的身份会逐渐淡忘，代入噬脑魔的视角，成为一只尊贵的噬脑魔。
+但周黛不同，她有很强的信仰心，自认对光辉女神的信仰不输给任何人。
+而且她还有一副好看的皮囊，这让她和光辉圣教的交涉变得非常顺利，现在已成功加入其中。
+这个不是简单交个钱就能加入的那种廉价信徒，而是缴纳了巨款，通过考核才能获得资格，能进入圣都，成为一名见习修女。
+但玩家的身份是个桎梏。
+所以周黛买了大量隐匿胶囊，光辉女神号也做了布置，重新弄来了一套类似暮光帷幕的装备，可在白天隐匿船身，躲避魔法侦测。', 411, 11, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_411_12', '第411章 - 场景12', '这样她就可以进入圣都进修了。
+今天，或者说这一周，将是她最后放纵的时间，准备吃完这些脑子，然后摒弃杂念，潜心进修。
+不过杨逸这家伙居然还不回信，预定的脑浆可能来不及品尝了。
+正想着，那边终于来信了，交易顺利达成，不过离到货大概还有6天的时间。', 411, 12, 'TRADE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_412_1', '第412章 - 场景1', '杨逸本来是想退钱，拒绝这笔和周黛定下的交易的。
+毕竟有结晶病的隐患在。
+但和余大伟交流后得知，交易运送过去的东西没有传染性，那这个顾虑就没了，可放心交易。
+“估计是系统做了手脚。
+不然感染死疫的玩家报复性交易，会对玩家群体造成难以估量的损害。”', 412, 1, 'TRADE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_412_2', '第412章 - 苏娜相关', '苏娜根据杨逸分享的情报推测道。
+“应该是这样。”
+杨逸表示赞同，站在实验室里，眼睛在苏娜身上乱瞟，尤其集中在右肩膀上。
+“我没发病，如果发病了你在船员界面的状态信息里也看得见，没必要瞄来瞄去的。”', 412, 2, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_412_3', '第412章 - 苏娜相关', '苏娜察觉视线提醒道。
+“不是，我就随便看看而已。”
+杨逸摸着鼻子回道，看向实验桌台。
+上面摆着好几条长腿沙丁鱼，有即将完全结晶化的，身体几乎透明，可见血液在里面循环，和一些半透明的内脏。', 412, 3, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_412_4', '第412章 - 重要发现', '也有四条腿结晶化的，或者鱼头鱼尾结晶化的，个别结晶化的部位被切除，和其他长腿沙丁鱼比较结晶化的进展速度。
+“有新发现么？”杨逸问道。
+“不多。”苏娜罕见摇头，“致病原依旧没找到，但目前可以断定，骨骼是最先发病的部位，血液应该是最后发病的部位。”
+苏娜指着那条即将结晶化的长腿沙丁鱼道。
+“所以我有一个猜想，结晶化的部位可能是按照从硬到软的部位发病，这样就能解释的通为何骨骼线发病。', 412, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_412_5', '第412章 - 重要发现', '同理牙齿，指甲这些部位应该也会先一步发病，到时候可以留意一下。”她进一步补充。
+“这有用吗？”
+杨逸感觉这项发现意义不大，并不能对当前局面提供帮助。
+但苏娜持反对意见。
+“当然有用，科学就是从这些细枝末节处诞生的。
+通过总结归纳自然规律，提出假说，进行验证，便能获得真理。
+科学是一个不断累积、证伪求真的过程。”
+“额......”', 412, 5, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_412_6', '第412章 - 重要发现', '苏娜的话让杨逸哑口无言。
+因为面前这名刚学会炼金不久的魔女，正在一本正经的和他讲述——何为科学。
+而且苏娜接下来证明了这项发现具有意义。
+既然柔软的物体发病慢一些，那适当运动应该也能起到减缓病情进展的效果。', 412, 6, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_412_7', '第412章 - 苏娜相关', '杨逸没和苏娜进一步探讨，他更喜欢直接听结论。
+而且他来实验室另有目的。
+“没处理的脑浆有了么，大概要十瓶的量，有人要买，催得比较急。”
+“有是有了。”', 412, 7, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_412_8', '第412章 - 苏娜相关', '苏娜转身，从一旁的柜子里拿出一排试管架，上面插着十根试管，刚好是十瓶脑浆的量，一共1L。
+“怎么晶闪闪的？”
+杨逸感觉不对，拿起一瓶仔细观察。
+“轻微结晶化了。
+这结晶病发病速度应该和精神属性有关。
+大海肺幼体的脑子不完整，精神属性几乎等于0，所以这会也发病了。”', 412, 8, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_412_9', '第412章 - 苏娜相关', '苏娜发来一张照片，图里是一颗巨大的水晶头颅，额头接有延伸出来的管道，脖子以下则是鱼尾，被固定限制在一个巨大的容器里。
+“发病这么快？”
+杨逸眉毛一挑，深感意外。
+“还有更多的量吗，或者过滤一下？”他看着这几瓶脑浆问道。
+“没了，如果过滤估计会少一瓶，除非治愈结晶病，否则之后都没法获取大海肺幼体的脑浆”
+“这....”', 412, 9, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_412_10', '第412章 - 关键决策', '杨逸犹豫了一会，还是觉得品质更重要，决定退周黛三万海螺币，和她说明一下具体情况。
+........
+“就这个！不用退了，带点残渣也正常，我不忌....我不在意！”
+周黛压根不在意，让杨逸赶紧发来。
+交易顺利达成。
+“周黛该不会变成了噬脑魔吧？”', 412, 10, 'TRADE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_412_11', '第412章 - 场景11', '杨逸皱眉道，感觉可能性不小。
+当初见到她就怪怪的，综合她的一些表现，感觉可能性很大。
+但他和周黛没多少交集，对方做什么，变成啥样也影响不到杨逸，至少目前无影响，没必要去追问这些隐私细节。
+他继续做交易，不过店铺内容要做调整了，估计后面很多商品会陆续断货停售，例如活力沙丁鱼系列产品，变态肌肉生长剂，超级肾上腺素等。
+【清仓大甩卖，最后的存量了，之后准备歇业一段时间，可能只售卖基础物资。】', 412, 11, 'TRADE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_412_12', '第412章 - 物品获得', '杨逸把公告置顶到店铺的一楼，看了眼时间，交易时间也快结束了。
+他账上余额则再来了10,382,787海螺币，足够再买一颗极品强化石并留有盈余了。
+但目前强化装备很难有好的效果，因为装备也会结晶化，可能影响属性。
+唯二不会结晶化的装备估计就只剩咆哮燧发枪和断铁巨剑了，至少在苏娜的梦里，这两把武器没有变成水晶。', 412, 12, 'TRADE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_412_13', '第412章 - 关键决策', '杨逸拿出这两把武器检查了一番，决定待会送去女巫实验室，看能不能弄清楚它们不感染的结晶病的缘由，说不定能起到效果。
+时间紧迫。
+现在这艘船状况还算稳定，但实际只是表象。
+等到船员陆续发病，情况就可能会急转直下了。', 412, 13, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_412_14', '第412章 - 场景14', '杨逸为此发愁忧虑着。
+另外还有一件事令他在意，梦里他虽然变成了水晶雕塑，但身体是没有污染畸变的器官的。
+仔细一想，他梦里的身体似乎都没有过畸变器官，不确定是什么原因导致的。
+难道是噩梦的bug或者缺陷？', 412, 14, 'NIGHTMARE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_412_15', '第412章 - 场景15', '.............
+三天后。
+杨逸的心思已经完全不在店铺经营上了，因为里面的商品基本都停售了。
+女巫实验室内的标本已经陆续转化成了结晶，失去了原本的功能，包括饕餮客的胃、黑鳞小鱼人、火绒蜘蛛女王标本、鼠王头颅、寄生于独眼巨人眼球的脑虫，以及一众异魔器官。', 412, 15, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_412_16', '第412章 - 场景16', '不过活力沙丁鱼树和变种苍白蠕虫尚未发病。
+前者可能是因为是植物的原因，后者估计是因为身体柔软没有骨头，发病慢。
+但发病估计只是时间问题。
+杨逸这些天每天都会巡逻检视整艘船，关注结晶化的进程，同时要求每位船员自查汇报结晶化的症状。
+目前还没有船员发病，但情况只会越来越糟糕。', 412, 16, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_413_1', '第413章 - 苏娜相关', '夜晚。
+杨逸拿着新到货的《纯白之书上》来到女巫实验室门前，敲了两下。
+“苏娜，你已经超超过24小时没休息了，最好去睡一下。”
+他开口提醒道，随后走了进去，将那本魔法书摆在一旁。', 413, 1, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_413_2', '第413章 - 苏娜相关', '苏娜仍在做实验，听见杨逸的声音，只是点了点头，并没有过多表示。
+她已经在实验室里待了超30个小时了，眼眶有很深的黑眼圈，杨逸这次来就是想把她揪出实验室，让她好好睡上一觉。
+几天下来，她的研究依旧没有太大的突破，但研究对象已经不再局限于长腿沙丁鱼了，多了很多其他结晶化的个体，例如一些异魔标本和其他种类的鱼类，甚至咆哮燧发枪。
+杨逸没打扰苏娜，拉来一个椅子坐下，随手沏了一壶茶，就这么安静的等着。', 413, 2, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_413_3', '第413章 - 苏娜相关', '两小时后。
+苏娜终于停止了动作，带着不耐烦的表情看了过来。
+“你知道的，我们余下的时间不多了，再这样下去，我们全会变成活体雕塑。”她警告道。
+“我知道。”', 413, 3, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_413_4', '第413章 - 苏娜相关', '杨逸点头表示自己也明白。
+“所以我没打断你，只是在等你什么时候昏过去，好及时把你扛回房间去。”
+他补充道，查看船员界面，苏娜的精力值为23，理智为54。
+而且她喝了不少茶水和活力沙丁鱼汤提神，不然这会已经昏迷或陷入疯狂了。', 413, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_413_5', '第413章 - 苏娜相关', '“你.....”
+“不要把责任都揽在自己头上，这是从我梦里带出来的瘟疫。
+况且，实际情况也许没你想的那么糟。”
+杨逸打断了苏娜的话，将手里的茶水一饮而尽。
+味道比较淡，因为有些茶叶已经出现了结晶化的迹象，泡了也没啥效果。', 413, 5, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_413_6', '第413章 - 场景6', '他把这些茶叶嚼碎吞进了肚子，说出了自己的想法。
+“你在梦里有试过结晶化的赎罪者铠甲吗，它能否正常活动？
+如果能的话，那即便肉体结晶化了，可能也能使用赎罪者铠甲代替肉体行动。”
+杨逸提出了一个猜想。
+“这个.......”', 413, 6, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_413_7', '第413章 - 关键决策', '苏娜皱眉，还真没考虑过这个问题。
+当时她的注意力都在杨逸身上，其他结晶化的装备属性都没怎么看，更别说用了。
+唯一的例外就是咆哮燧发枪，仔细看了信息，没有区别。
+再后来，她也变成了水晶雕像，即便想看也看不了了。
+“不能否定这个可能。
+但赎罪者铠甲结晶化后肯定会变脆，而且各个关节都要进行相应的调整，最好去掉一些结晶化后可能阻碍活动的结构，例如关节内侧的皮革，钉刺等。”', 413, 7, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_413_8', '第413章 - 苏娜相关', '苏娜说着就把赎罪者铠甲掏了出来，准备试着操作。
+“明天再弄吧，我说了情况或许没那么糟。
+如果弄的太匆忙，很可能弄巧成拙。”
+杨逸阻止苏娜进一步动作，后者点头，紧绷的神经稍稍放松。', 413, 8, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_413_9', '第413章 - 苏娜相关', '但旋即就是一股强烈的眩晕感涌了上来，苏娜腿一软，险些栽倒。
+好在杨逸及时扶住，避免了此次意外伤害。
+两人离开女巫实验室，往甲板房间走去。
+船舱内，一些食物补给已经有了结晶化的迹象，例如在库克岛一疫中收获的土豆，酸柿子。
+但之前从避难所号合成的带密封包装的食物还没有结晶化的迹象，但包装袋里面的情况还不太好说，打开才知道。
+“首先是低精神属性的动物，然后是植物和非生命有机体，再然后是精神属性较高的生命体和一些非生命体。
+发病的顺序推测是这样。”', 413, 9, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_413_10', '第413章 - 重要发现', '苏娜在路上边走边说。
+“不过我也不是完全没发现，只是事到如今有点晚。”
+她告诉杨逸这两天她的发现。
+概括成一句话就是——结晶病很可能不能感染海水，且海水对结晶病有阻隔作用。
+“这海水必须是从海新鲜提取的，不能蒸发后重新兑水，那样没有效果，具体原因未知。
+反正泡在海水里的长腿沙丁鱼发病速度慢一些，甚至不发病。
+之所以它们一开始就出现感染，是因为桶内海水的氧气不够，浮上来呼吸所致.........”', 413, 10, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_413_11', '第413章 - 重要发现', '苏娜说的条条是道，这项发现为防护隔离结晶病，甚至其他死疫亚种疾病提供了可能。
+穿上一套特制带夹层的防护服，中间充填海水，加上高等级的鸟嘴面具，说不定能有效隔绝死疫。
+但现在说这些已经晚了，他们应该都成了结晶病的携带者，只是目前没发病而已。
+走着走着，两人来到苏娜房门前，她突然停下了脚步，侧头看了过来。', 413, 11, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_413_12', '第413章 - 苏娜相关', '“对了，你到底喜不喜欢我？”
+“哈？”杨逸感觉莫名其妙。
+苏娜前一分钟还在说如何应对结晶病，结果下一瞬，就冒出来一个毫不相关的问题。
+杨逸压根不能理解其脑回路，跟不上节奏。', 413, 12, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_413_13', '第413章 - 重要对话', '但苏娜依旧在等回复。
+“这还用问？”
+杨逸拒绝回答这理所当然的问题，改为用行动证明，直接吻了上去。
+...........
+五分钟后。', 413, 13, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_413_14', '第413章 - 翠西雅相关', '苏娜几乎是躺在床上就睡了过去。
+杨逸给她盖好被子，就推门绕了个圈来到了隔壁房间。
+时间已经是凌晨一点，不过在无光之海，不分什么白天黑夜，没什么差别。
+他推门进入，里面翠西雅正坐在书桌上，大口大口的吃着压缩饼干。', 413, 14, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_413_15', '第413章 - 翠西雅相关', '和苏娜不同，她知道自己感染死疫亚种后就干脆放弃治疗了，有些自暴自弃，疯狂进食，像想把这辈子准备吃的东西全吃了，省的以后吃不到。
+毕竟结晶病一旦发病，她很快就啥都吃不了了，后面有的是时间反省审视自己的一生。
+“别吃了，你不觉得撑得慌吗？”
+杨逸打断翠西雅进食，把她抓在了手里，感受了一下重量.....
+乖乖，这体重怕是超过一斤了，已经来到了最开始体重的两倍，难怪肉乎乎的。', 413, 15, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_413_16', '第413章 - 重要对话', '“要你管！”
+翠西雅很快挣脱出来，但飞行时明显比之前吃力得多，晃悠悠好一会才飞回原本的位置继续吃了起来。
+而且她嘴上还不忘说道：
+“主说了，这世界上最重要的事就是善待自己。
+吃好喝好，这一世才算没白活。”
+&#34;啊？&#34;', 413, 16, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_413_17', '第413章 - 翠西雅相关', '杨逸大为震惊。
+“不知道吧。
+这是前天晚上主在梦中传给我的神谕，你也应该多吃点，趁着现在还能吃！”
+翠西雅补充道，吃下一小块饼干，接着抱起一旁装有圣水的试剂瓶猛喝了一口。', 413, 17, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_413_18', '第413章 - 翠西雅相关', '“算了，我看你吃就已经饱了。”
+杨逸没掺和进去，放任翠西雅继续吃，因为说实话，他也不知道以后有没有机会继续吃东西，所以也就没阻止翠西雅了。
+另外.......
+这家伙这么好吃，一部分原因可能得归咎到杨逸身上，毕竟教义是他定的，就是不知道翠西雅是如何获得神谕的，反正杨逸肯定没这么对她说过。', 413, 18, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_414_1', '第414章 - 翠西雅相关', '无视有些颓废的翠西雅。
+杨逸有些疲惫的躺倒在床上，闭目思考起对策。
+老实说，他并没有表现出来的那么乐观，什么用赎罪者铠甲代替行动进入结晶岛不过是临时想的一个方案罢了，大概率是不可行的。
+因为赎罪者铠甲和人体的连接实际靠的是里面的钉刺。', 414, 1, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_414_2', '第414章 - 场景2', '但人体结晶化后连皮肤肌肉都变成结晶了，大概率用不了赎罪者铠甲，所以这套铠甲才会被梦里的杨逸弃置在地上。
+按梦里的场景推算。
+他应该是上岛或者靠近岛屿才感染的结晶病，最后尽力跑到了传染源跟前，变成了一尊水晶雕塑。
+魇星号的其他船员，可能在杨逸之前就已经结晶化了，所以最后只剩他一个。
+“这可真棘手，也不知道要多久才能抵达结晶岛.....”', 414, 2, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_414_3', '第414章 - 重要发现', '杨逸内心苦恼道。
+但根据无光之海的面积估算，这次航行可能长达几个月，甚至一年。
+到时候所有人船员恐怕都会变成活体雕塑，包括杨逸自己，变成一个死局。
+必须找到办法应对结晶病，至少自己要能够活动，支撑到摧毁传染源，才有可能破局消除结晶病。', 414, 3, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_414_4', '第414章 - 物品获得', '指望苏娜研发一种能治愈结晶病的魔药是不太可能了。
+时间上就不允许。
+毕竟就这么十天半个月时间，要研发出治愈结晶病的魔药也太为难苏娜了。
+再有就是........死疫已经存在不知道多久了，压根没听说过有第二种治愈手段。
+到头来解决结晶病，估计还是得从源头搞定。
+但事无绝对。', 414, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_414_5', '第414章 - 翠西雅相关', '如果苏娜的知识储备和研发水平能在短时间内迅速提高，是有可能创造奇迹的。
+只要用掉这颗真理之石。
+杨逸从焦黑大蠕虫戒指里摸出这颗散发危险红光的奇特宝石，脸上有些犹豫。
+不远处，翠西雅依旧沉浸在狂炫食物的快乐中，压根没注意这边。
+但此刻，还有一人也在场。', 414, 5, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_414_6', '第414章 - 苏娜相关', '苏娜本来都睡过去了，谁知道突然有了灵感，直接坐起身，悄悄钻了过来，准备给杨逸一个惊喜，然后恰好看见了这一幕。
+杨逸躺在床上，手里捏着一块鸭蛋大小的红色宝石，鲜艳欲滴。
+“这是......”
+她愣了一下，但并没声张。', 414, 6, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_414_7', '第414章 - 重要发现', '杨逸的注意力也全在真理之石上，没有发现苏娜在墙边探出了小半截身子。
+数分钟后。
+杨逸突然看向墙边，但洞口已空无一人。
+他狐疑般坐起，手里的真理之石已经消失，来到洞边，鼻子微微耸动，闻到了一股熟悉味道。
+隔壁房间。', 414, 7, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_414_8', '第414章 - 物品获得', '苏娜依旧躺在床上，似乎正在睡觉。
+“错觉么......？”
+杨逸感觉自己太敏感了，也需要好好休息缓解一下才行，毕竟也两天没睡了。
+他拿出一瓶安眠魔药，直接饮下，躺在床上睡了过去。', 414, 8, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_414_9', '第414章 - 场景9', '............
+十二小时后。
+杨逸被人粗暴喊醒，脸上盖有一张冰冷的湿毛巾。
+他本来是有些恼火的，但喊他的人开口就让他的把怨气咽了回去。', 414, 9, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_414_10', '第414章 - 苏娜相关', '“终于把你弄醒了。
+快起来，我想到办法应对结晶病了！”
+苏娜直入主题，让杨逸眼前一亮，赶忙追问：“你真想到了治愈结晶病的办法？”
+“不是！”', 414, 10, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_414_11', '第414章 - 苏娜相关', '苏娜矢口否认。
+“治愈结晶病我办不到，但让结晶病先一步发作，我还是有办法的！”
+“啥？”
+杨逸被苏娜弄的一头雾水，但很快在她的解释下，明白了意思。
+结晶病的感染范围已经清楚了，会感染绝大部分的实体，无论生命体还是非生命体都会  被感染，除非没有实体，是类似黑影、恐惧之灵一样的无实体生物。
+再有就是，已经是结晶的物体不会被感染，这一点在梦里已经验证了，那面冰晶大盾的外观没有任何改变。
+“所以我想到的办法是，在结晶病先一步病发之前，主动变成结晶。
+这样结晶病的病程就会停滞了。
+等到了合适的时机，再通过对应的解药解除结晶化，恢复活动能力！”', 414, 11, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_414_12', '第414章 - 重要发现', '苏娜越说越兴奋，连带杨逸也瞪大了眼。
+“还能这样.....”
+“好办法，这样就能支撑到找到源头了！”
+翠西雅也听见了，晃悠悠飞了过来。', 414, 12, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_414_13', '第414章 - 翠西雅相关', '经一晚上的暴饮暴食后，她又胖了一圈，脸圆的和包子似的，飞在半空像颗大肉丸。
+可能是比较激动，她飞到苏娜近前都浑然不知，被后者直接抓住了。
+“糟.....”
+苏娜把翠西雅揉搓了一番，然后放开了手。
+“居然能长这么胖，差不多有800g了吧。', 414, 13, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_414_14', '第414章 - 翠西雅相关', '你确定还能回你的房子里？”
+“不用你管，我能回去！”
+说罢翠西雅试了试回去，不出意外，卡在了门口。
+杨逸知道报应来了，翠西雅很快就会为暴饮暴食付出名为减肥的代价，并为此深感后悔。', 414, 14, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_414_15', '第414章 - 关键决策', '他是过来人。
+...........
+半小时后。
+船上四名成员齐聚女巫实验室，开了个短会，定下了新的方案——决定先一步把自己变成结晶来抵御结晶病。
+具体实施还有很多细节需要弄，航行的安全就是个大问题。', 414, 15, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_414_16', '第414章 - 物品获得', '再有时间也不多了，苏娜需尽快研究出能让人体转化成结晶的魔药才行，而且还得有对应的解药。
+总而言之，问题依旧没解决，但总算有了希望。
+...........
+第六天。
+活力沙丁鱼树已经发病，从尾部开始结晶化，逐步往身体蔓延。
+另外变种苍白蠕虫也发病了，但它的处置方法很简单，把局部结晶化的触手切除就行了。
+实验室内。', 414, 16, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_414_17', '第414章 - 关键决策', '苏娜已经喝了成长魔药，理智下降了20点。
+接下来她准备阅读《纯白之书  上》，进一步扣除理智，以此来进入魔女姿态，提高研发魔药的效率。
+但考虑到安全问题，杨逸需要在一旁监督。
+“准备好了么？”', 414, 17, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_414_18', '第414章 - 苏娜相关', '杨逸问道，看了一眼苏娜的理智值，当前为64，读完这本魔法书，估计就会低于50了。
+苏娜点点头，翻开了桌上的《纯白之书  上》。', 414, 18, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_415_1', '第415章 - 场景1', '房间温度骤降。
+一股寒意从纯白之书的扉页流出，几乎肉眼可视，因为空气里的水分子甚至二氧化碳都凝结成了晶体颗粒，从书里流淌到桌上，再流到桌下。
+杨逸早有准备。
+他有阅读焦之书的经验，所以猜得出阅读这本纯白之书会遭遇什么。
+大概率是低温寒流，可能导致周围物体冻结。', 415, 1, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_415_2', '第415章 - 苏娜相关', '为此杨逸准备了十几个熊熊燃烧的火盆，环绕一圈供热，避免冻结。
+苏娜本人则站在一个澡盆里阅读，下面烧着柴火，确保她不容易失温，感觉冷可以蹲下泡在热水里。
+三分钟过去。
+火盆遭遇低温寒流熄灭了几盆，但都被杨逸用焦黑大蠕虫戒指再度点燃了。', 415, 2, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_415_3', '第415章 - 苏娜相关', '苏娜也蹲入了温水中，翻书的手被冰霜覆盖，冻得发乌且僵硬开裂。
+而且下方柴火的火苗已经变小了，水面甚至飘有一层浮冰。
+“火焰的愈疗啊！”
+杨逸发动魔法，燃烧的右手轻拍在苏娜的肩上，融化她身上冰层的同时，也治愈了她手指的冻伤，并提高了体温。
+接着又用焦黑大蠕虫戒指重新点燃下方的柴火，给澡盆供热。
+..........
+“火焰的愈疗啊！”', 415, 3, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_415_4', '第415章 - 苏娜相关', '杨逸第三次发动魔法。
+苏娜的阅读也进入了尾声。
+她的手也因反复冻裂烧灼，表面已经惨不忍睹，但在超再生能力的作用下，估计两三天就能恢复如初。
+而且她已经激活了魔女姿态，头发在阅读的过程中突然变成了白色，周围较轻的物体随之飘起，包括凝结出的冰晶和二氧化碳，导致实验室里弥漫起雾气。
+咔嚓、咔嚓。', 415, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_415_5', '第415章 - 苏娜相关', '纯白之书在苏娜的手中碎裂，变成一滩白色冰渣落在澡盆里，迅速消融，化为水的一部分。
+同时苏娜活动日志里弹出提示：
+【你完整阅读了纯白之书(上)，理智-20，获得了关于冻结的知识。
+你掌握的法术聚热球蜕变为能量奇点。】
+【能量奇点：可在视野范围内构建能量奇点，射程为一百五十米。
+能量奇点会用抽取周围的热量汇聚于一点，持续五分钟，周边形成极寒环境，且能控制抽取的方向。
+奇点最后可引爆或投出，引发高能爆炸。
+发动需要魔素12。】', 415, 5, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_415_6', '第415章 - 苏娜相关', '从阅读状态中恢复的苏娜并没有和杨逸交流或发送信息，直接飘了起来，带出大量水滴，然后开始进行实验。
+“你......”
+杨逸想提醒她衣服是湿的，但话到嘴边又咽了回去。
+偏执状态的苏娜大概率不会听他的。', 415, 6, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_415_7', '第415章 - 重要发现', '不过话又说回来，偏执状态相对于其他疯狂状态还是比较安全的，只要不去招惹就不会引发冲突。
+而且处于魔女状态的苏娜研究效率提高了很多，可以利用漂浮能力同时进行多项操作，频繁取用工具物品。
+见状态稳定，杨逸让小几守在门口，要它一旦发现异常动静就通知自己。
+“等等。”', 415, 7, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_415_8', '第415章 - 重要发现', '杨逸察觉不对，把小几提了起来，发现它轮子的轴承处出现了结晶化的迹象。
+按理说单纯的金属布匹之类实体物质应该在十天后才开始结晶化才对，但小几却一反常态，先一步开始了结晶化。
+造成这种情况的可能性只有一个——小几也拥有精神属性，并非单纯的机器人。
+只是它的精神属性偏低，所以最先发病。', 415, 8, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_415_9', '第415章 - 苏娜相关', '“你的身体局部有结晶化的迹象，但好像不影响行动，迟些我让苏娜帮你检查一下。”
+杨逸推了推轮子，感觉无异常，于是把小几放了下来。
+“我生病了？”
+小几有些疑惑，八条机械臂全伸了出来，尝试自检。', 415, 9, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_415_10', '第415章 - 重要发现', '但目前除了轮子轴承外，小几其他部位都没有发现结晶化的迹象，内部除外，因为不好检查。
+不过时间得抓紧了，估计很快所有船员都会陆续发病。
+...........
+数分钟后，杨逸回到甲板。', 415, 10, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_415_11', '第415章 - 翠西雅相关', '船体漆黑一片，翠西雅似乎在船长室里。
+他闲着无事，就点亮了一个光之容器，掏出深渊之爪开始了每日一次的垂钓。
+两小时后，他顺利收获了一百多单位海银，因为钓上来的一块高纯度的海银原矿。
+“要每次都能钓到晶钻，或许不用到结晶岛就能造出水晶小屋了。”杨逸感慨道。', 415, 11, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_415_12', '第415章 - 翠西雅相关', '垂钓完，他返回船长室。
+刚推门就听见里头传出呼哧呼哧的喘息声。
+是翠西雅。
+她竟然在运动，抱着和她等身大、只装了一半水的杯子进行力量举。', 415, 12, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_415_13', '第415章 - 关键决策', '没记错的话，那是杨逸的口杯，平时用来喝茶或喝水用。
+在意识到结晶病有办法应对后，翠西雅重振了信心，决定控制下体重，因为她的敏捷属性下降了好几点。
+“之前吃了多少，想减下来就得练多少。
+看你以后还吃不吃那么多。”', 415, 13, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_415_14', '第415章 - 物品获得', '杨逸从翠西雅所在的书桌前走过，目光在她身上扫了一圈。
+没有结晶化的迹象，目前翠西雅还没有发病，就看苏娜能不能及时研发出结晶化的魔药了。
+...........
+第八天。', 415, 14, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_415_15', '第415章 - 物品获得', '翠西雅的体表也出现了结晶化的迹象，但病变的部位被切除，靠着光妖精强大的自愈能力，修复了伤口。
+第十二天。
+小几外壳和轮子已经完全转化成了结晶，但依旧可以活动，可以直接透过半透明的外壳看见其内部的构造，但比较模糊。
+苏娜一直忙于研发魔药，说是有了进展，所以小几身体的检查落到了杨逸身上。', 415, 15, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_415_16', '第415章 - 场景16', '“你没感觉到异样或者行动不便吗？”
+杨逸用螺丝刀，扳手将小几的外壳打开，检查了一番。
+“没有。
+我只感觉前方好像东西在和我传递信号。”
+小几伸出一条机械臂指向前方，和魇星号的航向一致，应该是结晶病发作后对发病源头有了感应。', 415, 16, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_415_17', '第415章 - 重要发现', '杨逸点点头，合上了小几的结晶外壳，啥也没干，因为他也不懂机械，只是检查小几结晶化的进程而已。
+但它的内部可谓一团糟，疑似处理器的位置被子弹洞穿了，撕裂了电路板，但对小几的活动没造成任何影响。
+苏娜估计早就检查过，发现这个情况了，只是一直没提而已。
+“怎么样，我病的严重吗？”小几问道。
+“不严重，这病似乎对机器人无效。”', 415, 17, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_415_18', '第415章 - 场景18', '杨逸敷衍道，跳过了这个话题。
+就结论而言，小几似乎有了类似亡灵的性质，非常古怪。
+所以他发病后也像骷髅怪或者白骨手臂一样，没太大区别，只是构成身体的材质变了。
+魇星号的船体从这天开始，也出现了结晶化的迹象。', 415, 18, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_416_1', '第416章 - 物品获得', '第十七天。
+魇星号模样大变，从一艘骸骨船变成了晶莹剔透的水晶船，大部分船体和船装备都转换成了水晶，包括绑在船首的老船长，也包括附着船尾，停止活动的水晶大海肺。
+古骸手臂和藤蔓也成了水晶制品。
+其中藤蔓变成了水晶荆棘饰品，失去了活动能力，但古骸手臂依旧能动，只是从骸骨变成了水晶，较先前更易碎了。', 416, 1, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_416_2', '第416章 - 物品获得', '杨逸站在甲板上，听着小几汇报状况。
+“.....船体结晶化进程约73.4%，船舱内补给除液态油脂酒水外，已全部结晶化。
+之前从库克岛获取的空间存储道具也已陆续结晶化，失去了存储功能，但内部物品已妥善安置好。”
+“好的。”', 416, 2, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_416_3', '第416章 - 翠西雅相关', '杨逸点头应道，颈部结晶化的皮肤随之碎裂，掉落在地上。
+截止目前，船上所有成员都已发病，无一幸免。
+其中小几已经完全转化成了水晶机器人，结晶化程度最深，但受到的影响最小，几乎无影响。
+翠西雅则发展成了中症。', 416, 3, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_416_4', '第416章 - 苏娜相关', '她前期靠着超强的恢复能力努力拖延病情，但随着身体病灶位点越来越多，病情发展越来越快，最后下肢完全结晶化，体表多处出现结晶斑块，即便切除这些部位再生后也会很快变成结晶。
+至于杨逸和苏娜，两人也都发病了，都是轻症。
+苏娜和梦里一样，右肩先发病，已进行紧急处置，暂时不影响活动。
+杨逸的话，从外表看，发病部位为脖子，但尚能活动，只是转头或点头时会伴随水晶碎屑掉落。', 416, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_416_5', '第416章 - 苏娜相关', '“继续巡逻吧，后面很长时间都得靠你巡逻警戒了。”杨逸对小几道。
+“收到！”
+小几有力的回应着，驱动轮子准备离开。
+“等等，把这个藏你眼罩里，谁也不能说，更不能给苏娜，这是船长命令。”', 416, 5, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_416_6', '第416章 - 场景6', '杨逸突然叫住小几，递过去一颗鲜红的宝石。
+后者小心接过，将宝石嵌入了头部摄像头旁的空洞里，再戴上涂黑的水晶眼罩，大小刚刚好。
+等它走后，杨逸独自来到船舱底层。
+这里有大量补给，但都变成了水晶，被水晶荆棘缠绕，仿佛艺术品，难以挪动。', 416, 6, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_416_7', '第416章 - 场景7', '杨逸见周围没人，便从焦黑大蠕虫戒指里拿出一袋美味鱼饵，连着包装袋一起塞入腹部。
+咔嚓、咔嚓。
+酥脆的响声从杨逸腹部传出。
+这一袋饵料连同包装袋一起被暴食之口嚼碎，咽了下去。', 416, 7, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_416_8', '第416章 - 场景8', '“都成水晶渣滓了，不过味道还是一如既往的好。”
+暴食之口吃完后说起了话，声音和杨逸一模一样。
+“还有百余袋美味肥料和饵料，加上库存的肉干，活力沙丁鱼腿和汤，吃上三个月应该没问题。
+但以防万一，还得再买一些囤起来。”', 416, 8, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_416_9', '第416章 - 场景9', '杨逸似乎在通过暴食之口说话，若不贴近了仔细听，分辨不出区别。
+他驱使水晶手臂，清理掉一些水晶荆棘，搬走补给，腾出了一些空间。
+接着他把大量美味肥料，美味饵料和一些肉干状的水晶堆在了这，方便随时取用。
+因为放在焦黑大蠕虫戒指里已经不可靠了，这戒指和胃袋随时都可能结晶化，失去存储功能。', 416, 9, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_416_10', '第416章 - 场景10', '连带一些杂物也被杨逸弃置于此。
+“把这些都固定好。”
+杨逸下令道，随即一众水晶手臂立刻行动，将这些物品码放整齐，抱紧，固定在地上。
+十分钟后。', 416, 10, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_416_11', '第416章 - 场景11', '他站在船长室门前，视线看向魇星号行驶方向的尽头。
+就在那个方向，虽然不知道间隔多远，但那里似乎存在什么东西在呼唤自己，感觉非常怪。
+拜此所赐，杨逸不再需要发动开拓者仪式了，光凭感觉就能确定方向对不对。
+他推开门走入，一尊黑色沾满污渍的全身铠就立在门侧面，正是赎罪者铠甲。', 416, 11, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_416_12', '第416章 - 物品获得', '杨逸把这套铠甲要了回来，在各关节处进行了一番改造，为之后结晶化作着准备。
+其他武器装备也摆在这，方便随时取用。
+他把腰间的胃袋和焦黑大蠕虫戒指也取了下来，一并放好。
+其中大蠕虫戒指因吸附的比较紧，杨逸费了很大力气才扯下，左手小拇指因此变得血肉模糊。
+“这样准备工作就做的差不多了。”', 416, 12, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_416_13', '第416章 - 物品获得', '杨逸自言自语道，重新审视所有物品。
+目前所有精品以及精品以下的武器装备都已经结晶化，属性也有了变化。
+例如：
+【名称：鲜红的强盗面巾（结晶）】
+【类型：遗物】
+【品质：精品】
+【简介：原本是一条染血，洗不干净的强盗面巾，受结晶病影响，现已成了泛红的血色水晶面罩。
+佩戴后会闻到刺鼻的血腥味，力量+1，呼吸受阻，可起遮挡作用。】', 416, 13, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_416_14', '第416章 - 物品获得', '------------
+这是杨逸很久之前买的道具了，后面因为属性提升，对低品级的装备没了需求，一直闲置在胃袋里。
+其他珍品以及珍品以上的道具尚未出现结晶化的迹象，可能是因为品质高的缘故，对结晶病的抗性更高。
+他来到书桌前。', 416, 14, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_416_15', '第416章 - 翠西雅相关', '翠西雅也在桌上整理自己的东西，内容物不多，包括十几本内容可疑，已经变成半透明结晶的书籍。
+她现在已经和水晶雕像有三四分相似了，两条腿都变成了结晶，体表布满结晶化的块状斑点，靠三对翅膀勉强飞行着。
+“这些书放进书桌比较好。”
+杨逸插手介入，把这几本书放进了桌子的抽屉里。', 416, 15, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_416_16', '第416章 - 物品获得', '至于翠西雅的其他物品，都是些结晶化的小玩意儿，包括小号衣物，零食，尚未结晶化的迷你左轮手枪，和一些已经变成水晶的飞镖。
+“准备工作都做好了吧？”杨逸问道。
+“好了。”
+“行，那准备去实验室，估计魔药也要制作出来了。”', 416, 16, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_416_17', '第416章 - 物品获得', '杨逸对翠西雅道。
+三天前，苏娜已经完成了魔药的制备，然后马不停蹄的投入了量产中，准备制作十瓶毒药，十瓶解药。
+毒药可以让人体转化成结晶，解药则反之，解除毒药造成的结晶化。
+而且为了让结晶化过程更顺利，还需要配合安眠魔药使用，这样处于结晶状态的同时也会入睡，不会产生坐牢的感觉。
+两人照计划朝实验室走去。', 416, 17, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_417_1', '第417章 - 物品获得', '女巫实验室内。
+苏娜正在制作最后一瓶魔药，原料多为就地取材，正好用上结晶化的异魔素材。
+在一系列莫名其妙的动作后，苏娜体表绘制的油彩发出一阵微光，和面前桌上的炼金法阵呼应，导致桌上试管内掺杂大量粉末的浑浊液体起了反应。
+液体快速旋转，像伸入了筷子在进行搅拌，最后分层，变成了白色和无色两种液体。', 417, 1, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_417_2', '第417章 - 物品获得', '静置数分钟后，苏娜将试管内容物倒出，获得了分层的两种不同颜色的结晶。
+进行分割研磨后，得到两种粉末，这就是可以让人体转化成结晶的毒药和解药了。
+【名称：结晶魔药  上剂】
+【类型：消耗品/魔药/独特】
+【品质：？？】', 417, 2, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_417_3', '第417章 - 物品获得', '【简介：女巫苏娜参考结晶病制造的魔药，外观为无色的结晶体，碾碎成粉后混合海水涂抹体表便可引发结晶现象，结晶化会迅速蔓延至全身，及时用水冲洗可阻断结晶化。】
+-----------
+【名称：结晶魔药  下剂】
+【类型：消耗品/魔药/独特】
+【品质：？？】', 417, 3, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_417_4', '第417章 - 物品获得', '【简介：女巫苏娜参考结晶病制造的魔药，外观为白色的结晶体，碾碎成粉后混合海水涂抹体表便可解除结晶魔药导致的结晶化现象。】
+-----------
+苏娜把魔药的信息发在了船团聊天界面里，杨逸和翠西雅都看见了。
+“我一共制作了十支结晶魔药。
+但安全起见，每支魔药的上剂和下剂最好不要混用，因为这魔药每支的配方存在些微差别。”', 417, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_417_5', '第417章 - 关键决策', '苏娜对门口等待着的杨逸和苏娜说明了一些注意事项，包括使用魔药前，需要饮下一支安眠魔药，避免结晶化后思维依旧在运转。
+杨逸点点头，表示已经明白，接过了苏娜递来的魔药，包在纸张里，上面用笔写着数字1。
+他想要解除结晶化，就得使用对应的1号解药。
+翠西雅那边拿到的是3号魔药，苏娜自己则是2号。
+解药统一由小几管理，最后也由它来将大家唤醒，计划就是如此了。
+考虑路上可能会出现特殊情况，不得不提前将几人唤醒，所以魔药一共准备了十支。
+“好。
+那就趁着现在结晶化程度还不是太深，先一步使用魔药，保持住现在的状态，我先来。”', 417, 5, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_417_6', '第417章 - 物品获得', '杨逸身为船长，带头使用了该魔药，取来了一个小烧杯，将粉末倒入，又加了些许海水搅匀。
+接着他来到船舱一层特意腾空的位置前，靠墙站好后喝下安眠魔药，然后将这些发黏混着粉末的海水均匀涂抹在脸上，立刻起了效果。
+【你使用结晶魔药  上剂，理智下降5，肉体将迅速转化成结晶.......】
+在苏娜和翠西雅的注视中，杨逸从头开始往下，身体结构发生转变，成了一个几乎透明的结晶人。', 417, 6, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_417_7', '第417章 - 物品获得', '最后他只剩身上的船长服还维持着原样，身体已经无法动弹。
+数只水晶手臂从墙体伸出，像卡扣一样抓紧抱住杨逸的身体，避免这尊水晶雕像因航行颠簸栽倒，造成损失。
+魔药的具体信息出现在了船团聊天频道里。
+【名称：结晶魔药  上剂】
+【类型：消耗品/魔药/独特】
+【品质：珍品】', 417, 7, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_417_8', '第417章 - 物品获得', '【简介：女巫苏娜参考结晶病制造的魔药，使用多种结晶化的异魔素材，研磨成粉末后，使用炼金手法炼制而成。
+外观为无色的结晶体，碾碎成粉后混合海水涂抹体表便可引发结晶现象，理智-5，结晶化会迅速蔓延至全身，容易碎裂。
+及时用水冲洗可阻断结晶化。】
+-----------
+【名称：结晶魔药  下剂】
+【类型：消耗品/魔药/独特】
+【品质：珍品】', 417, 8, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_417_9', '第417章 - 物品获得', '【简介：女巫苏娜参考结晶病制造的魔药，使用多种结晶化的异魔素材，研磨成粉末后，使用炼金手法炼制而成。
+外观为白色的结晶体，碾碎成粉后混合海水涂抹体表便可解除结晶魔药导致的结晶化现象。
+每支结晶魔药上剂导致的结晶化现象都要对应的下剂来解除，更换解药无效，需妥善保管。】
+-----------
+（今天带我爸弄牙齿，耽搁了大半天，但还是会两更，第二章稍后会补完，还有几百字）', 417, 9, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_418_1', '第418章 - 场景1', '“没有......”
+“奇怪了......”
+“也不在这里，床下也没有......”
+...........', 418, 1, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_418_2', '第418章 - 重要发现', '苏娜在船长室里一通乱翻，连赎罪者铠甲都被拆成了零件，没放过任何角落，包括翠西雅的小房子。
+但除了在书桌抽屉里发现了一些结晶化的可疑书籍外，没有任何发现，这不禁让她陷入深深地自我怀疑之中。
+“难道他意识到了这种情况，所以特意藏起来了？”
+苏娜感觉有可能。', 418, 2, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_418_3', '第418章 - 关键决策', '杨逸平时看起来挺不着调的，但实际行动前都经过了细致的考量..........大概吧。
+她停下动作，感觉船长室里是不可能有收获了，决定多花些时间，搜索一下其他地方。
+“小几，你把这里恢复一下，不要露出破绽。”
+“好的！”
+一直在门口等候的小几滚动轮子进入，伸出水晶机械臂开始收拾已成狼藉的船长室。', 418, 3, 'EXPLORATION', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_418_4', '第418章 - 苏娜相关', '早在翻找之前，苏娜就让小几记录了船长室的布置，所以此刻还原原貌也非常简单。
+“对了。
+你把杨逸这两天活动的范围告诉我下，数据库日志里应该有记录吧？”
+苏娜突然开口询问。
+“有的。”小几立刻回复，“杨船长平时都待在甲板居多，经常钓鱼，这两天去曾去过瞭望台，也去过船舱。”小几如实进行汇报。
+“这搜查范围有点大.....”', 418, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_418_5', '第418章 - 苏娜相关', '苏娜丝毫没怀疑小几存在欺瞒的可能，毕竟它算是苏娜的直属部下了。
+但在杨逸的熏陶洗礼下，小几已经完全代入了代入了厨师长的角色，把杨逸船长的权限提到了最高。
+.............
+二十分钟后。', 418, 5, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_418_6', '第418章 - 重要发现', '船长室已基本恢复如初，苏娜也再度来到门前。
+就在刚刚，她爬上瞭望台搜索了一番，又检查了一下旁边不远处的处刑架，依旧没找到真理之石的影子。
+“这混蛋到底把石头藏哪了！”苏娜有些气恼。
+不远处的小几机器人突然一顿，像程序发生了故障，但很快它又恢复了正常，把最后几件武器挂回墙上。', 418, 6, 'EXPLORATION', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_418_7', '第418章 - 激烈战斗', '“等等，他为什么把武器放在这？”
+苏娜察觉不对劲，心底有了一丝疑惑。
+毕竟这是一趟长时间的远航，很难说不会遇到其他不明生物。
+到时候那些生物上了甲板，岂不是很容易接触到武器？
+仅靠一道上锁的门是远远不够的，根本谈不上安全，而且小几的战斗力也不是很强。', 418, 7, 'BATTLE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_418_8', '第418章 - 重要发现', '“小几，你把这些武器装备通通搬进船舱。
+往后巡逻时要一直开启雷达监视周边，如果发现异动不要冒险直接接触，把我们唤醒是第一要物。
+魔石的话船舱和实验室里都有，足够消耗很久了，不必节省。”
+苏娜命令道，算是替杨逸做了些补充。
+“收到！”
+小几立刻行动，把这些武器装备通通收入了身上尚能用的珍品存储道具里。
+...........
+又过了近两小时。', 418, 8, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_418_9', '第418章 - 苏娜相关', '苏娜在甲板以及船舱搜了个遍，仍是一无所获，已彻底放弃寻找真理之石了。
+她来到一层特意为结晶化预留的位置旁，有些牙痒痒般看向已经化作水晶的杨逸。
+不知是不是错觉，她总觉得杨逸看起来很欠揍。
+“只能再找机会了，这次他估计有防备，下次得让他彻底失去戒备心才行。”', 418, 9, 'EXPLORATION', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_418_10', '第418章 - 物品获得', '苏娜暗中嘀咕，准备另寻机会拿回真理之石。
+直接索要肯定是不行的，杨逸绝对会装傻，表示从没见过。
+她思考了一会，有些不甘般拿出女巫便服里的两份魔药，先喝下安眠魔药，又将结晶魔药涂抹在自己的手背上。
+两种魔药齐齐生效。', 418, 10, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_418_11', '第418章 - 物品获得', '苏娜产生强烈困意的同时，肉体也开始向结晶转化，以涂抹魔药的右手为源头，迅速扩散满右半身。
+但在她失去视野前，对面的杨逸似乎动了一下，更确切说，是身上的船长服动了，腹部似乎有东西在蠕动。
+“怎么会......”
+苏娜惊叹道，但没能发出声音，最后全身结晶化，变成了一尊活体雕塑睡了过去，脸上表情略显惊讶。
+...........
+数分钟后。', 418, 11, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_418_12', '第418章 - 物品获得', '小几驱动轮子来到杨逸跟前，从体内掏出序号为1的结晶魔药解药，准备照计划解除杨逸的结晶化。
+“不必了，正好趁这个机会试试。”
+杨逸开口道，阻止了小几进一步动作。
+数根细长的红色触手从船长服下方伸出，那实际是暴食之口的舌头。', 418, 12, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_418_13', '第418章 - 苏娜相关', '杨逸大部分肉体都已化成结晶，但原本因污染导致畸变的器官并不受影响，包括三眼和暴食之口。
+所以刚刚苏娜摘下他眼罩时，他是真的在和苏娜对视，差点没绷住导致暴露。
+好在他身体成了结晶，表情也不会变化，只要暴食之口按捺不动就行。
+同时，他还要祈祷苏娜不会把他衣服给扒了，不然她就会看见杨逸的肚皮完全没有结晶化，进而露馅......
+数天前。', 418, 13, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_418_14', '第418章 - 苏娜相关', '杨逸先苏娜一步发病，但发病的位置很奇怪，是从前胸开始的。
+起初他也没太在意，毕竟都做好心理准备了，打算剥掉这些妨碍行动的水晶皮肤。
+他试过火焰的愈疗，但除了把水晶烧黑外，起不到治愈效果。
+最后还是得用刀搞定，强行剥离这部分结晶化的皮肤和肌肉。', 418, 14, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_418_15', '第418章 - 重要发现', '但动手前他有了发现，结晶化的部位似乎存在一个明显的分界线，位于胸腹之间，泾渭分明。
+“怎么会这样？”
+杨逸觉得很奇怪，试着沿着这条分界线切开看看，但刚刺入，一根细长的舌头就从伤口处探了出来。
+“开饭了？”嗡鸣的声音从杨逸腹腔发出。', 418, 15, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_418_16', '第418章 - 场景16', '“开你个头！”
+杨逸把舌头按了回去，伤口很快愈合消失，仿佛什么都没发生过。
+“难道......畸变器官不会感染结晶病？”
+他很快意识到了这个可能。
+..........
+时间回到现在。', 418, 16, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_418_17', '第418章 - 场景17', '杨逸经训练磨合，已经学会了如何控制自己肚子上的嘴。
+这其实很简单，只要满足暴食之口的食欲，定期定量投喂美味物质，操控起来就像控制自己的嘴一样便利。
+而且杨逸怀疑，这嘴是自己精神分裂的产物，本质其实是同一人，共享所有感官。
+为此他偷偷练了好几天，特意爬到瞭望台上特训，最后得到了如今的成果——不仅可以用暴食之口讲话，也能操控舌头，甚至靠舌头上的味觉感受器识别周围环境。', 418, 17, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_419_1', '第419章 - 场景1', '十几根细长的红色舌头从杨逸衣下伸出，接触地面。
+同时所有用于固定的水晶手臂缩回了墙体里。
+杨逸尝试活动，使用舌头支撑地面行走。
+他穿越前身体瘫痪时，就练过专注力，能灵活的控制自己的舌头。
+但现在舌头数量太多了，体感也不对，要适应还需要时间。
+再有就是，结晶化的身躯太过沉重了，行动起来很方便。
+“还是得复健一下，找回曾经的感觉才行。”', 419, 1, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_419_2', '第419章 - 苏娜相关', '杨逸“走”了几步，东倒西歪，但靠着十几根舌头全方位的支撑，并没有摔倒。
+“小几，苏娜有做什么安排吗？”他站稳后询问道。
+“有。
+苏大副要我24小时开启雷达监控周围海域情况，如果有异常就第一时间唤醒所有人。”小几回复道。', 419, 2, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_419_3', '第419章 - 重要发现', '“嗯，就照她说的办，不过发现异常要第一时间通知我，然后再根据情况决定是否要唤醒其他人。
+毕竟结晶魔药的量是有限的。
+解除后，结晶病又会开始恶化，暴露的时间越长越危险。”
+杨逸调整了下命令。
+“还有一件事，把这些武器装备搬回船长室，我准备待在甲板，那样比较方便。”', 419, 3, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_419_4', '第419章 - 物品获得', '他让小几把刚搬下来的武器装备运回去，现在珍品装备还没结晶化，用空间存储背包移动起来还是比较便利的。
+一刻钟后。
+杨逸终于从船舱爬了出来，歪歪扭扭的来到船长室前。
+这几十米的路程，加上爬梯子，简直比锻炼一天还累，杨逸感觉自己的舌头都要打结了。', 419, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_419_5', '第419章 - 激烈战斗', '最后他是靠把舌头集中形成两簇，模仿腿行走，把结晶化的肉体顶起来，这才顺利且稳定的走了过来。
+如果此时有其他玩家在场，就会看见一尊僵硬的水晶雕像肚子里伸出了大量触手，代替原本的腿行走着，像扛着一尊雕像。
+“这样不行，移动速度太慢了，走这么点路精力都掉了好几点......”
+杨逸暗自评估道，思考其他移动方式。
+像这样模仿双腿走路虽然容易掌握，但效率还是太低了，也很难战斗。', 419, 5, 'BATTLE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_419_6', '第419章 - 关键决策', '毕竟到时候上岛看见感染源，他还是会全身结晶化，只剩这两个器官。
+所以他得摸索出更优的行动方式才行。
+他驱使一根舌头缠绕船长室的门把手，轻轻扭动，将门打开。
+小几已先一步抵达，将武器装备原封不动的放回了原本的位置。
+这是为之后做准备。
+毕竟要不了多久，所有存储道具都会失效，哪怕是极品品质的焦黑大蠕虫戒指和胃袋也不例外。
+另外考虑的航行的时长，小几这边也需要做一些额外安排。', 419, 6, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_419_7', '第419章 - 场景7', '自从知晓小鸡也有精神属性后，杨逸就把它的理智数值也纳入了考量。
+虽然不知道小几理智低会发生什么，但安排一个合适的消遣娱乐方式是有必要的，反正也没什么损失。
+它可能很适应寂寥枯燥的环境，毕竟在避难所号待了那么久。
+但适应不意味着喜欢，更不意味着快乐。', 419, 7, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_419_8', '第419章 - 场景8', '“小几，这次航行估计会非常久，你如果感觉无聊的话，也可以试试钓鱼。
+反正有现成的钓竿，变成水晶也能用，爆竿了也可以喊我重新制作。”
+杨逸指向不远处闲置的钓竿，包括一支良品钓竿，和好几支简易钓竿，都已经变成了水晶，属性信息没变，但多了一个容易爆竿的特性。
+“我会试试！”
+小几立刻拿了一支钓竿跑了出去，准备开始人生....不机器人生涯的第一次垂钓。', 419, 8, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_419_9', '第419章 - 物品获得', '房间内顿时只剩杨逸一人。
+他开始检查自己的身体状况，查看属性面板。
+杨逸（超凡）
+超凡途径：污染【深度39%】/  肢蛛之书  /  焦黑之人  /  狼人  /  欢宴食客【末席】/  梦境行者【噩梦】
+状态：结晶病【轻症】『一个大字型人体图案，头部为狼首，脖子和前胸为黄色』，身高187c体重568KG
+【结晶病：一种传播能力极强可怕的特殊瘟疫，是死疫的亚种，可感染绝大部分实体，对没有实体的生物无效.......
+当前为轻症，因为肉体完全结晶化病情得到控制，具体属性变化查看结晶之躯。】
+力量：（9）11（21229/32000）【欢宴食客加成，除精神感知外的属性+1】
+精神：（11）13（30107/32000）【梦境行者加成，钢铁意志（+）加成，魔瘾药剂加成】
+敏捷：（9）7（17948/32000）【狼人夜晚加成，除精神外+1】
+体质：（10）26（13632/32000）【暴食之口+2体质，欢宴食客额外+1体质，强体魔药,，结晶之躯加成】
+感知：（9）8（2644/32000）【三眼加成】
+【ps：括号里是基础属性】
+理智：78/100
+精力：81/100
+气血：100/100
+魔素：25/25
+天赋：钢铁意志（+），拒绝死亡
+法术：肢体强化术，肢体复原术，肢体爆炸术，万肢蛛母请神术，火焰的愈疗啊，与吾同燃，接肢手术（新手）
+能力：三眼，狼化，暴食之口，魔瘾，高速再生，结晶之躯
+【结晶之躯：肉体完全结晶化，肌肉失去弹性无法活动，无法感知周围环境，强度大幅提高，但容易碎裂。
+体质+10，敏捷-4，感知-4，精力损耗下降，失去五感，不再需要进食，不再需要呼吸，要害部位受到损伤也不会即死。】
+---------
+“结晶之躯....这基本就是个负面能力。
+换个人来只怕动都动不了，只能任人宰割，哪怕体质再高也是虚的”', 419, 9, 'NIGHTMARE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_419_10', '第419章 - 场景10', '杨逸吐槽道。
+不过他是例外，勉强可以活动，只是动起来不太方便。
+而且视觉也没了，不能一直依赖三眼，平时只能靠暴食之口的味觉感受器感知周围环境。
+“得想办法减重才行，这超半吨的体重根本动不起来....”', 419, 10, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_420_1', '第420章 - 场景1', '船长室内发出一连串晶体破碎的响声。
+杨逸使用了1号解药，体表的结晶不断脱落，掉在地上发出脆响声。
+这很像蜕皮，整个过程大概会持续5分钟，伴有轻微的刺疼和瘙痒。
+如果想加快速度就需要手动剥离，但可能会连着皮肤一起剥下来，导致受伤失血。', 420, 1, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_420_2', '第420章 - 激烈战斗', '杨逸仅剥了一小块就没试了，一直等到体表的结晶脱落的差不多了，这才开始活动。
+“这魔药效果简直完美，副作用很小，甚至能用于攻击。
+用来对付一些不清楚魔药效果的土著可能有奇效，但对付玩家，效果就大打折扣了。”
+因为玩家有系统辅助，会知晓魔药的信息，及时用水一冲，魔药就失效了。', 420, 2, 'BATTLE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_420_3', '第420章 - 场景3', '他把体表最后几块结晶拍落，解除了结晶化，站在衣柜的镜子前重新审视自己的肉体。
+除了脖子和前胸受结晶病影响依旧僵硬外，其余部位都已恢复成了正常的肉体。
+“还是这样比较方便，变成水晶后，关节都动不了了。”
+杨逸活动了下身体，骨骼发出轻微的咔咔声，接着进入了狼人形态，身高节节攀升。', 420, 3, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_420_4', '第420章 - 场景4', '他之所以解除结晶化，其实就是想变成狼人，借助狼人和癫狂（+）带来的属性加成，提高肉体灵活性。
+处于结晶状态的杨逸是无法狼化的，变身能力被封印了。
+数秒后，地上多了一滩殷红的鲜血。
+杨逸顺利变身成狼人，但脖子和前胸有严重的撕裂伤，正在快速愈合。
+狼化会冲碎结晶化的肌肤，撕裂结晶化的肌肉，但结晶化程度太深的话，变身能力就无法使用了。
+...........
+次日，房间内传出挖凿的声音。', 420, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_420_5', '第420章 - 物品获得', '杨逸使用了4号结晶魔药，肉体再度变成了结晶，正在调整自己的体魄，打造出一副即便结晶化也能正常活动的身体。
+他已经试过赎罪者铠甲了，正如他推测的那样，结晶化后，赎罪者铠甲无法正常使用，戴上手套也无法驱使。
+最后还是靠小几发出指令，才将手套取下，右手已布满裂纹，被钉刺深深扎入过。
+一定要用的话，可能得穿上胸甲，靠依旧是肉体的暴食之口来强行使用这套铠甲。', 420, 5, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_420_6', '第420章 - 激烈战斗', '不过现在不急，他正在自己给自己减重，为后续战斗做准备。
+他原本是打算把四肢卸掉，只保留胸腹和头颅，靠暴食之口的舌头来进行移动。
+这样可以大幅降低体重，事后也能用肢体复原术重新接回去，不会留下后遗症。
+坏处就是外貌会彻底非人，得学会像触手怪一样的移动方式，理智必然会下降，对精神影响很大。', 420, 6, 'BATTLE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_420_7', '第420章 - 场景7', '但就在他准备动手之际，忽然脑子里又蹦出了新的想法，灵感来自结晶化后，依旧可以灵活移动的水晶手臂。
+“为何不试着保留四肢骨架，用舌头代替肌肉来活动呢？”
+杨逸为自己天才般想法震惊。
+这样的话，他外观和人类还是比较接近的，对理智的影响相对较小。（至少杨逸是这么认为的。）', 420, 7, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_420_8', '第420章 - 场景8', '而且对一直习惯用四肢活动的杨逸而言，保留四肢，能让他迅速适应新的身体，再配合舌头辅助，效果估计会非常棒。
+想到就行动，他现在就在船长室里雕琢自己的躯体。
+如果有人在场就会看见极其诡异的一幕——一尊水晶雕像竟然在自己雕刻自己？？
+叮当！
+叮当！', 420, 8, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_420_9', '第420章 - 关键决策', '杨逸除了腹部和左眼外，肉体完全结晶化，现在正靠着暴食之口的舌头，拿着很多雕刻用的工具，一点一点的改造自己的肉体，去掉皮肤和肌肉以及一些失去功能的脏器，保留骨骼，减轻自己的重量。
+这注定是一个漫长的过程。
+杨逸决定自己动手，靠三眼和雕刻的经验，完成肉体的蜕变。
+体质提高后，他的三眼持续时间比之前长了很多，即便连续使用两个多小时，也不会感觉疲惫.........
+一周后，距结晶病爆发已过去了21天的时间。
+昨天起，珍品装备就陆续出现了结晶化的迹象，属性也有了改变，甚至不能正常使用。
+例如沾染血腥的海盗船长服和鼠鼠侠披风，结晶化后布料变硬了，根本无法正常穿戴使用，效果形同虚设。
+但一些冷兵器武器还是可用的，例如骨魔投枪，锋利度略微提高，但多了个易碎的特性。
+再有就是珍品存储道具了，全部失去了存储功能，若不及时将里面的物品取出，内部物品会随机掉落在附近，甚至造成道具损坏或掉入海里，遗失等情况。', 420, 9, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_420_10', '第420章 - 物品获得', '杨逸检查完装备的状况，又开始检查自己的新的身体。
+经一周的雕琢，他已经彻底蜕变，从水晶雕像变成了镂空的水晶骷髅，体重大副下降，甚至比狼化时的体重还轻。
+高度为三米二，体重170KG，骨骼为半透明材质，强度出于杨逸预料，可能转化成了高纯度晶钻，硬度相当高。
+当时取前胸肋骨的时候可费了老大劲了，最后用上炎蛇之牙才勉强卸下来，取出内脏。', 420, 10, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_420_11', '第420章 - 苏娜相关', '他现在除了肚皮和肚子上那张嘴外，就只剩上半张狼脸和大脑没有动过了，其他部位的皮肤肌肉甚至内脏都已剔除，包括心脏，一起整齐码放在船长室的一角。
+大脑因为构造和地位特殊，杨逸不敢去取，免得造成不可逆的伤害。
+其他这些器官，肌肉啥的，等后面解决了结晶病的源头在挪回去，便可使用肢体复原术修复。
+到时候苏娜也能帮忙缝合，应该问题不大。', 420, 11, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_420_12', '第420章 - 场景12', '他现在需要做的就是尽快适应这具骸骨之躯，恢复战力。
+镜子前。
+数十根细长的舌头从腹部边缘，腹腔内部伸出，缠绕蔓延至全身，代替原本的肌肉控制这具骨架。
+“感觉真怪.....”', 420, 12, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_420_13', '第420章 - 场景13', '杨逸缓缓走了两步，像第一次学走路一般，动作非常僵硬，像程序故障的机器人。
+他推开船长室的门走了出去，这是他这一周以来第一次出门。', 420, 13, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_421_1', '第421章 - 场景1', '魇星号甲板中庭。
+小几正在钓鱼，脑袋上的水晶雷达不停旋转着，上面还挂着一个小型光之容器。
+光妖精的肉体碎片
+可能是没人教的缘故，它的钓鱼方式粗暴且直接，充分利用自己手多的优势，一次性使用六根钓竿钓鱼，一心多用。
+空出的两只机械臂一只进入了水里，末端为水下摄像头，可第一时间确定自己钓到了什么东西。
+另一只机械臂则变成了光束炮，瞄准水面，随时准备开火，让钓到的鱼不再挣扎，迅速拉上甲板。
+脚步声从船头方向传来。', 421, 1, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_421_2', '第421章 - 场景2', '小几桶装身躯的头部扭动旋转，看向来人，正是许久没出门的杨逸。
+但它并不会认错，毕竟这一周它都有去给杨逸送餐，包括每日必须来一包的美味肥料，还有它钓到的鱼。
+杨逸来者不拒，甚至囊肿刺豚都直接烤熟吃了下去，压根不担心中毒。
+毕竟他内脏器官都结晶化了，全身就剩一张不怕毒的嘴，几乎就没有忌口的东西。', 421, 2, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_421_3', '第421章 - 场景3', '“杨逸船长，你可以活动了？”
+小几头部的指示灯闪烁，频率很快，似乎有些惊讶。
+“差不多吧，但还得适应适应。
+你继续钓鱼吧，我到周围走走，练习一下走路。”', 421, 3, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_421_4', '第421章 - 场景4', '杨逸开口道，但声音是从腹部传出的。
+路过小几身旁时，几根细小的舌头从杨逸骨架伸出，卷走了水晶桶内全部的鱼，送入了暴食之口中........
+时间又过了五天，来到这次航行的第二十六天。
+杨逸现在已经可以正常行走了，只是狼人的骨骼和人类有明显区别，骨头更粗，脚掌更长，仅用前脚掌踩地面提供支撑。', 421, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_421_5', '第421章 - 重要发现', '这是为适应奔跑做出的改变，杨逸现在得重新学习适应。
+他又购买了100多袋美味肥料，两百多斤美味肉干，以及百余斤蒸发丰饶之海海水获得美味砂糖，今天刚刚到货。
+市场上和丰饶之海相关的美味素材已经消耗的差不多了，不少玩家都找到了安全使用这些素材的办法。
+例如新世界船团，那边的生化实验室弄出了一些名堂，开发出了一种强化药剂，据说可以让普通人晋升超凡，但只对内部成员提供。
+再有就是土办法了，一种名为劲爆可乐的配方广为流传，需要用到少量海酿朗姆酒、微量美味素材，一些苏打水，一些重口味调料，以及致死量的海盐。
+一口下去，劲爆酸爽，苦中带甜，每个人制作出来的味道还不一样，非常新奇。
+效果也不错，不仅不会感染美味之欲，还能一定时间内提高经验成长的效率，所以很多玩家都争相效仿，导致美味系列素材价格一度攀升，到现在已经很难买到了。', 421, 5, 'TRADE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_421_6', '第421章 - 场景6', '杨逸这些东西是一周前从沈冠全那边购买的，价格不便宜，花了近十万海螺币。
+不过存活够多了，哪怕每天一包美味肥料或者小半斤美味肉干，也足够支撑大半年了。
+后面再陆续买买，实在不济就啃两口结晶化的活力沙丁鱼树，只要不啃过头应该不会死。
+总之食欲是必须满足的，为了保证暴食之口的控制权，他必须按时按量吃下这些物质，不然容易失控。', 421, 6, 'TRADE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_421_7', '第421章 - 场景7', '时间来到第三十二天。
+这次远航依旧没有看见终点。
+不过杨逸现在已经可以缓慢的奔跑了。
+虽然达不到原本肉体那样灵活，但也是一个巨大的进步，后面进步估计会越来越快。', 421, 7, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_421_8', '第421章 - 场景8', '现在他压根不需要睡觉，精力消耗也比之前小了很多，累了只需要收回舌头，像骷髅架子一样站着，吃点东西休息一会便会恢复。
+他原本是打算通过售卖基础物资水晶来赚钱的，打算买入价格相对较低的木料和石料堆放在甲板，过一段时间就能获得对应数量的水晶，然后卖出，从而赚取差价。
+但这个转化并不是一比一，100%转化的，因为结晶化后的石头和木料纯度没那么高，系统回收时也存在损耗。
+两者相加，再加上水晶的价格，居然还亏了3%的钱。
+“还以为发财了，结果是我想多了。”', 421, 8, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_421_9', '第421章 - 场景9', '杨逸算完苦笑道，数根舌头直接卷走了一些水晶，一起吃进了肚子里。
+“，别趁着我分神就偷吃，你真就没有不吃的东西吗？”
+他骂了一句，集中精神，暴食之口终于收敛了许多。
+不过转化物资的功能也不是一无是处，海银、黑木会直接等比例转化成晶钻，导致之前囤积的，以及后续钓到的高级物资全部转化成了晶钻，让仓库里晶钻的数量直接飙升到了17942单位。
+这些基础物资只要不从仓库里拿出来就不会转化，但一旦暴露在空气里，就会随着时间推移变成水晶或晶钻。
+“等解决完结晶病，这些晶钻应该不会给我变回去吧？”', 421, 9, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_421_10', '第421章 - 场景10', '杨逸忽然有点担心，觉得很有可能。
+到时候只能寄希望于系统，但愿转化后的物资不会变回去。
+时间来到第四十天。
+杨逸已经完全适应这具身体了，可以通过成百上千条细长的舌头，模拟肌肉纤维，灵活操纵这具骸骨之躯。', 421, 10, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_421_11', '第421章 - 激烈战斗', '现在他正尝试重新举起断铁巨剑，找回战斗的感觉。
+“至圣斩！”
+杨逸用力挥出，但因为力道没把握好，左手小臂脱臼错位了。
+他重新调整了下各关节舌头的分布，继续训练。
+“至圣斩！”
+...........', 421, 11, 'BATTLE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_421_12', '第421章 - 场景12', '时间来到第六十天。
+杨逸早在一周前，就已经停止基础训练了。
+因为练的差不多了，他现在已经可以像之前正常肉体一样，灵活的控制自己的身体，将两只爬上来意外钓上来的溺亡者拍死在甲板上，无视其自爆。
+他现在将钓鱼视为了每日的必修课，不仅是为了收获晶钻，也是为了提高下时不时下降的理智。
+通过和小几，老船长来一场钓鱼友谊赛，可有效提高理智值，缺点就是可能自己可能得掌舵开一天的船，因为老船长玻璃心容易破防。
+...........', 421, 12, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_421_13', '第421章 - 场景13', '时间来到两百二十三天。
+大半年都过去了。
+杨逸不知道自己是怎么熬过来的，几次都忘了时间，靠记在系统里的日志来确认今天是几天。
+每日一次的论坛和世界聊天，以及钓鱼和美食，让这趟糟糕的远航不至于逼疯杨逸。
+就在今天。', 421, 13, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_422_1', '第422章 - 场景1', '魇星号穿过海上一道明显的分界线，来到了另一片海域。
+和之前在玩家论坛里见过的其他海域的图片一致，无光之海和其他特殊海域之间存在明显的分界线，并没有过渡区域，黑暗只会停留在无光之海这一侧。
+这一点奇迹之海也不例外，玩家可以靠分界线外围蔓延的黑暗来确定自己是否离开了特殊海域。
+头顶的天空则逐渐由暗转亮，开船靠近就像经历凌晨，一直到边界线附近，天空完全从黑夜蜕变成了白天。
+“那是太阳.....？”', 422, 1, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_422_2', '第422章 - 场景2', '杨逸不敢置信道，看向极远处的天空，那里挂着一颗古怪的球体，体积相当大，只是因为隔得远，所以看起来小。
+他使用三眼观察，视野里并没有色彩，但舌头感受到的轻微灼热感疑似从那个天体射出。
+“警告，检测到高剂量的伽马射线。
+如果长时间暴露在该射线下，可能导致皮肤坏死，头发脱落，视网膜烧伤，甚至破坏DNA遗传物质，长出肿瘤，内脏出血，全身感染等一系列可怕后果。”', 422, 2, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_422_3', '第422章 - 场景3', '小几也在一旁，出于职责对杨逸发出警告。
+后者听完陷入沉默，数秒后才开口：“小几，老实说，你是不是故意的？”
+“不是，这是我出厂时就预设好的程序。”
+小几如实回道。', 422, 3, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_422_4', '第422章 - 场景4', '不过杨逸并不相信，继续掌舵并放缓了船速。
+从外观看，他就是一只身高过三米的狼人骷髅怪，别说皮肤肌肉了，甚至内脏都没有，身上除了畸变器官全由水晶构成，压根不会出现小几刚刚说的危险。
+大量细绳状红色纤维像肌肉神经一样从腹腔盆腔内蔓延而出，互相缠绕，控制着这具骸骨之躯。
+实际上，这都是暴食之口的舌头，数量越多，他就越能进行一些细微的操作。', 422, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_422_5', '第422章 - 场景5', '经两百多天的特训后，杨逸早已经放弃数舌头的数量了，估计要以万计，不然无法像正常人类一样活动。
+大剂量的伽马射线照在暴食之口的舌头上，带来些许灼热感，仿佛和太阳距离很近。
+但远处的那颗球体，怎么看都是人造物，像一颗人造卫星。
+“小几，这片海和天空是什么颜色的？”', 422, 5, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_422_6', '第422章 - 场景6', '杨逸突然问道。
+尽管他使用了三眼，但视野里并没有色彩，只能询问小几来填补这片空白。
+“黄绿色的，天空和海水都是差不多的颜色，那颗天体正发出黄绿色的光。”
+小几回道。', 422, 6, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_422_7', '第422章 - 场景7', '杨逸点头，将其记录在系统里，后续可以发在论坛，换取一定的收益。
+“黄绿色的海，还真是第一次见.....”
+杨逸继续操控魇星号向前。
+这里空气中也弥漫着一股怪味，很像消毒水的味道，隔着老远就能闻到了，进入其中更是觉得刺鼻。', 422, 7, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_422_8', '第422章 - 场景8', '杨逸靠着暴食之口的舌头，也能感知空气里弥漫的味道。
+他久违的查看天气界面，已经很长时间未曾关注这个界面了。
+-----------
+＜今日天气＞', 422, 8, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_422_9', '第422章 - 场景9', '你当前处于死疫之海，请做好个人卫生防护，避免感染死疫。
+地点：死疫之海
+时间：12点17分
+光照时长：23小时（每日）
+气温：21℃
+风力：微风，2级', 422, 9, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_422_10', '第422章 - 场景10', '-----------
+“果然来到死疫之海了。”
+杨逸早有猜测，不过系统日志里进一步确定了这个结论，他没有误入其他海域。
+魇星号继续维持之前的航向，朝前方驶去，航速为60节。
+离开无光之海后，大型黑暗之核增加航速，减少黑影袭击的效果已消失，魇星号航速从70节跌落回了60节，狰狞之绿提高航速的效果并没有激活，结晶化后这项船只技能就被冻结了。', 422, 10, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_422_11', '第422章 - 场景11', '不过变成结晶船也不全是坏事，基础耐久比之前提高了一万，且更加坚固了，部分船体尤其底舱和龙骨，硬度相当高。
+杨逸熟练操控肉体，十几秒后就爬上了处刑架，手里拿着已经化作结晶的鱼人大贤者残骸挂了上去。
+信息略有改变，但猎获效果和之前比大差不差。
+【评价：鱼人之王、鱼人大贤者库里奇被消灭后剩余的残骸，被某人缝合，又感染了结晶病，最终变成了如今这副惨样。
+效果：船体耐久+15000，容量+5000，航速+5，鱼人敌意-200%，不再遭到鱼人袭击。
+同时，船上成员阅读效率提高100%，阅读魔法书理智损耗下降50%，可抵御鱼人诅咒。】
+---------
+远航时，航速是最高优先级的属性。
+可惜魇星号目前还没有大幅提高航速的猎获，不然这次航行需要的时间会缩短很多。', 422, 11, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_422_12', '第422章 - 关键决策', '两百多天的航行，让杨逸再度意识到这片海域有多大。
+哪怕凭空刷新上百亿的人口，分散开只怕也难得见上一面。
+这段时间，他一直和余大伟保持着联络，毕竟两人的目标相似，应该都在死疫之海或死疫之海周边。
+他那边还没有到，考虑到钢铁雄心号的航速，估计花的时间会比杨逸长很多。', 422, 12, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_422_13', '第422章 - 场景13', '简单调整了一会后，杨逸又发动了瞭望台的扫描技能。
+不过得到的海图里并没有岛屿，于是他索性让老船长按既定路线继续前进，自己则来到甲板，拿起结晶化的苍白蠕虫钓竿准备钓鱼。
+小几很快也加入其中，拿着好几根钓竿一起钓。
+这段时间，光靠鱼获和买入垃圾转化获得的结晶，杨逸就小赚了一笔钱，账上余额来到12,782,787海螺币。', 422, 13, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_422_14', '第422章 - 场景14', '要不是结晶纯度和转化结晶的物质品质有关联，杨逸这会估计都成大富豪了，可惜没这么顺利。
+高品质的素材拿来换水晶甚至晶钻，并不划算。
+【你钓到一条长腿沙丁鱼】
+【你钓到一条囊肿刺豚】', 422, 14, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_422_15', '第422章 - 场景15', '【你钓到一条多头鲭....】
+一条从未见过的怪鱼被拉上了甲板，长度约三十厘米，鱼身呈梭形，扁平且有细密的鱼鳞。
+但这鱼头部有很多个鱼头，挤在一起呈球形，鱼嘴不断开合。
+【名称：多头鲭鱼】
+【简介：感染死疫亚型疾病——增生病的普通鲭鱼，器官会不断增生，拥有很强的自愈能力。
+一旦受伤，伤口便可能增生出新的器官，部分地区利用增生病的特性培养出了有很多翅膀或者脚，甚至头，以及内脏的超级牲畜。
+可食用，但贸然接触可能感染增生病，烧熟烧透可大幅降低增生病感染的几率。】
+---------
+“增生病....死疫亚型到底有多少种？”', 422, 15, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_422_16', '第422章 - 场景16', '杨逸捏着这条怪鱼感慨道。
+不过他并不担心感染，因为死疫亚型同时间只会感染一种，他得了结晶病同时，也对其他死疫亚型疾病免疫了。', 422, 16, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_423_1', '第423章 - 场景1', '【增生病：一种传播能力极强的可怕瘟疫，是死疫的亚种，可感染绝大部分有机生命体。
+发病后，身体会增生出额外的器官或肢体，例如手指，眼睛，甚至完整的头颅。
+如果受伤，导致身体有伤口创面，会刺激加剧病情，伤口附近长出更多的器官肢体，通常和伤口附近的器官类似。
+精神属性越高，病情发展越慢。】', 423, 1, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_423_2', '第423章 - 关键决策', '杨逸思考了一会，还是决定留下这条鱼，因为苏娜可能会感兴趣。
+他弄来一个玻璃罐，盛满海水，把这条古怪的鱼塞了进去，密封起来。
+死活杨逸就懒得管了，希望它的生命力真有描述那般强吧。
+他继续垂钓，后面又陆续钓到几条感染了增生病的怪鱼，要么身上长满了鱼鳍，要么就是好几条鱼尾、十几条腿，让人看见就感觉不适。', 423, 2, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_423_3', '第423章 - 场景3', '哪怕是见多识广的杨逸理智也掉了两三点。
+趁杨逸不注意，几根舌头抓住那条两侧长满鱼腿，名为多腿沙丁鱼的特殊品种，塞入了暴食之口里。
+“好吃！”
+“好吃个锤子！', 423, 3, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_423_4', '第423章 - 重要发现', '我看你真是饿了，什么都吃的下！”
+杨逸怒骂道。
+他发现时，已经来不及阻止了，暴食之口把鱼嚼碎咽了下去。
+但从客观的角度讲，这鱼的确味道的确还行，就是带了点消毒水的辛辣味，好在鱼够新鲜，带着一股纯天然的鲜甜，而且很多条鱼腿也让这鱼变得更有嚼劲。', 423, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_423_5', '第423章 - 场景5', '不过这东西怎么看都不像正常的食物，不应该有食欲才对......
+只能说暴食之口不挑食，啥都吃，绝不是杨逸的潜意识想试试味道。
+...........
+数小时后，杨逸结束了垂钓。
+这增生病应该在死疫之海分布很广，甚至有人在刻意利用这种疾病，导致海里的鱼也大面积感染。
+【....不建议在死疫之海里钓鱼，钓到的鱼可能携带死疫，容易导致感染。】', 423, 5, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_423_6', '第423章 - 场景6', '杨逸趁着上鱼的间隙，也编辑好了死疫之海的帖子，等23点一到就能发出了。
+...........
+时间很快来到23点。
+杨逸一直在甲板待着，其实就是想观察这片海域的天黑现象，或者说观察极远处那颗疑似人造卫星的天体是如何运作的。
+不出所料，这颗人造卫星在23点前亮度就开始下降了，来到23点，便成了一颗不再发光，甚至肉眼看不见的球体。
+“仍在运作的人造卫星.....”', 423, 6, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_423_7', '第423章 - 关键决策', '杨逸使用三眼能看清这颗人造卫星，上面复杂的机械结构充满科幻感，局部有老化脱落，甚至锈蚀的痕迹，但整体状况良好。
+隔着这么远还能看清细节，说明这卫星相当大，制造者的水平相当高。
+不过这卫星不是当前的目标，杨逸决定观察几天，确定其规律，后面再考虑要不要去接触这人造卫星。
+因为他是有飞行道具的，在这时候可以派上大用场，前提得先解决结晶病，因为寄生飞翼因结晶病的缘故，已经彻底失去了效果，无法使用。', 423, 7, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_423_8', '第423章 - 场景8', '他回到船长室，打开玩家论坛，把编辑好的有关死疫之海的帖子发了出去，标题为——【关于死疫之海的情报与几种结晶病的信息】
+不出所料，这则帖子很快引爆了玩家论坛，回贴的玩家络绎不绝，图片也以最快的速度通过了审核，该配上警告的配上警告。
+【独眼大佬终于有动静了，我还以为你养老了呢，搞半天在憋一个大的！】
+【这应该是一个全新的海域，之前都没见过。】', 423, 8, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_423_9', '第423章 - 场景9', '【你怎么总能钓到一些奇形怪状的鱼，真心建议你换一根正常的钓竿！】
+【不过这照片怎么都是黑白的，独眼大佬你该不会变成色盲了吧？】
+【增生病，结晶病，这两种死疫亚种疾病都很可怕啊，一个变成活体雕像，一个变成.....妈的我理智掉了。】
+..........', 423, 9, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_423_10', '第423章 - 翠西雅相关', '杨逸这算是间隔两百多天的发帖了，但依旧上了热门，成了精华帖，并获得了12万海螺币的稿费。
+他一路浏览下来，又看了眼世界聊天频道，以及区域聊天频道，里面玩家数量为三，分别是他自己，苏娜以及使用了船员登记卡获得部分系统权限的翠西雅。
+“难道我真的是第一个抵达这片海域的玩家？”
+他发这则帖子的目的其实还有一个，就是想确认下这海域里有没有别的玩家。
+但结果貌似是没有，但也可能是这部分玩家故意藏着不说。', 423, 10, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_423_11', '第423章 - 激烈战斗', '杨逸决定没事就关注下区域玩家频道玩家的数量，提高警惕心。
+另外，战斗的准备也得做好了，“结晶岛”估计不会太远了。
+他有想过唤醒苏娜和翠西雅，但目前还没有这座岛的影子，提前唤醒可能起反效果，很可能撑不到抵达结晶岛。
+不如等到结晶岛附近再唤醒，那样有充足的时间准备。', 423, 11, 'BATTLE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_423_12', '第423章 - 物品获得', '他开始挑选武器，因为现在的条件已经不允许他把所有装备和道具都带上了。
+另外，他也可能遭遇和其他土著人类，甚至是玩家，所以外表最好看起来像个人，不然容易被他们先入为主，误判为敌对生物。
+杨逸思索了一会，目光瞟向不远处立着的赎罪者铠甲。
+这铠甲受结晶病影响，已经变成了一套水晶铠甲，里面夹杂着大量黑色污渍，如果光线不强，看起来很像黑曜石铸造的全身铠。
+属性倒是和之前差不多，硬了一些，但受到高强度冲击时，可能会裂甚至掉落一些碎片。', 423, 12, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_423_13', '第423章 - 场景13', '杨逸费大力气将这套铠甲的外形改了改，在原本胸甲球状纹样上凿开了一条八九厘米宽的裂缝，前后花了差不多五天的时间。
+而且为了防止铠甲自动修复，他定期进行“维护”，免得裂缝消失了。
+前后过了差不多一个月的时间，这铠甲现在已经不会修复这道裂缝了，估计是默认外形有了改变。
+借助这道裂缝，他肚子上的暴食之口就可以进食了，说起话来也比较方便，不然声音闷闷的。', 423, 13, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_423_14', '第423章 - 场景14', '杨逸穿上了这套铠甲，这样他的骸骨之躯就不容易被察觉了。
+接着他戴上了那个强盗面巾变的水晶面罩，遮住半张脸，又在镜子前试着动了动。
+“还行，这样看起来就像穿了一身铠甲，戴着狼头面具的“人”了。”', 423, 14, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_424_1', '第424章 - 物品获得', '防具定下后，杨逸开始挑选其他装备。
+断铁巨剑和咆哮燧发枪是必须要带的，这两者不受结晶化影响，杨逸用起来也比较习惯。
+他把断铁巨剑背在背上，赎罪者铠甲自带的卡槽刚好可以固定这把巨剑，宽度可以调整，适应各种尺寸的双手剑。
+咆哮燧发枪则固定腰间的枪套上。', 424, 1, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_424_2', '第424章 - 物品获得', '这枪套是杨逸用晶钻纯手工打造的，尺寸也刚好合适，只是造型比较粗犷，没有装饰品和花纹。
+“e.......”
+杨逸看向其他装备。
+像冰晶大盾，他原本是打算一并带上的。', 424, 2, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_424_3', '第424章 - 物品获得', '但杨逸试了一下，这大盾再加上断铁巨剑，两者合一起就太沉了，严重影响行动，且会增加精力消耗，不适合长途跋涉。
+“或许可以用来滑雪？”
+杨逸突发奇想，看向一旁的结晶化的王权三叉戟，越看越像滑雪杖。
+毕竟形制接近，只是长了点，但只要略加改造，在三叉戟尾部和前端固定上增大面积用于推雪的板子，就能起到滑雪杖的作用。
+于是武器也定下来了，就是这几把，还有不妨碍行动的炎蛇之牙短剑也一并带上，挂在腰的另一侧。
+“装备就这些了，赎罪者铠甲的头盔的话.....”', 424, 3, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_424_4', '第424章 - 重要发现', '杨逸扫视自己全身，没找到合适放头盔的位置，最后把主意打到了暴食之口上。
+三小时后，胸甲前方的裂缝又宽了一点，刚好可以把头盔塞入。
+“可别吃了，这可是重要的装备！”
+“知道。”
+数根舌头从胸甲上裂缝伸出，接过头盔，拿了进去。
+.........', 424, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_424_5', '第424章 - 场景5', '做好准备后杨逸再度来到甲板，外貌气质和之前已迥然不同，像一名身穿黑铠，武装到牙齿的高大骑士，头上还戴着狼首头盔和血色面罩。（实际是杨逸的脑袋和结晶化的强盗面巾）
+经几小时整备后，外头的天空又亮了起来。
+正如天气界面所述，这里一天的光照时长达到23小时，仅在23点到零点之间，远处高空那颗人造卫星才会熄灭，暂停发光。
+杨逸再度检查天气，感觉温度似乎高了不少。', 424, 5, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_424_6', '第424章 - 场景6', '-----------
+＜今日天气＞
+你当前处于死疫之海，请做好个人卫生防护，避免感染死疫。
+地点：死疫之海
+时间：03点42分
+光照时长：23小时（每日）
+气温：53℃
+风力：微风，3级', 424, 6, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_424_7', '第424章 - 重要发现', '-----------
+“56度？”
+杨逸离开船长室就感觉温度不对，一查就发现气温高的离谱，来到了56度。
+这估计才是死疫之海内部的真实气候，之前看的时候魇星号还处于死疫之海和无光之海的交界处，气候变化还不那么明显。', 424, 7, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_424_8', '第424章 - 苏娜相关', '杨逸不过站了一会，身上的深色铠甲就在远处“太阳”的照射下，变得越来越烫，温度节节攀升，铠甲周围的空间都变得扭曲。
+好在暴食之口不怎么怕烫，不然这套铠甲指定是不能穿了。
+“苏娜好像没提过高温，梦里气温应该没这么高，难道是那座岛周边的气候导致的？”
+杨逸推测道，找来了小几，打算趁着前往结晶岛的间隙，给甲板加高一层遮阳的顶棚，为后面做准备。', 424, 8, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_424_9', '第424章 - 场景9', '............
+两天后。
+这应该是魇星号进入死疫之海的第三天了。
+船的顶棚在杨逸、小几、以及结晶手臂的协力下顺利完工。
+材质为黑色的水晶隔板，特意搭了两层来隔热，全部用浸泡过黑暗之核的海水染黑。（黑暗之核本身也是类似结晶的物质，免疫结晶病）
+站在黑色水晶棚下，气温会下降好几度，同时能避免被伽马射线直射，体感会舒服很多。
+船舱内部的温度则会降低到35度左右，在这片海域里，已经称得上凉爽了。', 424, 9, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_424_10', '第424章 - 场景10', '............
+时间又过去了五天。
+魇星号距离那座结晶岛应该非常近了，杨逸感觉的到，因为那股冥冥之中，呼唤自己的感觉越来越清晰且明确了。
+就在前方，估计最多两到三天的航程，他就会看见那座岛。', 424, 10, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_424_11', '第424章 - 场景11', '杨逸打算两天后再发动一次瞭望台的技能，估计到时候就能获得那座岛屿以及周边海域的具体情报了。
+而且就在今天，海上也出现了新的状况。
+杨逸原本在钓鱼，但魇星号突然减速了，甚至停了下来。
+这状况之前也出现过，那是老船长及时察觉到了巨型黑影，而这次也差不多，前方海域情况不对，海水颜色明显更深。', 424, 11, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_424_12', '第424章 - 重要发现', '杨逸使用三眼看了过去，发现前方海水里出现了密集的海草，面积很广。
+“这是........？”
+他疑惑道，站起身收了钓竿，很快来到船头，接过了船的控制权。
+“这是海草，淡绿色，长势很好，覆盖了前方很广的区域。”小几及时跟了上来，进行补充解释。', 424, 12, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_424_13', '第424章 - 场景13', '“我不是在问你，我是....”
+杨逸总觉得小几是故意的，但没有证据。
+他根本不是在问这是啥，因为他看得见，而是疑惑这里为何有这么多海草，有些古怪。
+这散发刺激性气味，疑似消毒水的海水难不成特别适合这种海草生长？', 424, 13, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_424_14', '第424章 - 激烈战斗', '杨逸拿捏不准，不确定这海草是否具有攻击性。
+但他可以试试，直接把船横了过来，使用浸水大炮朝前方开了一炮。
+一颗水晶炮弹落入海草中，溅起大量水花。
+同时以炮弹落点为中心，海草竟然发出了星星点点的荧光，同时激活附近的海草一起发光，最终形成一个光圈，迅速往外蔓延。', 424, 14, 'BATTLE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_424_15', '第424章 - 重要发现', '杨逸也察觉到了这个变化。
+虽然他的的三眼视野里不存在色彩，但却能通过感知能量流动来发现光带存在，其中一颗眼球甚至变大了几分，增强了这部分感知。
+“这是在传递信号？”杨逸猜测道。
+毕竟这一连串光传出，很容易让人联想到这是在传递信号。
+如果同样有人在这片海草里活动，可能也会注意到这些光，然后根据光传出的方向，确定发光的源头。', 424, 15, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_425_1', '第425章 - 场景1', '【名称：感染增生病的波波荧光海草】
+【简介：一种受到冲击刺激就会发出翠绿荧光的特殊海草，耐酸碱，环境适应能力极强，只要提供充足的光照就能旺盛生长，对小型鱼类不敏感。
+这一株波波荧光海草感染了增生病，生长不受限制，受伤部位会长出更茂密的海草。】
+----------', 425, 1, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_425_2', '第425章 - 场景2', '杨逸操控魇星号靠了过去，在海草丛边缘停下，使用钓竿缠绕了一些海草扯了上来，同时获得信息。
+“所以这其实是一整株海草？”
+杨逸有些震惊，但可惜脸上皮肤早没了，做不出任何表情。
+抛开体积未知的伟大存在不谈，这片海草应该是杨逸迄今为止见到过的体型最大的生物，没有之一。
+因为从三眼视野范围里判断，这片海草生长的区域跨度已经超过了十海里，且在视野尽头依旧存在，具体大小甚至没法估算。', 425, 2, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_425_3', '第425章 - 场景3', '而且因为高密度海草存在的原因，这片海域里的鱼也特别多，虽然都是感染增生病的怪鱼，但作为应急食品还是合格的，只要稍微处理一下，甚至能制作成鱼干卖给其他玩家。
+反正交易传送后，这些鱼干也会彻底失去传染性，仅仅是有点怪的鱼干而已。
+杨逸思考了一会，恢复了航行，驱使魇星号进入了这片海草覆盖的海域，并将航速提高了最大。
+进入海草覆盖的区域后，一圈圈淡绿色的光带顺着魇星号前进的路径往外扩散，非常的美，同时把魇星号所在的位置也传了出去。
+六小时后。', 425, 3, 'TRADE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_425_4', '第425章 - 重要发现', '杨逸观测到了另一道光带，来自右上方。
+这预示着有其他船或大型生物在这片海域里活动，甚至很可能是发现了自己发出的信号，正往此处赶来
+杨逸没过分在意，反正早晚会遇上的，大概率是此地的土著。
+他拿出水晶球，激活海图递给小几，让他帮自己看好，同时关注光带的变化，及时通知自己。
+又隔了一天。', 425, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_425_5', '第425章 - 关键决策', '杨逸已经能从光带频次和方位推算对方大概有几艘船了。
+这些人的确是在向自己靠近，似乎试图拦截，逐渐和自己的航向重叠。
+“差不多五十艘船，部分已经就位，大都在往魇星号前方赶，只有十几艘船选择了绕后......
+小几，等会如果枪响或炮响，你就立刻使用解药，把苏娜和翠西雅唤醒。”', 425, 5, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_425_6', '第425章 - 场景6', '他下令道，让小几先一步去船舱做准备，因为很快就会和这股势力接触了。
+一小时后。
+水晶球海图上终于有了对方船只的影子，呈一字排开，挡在魇星号的的航线前。
+而且魇星号的两侧和后方，都有对方船只在靠拢，形成了一个前紧后松的包围圈。
+“海盗？”', 425, 6, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_425_7', '第425章 - 翠西雅相关', '杨逸通过海图，确定了对方意图就是拦截自己，而且是53艘船，如果不是些破烂古董的话还真不好对付。
+而且魇星号的状态不好，尾部的大海肺已经结晶化，成了单纯的饰品，无法提供跳跃能力，被围攻的话会很被动。
+杨逸朝天开了一枪，让小几先一步唤醒苏娜和翠西雅，然后驱使魇星号全速前进，尽快在后面和两侧的船赶来之前，冲破前方的封锁。
+.............
+不远处的海面上。
+一排黑色帆船呈一字排开，为首旗舰长度甚至超过了五十米，和魇星号比也差距不大了。', 425, 7, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_425_8', '第425章 - 场景8', '而且这些船和其他地方见过的船都不同，顶部都加装了几层盖板，应该和杨逸搭的水晶顶棚一样，目的是为了防晒隔热。
+而且这些船的桅杆末端都挂着统一的黑色旗帜，用暗金色的颜料画有一名双眼紧闭的女子，怀里正抱着一名疑似死亡，眼神空洞的婴儿。
+“啧，为何偏偏在我轮班的时候来了闯入者，真是麻烦！”
+旗舰上，一名穿着黄绿色防护服的男子抱怨道，使用望远镜紧盯着前方的海面。', 425, 8, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_425_9', '第425章 - 激烈战斗', '他的身体全包裹在防护服里，没露出一寸肌肤，就连脸上也是黑色的鸟嘴面具，将自己的和环境完全隔绝开。
+而且细看的话，还会发现他的防护服存在夹层，外层其实是透明的，但中间填充了某种液体，导致防护服变成了黄绿色。
+“队长。
+全队集合完毕，预计一小时后就会和对方接触，并完成对目标的包围。”
+另一名成员汇报道，穿的也是类似的防护服和鸟嘴面具，但面具的鸟嘴是银白色的。
+“不不不，先别逼得太紧，把退路给让出来。
+我们的目的不是战斗而是隔离和控制，对方只要离开，就不必起冲突了。”
+队长下令道，手下队员立刻就准备去传达。
+“等等。
+以防万一，把那些家伙也唤醒安排到甲板吧，这样保险一些。”
+“好，我这就去办。”
+（没写完，先发......）', 425, 9, 'BATTLE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_426_1', '第426章 - 激烈战斗', '一场可能爆发激烈战斗的冲突在发生前就已结束，而且是以杨逸没料到的形式结束，让他大跌眼镜。
+“他们在搞什么？
+是谁请来的演员吗？”
+杨逸忍不住吐槽道，看着手里的水晶球海图，一时没了主意。', 426, 1, 'BATTLE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_426_2', '第426章 - 物品获得', '图上显示，所有敌船都在撤离，魇星号则在后面追，乍一看还以为是魇星号在驱赶他们。
+而且这伙人撤退的很匆忙，连队形都顾不上了，仿佛后面背后追的是洪水猛兽。
+最后还是苏娜察觉到了猫腻。
+她和翠西雅都已经苏醒了过来，两人状态和使用结晶魔药前一致，苏娜仅右肩有结晶化的迹象，翠西雅则严重很多，下肢已经失去活动能力
+“这些人都穿着统一的银色防护服，像是在防备死疫，可能是不想感染结晶病才紧急撤离的。”', 426, 2, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_426_3', '第426章 - 苏娜相关', '苏娜放下手里的光学望远镜开口道。
+在适宜的天气条件下，这光学望远镜比杨逸的三眼还看得远，看清了对方船上的布置。
+她把看见的画面发在了船团界面里。
+“这旗帜.....他们应该是是死诞会的人。”', 426, 3, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_426_4', '第426章 - 翠西雅相关', '翠西雅也在船头，看见图片后认出了他们的身份。
+“死诞会.....”
+这组织杨逸听过几次了，算是死疫之海的官方组织，负责监控这片海，遏制死疫的传播。
+加上这条情报，基本可以确定对方就是不想沾染结晶病了。
+已经患病的患者想前往源头自杀，死诞会没阻止的理由。', 426, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_426_5', '第426章 - 场景5', '一小时后。
+这些蜂拥而来的船只全脱离了水晶球海图的探查范围。
+但从波波海草发出的光圈判断，他们正聚集于一处，往右侧驶去，那边可能存在类似营地的地点。
+杨逸放下水晶球，没有追过去查探的打算，当前最优先的目标依旧是结晶岛。', 426, 5, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_426_6', '第426章 - 苏娜相关', '他把掌舵权移交给老船长，自己则准备再去钓会鱼。
+“等等。”
+苏娜拦住了杨逸。
+“你是不是有什么东西忘了说？”', 426, 6, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_426_7', '第426章 - 苏娜相关', '她追问道，用狐疑的目光打量包裹的严严实实的杨逸，尤其在狼头的位置停了好几秒。
+之前因为形势紧张的缘故，苏娜一直没有提，但现在必须得好好问一问了。
+“杨逸船长他........”小几突然开口，但被杨逸伸手制止。
+苏娜看了看小几机器人，又看了看杨逸，最后定格在小几机器人身上，目光有些冰冷。', 426, 7, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_426_8', '第426章 - 物品获得', '这机器人好像跟着杨逸学坏了。
+“你的结晶魔药对我没有效果。”
+杨逸解释道，数根舌头从胸甲缝隙钻出。
+.............
+十五分钟后。', 426, 8, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_426_9', '第426章 - 翠西雅相关', '苏娜和翠西雅才了解杨逸身上发生了什么，以及她们究竟睡了多长时间。
+“死疫之海.....人造卫星.......增生病”
+苏娜默默念着，这些信息需要整理一下才能消化，时间跨度太大了。
+不过最令人震惊的还是眼前之人。', 426, 9, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_426_10', '第426章 - 关键决策', '两百多天的远航，不清楚他是怎么坚持下来的。
+为了少费唇舌，杨逸选择脱下赎罪者铠甲。
+在苏娜的指令下，赎罪者铠甲胸甲打开，一具被大量红色蠕虫般的舌头包裹的骷髅怪从中走了出来。
+要不是暴食之口、三眼以及标志性的狼头还在，只怕没几人认得出这是杨逸，除了对杨逸身体了如指掌的苏娜。', 426, 10, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_426_11', '第426章 - 翠西雅相关', '“你做了什么......”
+苏娜呐呐道，简直不敢相信自己的眼睛。
+翠西雅则躲到了苏娜背后，毕竟杨逸这副模样实在太骇人了，任何光辉圣教的骑士看见只怕都会拔剑。
+“结晶化后，原本的肉体太不方便了，所以我试着改造了一下，不然移动都很难办到。”', 426, 11, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_426_12', '第426章 - 翠西雅相关', '杨逸继续解释，以扭曲的骸骨形态领着几人进入船长室，并用骸骨手指指向角落里叠码放的结晶化脏器，包括大量疑似皮肤肌肉血管的水晶碎片。
+“我看你是疯了！”
+苏娜罕见失态，快步走了过去，捧起那颗常人三倍大、疑似心脏的水晶检查，瞳孔剧烈震颤。
+翠西雅也倒吸了一口凉气。', 426, 12, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_426_13', '第426章 - 场景13', '她原本想问还有多久到结晶岛，但现在已经不敢问了。
+所有人之中，只有小几最为镇定，并不是它早就知道了，而是在它看来，更换淘汰一些零件是稀松平常的事，不值得大惊小怪。
+“你确定你还能活过来?
+一旦解除结晶化，你可能立刻就会死！”', 426, 13, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_426_14', '第426章 - 苏娜相关', '苏娜警告道。
+“不会的，我有拒绝死亡。”
+“那也只有五分钟！
+五分钟的时间根本来不及重新搭建你的肉体！', 426, 14, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_426_15', '第426章 - 苏娜相关', '你身体甚至连血液循环系统都不存在，你知道这意味着什么吗？”
+苏娜熟知人体，基本已经判定杨逸变不回来了，即便那神奇的肢体复原术恐怕也办不到。
+“我其实感觉还蛮好的，这副身体甚至比之前......（还方便，结实可靠）”
+杨逸本准备糊弄过去，但没说完就停住了，因为苏娜眼眶泛红，侧过去的脸颊上甚至有了泪痕。', 426, 15, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_426_16', '第426章 - 重要发现', '他虽然分辨不出色彩，但泪痕还是看得清清楚楚。
+“额.......”
+杨逸一时凝语，原本混沌的脑子猛然清醒了很多，思绪也跟着变得灵活，冒出很多想法。
+如果此刻再查看他的面板就会发现，原本他一直在30左右徘徊的理智值猛然飙升到了50的上限。
+“我其实每一步都是经过考量的！”', 426, 16, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_426_17', '第426章 - 场景17', '杨逸大言不惭道。
+“又不是没见过剩下一个人头还没死的家伙，马尔斯就是。
+而且把头取下，维持生命体征的技术肯定存在，而且不止一种。
+到时候只要在玩家论坛里问一下就会有线索了.......”', 426, 17, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_426_18', '第426章 - 苏娜相关', '他临时想了个还原身体的办法，并且具备一定的可操作性。
+只要保留头部尤其是大脑的活性，他的身体就能慢慢修复，甚至可以用上其他人类的肢体或器官来查漏补缺，这并不难买到。
+“这......”
+苏娜仔细想了想，也觉得这个办法可行。', 426, 18, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_426_19', '第426章 - 关键决策', '反正只要不解除结晶化，杨逸就不会有生命危险，有充分的时间来做准备。
+至于彻底放弃人类身份，转化成怪物，苏娜也有考虑过，但那样.......', 426, 19, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_427_1', '第427章 - 重要发现', '这还是杨逸印象里第一次看见苏娜落泪，让他不由得再三反省自己。
+冷静下来后，杨逸发现自己精神的确有些不正常，或者说不健康。
+换一个正常人绝不可能就这么把自己霍霍成骷髅，哪怕想到也下不去手，这简直反人类了。
+“....我难道正在向怪物转变？”', 427, 1, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_427_2', '第427章 - 场景2', '其他几人离开后，杨逸一个人坐在船长室的床上质问自己。
+不少过往的记忆涌现，但基本都是来到这个世界后的记忆，之前的几乎已经记不得了。
+“还是得赶紧变回人类的肉体，这样下去可不太妙。”
+...........', 427, 2, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_427_3', '第427章 - 重要发现', '时间来到夜晚，临近23点。
+苏娜已经恢复了曾经的从容，对之前的事闭口不谈，仿佛啥都没发生过。
+他用高净度的晶钻制作出了一台天文望远镜，至于怎么做的，看到旁边累瘫不想动的翠西雅就明白了，100%是用她的口水制作的，甚至就是她舔出来的。
+苏娜准备这么一台天文望远镜其实就是为了观测远处天空的奇特天体——一颗高挂的人造卫星。
+白天时，这颗卫星会发出高强度的伽马射线，甚至能穿透电子产品外壳，对内部电路造成破坏。
+如果白天用肉眼去看，只怕很快就会视网膜灼伤，变成瞎子。', 427, 3, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_427_4', '第427章 - 关键决策', '所以苏娜只能选择晚上看，在人造卫星熄灭时仔细观察。
+杨逸闲着没事练了一会剑，看见苏娜搬出来一台自制天文望远镜便凑了过来。
+质量还不错，甚至得到了系统的承认，有物品信息。
+【名称：光学天文望远镜】
+【类型：宝物】
+【品质：精品】
+【简介：基于透镜折射原理制作的天文望远镜，通过手动更换镜头，放大倍率在50~450倍之间，可用于最基础的天文的观测。】
+---------
+“不错啊，如果上架商店的话，估计会有玩家愿意掏钱买。”', 427, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_427_5', '第427章 - 苏娜相关', '杨逸试图挑起话茬，但苏娜没理他，把他当成了空气。
+“其实我这里有这颗人造卫星的图片，不过是黑白的，你要不要看？”
+杨逸换了个角度切入，这回苏娜终于有了反应，皱眉看了过来。
+“发我。”
+“好咧。”', 427, 5, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_427_6', '第427章 - 场景6', '杨逸把图片发了过去。
+“另外，我还钓到了有很多个头的鱼，放你实验室里了。”
+“被你闷死了。
+鱼也是要呼吸的，你把罐子密封起来，用重物压住干嘛？”
+“额......”
+...........', 427, 6, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_427_7', '第427章 - 苏娜相关', '时间来到23点，天空顿时变暗，苏娜抓紧时间猛瞅远方的人造卫星。
+这东西比起照片，还是得亲眼看才足够震撼。
+在卫星熄灭后，仅凭肉眼是很难观测这颗天体的，但在数百倍的天文望远镜的加持下，观测成了可能。
+这人造卫星在熄灭后并非完全停止运行，表面那些像太阳能板的装置间隙里还是有光的，像是黑暗中用于警示轮廓用的照明灯，亮度不算高。
+这样看的话，当初天空可能不止这一颗卫星，而且人类也有便携的飞行装置才对......', 427, 7, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_427_8', '第427章 - 重要发现', '苏娜的注意力集中在了对卫星的观测上，身上已经出了一层细密的汗，甚至打湿了临时合成的衣服。（原本的女巫便服已经结晶化了，只能用布料合成简易衣物）
+毕竟气温还是挺高的，温度也超过了40度，卫星短时间熄灭并不会导致温度大幅下降。
+杨逸看了一会就离开了，因为他也有事情要做。
+首先是发出悬赏帖，希望能找到一种取下头颅不死的技术。
+再有就是把死诞会和波波海草的情报发到论坛里，应该也能换一些钱。', 427, 8, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_427_9', '第427章 - 场景9', '杨逸花了十分钟就编辑完了帖子并发了出去。
+毕竟之前就打过草稿了，这次发也只是重新检查一遍。
+“希望能有收获。”
+杨逸看了一会论坛感慨道。
+在这两百多天时间里，玩家论坛也历经了好几次更新，但总体功能和框架没有改变，加都是一些类似论坛皮肤，论坛字体，甚至论坛语音留言之类的小功能。', 427, 9, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_427_10', '第427章 - 重要发现', '杨逸依旧用着白地黑字的经典极简皮肤，浏览寻找着有价值的信息。
+经玩家长时间的探索，奇迹之海的海图已经比较完善了，标注出了很多带名字的岛屿，上面大多有土著居民存在，可以进行交易。
+前往其他海域的办法，也陆续被旅团发现，记录在了世界海图界面里.......
+突然，杨逸私信频道闪烁，发信联络者为周黛。
+“那个脑浆有货了吗？”', 427, 10, 'EXPLORATION', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_427_11', '第427章 - 场景11', '杨逸没点开信息就猜出她问的就是这句，点进去一看，果不其然。
+这家伙自从买过大海肺幼体的原味脑浆后，几乎每间隔一到两周就会过来问一次，一直持续到现在。
+“没有，说了有货我就会联系你，然后上架。”
+杨逸回信道，随即就不准备搭理这头嘴特别馋的噬脑魔小姐了。
+“等等。', 427, 11, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_427_12', '第427章 - 场景12', '我看见你的帖子了，你在找取下头颅不死的方法是吧，我正好会！”
+周黛随后的信息重新引起了杨逸的注意。
+“细说。”
+“那脑浆......”', 427, 12, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_427_13', '第427章 - 场景13', '“到时候有货第一时间通知你，给你打九折！”
+“成交！”
+...........
+很快名为完整头颅摘取术和五感封印术的手术技巧发了过来。', 427, 13, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_427_14', '第427章 - 场景14', '杨逸大致浏览了一遍。
+和推测的差不多，马尔斯应该就是被这样取下头颅的。
+摘取部分倒不是很难，手术难度远低于接肢手术，杨逸甚至都能操作。
+只是手术时间要求比较苛刻，必须在5分钟内完成，否则后续成功率会在90%以下。', 427, 14, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_427_15', '第427章 - 苏娜相关', '至于五感封印术，其实就是想办法封印患者的五感认知，让其无法确认自己的状态，从而让他的生命体征维持在死亡前的一刻，可长时间存活。
+但这封印术即便熟手来做，成功率也只有30%。
+“这个法子还是不太可靠啊。”
+杨逸琢磨道，但还是转发给了苏娜，看她会不会做出些改良，提高成功率。', 427, 15, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_428_1', '第428章 - 重要发现', '苏娜仍在使用天文望远镜观察远处那颗人造卫星。
+“没有推进装置，这东西究竟是怎么悬停在空中的？”
+她不解道，缓缓调整望远镜的角度，仅在这颗人造卫星的底部发现了朝内凹陷的结构，不确定是出入口还是别的什么东西，角度不够，观测不到。
+但除了这里外，再没有像样的出入口了，苏娜还是觉得底部就是这颗人造卫星的出入口。', 428, 1, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_428_2', '第428章 - 苏娜相关', '这么大的卫星，必然是需要定期维护的，不过她盯了好久，也没看见有东西进出，可能维护的周期还没到。
+恰在这时，杨逸发来的私信，里面的内容正是周黛提供的头颅摘除术以及五感封印术。
+苏娜大致看了一遍，产生了和杨逸一样的顾虑，成功率太低了。
+手术不出差错，普通人类的成功率也只有30%。
+换成超凡者，成功率只会更低，因为超凡者对外界的感知更敏锐，甚至存在第六感。
+“不行。”', 428, 2, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_428_3', '第428章 - 物品获得', '苏娜看完后得出了结论，这个手术在杨逸身上成功率无限接近0。
+因为杨逸有畸变器官，切除暴食之口就是个巨大的隐患，更别说还要处理三眼了。
+要封印甚至欺骗杨逸对外界的感知，那太难了，还不如趁着结晶魔药药效在的时机，弄到一副合适的人类肉体，然后用肢体复原术把头接上去，之后再尝试修复杨逸的肉身。
+结晶岛上应该有可用的肉体。
+只要结晶病消失，岛上遍地都是人类的身体零件。
+次日。', 428, 3, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_428_4', '第428章 - 场景4', '杨逸又换回了先前的装束，漆黑的铠甲包裹全身，仅腹部裂开一道巨大的缝隙，时不时有红色细长的舌头从中冒出。
+结晶岛应该不远了。
+他站在船头，细细感受着前方的呼唤。
+很近了。
+隐隐有一股凉爽的风从前方吹来。
+自早上起，魇星号就离开了波波荧光海草覆盖的区域，海面又变回了之前的状态。
+这基本可以视作突破了封锁圈，再往前就是结晶病源头的所在地了。', 428, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_428_5', '第428章 - 关键决策', '杨逸仔细感受了一会，转头往魇星号中庭走去。
+“应该不远了吧，我感觉挺近的。”翠西雅趴在杨逸脑袋上询问。
+经一晚上的缓冲后，她已经适应了杨逸如今的状态，不再感觉害怕，找回了曾经熟悉的感觉。
+加上她下半身完全结晶化，难以动弹，只能选择趴或躺的姿势才比较舒服，所以把临时用布料制作的床褥搬到了杨逸头上，就这么趴着，比较省力。', 428, 5, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_428_6', '第428章 - 翠西雅相关', '杨逸没什么所谓，淡然回道。
+“估计就在前面了，用瞭望台扫描一下应该就能确定具体位置。”
+他来到桅杆前，顺着爬梯爬了上去。
+穿过两层用黑暗之核燃料涂黑的水晶隔热板，远处人造卫星释放的伽马射线直接照在杨逸和翠西雅两人身上。', 428, 6, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_428_7', '第428章 - 场景7', '不过二人的身体构造特殊，体质属性很高，除了感觉炎热外并没有其他的不适感。
+杨逸站在瞭望台上，使用三眼扫视四周，确定没有异常后发动了瞭望台的扫描技能，并顺利获得了周围的详细海图。
+“面积这么大？”
+杨逸的活动日志里弹出一张详细的海图，囊括周围两千海里。
+就在前方距离魇星号约五百海里的地方，存在着一座超大的岛屿，直径约三百公里，且周边还零星分布有一些小岛。', 428, 7, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_428_8', '第428章 - 重要发现', '这应该是杨逸迄今为止，见过的面积最大的岛或者说陆地了。
+当初苏娜在这座岛上探索了很久才找到源头，除了路不好走外，面积大估计也是原因之一。
+他把海图发在了船团界面里，打算开一个简短的作战会议，商讨接下来该如何探索这座岛。
+............
+另一边。', 428, 8, 'EXPLORATION', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_428_9', '第428章 - 关键决策', '苏娜晚上结束观测就回了女巫实验室。
+她取了一些海草以及海水作为实验检测用的样品，还包括几条一并捞上来感染了增生病的怪鱼，之后就没有出来过。
+死诞会的存在给了苏娜灵感和信心，因为他们的存在足以证明死疫......至少死疫亚种疾病是可防可控，甚至可用的。
+增生病甚至被死诞会当成了工具在使用。
+至于结晶病.......估计是因为传播面太广了，很多非生命物质也会感染，容易失控所以选择了隔离。', 428, 9, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_428_10', '第428章 - 翠西雅相关', '苏娜继续实验，专注度很高，连杨逸发在船团里的海图和信息都没有看，直到杨逸带着翠西雅和小几进入实验室。
+“天呐，那是什么？”
+翠西雅惊叹道，想揪杨逸的狼毛却没有得逞，因为狼毛都变成了硬化的水晶，害她险些被刺伤。
+只见女巫实验室的实验桌上多出来了一团形态扭曲的不明物，像是很多条鱼粘在一起，变成了一个整体，分不清头和尾究竟在哪，因为都有好几个。', 428, 10, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_428_11', '第428章 - 苏娜相关', '“苏娜，你做了什么？”
+杨逸皱眉问道，勉强认出这团不明物原本是条刺豚，表面有刺，身体也有点鼓。
+“测试增生病。
+这疾病不简单，受伤部位会迅速长出新的组织器官，如果再受伤，便会继续生长，循环往复，甚至不需要额外进食......你知道这意味着什么吗？”', 428, 11, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_428_12', '第428章 - 物品获得', '苏娜抬头看了过来，询问道。
+“意味着会诞生出一团生命力极强，丑恶扭曲的肉球？”
+杨逸看着这团“鱼球”回道。
+“那只是表象，真正的结果是......我们将拥有吃不完的食物，用不完的生物耗材，甚至异魔素材，轻松实现量产魔药甚至装备以及一切相关产品。”', 428, 12, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_428_13', '第428章 - 苏娜相关', '苏娜回道，意识到了增生病的潜在价值，难怪死诞会在研究利用这个疾病。
+“但也可能导致这个世界变成地狱，到处都是畸形生物。”
+杨逸脑子意外的清醒，不打算在魇星号里埋下这么个隐患。
+现在还无所谓，等到时候到了结晶岛，在解决完结晶病之前，有关增生病的一切有机质都必须焚烧净化，免得再度被感染。', 428, 13, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_428_14', '第428章 - 苏娜相关', '他没继续这个话题，而是提醒苏娜查看船团频道。
+结晶岛估计在数个小时后就将抵达，他们得拟定一个作战计划。', 428, 14, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_429_1', '第429章 - 苏娜相关', '“结晶岛很大，周围有很多零碎的小岛。
+我的计划是在这个边沿的小岛登陆，离结晶岛大概只有五百米不到的距离，很适合作为登岛前观察的踏板。
+再有就是，这座岛存在疑似人造建筑的结构，和其他小岛不同，值得过去瞧瞧......”
+杨逸向苏娜索要了纸笔（实验室新兑换的），将结晶岛的轮廓和魇星号的位置都画了出来，打算在岛屿背面的一处小岛登陆。
+这座岛在海图上放大查看，长度约四百米，是一处狭长岛屿，宽度大概在一百米左右。', 429, 1, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_429_2', '第429章 - 场景2', '但在岛屿两侧，存在很明显的类似码头港口的结构，不太可能是自然形成的，所以杨逸把这座小岛定为了最优先目标。
+这样不仅可以在上岛前绕行观察一番，也可能在这座小岛上寻到一些线索。
+没人有异议，于是计划就这么定下来了。
+按当前航速估算，大概八九小时后，即下午三点左右，魇星号便会抵达这座小岛。
+...........', 429, 2, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_429_3', '第429章 - 苏娜相关', '计划定下后，杨逸指定了航行的路线并让老船长继续代驾，准备在接近结晶岛后再改为自己掌舵。
+他其实还有个问题没说——关于深入结晶岛探索的人选问题。
+除了他和小几外，其他人只怕靠近直面结晶病的源头后，都会变成不可避免的变成活体雕塑。
+所以杨逸打算一个人去，这样风险最小，但苏娜可能会有异议，所以暂时还没有定。', 429, 3, 'EXPLORATION', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_429_4', '第429章 - 场景4', '趁抵达结晶岛前还有一段时间，杨逸又开始钓鱼，拿出结晶化的深渊之爪，在船中庭选了个合适的位置，便开始了垂钓。
+这一钓就是六个多小时，连头顶的气候都有了改变。
+在接近结晶岛，进入一定的范围后，天空就陆陆续续飘落下来一些白色粉末，触感细腻，用光去照甚至有莹润的光泽。
+这是结晶微粒，疑似大气结晶化的产物。
+一些没掉落下来的微粒聚集在天空，形成了白色的云层。
+也是因为这个原因，人造卫星放出的射线被层层过滤，到接近结晶岛，天空已经变得白茫茫一片，温度也下降到了30度以下，风也大了一些。', 429, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_429_5', '第429章 - 场景5', '杨逸关注到了变化，知道结晶岛已经快到了，于是准备收竿放弃这次垂钓。
+可偏在这时，深渊之爪有了反应，杨逸立刻握紧钓竿，准备发力将其扯上甲板。
+“挺沉的，也不像活物，是什么东西？”
+杨逸纳闷道，感觉这次上钩的东西和之前都不一样。
+为了提高效率，暴食之口的部分舌头甚至从手腕和指关节的缝隙钻了出来，防止意外脱手，用更大的力气往上扯。', 429, 5, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_429_6', '第429章 - 翠西雅相关', '约20分钟后，杨逸探头看向海面，终于看清了这东西是啥。
+“好大一个宝箱！”
+杨逸头上的翠西雅感慨道。
+其实杨逸已经很久没钓到过像样的宝箱了，基本都是些给少量基础物资的宝箱，价值很低，甚至不如钓到的鱼。', 429, 6, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_429_7', '第429章 - 重要发现', '不过这次应该不一样了。
+宝箱大且沉，看模样是一个水晶宝箱，但箱体浑浊看不清内容物是什么。
+深渊之爪牢牢抓在宝箱顶部，甚至嵌入了一部分。
+杨逸用力，将宝箱拉出水面，发现宝箱底部还沾着大量骸骨，不太清楚是装饰品还是后来粘上去的。', 429, 7, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_429_8', '第429章 - 场景8', '但他倾向于后者。
+两分钟后，这巨大的宝箱被钓了上来，放在魇星号的甲板上。
+大量结晶手臂伸出，接过宝箱让其平稳落地。
+“快，打开来看看，里面肯定有好东西！”', 429, 8, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_429_9', '第429章 - 翠西雅相关', '翠西雅催促道，仿佛钓到宝箱的人是她。
+但杨逸不为所动，因为以他开宝箱的经验来看，这东西必然藏有风险。
+而且迄今为止，他就没钓到过资源宝箱外的正常宝箱。
+所以杨逸做出了一个极其反常的举动，隔着十米远，先给这宝箱来了一枪。
+嘭！
+结晶飞溅。', 429, 9, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_429_10', '第429章 - 场景10', '杨逸为不破坏宝箱内部的物品，故意打的很偏，弹丸从宝箱盖子边缘擦了过去，掀开一条裂纹，露出了里面结晶化的牙齿。
+“宝箱怪？”
+杨逸算是看出来了。
+他曾经钓到过类似宝箱怪的生物，名字似乎叫宝箱蚌，比这个小上很多，现在壳还在女巫实验室里摆着。
+眼前的这个宝箱怪看样子是感染了结晶病，可能是吃了结晶化的鱼或者别的什么，总之它不能动弹了。', 429, 10, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_429_11', '第429章 - 激烈战斗', '杨逸用断铁巨剑敲了敲，箱体顿时出现了好几条裂纹。
+确认没攻击性后，杨逸就开始暴力开箱了，把断铁巨剑当撬棍使，插进去用了撬。
+在把宝箱怪整个上颚崩碎开的同时，杨逸也获得了信息。
+【名称：感染结晶病的宝箱吞噬者】
+【简介：一种可能出现在人迹罕至的角落，伪装成宝箱的拟态生物，有事会潜伏在海里，故意上钩，然后偷袭钓到它的人。
+因经常吃掉一些冒险者，体内可能会有一些冒险者遗留的财宝。
+这只宝箱吞噬者感染了结晶病，已失去了攻击能力。】', 429, 11, 'BATTLE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_429_12', '第429章 - 场景12', '-----------
+“这算是纯捡漏了？”
+杨逸看完信息道，没想到在登陆结晶岛之前还能有这样的收获。
+他拍下照片，然后就在宝箱怪的体内翻找起来，用炎蛇之牙划开了宝箱怪结晶化的胃囊，里面有不少鱼骨，和一些不知名的骨头碎片，不知道放了多久了，但因为结晶化的缘故，没什么臭味。', 429, 12, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_429_13', '第429章 - 场景13', '里面一颗显眼的石头引起了杨逸的注意，那是中阶工匠铭石！
+杨逸精神为之一振，继续翻找，在陆续收获了一些海螺币，以及残破的武器盔甲碎片外，最后在里面翻出来一截人类的断臂。
+【名称：】', 429, 13, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_430_1', '第430章 - 翠西雅相关', '当杨逸看见系统信息时，已经来不及做出反应了。
+翠西雅的声音戛然而止，从杨逸的头顶滑落，被稳稳接在手中。
+她已完全变成了水晶雕像，保留着前一瞬的动作和表情，身体晶莹剔透，散发淡淡的白光。
+【名称：翠西雅的活体雕像】', 430, 1, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_430_2', '第430章 - 翠西雅相关', '【简介：大不敬者的狂信徒——变种光妖精翠西雅感染结晶病后转化成的活体雕像，实际并没有死亡，身体差不多有一般光妖精三倍那么胖。
+后颈有重罪印记，是光辉圣教在逃的叛徒，可交给光辉圣教换取高额的赏金。
+因身体结晶化的缘故，失去了对外界的一切感知，但光妖精的特性仍在，可长时间发光，作为艺术品的价值亦是不菲，但可能被传染结晶病。】
+-----------', 430, 2, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_430_3', '第430章 - 翠西雅相关', '杨逸获得了有关翠西雅的信息。
+他心中一紧，即刻行动，把那只足足有常人两倍大的水晶手掌塞回了宝箱怪体内，同时联络苏娜。
+“苏娜，你那边有没有出现异常，看见立刻联络我！”
+消息很快得到了回应。
+“怎么了？
+甲板是不是上来了什么东西，我好像听见了枪声。”', 430, 3, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_430_4', '第430章 - 重要发现', '苏娜回道，看样子她那边没受到影响。
+“是发生了一些状况，你先不要上甲板，稍后我和你解释！”
+杨逸让苏娜先不要来甲板，接着转为联络翠西雅，发现她在短短十几秒的空档里发来了七八条留言。
+“发生什么了，怎么突然天黑了？”
+“不对，我好像不能动了，什么都感觉不到，我这是变成水晶雕像了吗？”', 430, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_430_5', '第430章 - 翠西雅相关', '“杨逸，你在不在？说句话啊！你该不会也变成雕像了吧？”
+“完了完了，彻底完了，我不想被关一辈子，我会疯的！”
+“慈悲的大不敬者在上，请救赎一下您虔诚的信徒翠西雅吧，也顺便救一下杨逸，不然我会饿死的.......”
+........', 430, 5, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_430_6', '第430章 - 场景6', '杨逸读了几条，原本还有些担忧的情绪荡然无存，因为这小家伙的内心戏太多了。
+不过能用系统私信就是好事，说明情况还不算太糟。
+“抱歉，我没变成雕像。
+但你倒是真的变成雕像了。”', 430, 6, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_430_7', '第430章 - 翠西雅相关', '杨逸发去私信，同时配上了翠西雅变成水晶雕像的照片。
+“啊！！！
+那真的是我！
+该怎么办！
+我要是变不回来就完蛋了！
+快救下我！', 430, 7, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_430_8', '第430章 - 重要发现', '我突然发现我好胖啊！”
+可能是真的有点慌，翠西雅发信息的频率很快，而且有点语无伦次。
+杨逸费了好些功夫才让她镇定下来，并承诺一定会把她治好，不会拖太长的时间。
+这封闭起来，失去外界感知的痛苦，杨逸再熟悉不过了，在梦里体会过很多次，深知其可怕。
+如果拖得久了，很可能会造成不可挽回的后遗症。', 430, 8, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_430_9', '第430章 - 翠西雅相关', '“你注意下自己的理智值，觉得难熬就私信我，当然也能私信苏娜，我迟些给你弄几本小说读读。”
+杨逸搞定翠西雅这边，将翠西雅雕像塞进了肚子里，目光再度看向面前已成残骸的宝箱怪。
+结合巨人骑士的情报可以推算，这宝箱吞噬者应该是意外吞了巨人骑士的手掌才染上的结晶病。
+因为在海里，海水对死疫亚种有阻隔传染的作用，得接触才有可能感染。
+所以巨人骑士....照理说应该葬身于海才对，但现在居然又冒出来了，还弄出了一个结晶岛。
+“难道也是被某个钓鱼佬钓上来的？”', 430, 9, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_430_10', '第430章 - 苏娜相关', '杨逸甩了甩脑袋，抛开了这个荒诞的念头。
+他拖着宝箱怪残骸来到船头，将里面的结晶手掌取了出来，分量还挺沉，差不多有四十多斤。
+旁边就是老船长钓鱼的鱼桶，已经结晶化，里面盛满了黄绿色的海水，里面有三四条没完全结晶化的长腿沙丁鱼。
+其他怪鱼基本都被苏娜拿去了实验室。', 430, 10, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_430_11', '第430章 - 场景11', '杨逸拿着结晶手掌在木桶前晃了晃，里面的长腿沙丁鱼并没有立刻化成结晶。
+接着，他把手掌丢了进去，引起了长腿沙丁鱼的注意，在接触后，它们一个个变成了晶莹剔透的水晶鱼，硬梆梆地沉到了桶底。
+“可行，准备一个盛满海水的容器就能起到隔离的效果了。”
+杨逸提着结晶木桶往船舱走去。
+一刻钟后。
+女巫实验室内已完全结晶化的实验桌上多了一个密封的圆柱形玻璃罐，里面泡着一截晶莹剔透的结晶手掌，并用特制的支架固定住避免脱落。
+“........这就是结晶病的源头，第一名感染者的手掌？”', 430, 11, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_430_12', '第430章 - 翠西雅相关', '苏娜紧盯着这个玻璃罐道，没想到杨逸的随手一钓，就把这次远航的目标直接给钓上来了，至少钓上来了部分。
+装好封罐后，苏娜也获得了这手掌的信息，结合杨逸和翠西雅先前的遭遇，对结晶病或者说死疫有了更深的认识。
+“传播途径除了触碰外，看或者闻，甚至听，都有可能感染死疫，接触的方式越直接具体，感染发病的速度就越快。
+我猜测这疾病可能是通过能量作为媒介传播的，光和热，物质的扩散与震动，都可能携带病源，导致感染。
+具体的话，还需要一个更大的实验室来进行测试才行，这里空间还是太小了，一些测试没法做。”', 430, 12, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_430_13', '第430章 - 苏娜相关', '苏娜推测道，做出了一个极其大胆的猜想，同时也没放弃寻找病原体。
+她认为病原体是必然存在的，只是存在形式不同或体积太小，以她目前掌握的技术手段还观测不到。
+“行，你继续研究吧。
+但绝对不要把这个手掌取出来，不然变成活体雕像可就啥都干不了了。”', 430, 13, 'EXPLORATION', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_430_14', '第430章 - 苏娜相关', '杨逸不打算一直留在实验室里听苏娜的长篇大论，确定情况稳定后就返回了甲板，因为结晶岛已经到了。
+天空飘落下来的结晶微粒明显变多，魇星号甲板都铺了薄薄一层。
+约三海里外，出现一座面积极大的岛屿，边缘都是银白色的沙滩，海水受结晶微粒影响，也变得有些浑浊。
+在岛屿外围，还有大量小山丘，大的可能直径几十米，小的可能就几米，看模样很可能是结晶微粒堆起来的沙丘。', 430, 14, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_431_1', '第431章 - 场景1', '杨逸接过了魇星号的控制权，操控船只沿着结晶岛的海岸线一路前进，准备在之前海图上看见的那座小岛登陆。
+“杨逸船长，生命探测仪显示，沿海陆地上没有生命活动的迹象。”
+小几在旁辅助，使用雷达监控结晶岛的情报，汇报给杨逸。
+后者因为没有肉眼的关系，没法一直盯着结晶岛，这时候小几就能派上大用场了。
+“好的，有情况就通知我。', 431, 1, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_431_2', '第431章 - 场景2', '另外，你能弄清岛屿内部的情况吗？”
+杨逸用三眼看向结晶岛，但视野受限，飘落下来的结晶微粒严重遮挡视线，导致他视野被限制在五公里内，再远就看不清了。
+“不能，里面的结晶粉尘对雷达有干扰。”
+小几回道，也没办法直接获取岛屿内部的地形信息。
+“行，先监视海岸，我待会开几炮弄出点动静，如果岛上有活物应该会做出反应。”', 431, 2, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_431_3', '第431章 - 场景3', '杨逸对小几道，继续操控魇星号向前。
+两小时后。
+魇星号接近了那座有码头的特殊小岛，速度比预期的还快了一些。
+因为海岸绕行没什么收获。', 431, 3, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_431_4', '第431章 - 场景4', '杨逸试探性的开了几炮，等了五六分钟，海岸也没有任何动静。
+他换位置试了两三次，也没有引来什么可疑的东西或危险，后来就全速赶往目标地点了。
+但这座有码头的岛上有了收获。
+这岛屿不大，杨逸用三眼就能掌握全貌，除了岛屿中间有四座被白色结晶微粒覆盖的建筑外，没有其他可疑之处。
+“警告，生命探测仪监测到了生命活动的迹象，位于岛屿内部，深度约十米，存在多个生命体。”', 431, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_431_5', '第431章 - 场景5', '小几头顶已经化作结晶的雷达顶端发出了红光，同时对杨逸发出警告。
+“在岛屿内部？”
+杨逸迟疑道。
+难不成这岛被挖空，弄了些地下设施，还是说.......这压根就不是一座岛？', 431, 5, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_431_6', '第431章 - 重要发现', '他按下心中的疑问，操控魇星号往岛屿码头靠去，同时发信息给苏娜，告诉她目标地点到了。
+很快魇星号就完成了停靠，码头甚至有用于栓绳固定的柱子，只是被“积雪”覆盖了，不容易发现。
+大量结晶手臂牵手或者抓着臂骨，互相缠绕，形成了一条较粗的临时用于固定的绳索，缠绕在柱子上。
+再抛下用于稳固船身的船锚，在结晶手臂的辅助下将船中庭的巨大结晶鼠头挂上了处刑架，上岸前的准备工作就完成了。
+大量结晶化的骸骨老鼠从魇星号船体里钻了出来。
+这些老鼠不仅能起到保护船只的作用，在探索方向，也能起到探路的效果。', 431, 6, 'EXPLORATION', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_431_7', '第431章 - 关键决策', '苏娜也放下了对结晶手掌的研究，做好了进入这座岛的准备，戴上结晶化的珍品鸟嘴面具。
+她武器选择的是盐之弓和光束手炮，前者因材质特殊，完全不受结晶病影响，后者则变成了一把水晶材质的光束手炮，总体性能相差不大，但散热效果差了一些，存在射速限制。
+两把武器都附上了活化兵装魔法，操控的时候甚至不需要用手，让杨逸好一阵羡慕。
+“这才是炫酷的魔法，到时候多弄一些大炮，简直无敌。”', 431, 7, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_431_8', '第431章 - 苏娜相关', '做好准备后，杨逸苏娜两人先后踏上码头，周围跟着很多结晶小鼠，先一步往岛上去了，在“雪地”上弄出很多小型啮齿动物爬过的痕迹。
+小几则被留在了船上，毕竟船上一个人都不留还是不太安全，万一有别的活体生物上船就麻烦了。
+“你结晶病发展的怎么样了？”
+杨逸走在前面，突然回头询问苏娜。', 431, 8, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_431_9', '第431章 - 苏娜相关', '“右肩和手臂关节活动受影响，我处理了一下，你要检查么？”苏娜回道。
+“额....不必了，回头再说。”
+杨逸拒绝，继续往前走去，手里断铁巨剑在雪地里挖出一条接近二十厘米深的沟渠。
+去掉上层的雪可以看见，这码头也受结晶病影响，变成了类似结晶的结构。', 431, 9, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_431_10', '第431章 - 场景10', '但从平整光洁、没有纹理的表面看，其原本很可能是由金属或者其他亮面材质打造的，而非木头，这就比较罕见了。
+上岛后，地面的材质依旧没有太大的变化，这基本已经可以判定，这座岛原本不是岛了，而是彻头彻尾的人造物。
+两人来到岛屿的建筑前。
+这座岛一共有四座建筑，从外观看，没有太大的区别，杨逸选的是最近靠左的建筑。
+结晶老鼠已经先一步到了，在覆盖雪的建筑上弄出了很多爬过的痕迹，甚至钻了进去。', 431, 10, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_431_11', '第431章 - 场景11', '杨逸用断铁巨剑在疑似正门的位置拍了几下，大量“积雪”掉落，露出建筑的本体。
+这是一座像仓库或机库的建筑，设计简单，配有坚固厚实的大门，放在这个诡异世界总有股不协调感。
+但联想到这海域连人造卫星都有，多个偏科技侧的建筑，也就没什么奇怪的了。
+这建筑有用于通风的管道，但早已经停止运转了，扇叶一动不动，大量结晶安家鼠都顺着管道钻了进去。', 431, 11, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_431_12', '第431章 - 苏娜相关', '苏娜开始检查这门的开关在哪，即便断电，应该也有用于应急，手动开启闸门的开关才对。
+但杨逸伸手制止了她。
+“有件事我没告诉你，其实我特别擅长弄开没钥匙的门。”杨逸认真道。
+苏娜听完撇了撇嘴，没有迎合杨逸更没有询问，因为用脚想都知道他准备干嘛了。
+“至圣斩！”
+一阵巨响发出，掀起大量结晶粉尘，连带远处的魇星号都看见并听见这巨大的动静。', 431, 12, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_431_13', '第431章 - 重要发现', '四五米高的厚实结晶大门被杨逸硬生生劈裂开，弄得面目全非。
+粉尘消停后，门上多出来了一道巨大的破口，足够行人通行。
+杨逸走近，用三眼打量了一下内部状况，接着丢进去一个光之容器照亮，之后侧着身子钻了进去。
+“进来吧，没发现危险。”', 431, 13, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_431_14', '第431章 - 苏娜相关', '他开口道，让苏娜跟上。
+两人先后进入这座库房似的建筑，首先第一感觉是空，像原本的东西被搬运走了，留下大片的空地。
+而且这里应该废弃很久了，地上甚至有结晶微粒粉尘，只留下杨逸和苏娜的脚印，以及安家鼠爬过的痕迹。', 431, 14, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_432_1', '第432章 - 苏娜相关', '“直接去地下吧，这上面没什么东西。”
+杨逸打量一圈后合上了眼罩，将光之容器递给苏娜，转身朝前方通往地下的通道走去。
+建筑内很黑，但杨逸其实不需要照明，这光之容器其实是替苏娜准备的。
+也就在这时，两人脚底下传来一连串的砰砰声，像是有什么东西在撞墙或砸门，闹出很大的动静。', 432, 1, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_432_2', '第432章 - 重要发现', '很快，一些安家鼠直接从前方的通道跑了出来，到杨逸跟前停下，上下剃刀般的牙齿碰撞，发出咔咔咔的响声，像在传达某种意思。
+杨逸其实听不懂，但在行动前他就命令安家鼠搜查这座岛，寻找潜藏的不明生命体，看样子它们是找到了。
+这些不明生物很怪，刚刚杨逸开门弄那么大的动静也没啥反应，这时却突然起了劲，可能是被水晶安家鼠咬了。
+“小心点，这东西力气挺大。”', 432, 2, 'EXPLORATION', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_432_3', '第432章 - 苏娜相关', '杨逸侧耳倾听了一会，再度朝前走去，十几只骸骨安家鼠抱成了一团，变成一颗鼠球在前方滚动着带路。
+苏娜则跟在后面。
+她看的比杨逸更细致，没放过任何一个角落。
+这房间，或者说基地明显被人弃置了，而且对方是有序撤退的，带走了很多东西，所以才会这么空。', 432, 3, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_432_4', '第432章 - 苏娜相关', '刚进入斜向下的通道，前方拐角墙上画的图就引起了苏娜的注意。
+“等等！”
+她叫住了杨逸，跑到了前面，拿起光之容器去照。
+画虽然有掉漆褪色的地方，但总体轮廓和死诞会旗帜上的图案一致，画的是一名怀抱死婴的女子，大致意思为孕育死亡。', 432, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_432_5', '第432章 - 激烈战斗', '“这里好像是死诞会废弃的前线基地。”苏娜开口道。
+杨逸摘下眼罩看了一眼，点了点头，又把眼罩戴了回去。
+今天航行时，他三眼使用过于频繁，为确保后面战斗不出意外，现在是能少用就少用。
+但死诞会的基地.......', 432, 5, 'BATTLE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_432_6', '第432章 - 苏娜相关', '他和苏娜算是来对地方了。
+即便这个基地已经废弃，但不见得所有东西都来得及带走，里面肯定还留着一些和死疫相关的线索。
+两人继续深入，来到地下一层。
+这里地上已经没有结晶粉末了，空气也变得浑浊，似乎很久未曾流通过，有股淡淡的消毒水味。
+撞击的声响也更频繁了，似乎有好几个不明生物在一起砸墙，而且就在下一层的不远处，脚下甚至能感受到震动。
+“先把潜在的隐患解决，之后再进行搜索。”', 432, 6, 'EXPLORATION', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_432_7', '第432章 - 苏娜相关', '杨逸对苏娜道，后者点点头，两人往地下二层走去。
+到这里其实已经不用安家鼠带路了，靠感应地面的震动就能确定声音的来源。
+杨逸放慢了脚步，揭开眼罩，一手持断铁巨剑，一手持燧发枪，一步一步朝前走去。
+他的耳朵包括听觉神经，其实已经结晶化了。
+现在之所以能听见声音，全是拜暴食之口所赐，这畸变的器官除了能吃能说话外，还拥有听力甚至一定的思维能力。
+“就是这里了。”', 432, 7, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_432_8', '第432章 - 激烈战斗', '杨逸来到一扇半掩着的大门前，砰砰砰的撞击声就是从里面传来的。
+他回头示意苏娜做好准备，然后一脚踹开大门，抬枪就准备攻击。
+但内部的状况出于意料，并没有发现活物，有的只是数十个陈列在房间内的水晶罐头或者叫水晶棺材，每一个都超两米高，可以轻松塞入一个人。
+而且每个棺材上都画了一个乌鸦面具的图案，下面则是一连串的编号。
+这东西原本的材质估计不是水晶，但因感染了结晶病，导致材质也有了改变。
+“里面装了什么东西？”', 432, 8, 'BATTLE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_432_9', '第432章 - 激烈战斗', '杨逸没放下枪，保持警惕，枪口对准那堆容器。
+因为撞击的动静就是从水晶容器内部传来的，大概有十几个，里头的东西并没有死，但因为容器比较浑浊，装的是什么还不好说。
+而且在每个容器顶部都有一个小孔，一些水晶安家鼠通过孔洞钻了进去，估计就是这个举动，刺激弄醒了里面的东西。
+苏娜则被门口附近墙壁贴的一张告示吸引了，名为黑鸦卫士维护操作说明，已结晶化，但上面的字勉强可以辨认。
+【黑鸦卫士维护操作说明：
+每30个工作日，黑鸦卫士都必须进行一次例行维护，注入100毫升“稳固剂”，放入定型箱中静置三个工作日。
+静置过程不可中断，否则作废弃处理。
+黑鸦卫士经黄色嗅盐激活后会进入活化状态，具备一定的智慧和不俗的战斗技巧，会坚决执行命令。
+当出现以下情况时，黑鸦卫士必须做废弃处置：', 432, 9, 'BATTLE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_434_1', '第434章 - 苏娜相关', '废弃处置的操作步骤如下：.......】
+-------------
+“黑鸦卫士......这里面装的东西是人，而且感染了增生病的病人！”
+苏娜快速阅读着操作说明，并将内容传达给了杨逸。
+“嗯，我看出来了。”
+“看出来了？”', 434, 1, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_434_2', '第434章 - 苏娜相关', '苏娜察觉不对，转头看去，只见部分水晶棺材表面已经出现了裂纹，已经松动，甚至有一个棺材上的透气孔里伸出了一条手臂，表面包裹着黑色束带，正在奋力推开这竖立着的水晶棺材。
+嘭！
+杨逸一枪崩断了这只手臂，炸出大量深褐色的污血。
+但诡异的是，手臂伤口断面生出大量血肉组织，迅速增生，很快变成了两条新的手臂，皮肤像是溃烂干瘪的树皮。
+断一只手长两只手？', 434, 2, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_434_3', '第434章 - 场景3', '杨逸再度开枪，两只手臂一起轰断，但这次不过几秒钟的功夫，居然长出了三只新的手臂。
+没开第三枪。
+这具水晶棺材突然爆裂，里面的黑鸦卫士挣脱了出来。
+杨逸这时才看清对方的真身。
+除了左侧胳膊长有三条手臂外，其余部位还是比较正常的，身体被黑色束带包裹，胸前和腰上挂着几个彩色的瓶子，背后还有一柄黑色结晶长剑。', 434, 3, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_434_4', '第434章 - 场景4', '他刚挣脱就朝杨逸狂蹦而来。
+嘭！
+杨逸再度开枪，子弹精准命中黑鸦卫士脑袋，像击碎西瓜一样轰碎了他的头颅。', 434, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_435_1', '第435章 - 场景1', '“没了脑袋还能动？”杨逸诧异道。
+只见这没头的黑鸦卫士以极快的速度跑来，路上捏碎了腰上红色瓶子，顿时爆开一团红色的粉尘。
+同时他的肉体迅速膨胀，肌肉仿佛活物，蠕动着像要冲出他穿的黑色束缚衣。
+他的身高也从原本的两米（头没了，略低于2米）膨胀到了三米多，胳膊更是粗了三倍，很像用了肢体强化术之类的秘术。
+那没被束缚的肉体则彻底失控。
+没有束缚衣的左臂和头颅部位，以及身上被安家鼠咬破的部位不断增生新的血肉，就像融化的夹心一样从束缚衣内挤出，变成各种人类肢体以及器官，包括眼睛、带牙齿的嘴、鼻子等五官，也包括畸形的手脚以及暴露在外的脏器。', 435, 1, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_435_2', '第435章 - 场景2', '而且这黑鸦卫士还会一些格斗技巧，来到杨逸面前用膨胀的右手拔剑就刺。
+但他和杨逸的属性差距太大了。
+力量先不提，敏捷估计只有11左右，在超凡里也属于垫底，在三眼眼里就慢如蜗牛了。
+杨逸挥剑反击，后发而先至，一记横扫砸中这名黑鸦卫士。
+巨型重兵器的优势在此刻展露。
+对方虽极力去挡，但根本挡不住，反而自己持剑的右手变了形，剑身也出现了裂纹。', 435, 2, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_435_3', '第435章 - 场景3', '他的身体彻底断成了两截，像两块破布一样被甩飞，撞翻了好几个水晶棺材。
+“这也没死？”杨逸再次诧异道。
+这一击估计击碎了他绝大部分骨头，身体都断成了两截，脏器和碎肉洒落遍地。
+但他没死，黄色的粉末洒出，数秒后，他又站了起来，简直像腐鲸和欢宴饕餮客一样耐揍。
+再度站起后，黑鸦卫士已经从一人变成了两人，但新生的肉体已经脱离了人类的范畴，一人有三条腿，另一人则在用五只手倒立着，新生的皮肤长出了额外的手指以及暴露在外的内脏。', 435, 3, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_435_4', '第435章 - 激烈战斗', '他们没再发起攻击，立在原地，好似在打量杨逸。
+“这东西怕火，用1000度以上的高温焚烧可以彻底杀死他们！”
+苏娜读完了黑鸦卫士的操作说明，从废弃处置的步骤里得知他们怕火。
+“额........魇星号的焦酒和油脂都变成结晶了，你让我怎么放火？”杨逸无奈道。', 435, 4, 'BATTLE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_435_5', '第435章 - 激烈战斗', '他虽身为拜火教大长老，但巧妇难为无米之炊，没有燃烧瓶，没有焦黑大蠕虫戒指，他还真没法子弄一场大火，火焰的愈疗这个技能并不适合放火。
+“让我来吧。”
+苏娜往前走了两步，来到杨逸身旁站好，将旁边漂浮的盐之弓和箭袋拿了过来，举弓瞄准黑鸦卫士。
+咻！
+箭矢飞出。
+但黑鸦卫士会闪躲，这一箭落了空。
+若换成活化兵装自动攻击这身手灵活的黑鸦卫士，只怕很难射中哪怕一箭，这便是目前活化兵装的劣势所在了。', 435, 5, 'BATTLE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_435_6', '第435章 - 激烈战斗', '在这名黑鸦卫士闪躲的间隙里，苏娜又一连射出了三根箭矢封死其退路，这次终于中了。
+射中部位的血肉迅速脱水枯萎，并没有再生。
+黑鸦卫士身上错位的眼球齐齐看向这处伤口，似乎存有疑虑，没见过这种攻击。
+他选择用布满裂纹的黑色长剑削掉这部分肉体，再生又开始了。
+咻！
+又是一箭射出，正中这名黑鸦卫士的胸口，这次更严重，伤口包括束缚衣在内的位置开始泛白褪色，变成一粒粒白色的盐掉落下来。
+“这是什么.....？”
+这名黑鸦卫士居然说话了，但身体倒了下去，化成了一堆盐，然后一个由盐组成的人形从中爬了起来。
+这是盐之弓的技能——盐之箭的效果。
+这武器对付血肉生物效果拔群，对增生病也一样有效。
+盐之民立刻对黑鸦卫士发起攻势，但接连不断的破碎声从房间里响起。', 435, 6, 'BATTLE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_435_7', '第435章 - 激烈战斗', '其他黑鸦卫士也陆续脱困了，从水晶棺材中钻了出来，共十四位
+他们身高体型高度一致，每人都穿着同款束缚衣，身上缠满了黑色束带。
+就在这些黑鸦卫士脱困之时，那原本停止攻击的黑鸦卫士也动了，避开了盐之民的扑击，甩手就朝杨逸苏娜二人洒出两瓶粉末。
+这家伙并不是放弃攻击了，而是判断自己没有赢面，所以再等其他队友脱困后，突然发起攻击。
+“洒的什么东西？”', 435, 7, 'BATTLE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_435_8', '第435章 - 激烈战斗', '杨逸第一次遭遇这种类型的攻击，但有办法应对。
+这粉末极可能带毒，但杨逸现在毒抗拉满，根本不怵。
+一股吸力从他胸前铠甲裂缝发出，将这些不明粉尘全吸了进去，一点都没落下。
+【你吸入银色嗅盐，已经消化，原本的麻痹效果没有正常发动。】', 435, 8, 'BATTLE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_435_9', '第435章 - 激烈战斗', '【你吸入黑色嗅盐，已经消化，原本的爆炸效果没有正常发动。】
+杨逸的活动日志弹出两条警告，同时所有准备围攻的黑鸦卫士都不约而同的愣了一下，像是不理解眼前的画面。
+但它们很快回过神来，继续攻击，捏碎了身上携带的红色和绿色小瓶，爆出一团粉末。
+这应该也是嗅盐，但效果估计是正面的，可以增强他们的身体素质。
+红色应该和力量有关，效果类似肢体强化术。', 435, 9, 'BATTLE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_435_10', '第435章 - 场景10', '绿色可能和速度有关，他们奔跑的速度.....
+怎么越来越慢，最后一个个都不动了？
+不知何时，在这个房间的中间出现了一个明晃晃，散发危险气息的球体，同时场内温度骤降，从原本的十几度暴降到零下四五十度。
+这降温可不是环境温度下降，而是体内热量被抽离，效果比低温环境可怕得多，毕竟环境温度低不代表肉体核心温度低，下降需要时间。
+但这个法术加速了这个过程，效果就像在房间里倒入了大量液氮，环境骤然降温，这些黑鸦卫士还没跑几步，才刚准备拔剑，就齐齐被冻成了冻肉。', 435, 10, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_435_11', '第435章 - 苏娜相关', '苏娜头发无风自动，额头冒出一些细密的汗珠，是她发动了这么魔法，抽离了集中了周围环境的热量，搭建了了一个能量奇点。
+“这是你干的？”
+杨逸不敢置信道，再一次被苏娜手头掌握的魔法震惊。
+“快出去，把门合上。
+这魔法施展时得精神高度集中，一旦松懈那颗光球就要爆炸了！”', 435, 11, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_435_12', '第435章 - 苏娜相关', '苏娜解释道，语速很快，显然她原本不想用这个容易失控的魔法。
+杨逸转头看向房间内刺眼的光球。
+他虽然看不见色彩，但能察觉能量波动，现在这个球体正散发惊心动魄的气息，仿佛他之前用过的肢体爆炸术。
+于是他扛起身体紧绷的苏娜就往房间外跑去，顺便合上了门，冲向通往上层的通道。
+轰！
+高温球体失去了控制，释放了聚集的热量，引发了剧烈的爆炸。', 435, 12, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_436_1', '第436章 - 场景1', '岛屿剧烈震荡，像发生了一场级别不低的地震，连带岛屿码头停靠的魇星号也跟着晃动起伏。
+“监测到高能反应。”
+小几站在魇星号甲板，头部指示灯不断闪烁，似乎在犹豫或者说思考。
+数秒后，它违背了杨逸下的命令，靠水晶机械臂从甲板上攀爬而下，滚动轮子全速朝岛屿内部跑去。
+岛屿内部。
+这里发生了一场大爆炸，遍地狼藉，很多地方都已经坍塌，到处都是碎裂的结晶，断面锋利如刀。', 436, 1, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_436_2', '第436章 - 苏娜相关', '苏娜被卷入了冲击中，意识断片了五六秒，短暂失聪耳鸣。
+回过神后，她感觉懊悔不已，自己就不该在密闭空间里使用这么危险的魔法，她的精神.....铁定也不正常了。
+视野逐渐清晰，胸口一阵闷疼。
+突然，几滴粘稠的液体滴落在她脸上。
+并不是血液。
+眼前胸铠的裂隙里滴落下晶莹的液体，实际是暴食之口的口水。
+更有模糊的声音从铠甲内部传来。
+“醒了？
+有没有受伤？”', 436, 2, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_436_3', '第436章 - 苏娜相关', '杨逸问道，半跪在地，背后是倾斜倒塌的天花板。
+他和苏娜没能脱离爆炸冲击的范围。
+在爆炸来临的前一瞬，杨逸选了一个墙角蹲下，用后背裆下了冲击。
+爆炸的威力相当大，幸好两人跑出了一段距离，杨逸靠赎罪者铠甲和结晶之躯硬吃下了这波伤害，几乎没有受伤。', 436, 3, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_436_4', '第436章 - 苏娜相关', '但头顶的墙坍了，他和苏娜暂时被困住，想脱困还有些麻烦。
+“没有。”苏娜回道，“结晶病能有效提高身体的强度，痛感也会钝化，不妨碍接下来的行动。”
+她试着站起，但狭窄的空间让她连起身都办不到。
+“这岛内部坍塌了，希望不会沉，不然就麻烦了。”', 436, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_436_5', '第436章 - 苏娜相关', '杨逸见苏娜无碍便开始琢磨怎么出去。
+身边武器都在，可以使用咆哮燧发枪开头上开一个洞。
+但现在整座岛都由结晶构成，很脆，这样做可能导致二次坍塌，让情况变得更糟。
+“要是能确定周围的状况就好了。”', 436, 5, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_436_6', '第436章 - 苏娜相关', '杨逸头疼道，开始思考其他可能，例如用暴食之口腐蚀出一个洞口出去，但风险依旧不低。
+也恰在这时，上方传来规律顿挫的敲击声。
+“好像是某种信号，可能是摩斯密码，”
+苏娜听了一会猜测道。', 436, 6, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_436_7', '第436章 - 苏娜相关', '“你懂吗？”
+“不懂，都说了我是猜的。”
+“额......”
+杨逸还以为苏娜能听懂呢，搞半天和自己一样。', 436, 7, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_436_8', '第436章 - 苏娜相关', '他立刻用手敲了回去，像在回应敲击，将自己这边的动静的传了出去。
+因为敲墙的人大概率是小几。
+它注意到了岛上的大爆炸，极有可能会上岛来搜寻杨逸和苏娜的下落。
+事实也是如此。
+小几作为多功能机器人，抢险救援也是其功能之一，它自带的生命探测仪就是用于搜救的，可监测呼吸、心跳等基础的生命活动，以此确定被困人员的位置。', 436, 8, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_436_9', '第436章 - 苏娜相关', '但它只检测到了一人的生命活动，大概率是苏娜，杨逸因身体构造特殊，生命探测仪监测不到。
+小几敲击附近的墙体，传递信号。
+很快下方便有了回应，但听不懂意思，似乎是乱敲的。
+但这就够了。
+小几数条机械臂伸出，开始作业，使用之前在避难所维修时用到的切割光束开始往下挖掘。
+..........
+四小时后。', 436, 9, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_436_10', '第436章 - 苏娜相关', '挖掘的动静已经很明显了，杨逸苏娜二人已经能听见激光切割以及碎结晶掉落的动静。
+一些结晶安家鼠甚至都钻进来了，说明杨逸所处的位置已经和外界连通，这些结晶老鼠正在帮忙搬运切割下来的碎石。
+“小几，能听见吗，大概还有多深？”
+杨逸大声喊道，声音已经能传出去了。
+“快了，大概还剩半米。”
+小几回应道，继续奋力切割。
+它是从上往下挖，挖掘过程中还会评估计算下方塌陷的状况，总体还是挺顺利的。
+又过了几十分钟。', 436, 10, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_436_11', '第436章 - 场景11', '杨逸用力一顶，背后倾斜的墙体就倒了下去，落地碎成了好几块，溅起大量结晶微粒。
+这时，他也确定了岛屿内部的状况。
+地下一层和二层，包括部分地表和上层的建筑均已倒塌，废墟一片。
+小几是挖穿了废墟才把两人弄出来的，结晶安家鼠则负责搬运松散的碎石。
+“终于出来了！”', 436, 11, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_436_12', '第436章 - 场景12', '杨逸活动了一下身体，扫视周围，不远处就是小几机器人和密密麻麻，在废墟中穿梭的结晶安家鼠。
+杨逸还给了这些老鼠另一个任务，搜查黑鸦卫士的踪迹或尸体。
+尽管小几已经汇报过了，未探查到其他生命活动的迹象。
+但那些生命力顽强的黑鸦卫士给杨逸留下了很深的印象，警惕一些总是没错的，尸体也可能能扭蛋。', 436, 12, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_436_13', '第436章 - 重要发现', '正思考着，后方突然有了动静。
+苏娜试着站起来，但没能成功又坐了下去，发现自己右腿失去了直觉。
+检查后才发现，她的右腿已经有了结晶化的迹象，膝盖和脚踝失去了活动能力。
+“你病情变严重了？”', 436, 13, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_436_14', '第436章 - 苏娜相关', '杨逸注意到了异常。
+“发展成中症了，可能是靠近这座岛的缘故，你扶我一下。”
+杨逸直接将苏娜抱起，几个纵越就去到了地表。
+上面原本的四栋建筑塌了一栋半，爆炸位置集中在岛屿的左侧，在地表炸开一个大洞。', 436, 14, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_436_15', '第436章 - 苏娜相关', '不过内部没有渗水的迹象，这算是爆炸截止至目前唯一的好消息了。
+杨逸拖来一块合适的结晶巨石，小心把苏娜放了下去。
+后者立刻拿出结晶化的女巫匕首，开始对自己右腿的结晶化的部位进行紧急处置，以此来恢复部分行动能力。
+一些沾着血肉的结晶碎片被挖了出来，伤口只出了少量的血，随后她的右腿又勉强可以站立支撑了，手术只持续了十分钟就宣告结束。
+“我好了。”', 436, 15, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_436_16', '第436章 - 激烈战斗', '苏娜站起来道，准备接着探索。
+因为岛屿右侧，包括地下的建筑应该还算完好，可优先进行探索。
+杨逸则走了过来，把安家鼠找到的烧焦头骨碎片递给苏娜，上面是有关黑鸦卫士的情报信息。
+【名称：黑鸦卫士的烧焦头骨碎片】
+【简介：黑鸦卫士是死诞会利用增生病，以某位食尸鬼为原型，批量生产的超凡士兵，具备不俗的战斗意识和技巧，擅长团队作战。
+需定期维护，注射稳固剂，并用模具定型黑鸦卫士的肉体，减少失控暴走的风险。
+战斗时可放开限制，但战斗结束后，会有专门人员负责回收处理现场，消毒避免增生病失控。
+通常不会给黑鸦卫士配发热兵器，会增加回收的难度，也更容易失控。
+可投入怪物扭蛋机。】', 436, 16, 'BATTLE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_437_1', '第437章 - 激烈战斗', '“食尸鬼？”
+苏娜读完系统信息，发现了其中的关键点。
+这群黑鸦卫士其实并不是人类，而是感染了增生病的食尸鬼，而且是用一个模子制作的，专门用于战斗的超级士兵。
+而且苏娜猜测，这群食尸鬼可能是克隆产物，克隆过程可能借助了增生病，所以他们外貌体型才如此一致。', 437, 1, 'BATTLE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_437_2', '第437章 - 重要发现', '如果能获取一只完整的个体就好了，或者....和他们相关的研究资料。
+苏娜一瞬间想了很多。
+杨逸这边，他正命令水晶安家鼠提高搜查的力度，争取把这十几只黑鸦卫士的尸体碎片都找到。
+活口估计是没有了，但尸体都能用于扭蛋，到时候可以用上。
+浩浩荡荡的水晶安家鼠大军再度出发，仗着体型小的优势在废墟里反复穿行。', 437, 2, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_437_3', '第437章 - 苏娜相关', '十分钟后，杨逸苏娜二人再度出发。
+这次他们带上了小几，因为它切割结晶的能力能给后续探索带来不小的便利。
+如果再像之前那样暴力开门，岛内地下的环境会更糟。
+而且岛上的敌对生物已基本确定死亡，让水晶安家鼠和水晶手臂看守也没什么风险。', 437, 3, 'EXPLORATION', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_437_4', '第437章 - 关键决策', '他们选择右上的那栋建筑作为突破口，小几用激光切割了七八分钟，在墙体开了一扇门。
+进入后，它激活了应急照明模式，八条水晶机械臂末端伸出探照灯提供照明。
+杨逸本准备掏出翠西雅雕像的，因为原本的光之容器已经在之前的冲击中破损了，里面的光妖精碎片很快挥发。
+但现在有了灯，就没必要这么做了。
+三人很快往地下走去，因为地上的库房和之前差不多，已经搬空。
+地下则因为爆炸的缘故，变得极其凌乱，部分地面甚至有裂纹，但并没有塌。', 437, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_437_5', '第437章 - 重要发现', '他们开始挨个房间进行地毯式的搜索，发现这基地门和房间特别多，但大部分房间都没什么有价值的物品，多是一些结晶化的桌柜椅子，甚至床铺，里面空无一物。
+有的甚至就是空房间，不清楚原本是做什么用途的。
+杨逸触碰了一些家具，甚至能获得物品信息。
+【名称：结晶化的储物柜】
+【简介：受结晶病影响，变成水晶的储物柜，完整回收后可换成80单位水晶。】
+---------
+“还行。
+等会可以把这些东西全搬回去，甚至墙体地面都能回收换算成基础物资。”', 437, 5, 'EXPLORATION', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_437_6', '第437章 - 场景6', '杨逸安排道。
+但晶钻的占比太低了，这些家具摆设都只能转化成水晶。
+三人继续在地下一层探索，甚至去到了左侧，但越往左，路就越难走，很多时候都得切割墙体或障碍物才能前进。
+“你有没有觉得，这里面的空间布置是重复的，这里和最右侧地下一层的布置几乎一致。”', 437, 6, 'EXPLORATION', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_437_7', '第437章 - 苏娜相关', '苏娜走了一会开口道。
+“好像的确是这样。”
+杨逸回忆了一下，好像的确如此。
+但基地的结构，其实小几最清楚，它可以使用声波探测仪确定基地的大致构造。
+听见两人有疑问，它头上的摄像头射出一道全息立体影像，上面甚至标注了三人的位置。
+“这基地是用四艘船拼接后改造的，有四个独立的大型推进器且保留了分体的设计，有解体单独移动的可能。
+每艘船的舱体”小几把情报说了出来。', 437, 7, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_437_8', '第437章 - 苏娜相关', '其实早在之前搜索杨逸苏娜的时候，它就探测了一遍，知道了基地的大致结构。
+“你有这么好用的功能就早点用啊！”
+杨逸吐槽道，要求一台机器人发挥其主观能动性。
+后者头顶指示灯闪烁了好几下，最后回了一句：“好的。”', 437, 8, 'EXPLORATION', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_437_9', '第437章 - 苏娜相关', '苏娜全程观摩，算是弄明白小几为何会被带坏了。
+因为杨逸总在不经意间诱导、修正小几的行为，让它向真正的人类靠拢，同时也增加了它的不稳定性。
+地下一层没有收获，几人改为探索地下二层。
+知道结构分布，加上小几提供的全息地图，他们探索的效率提高了不少，也终于了有了收获。', 437, 9, 'EXPLORATION', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_437_10', '第437章 - 重要发现', '先是在其他几个黑鸦卫士维护间里找到了一些完好的，用途维护黑鸦卫士的棺材。
+打开后，发现其内部是其实是模具，有透气的孔，合紧后可以通过挤压塑形的方式，维持黑鸦卫士的形态。
+此外，他们还找到了一瓶用了一半的稳固剂，用很大的玻璃瓶盛装。
+这实际是死诞会研发的，针对死疫的抑制剂，没有治愈效果，但能起到一定的稳固效果，原料不明，也没有结晶化。
+【名称：死疫稳固剂】
+【类型：消耗品】
+【品质：珍品】
+【简介：死诞会针对死疫研发的稳固剂，但对死疫毫无效果，对死疫亚种疾病有一定的效果，可起到延缓病情的作用。
+对未患死疫的生物有很强的毒性，可能致死，对很多发展到晚期前的死疫均有效果，但效果因死疫级别不同依次减弱。
+每次注射不应超过推荐剂量，否则会给患者带来痛苦，大剂量可能导致部分B级，以及C级死疫亚种患者死亡】', 437, 10, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_437_11', '第437章 - 苏娜相关', '-----------
+“死诞会给死疫分了级别！”
+苏娜读完系统信息后，仔细端详这瓶稳固剂。
+在上面已结晶化，甚至破损的标签上，勉强读出来了一些内容，那是列出来的一些死疫疾病，括号里写明了推荐用量，只能看清部分。
+S级：死疫原型（无效）
+A级：■■病（无效）、结晶病（100）....
+B级：■■病（60）、锈蚀病（80）.....
+C级：增生病（10）、.....', 437, 11, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_438_1', '第438章 - 苏娜相关', '“你打算注射这个药剂？”
+“是的。”
+苏娜使用结晶化的女巫百宝袋，花费海螺币弄出了一支注射器。
+但现在药剂在杨逸手里，他正查看系统信息和药剂的标签。
+药剂还剩一半多，容量刻度显示为600。
+这是土著使用的计量单位，基本等同于毫升，1000刻度和1单位基础物质的体积相当。
+结晶病的推荐使用剂量为100。', 438, 1, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_438_2', '第438章 - 场景2', '杨逸读完了信息，已经可以确定，这死疫稳固剂对多种死疫亚种疾病都有效果，而且没过期失效。
+对未患死疫的人而言，稳固剂表现为强毒性，其本身可能是一种高致死性毒药。
+【可肌肉注射，可口服，推荐靠近发病部位，就近注射.........】
+杨逸思考了几秒，突然像喝瓶装可乐一样，拧开了瓶盖，直接往胸铠铠甲缝隙倒去。
+吨~吨~吨~', 438, 2, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_438_3', '第438章 - 苏娜相关', '“你在做什么！”
+苏娜立刻来抢，但瓶子里的药剂只剩300多毫升了，杨逸一口就嘬掉了一半。
+【你喝下死疫稳固剂，里面的毒素被你消化，没任何效果.....】
+“难喝！这水麻舌头，而且有毒！”', 438, 3, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_438_4', '第438章 - 苏娜相关', '杨逸试药后，把活动日志里的信息发给苏娜。
+他其实就是单纯想替苏娜试个毒，奈何条件不允许，对方也不领情，反而有点生气了。
+“抗生素对细菌也是猛毒，更不用说化疗了。
+是毒还是药，得结合病人的状况来判断！”', 438, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_438_5', '第438章 - 苏娜相关', '苏娜狠狠剜了杨逸一眼，宝贝似的抱着那瓶稳固剂，看样子是不会再给杨逸可乘之机了。
+这整个基地，可能就只有这半瓶....不，只有这四分之一瓶稳固剂了。
+她小心翼翼伸入针管，从中抽了100毫升稳固剂出来，接着拧紧瓶盖，开始往自己右腿和右肩处注射，各注入了数十毫升药剂，总用量刚好100毫升。
+约30秒后，药剂开始生效，以注入部位为中心，苏娜的皮肤开始发黑，迅速往患处蔓延。', 438, 5, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_438_6', '第438章 - 苏娜相关', '当接近结晶病病灶区域时，发黑的速度明显减缓，剧痛让苏娜额头汗珠密布。
+约10分钟后，疼痛才逐渐消退，同时苏娜的结晶病【中症】状态变回了结晶病【轻症】状态，病灶处的结晶皮肤以及嵌在肌肉里的结晶颗粒纷纷脱落。
+【你注射了死疫稳固剂，毒素生效，部分组织坏死脱落，抗死度降低，结晶病病情得到一定程度缓解，但并不能根治且会产生耐药性。】
+苏娜这边获得了死疫稳固剂的正确使用信息。
+但这东西治标不治本，只能算临时措施，而且副作用极大，虽然抑制了结晶病，但对肉体损害很大，普通人使用恐怕会直接变成终身残疾。', 438, 6, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_438_7', '第438章 - 苏娜相关', '苏娜靠超再生能力修复肉体，倒是能挺过去。
+她对这个药剂并不满意，但这个思路很不错。
+既然死疫让患者难以死亡，那解药就得毒性够大，不择手段的杀死患者才对，两者抵消，便能起到治愈效果。
+她把余下200多毫升的药剂小心收好，打算回去作为参考用的样本。
+三人继续探索第二层。', 438, 7, 'EXPLORATION', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_438_8', '第438章 - 激烈战斗', '这时他们对这个基地的布置已经有几分了解了。
+第一层的房间多为宿舍、餐厅、会议室，所以桌椅柜子和床之类的家具多。
+第二层则是工作性质的房间居多，例如黑鸦卫士维护间，武器库，仓库，档案办公室等，虽然东西大多都被搬走了，但仍有少量遗留的物品，可能是因为感染了结晶病所以弃置在这的。
+包括两把结晶化的制式长剑，一套破损的结晶化防护服，几张结晶鸟嘴面具，大量结晶化的罐头补给，以及一些结晶化的杂物。
+【名称：结晶化的黑鸦长剑】
+【类型：宝物】
+【品质：精品】
+【简介：死诞会为黑鸦卫士配备的制式长剑，使用剑鱼的鳞片切割制成，具备不错的韧性和锋利度，制作简单，是一种性价比极高的消耗品。
+这把长剑因为感染了结晶病变得更加锋利且坚硬了，但受到高强度的攻击很容易碎裂。】', 438, 8, 'BATTLE', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_438_9', '第438章 - 场景9', '----------
+【名称：结晶化的标准死疫防护服（已破损）】
+【类型：宝物】
+【品质：良品】
+【简介：死诞会针对死疫研发的特殊防护服，通过夹层内的海水，起到对死疫情的隔离效果，需要配合鸟嘴面具或具备类似防护效果的面罩使用。
+夹层内的海水需要定期更换，推荐每48小时更换一次。
+防护服的防护效果不绝对，但感染死疫的概率会大幅降低，建议定期隔离体检。
+这件防护服感染了结晶病，外层面料结晶化后破碎，已经彻底失效，完全变成了结晶无法正常使用】', 438, 9, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_438_10', '第438章 - 场景10', '----------
+【名称：结晶化的鲜尸肉饼罐头】
+【类型：消耗品】
+【品质：普通】
+【简介：死诞会出品，罐头上有死诞会标志，使用新鲜人肉制作的肉饼罐头，不建议正常人类食用。
+此外还有陈化腐肉味，保留了尸体腐烂后的特殊风味，年份越久价格越高。
+想长时间陈化腐烂且保持肉的口感需要合适的环境。', 438, 10, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_438_11', '第438章 - 场景11', '但这个罐头感染了结晶病变成结晶了，你只能看着。】
+----------
+杨逸在食物存储室里翻了一下，里面全是这种结晶化的鲜尸肉饼罐头，甚至能看见里面结晶化的肉饼，上面印着鲜尸肉饼几个大字。
+这罐头价值应该很低，所以他们走的时候压根懒得拿，留了很多，但陈化腐肉味的一个都没有，估计比较受欢迎吧。
+“这死诞会.....难道是以食尸鬼的组织？”', 438, 11, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_438_12', '第438章 - 重要发现', '杨逸结合黑鸦卫士的情报，不禁作此猜想，感觉可能性很高。
+一群致力于防控死疫的食尸鬼，还真是古怪。
+几人继续前往第三层，这一层环境大变样，门更多墙也更厚了，结实程度比一二层高很多。
+即便三层靠左的位置，也只有爆炸的中心处发生了坍塌，周边几乎不受影响。
+一番探索后可以确定，这一层是类似医院或者实验室的地点，房间很多都摆着结晶化的手术台，手术器具，病床，输液的架子以及一些空置的容器，曾经可能关着一些患了结晶病的患者。
+而且在其中一个疑似停尸间的房间里，几人找到了大量结晶化的食尸鬼尸体，有的穿着工装制服，有的则穿着白大褂或简单的单衣。', 438, 12, 'EXPLORATION', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_438_13', '第438章 - 场景13', '他们无一例外感染了结晶病，全部都被切除了头颅成了无头尸体，可能患病不久就被摘掉了脑袋，但尸体依旧变成了结晶。', 438, 13, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_439_1', '第439章 - 场景1', '【名称：结晶化的食尸鬼尸体】
+【简介：感染结晶病，在病情恶化前摘去头颅死亡的食尸鬼尸体。
+但他们的尸体依旧变成了结晶，可投入怪物扭蛋机，也可以回收尸体转化为50晶钻。】
+-------
+“晶钻！？”', 439, 1, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_439_2', '第439章 - 重要发现', '杨逸激动道，看向停尸间里成堆的食尸鬼尸体，眼神都不一样了。
+他第一次在结晶岛附近找到了晶钻的来源。
+差不多有五六十具无头尸体和对应的头颅，尸体为40到50晶钻不等，头颅为5到10晶钻左右，加起来超过两千五百单位。
+可别小看这2500多单位晶钻。
+因为岛上仍有大量活体雕像，异魔雕像也不在少数。
+这些异魔雕像没死，不能用于扭蛋，肉体也成了结晶，失去了研究价值。
+但如果它们能回收成晶钻，那就完全不一样了。', 439, 2, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_439_3', '第439章 - 苏娜相关', '只要20%、甚至10%的异魔雕像能回收成晶钻，那杨逸可以说就压根不愁晶钻这个基础物资了。
+“苏娜，我记得你说过，岛上有大量包括异魔在内的活体雕像对吧？”杨逸突然问道。
+“是这样没错，梦里场景的确如此。”
+“那就行了！”', 439, 3, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_439_4', '第439章 - 重要发现', '杨逸跃跃欲试，隐隐感觉胸腔有股灼热感，兴奋起来。
+那些指引方向的隐秘存在并没有骗他，这里晶钻的确多到用不完。
+十五分钟后。
+杨逸又在其他几个停尸间里找到了一些结晶化的食尸鬼尸体，大概有100具，换算成晶钻则为5000单位，去掉用于扭蛋的三具，其他尸体换成7500晶钻没一点问题。', 439, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_439_5', '第439章 - 苏娜相关', '有别于杨逸，苏娜对收集晶钻兴趣不大，反而对这基地过往很感兴趣。
+手头缺乏线索，但从种种痕迹，尤其是三层里那些大型器皿容器以及实验桌，隔离间的布置来看，死诞会应该是有尝试回收、甚至消灭死疫的感染源，而且经验丰富。
+看从结果看，他们这次失败或者放弃了，留下了大量研究员和工作人员的尸体，匆忙撤离。
+具体原因不清楚，但他们绝对是有能力回收，甚至消灭感染源的。', 439, 5, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_439_6', '第439章 - 苏娜相关', '因为黑鸦卫士无惧结晶病，他们完全可以让黑鸦卫士上岛执行任务，回收源头后使用容器和海水封存。
+估计死诞会一直都是这么做的，除非源头无法收容.....
+苏娜试图从细枝末节里推断基地过去发生的事件。
+突然，她和杨逸站定不动了，因为两人都收到了系统的提示，他们占领了这艘船。
+【已成功占领结晶化的四联基地船，可在1小时后分解。】
+【分解可获得水晶*57442，晶钻*9747】
+小几之前的推断没错，这的确是一艘由四船拼接组合成的基地船，甚至能占领分解。', 439, 6, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_439_7', '第439章 - 场景7', '几乎同时，杨逸猛然意识到了另一件事。
+在结晶岛周边，存在着数量惊人的小型岛屿，难不成那其实都是船只，只是表面覆盖了大量结晶粉尘加上没有上岛细看，所以没认出来？
+如果是这样的话，杨逸这边就真的要发财了！
+这简直就是一座宝藏之岛！
+解决结晶病源头一事得稍微往后稍稍，等把钱赚好，船升级好，再去解决不迟，免得解决后结晶病消失，导致意外。', 439, 7, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_439_8', '第439章 - 关键决策', '毕竟岛上那些活体雕像都还活着，如果结晶病没了，岛上到时候会乱做一团，杨逸得提前做准备，比如把雕像都敲碎或者回收成晶钻。
+探索结束，之后的策略也也定下来了。
+先回收结晶岛周边的船只和岛上的异魔尸体，建造拓展建筑，然后再去解决结晶之源，实现利益最大化。
+不过翠西雅得多等一段时间了，杨逸决定回头给她点补偿，稳住她的情绪。', 439, 8, 'EXPLORATION', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_439_9', '第439章 - 苏娜相关', '他把计划告诉了苏娜，后者没什么意见，只想早点返回魇星号，研究死疫稳固剂和死疫防护服。
+前者有抑制死疫的效果，后者则是在死疫之海里活动，必不可少的物件。
+苏娜先一步返回了魇星号。
+杨逸则在和小几以及大量结晶安家鼠一起，将结晶化的食尸鬼尸体搬运到上地面。
+至于结晶化的家具器械之类的就不必搬运了，分解这艘船的时候会一起回收。
+1小时后。
+一共一百六十七具食尸鬼无头尸体，以及一百六十颗食尸鬼头被搬了上来，两边数量都不太对得上，可能有些尸体被死诞会带走做研究了。', 439, 9, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_439_10', '第439章 - 关键决策', '杨逸不打算为了这六七颗头浪费时间，岛上还有大把的活体雕像等着他去换成结晶，从不死中解脱呢。
+他清点了下水晶安家鼠从废墟里翻找出来的黑鸦卫士的尸体残片。
+数量不少，但因为太碎已经不好区分谁是谁了，总数也不好确定。
+他决定全部扭蛋，反正尸体都烧焦碎成渣了，没多少研究价值。
+这些黑鸦卫士尸体残片和食尸鬼结晶化的尸体都被拖到了码头附近。', 439, 10, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_439_11', '第439章 - 苏娜相关', '杨逸立刻上船，熟练的操控爪钩将其抓入船舱，然后进行扭蛋。
+黑鸦卫士的的尸体给了十三颗扭蛋，应该全员都集齐了，杨逸一颗颗打开，获得了一个挂着多个玻璃小瓶的腰带，里面是一些色彩各异的粉末。
+然后是一把眼熟的黑色长剑，精品品质，并没有结晶化，应该是黑鸦卫士的原版制式长剑，还有一整瓶未开封的死疫稳固剂，苏娜肯定会喜欢。
+再再后面就没什么好东西了，全是些基础物资、海螺币，只开出来了一把额外的黑色长剑。
+腰带的物品信息如下
+【名称：嗅盐战术腰带】
+【类型：遗物】
+【品质：极品】
+【简介：死诞会研发的特殊战术腰带，将化学直接带入了实战中，补充嗅盐需要消耗海螺币或自制，洒出不同颜色嗅盐产生不同的效果。
+因原料特殊，使用时有感染增生病的效果。
+红色嗅盐：刺激肉体，激发力量，力量属性暂时上升1~3点，持续5分钟，但长期或大量使用有肌肉拉伤，韧带断裂的风险。
+黄色嗅盐：兴奋神经，反射速度增强，更加灵活，敏捷属性暂时上升1~3点，持续5分钟，但长期或大量使用有导致癫痫的风险。
+绿色嗅盐：提高活力，加快伤口愈合，体质属性暂时上升1~3点，持续5分钟，但长期或大量使用可能导致凝血异常，有形成血栓，中风的风险。
+银色嗅盐：洒出后被敌方吸入后，会产生强力的麻痹效果，影响对方的动作。', 439, 11, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_439_12', '第439章 - 场景12', '黑色嗅盐：洒出后接触到其他非气态物质后，会发生剧烈爆炸。
+白色嗅盐：洒出后会爆发刺眼的强光，干扰敌方视野。
+灰色嗅盐：洒出后会飘出大量烟雾，可隐蔽自身的踪迹。】', 439, 12, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_440_1', '第440章 - 物品获得', '前三次扭蛋高概率会出装备道具，所以这些变成结晶的食尸鬼尸体也得利用起来才行，余下的尸体可以回收换成晶钻。
+章鱼头扭蛋机灯光闪烁，排出五颗扭蛋，杨逸依次打开。
+第一颗出了标准死疫防护服，精品品质。
+第二颗是肩背式消毒机，信息如下：
+【名称：肩背式死疫消毒机】
+【类型：宝物】
+【品质：精品】
+【简介：死诞会研发的消毒机，会喷洒出强烈刺激性气味的特殊消毒液，对皮肤有轻微的腐蚀性，会导致皮肤刺痛瘙痒。
+根据死诞会内部实验数据可知，使用消毒液的对照组感染死疫的比率明显下降，原因未知，但消毒液的确是有效的。
+可使用类似刺激性气味的液体代替消毒液，对部分群体无效果。】', 440, 1, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_440_2', '第440章 - 物品获得', '----------
+“所以这消毒液到底是有效还是没效？”
+杨逸读完感觉有点懵，把信息发给了苏娜。
+“你瞅瞅这个，我刚抽出来的奇怪道具。”
+后者随即进行解答。
+“可能是安慰剂效应。
+心理作用也能起到抵抗死疫的效果，反之也能扩大感染。”', 440, 2, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_440_3', '第440章 - 苏娜相关', '苏娜推测道，如果属实，那这消毒机对他们两人都不起作用了......
+杨逸
+第三颗扭蛋在杨逸手里变成了一本书，而且书名他还挺熟悉，曾在聊天频道里见过，名为《食尸教入门范本》
+信息如下：
+【名称：食尸教入门范本】
+【种类：遗物】
+【品质：珍品】
+【简介：此书记载了尸体的十八种吃法，可真正实现以形补形，吃什么补什么的效果！', 440, 3, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_440_4', '第440章 - 苏娜相关', '除了不能补你的脑子。】
+----------
+书里面的纸张也是黑的，AI弄不出来
+“这不是苏娜想买但没买到的书么......”', 440, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_440_5', '第440章 - 场景5', '杨逸回忆道，没想到会以这种形式得到这本书。
+从外观看，这就是一本装订精美的黑色书籍，使用黑色硬壳纸作封面，标题和花纹都采用的镶金工艺，里面纸张也是纯黑。
+但在杨逸三眼的视野里，这本书散发着一股淡淡的能量波动，和其他魔法书类似。
+所以这应该是一本没有阅读限制、可反复阅读的魔法书。
+其精美的装潢，让人忍不住打开一探究竟。', 440, 5, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_440_6', '第440章 - 关键决策', '杨逸犹豫了数秒，决定打开看看，里面的内容应该和食尸鬼有关。
+但查看后，书里黑纸金字记载的内容还是让他感到惊讶。
+“这简直.....”
+杨逸早已停止运作的鼻腔仿佛萦绕着一股淡淡的腐臭味，来源直指眼前这本书籍。
+严格来讲，这应该不算魔法书，里面记载的内容并非魔法，而且和魔法相差甚远，而是记载了很多烹饪的手法。
+所以这本书，应该归类为食谱或者魔法食谱更合适。
+然后里面的食材....也基本都是人体的某个部位，记录了从采摘到入口的全步骤，非常详细还附有鲜艳的彩色插画，看上去让人垂涎欲滴，鼻间的腐臭气息都快变成香味了。', 440, 6, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_440_7', '第440章 - 场景7', '【受到魔法——『温迪戈的晚宴』影响，你感到莫名的饥渴，理智下降7】
+【你理智过低（低于50），但什么也没发生】
+【你因为体质特殊，没能成功转化为食尸鬼.........】
+『温迪戈的晚宴：一种特殊转化魔法，会放大激发食人欲望，导致理智下降。
+当理智低于50，受影响者会在3~15天内逐步转化成食尸鬼，彻底转化后不可逆，皮肤会逐渐溃烂，鼻子、耳朵、以及体表的毛发全都会脱落。
+高精神属性者具备抗性，可能豁免转化，甚至免疫魔法。
+一些食人的特殊生物中了此魔法后，什么也不会发生，除了产生饥饿感，食欲上升。』', 440, 7, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_440_8', '第440章 - 场景8', '............
+【你完整阅读了食尸教入门范本，学会了『人的烹饪技法』】
+『人的烹饪技法』：又名做人法则，是一种食材为人的特殊烹饪技巧，兼顾美味和营养，食用后可提升属性经验，具体效果与烹饪者技巧和食材相关，可能突破凡物极限，食尸鬼效果翻倍。
+杨逸读到一半就察觉到了异常，但还是强忍饥饿，硬着头皮读到了最后，最终学会了一个估计永远都用不上的魔法。', 440, 8, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_440_9', '第440章 - 苏娜相关', '读完后，他胸铠里已被暴食之口分泌的唾液填满，甚至从铠甲缝隙尤其胸前大裂缝里漏了出来，滴在魇星号甲板上。
+“哧溜~
+真是一本邪恶至极的书！”
+杨逸后知后觉道，庆幸自己当初没买这本书，不然他和苏娜，很可能会有一人变成食材。', 440, 9, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_440_10', '第440章 - 关键决策', '但他现在因狼人的身份，加上一堆畸变器官和杂七杂八的超凡途径，这转化魔法并没有生效。
+如果换成苏娜来读，还是有可能转化成食尸鬼的，除非全程保持理智在50以上才能避免转化。
+杨逸思考了一会，决定结束这次事件后，再把这本魔法书交给苏娜。
+她现在因结晶病和研究的关系，理智一直在60到70之间徘徊，不适合阅读此书。', 440, 10, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_440_11', '第440章 - 翠西雅相关', '杨逸把书藏在船长室的书柜里，压在翠西雅的藏书之下，然后准备回收晶钻，加快探索的进度。
+这座岛基本已经摸遍了，杨逸准备把其他结晶化的食尸鬼的尸体回收后，就分解这座岛，或者也可以叫四联基地船。
+翠西雅那边他也打过招呼了，许诺给她一天一万海螺币，让金钱蒙住她的眼，会好受许多。
+另外小说也给她发了好几本，全来自玩家论坛图书馆，大多都是这个世界土著写的，少数为玩家所写，更有直接照搬原著、根据记忆写的经典小说，例如屠龙倚天传，天蛇九部等。
+轰！轰！轰！轰！', 440, 11, 'EXPLORATION', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_440_12', '第440章 - 重要发现', '这座岛在杨逸的眼皮子底下分解，化作基础物资飘入船舱，之后杨逸开始沿着岛屿外围检查这些小岛，看到底是船还是岛，顺便弄一起占领回收。', 440, 12, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_441_1', '第441章 - 场景1', '结晶岛附近。
+一艘水晶骸骨船正沿着海岸线航行，正是魇星号。
+当来到一个合适的位置后，杨逸控制魇星号靠了过去。
+“就这里了！', 441, 1, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_441_2', '第441章 - 场景2', '全部下船，抓紧时间确定周围岛屿是船还是岛，如果是船就搜一下船里的尸体，到时候我来回收！”杨逸下令道。
+顿时海量水晶安家鼠从甲板跳进海里，游向周边小岛。
+杨逸自己则登上了结晶岛，和小几一起，打算把岛上一些可转化为晶钻的异魔尸体回收一下。
+这样效率比较高，因为占领船只是需要时间的，不如到时候拖到一个地方，绳索连接后一块儿占领。', 441, 2, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_441_3', '第441章 - 场景3', '搜索船只的时候，他和小几可以上岛把岛上一些异魔尸体回收一下。
+嘭！嘭！嘭！嘭！
+接连不断地枪声从岛上响起。
+杨逸没有深入，只在周边探索，尤其是活体雕像多的地方，确定其信息不能转化结晶后，就会把雕像轰碎。
+“这人还真硬，居然三枪都没打碎！”
+一具身穿精美铠甲，高大健壮的人类水晶雕像胸前多出来了三个大洞，表面布满裂纹，但愣是没碎。', 441, 3, 'EXPLORATION', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_441_4', '第441章 - 重要发现', '杨逸本来看上了这套铠甲，但试着去掰才发现，这人和铠甲已经合在一起了，系统信息也显示为结晶人类雕像。
+所以他改为开枪破坏，免得到时候这雕像活过来时，给魇星号带来危险。
+这些雕像都不知道立在这多久了，如果复活，鬼知道会变成什么玩意儿。
+总之杨逸觉得他们活过来也不是正常的人样，提前打碎才能保证安全。
+又开了两枪，这具顽强的人类雕像终于碎了，变成了一堆半透明的水晶碎块。', 441, 4, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_441_5', '第441章 - 场景5', '杨逸继续检查其他活体雕像。
+三小时后。
+魇星号停靠的位置多出来了一大堆活体雕像，歪七竖八的放着，很像堆积的人体模特，但又很大部分是异魔雕像。
+这些雕像都比较完整，缺胳膊断腿的很少，因为这样回收的晶钻多。', 441, 5, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_441_6', '第441章 - 场景6', '而且里面还有一个约成年人腰围那般粗的水晶树，大概六米长，可回收为200晶钻，所以杨逸也砍断带上了。
+“差不多了，准备去下一个地点！”
+杨逸对小几道，一起返回了魇星号，开始操控船只爪钩，回收这些活体雕像。
+见得多了，他现在大致明白什么生物的活体雕像能转化成晶钻了。
+肉体得具备一定的强度，但太强了也不行，人类异魔的雕像均可转化成晶钻。（差一点的也能转化成水晶，但不是优先回收对象。）
+【抓到结晶蝠魔雕像，转化为70晶钻】
+【抓到结晶人类雕像，转化为40晶钻】
+【抓到结晶海妖雕像，转化为20晶钻】
+【抓到.....】', 441, 6, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_441_7', '第441章 - 重要发现', '杨逸像在玩结晶矿工，使用爪钩快速回收着这些晶钻.........不，这些活体雕像。
+魇星号仓库空间里的晶钻的数量越来越多，已经逼近7万了。
+最多后天，他就能凑到建造水晶小屋的晶钻，完成此行的第一个目的！
+抓完后，结晶老鼠也探索完回来了，而且带来了一个好消息，又发现了一艘装满晶钻.....不，装满尸体的死诞会运输船。
+这些船应该是死诞会故意弃置的，回收了一些患了结晶病的病患尸体，用船运到了结晶岛附近，一起隔离。', 441, 7, 'EXPLORATION', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_441_8', '第441章 - 重要发现', '像这样的船，杨逸已经找到了三艘，每艘都能提供8000以上的晶钻，而且回收简单。
+其他土著船里零星的尸体价值就不高了，主要数量少。
+“算上这艘船，估计明天就能凑齐建造水晶小屋的晶钻了，然后........”
+杨逸看向这座岛，在赚钱和寻找结晶之源间犹豫。', 441, 8, 'EXPLORATION', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_441_9', '第441章 - 翠西雅相关', '以这座岛的体量，杨逸哪怕花上几年时间，也搬不走里面所有的晶钻，因为有的尸体埋在了岛屿内部，而且一些石头挖出来后说不定也能转化成晶钻。
+所以这座岛可看作价值极高的宝藏岛屿。
+但杨逸的时间有限，没可能全部挖完。
+苏娜虽然用了死疫稳固剂，但治标不治本，不久后还是会和翠西雅一样变成水晶雕像，到时就啥也干不了了。', 441, 9, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_441_10', '第441章 - 关键决策', '而且杨逸现在这个状态也不能久待，事件长了后，可能对他的认知产生不可逆的影响......
+“就10天！
+建造完结晶小屋后赚10天的钱，然后就去岛屿深处看看。”
+杨逸做了一个折中的决定。
+..........
+次日傍晚。', 441, 10, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_441_11', '第441章 - 关键决策', '杨逸如计划那般，凑够了十万晶钻，终于能建造结晶小屋了。
+他凑齐了立刻选择了建造，消耗掉了这花大力气得来的十万晶钻。
+一座宫殿似的建筑从魇星号中庭甲板升起，最终成型。
+“这叫水晶小屋？”', 441, 11, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_441_12', '第441章 - 场景12', '杨逸诧异道，因为这“小屋”比船长室还高，内部只有一层，高度接近八米了。
+这建筑占了魇星号中庭大半的空间，把两根桅杆，包括水晶球都包了进去。
+桅杆变成了宫殿的两根柱子，除了爬梯外，桅杆表面也多了一层精致的纹样，可爬上打开宫殿顶部的天窗，继续去到瞭望台和处刑架。
+水晶球则成了宫殿中心最醒目的装饰物，周围都是一些空的陈列展示架，估计用于展示雕刻的水晶船模，发挥功效的。
+水晶小屋具体信息如下：
+【水晶小屋：占星号的特殊建筑，可在水晶小屋内制作船模，制作的成品可展示，进而改变船体的外貌。
+雕像越逼真，效果越好，甚至能以假乱真，获得船模船只的部分功能，但船的大小不会改变。
+当发动技能时，魇星号会笼罩在一团极其逼真的幻象中，在受到受害前，幻象会一直持续。
+每24小时可指定一个船模发动技能，可一直生效，直到解除。】
+---------
+“好强！”', 441, 12, 'NORMAL', 0);
+INSERT INTO stories (story_id, title, content, chapter, scene, story_type, is_ending) VALUES ('story_441_13', '第441章 - 场景13', '杨逸看完信息赞叹道。
+不亏是占星号的特殊建筑，潜力完全不亚于处刑架，前提得做出足够逼真的船模，而且得见过这样的船。
+不然凭空捏造的船模是没有技能的。
+目前他见过比较强力的船有钢铁雄心号，光辉女神号，以及避难所号。
+渔夫号也能弄个耍耍，说不定能增强钓鱼效果。', 441, 13, 'NORMAL', 0);
