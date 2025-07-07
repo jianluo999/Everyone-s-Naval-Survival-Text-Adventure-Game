@@ -58,20 +58,22 @@
 
     <!-- 选择区域 -->
     <div class="choices-section" v-if="currentStory && !currentStory.isEnding">
-      <h3 class="choices-title">你的选择：<span class="choice-hint">（单击选中，双击执行）</span></h3>
-      
-      <div class="choices-list">
-        <div
-          v-for="(choice, index) in availableChoices"
-          :key="choice.id"
-          class="choice-item"
-          :class="{
-            'disabled': !canMakeChoice(choice),
-            'selected': selectedChoice === choice.id
-          }"
-          @click="selectChoice(choice)"
-          @dblclick="executeChoice(choice)"
-        >
+      <!-- 有选择时显示选择列表 -->
+      <div v-if="availableChoices && availableChoices.length > 0">
+        <h3 class="choices-title">你的选择：<span class="choice-hint">（单击选中，双击执行）</span></h3>
+
+        <div class="choices-list">
+          <div
+            v-for="(choice, index) in availableChoices"
+            :key="choice.id"
+            class="choice-item"
+            :class="{
+              'disabled': !canMakeChoice(choice),
+              'selected': selectedChoice === choice.id
+            }"
+            @click="selectChoice(choice)"
+            @dblclick="executeChoice(choice)"
+          >
           <div class="choice-content">
             <div class="choice-text">
               {{ choice.text }}
@@ -143,7 +145,34 @@
         </div>
       </div>
 
+      <!-- 死路处理：没有选择时显示结束冒险选项 -->
+      <div v-else class="dead-end-section">
+        <div class="dead-end-content">
+          <el-icon class="dead-end-icon"><Warning /></el-icon>
+          <h3 class="dead-end-title">冒险陷入困境</h3>
+          <p class="dead-end-description">
+            你发现自己陷入了困境，无法继续前进。<br>
+            也许是时候结束这次冒险，重新开始了。
+          </p>
 
+          <div class="dead-end-actions">
+            <el-button
+              type="danger"
+              size="large"
+              @click="endAdventure"
+              :loading="makingChoice"
+            >
+              结束冒险
+            </el-button>
+            <el-button
+              size="large"
+              @click="$router.push('/')"
+            >
+              返回主页
+            </el-button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- 游戏结束界面 -->
@@ -170,8 +199,8 @@
 import { ref, computed, watch, nextTick, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useGameStore } from '@/stores/game'
-import { ElMessage } from 'element-plus'
-import { Star, Lock, Check, Coin, Warning, InfoFilled } from '@element-plus/icons-vue'
+import { ElMessage, ElMessageBox } from 'element-plus'
+import { Star, Lock, Check, Coin, Warning, InfoFilled, Trophy } from '@element-plus/icons-vue'
 
 const router = useRouter()
 const gameStore = useGameStore()
@@ -330,6 +359,33 @@ const clearSelection = () => {
 const startNewAdventure = () => {
   gameStore.resetGame()
   router.push('/')
+}
+
+const endAdventure = async () => {
+  try {
+    makingChoice.value = true
+
+    // 显示确认对话框
+    await ElMessageBox.confirm(
+      '确定要结束当前冒险吗？你的进度将会丢失。',
+      '结束冒险',
+      {
+        confirmButtonText: '确定结束',
+        cancelButtonText: '继续冒险',
+        type: 'warning'
+      }
+    )
+
+    // 重置游戏并返回主页
+    gameStore.resetGame()
+    ElMessage.success('冒险已结束')
+    router.push('/')
+
+  } catch {
+    // 用户取消了操作
+  } finally {
+    makingChoice.value = false
+  }
 }
 
 // 组件挂载时添加额外的文本选择保护
@@ -812,6 +868,59 @@ onMounted(() => {
   }
 
 
+}
+
+.dead-end-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+
+  .dead-end-content {
+    text-align: center;
+    padding: 2.5rem;
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+    border-radius: 15px;
+    color: white;
+    box-shadow: 0 8px 32px rgba(255, 107, 107, 0.3);
+    max-width: 500px;
+
+    .dead-end-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #ffeb3b;
+      animation: pulse 2s infinite;
+    }
+
+    .dead-end-title {
+      margin: 0 0 1rem 0;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    .dead-end-description {
+      margin: 0 0 2rem 0;
+      font-size: 1rem;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+
+    .dead-end-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
 }
 
 .game-ending {
