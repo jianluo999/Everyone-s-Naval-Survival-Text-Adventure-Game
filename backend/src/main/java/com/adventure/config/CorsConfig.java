@@ -20,7 +20,10 @@ public class CorsConfig implements WebMvcConfigurer {
                     "http://localhost:3000",
                     "http://localhost:3002",
                     "http://127.0.0.1:3000",
-                    "http://127.0.0.1:3002"
+                    "http://127.0.0.1:3002",
+                    "http://192.168.0.161:3000",
+                    "http://192.168.129.1:3000",
+                    "http://192.168.15.1:3000"
                 )
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
@@ -37,7 +40,10 @@ public class CorsConfig implements WebMvcConfigurer {
             "http://localhost:3000",
             "http://localhost:3002", 
             "http://127.0.0.1:3000",
-            "http://127.0.0.1:3002"
+            "http://127.0.0.1:3002",
+            "http://192.168.0.161:3000",
+            "http://192.168.129.1:3000",
+            "http://192.168.15.1:3000"
         ));
         
         // 允许的HTTP方法
