@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -33,83 +34,207 @@ public class FishingService {
         private Fish caughtFish;
         private String message;
         private Map<String, Integer> playerChanges;
-        
+        private String fishingSpot;
+        private int fishingDuration;
+
         public FishingResult(boolean success, String message) {
             this.success = success;
             this.message = message;
             this.playerChanges = new HashMap<>();
         }
-        
+
         // Getters and setters
         public boolean isSuccess() { return success; }
         public void setSuccess(boolean success) { this.success = success; }
-        
+
         public Fish getCaughtFish() { return caughtFish; }
         public void setCaughtFish(Fish caughtFish) { this.caughtFish = caughtFish; }
-        
+
         public String getMessage() { return message; }
         public void setMessage(String message) { this.message = message; }
-        
+
         public Map<String, Integer> getPlayerChanges() { return playerChanges; }
         public void setPlayerChanges(Map<String, Integer> playerChanges) { this.playerChanges = playerChanges; }
+
+        public String getFishingSpot() { return fishingSpot; }
+        public void setFishingSpot(String fishingSpot) { this.fishingSpot = fishingSpot; }
+
+        public int getFishingDuration() { return fishingDuration; }
+        public void setFishingDuration(int fishingDuration) { this.fishingDuration = fishingDuration; }
     }
     
     /**
-     * 执行钓鱼
+     * 执行钓鱼（带钓点选择）
      */
-    public FishingResult goFishing(String playerName) {
+    public FishingResult goFishing(String playerName, String fishingSpot) {
         Player player = playerRepository.findByName(playerName)
                 .orElseThrow(() -> new RuntimeException("玩家不存在"));
-        
+
         // 检查玩家状态
         if (player.getEnergy() < 10) {
             return new FishingResult(false, "精力不足，无法钓鱼！需要至少10点精力。");
         }
-        
+
         if (player.getSanity() < 20) {
             return new FishingResult(false, "理智过低，无法集中注意力钓鱼！");
         }
-        
+
+        // 检查钓点权限
+        if (!canFishAtSpot(player, fishingSpot)) {
+            return new FishingResult(false, "你还不能在这个位置钓鱼！");
+        }
+
         // 消耗精力
         player.setEnergy(Math.max(0, player.getEnergy() - 10));
-        
+
         // 计算钓鱼技能（基于感知和经验）
         int fishingSkill = (player.getPerception() + player.getLevel()) / 2;
-        
-        // 随机选择鱼类
-        Fish caughtFish = selectRandomFish(fishingSkill);
-        
+
+        // 根据钓点和技能选择鱼类
+        Fish caughtFish = selectFishBySpot(fishingSkill, fishingSpot);
+
         FishingResult result = new FishingResult(true, "");
-        
+        result.setFishingSpot(fishingSpot);
+        result.setFishingDuration(generateRandomFishingTime(fishingSpot));
+
         if (caughtFish == null) {
             // 没钓到鱼
-            result.setMessage("你等了很长时间，但什么都没钓到...");
+            result.setMessage(generateNoFishMessage(fishingSpot));
             result.getPlayerChanges().put("energy", -10);
         } else {
             // 钓到鱼了
             result.setCaughtFish(caughtFish);
-            result.setMessage(generateFishingMessage(caughtFish));
-            
+            result.setMessage(generateFishingMessage(caughtFish, fishingSpot));
+
             // 应用钓鱼效果
             applyFishingEffects(player, caughtFish, result);
         }
-        
+
         // 保存玩家状态
         playerRepository.save(player);
-        
+
         return result;
+    }
+
+    /**
+     * 兼容旧版本的钓鱼方法
+     */
+    public FishingResult goFishing(String playerName) {
+        return goFishing(playerName, "bow"); // 默认船头钓鱼
     }
     
     /**
-     * 随机选择鱼类
+     * 检查玩家是否可以在指定钓点钓鱼
      */
-    private Fish selectRandomFish(int playerSkill) {
-        double baseChance = 0.7; // 基础钓鱼成功率
-        
+    private boolean canFishAtSpot(Player player, String spot) {
+        switch (spot) {
+            case "bow":
+            case "port":
+            case "starboard":
+                return true; // 基础钓点，所有玩家都可以使用
+            case "stern":
+                return player.getLevel() >= 5; // 船尾需要5级
+            case "captain":
+                return player.getLevel() >= 10 &&
+                       (player.getShip() != null && !"BASIC".equals(player.getShip().getType()));
+            default:
+                return false;
+        }
+    }
+
+    /**
+     * 根据钓点选择鱼类
+     */
+    private Fish selectFishBySpot(int playerSkill, String spot) {
+        double baseChance = getSpotSuccessRate(spot);
+
         if (random.nextDouble() > baseChance) {
             return null; // 没钓到
         }
-        
+
+        // 根据钓点类型选择鱼类
+        String fishType = getSpotFishType(spot);
+
+        try {
+            // 根据钓点调整成功概率，使用现有的随机选择逻辑
+            double spotMultiplier = getSpotRarityMultiplier(spot);
+            return fishRepository.findRandomFish(spotMultiplier);
+        } catch (Exception e) {
+            // 如果随机查询失败，fallback到原有逻辑
+            return selectRandomFish(playerSkill);
+        }
+    }
+
+    /**
+     * 获取钓点成功率
+     */
+    private double getSpotSuccessRate(String spot) {
+        switch (spot) {
+            case "bow": return 0.7;      // 船头：70%
+            case "port": return 0.5;     // 左舷：50%
+            case "starboard": return 0.6; // 右舷：60%
+            case "stern": return 0.3;    // 船尾：30%
+            case "captain": return 0.1;  // 船长专用：10%
+            default: return 0.5;
+        }
+    }
+
+    /**
+     * 获取钓点鱼类类型
+     */
+    private String getSpotFishType(String spot) {
+        switch (spot) {
+            case "bow": return "COMMON";     // 船头：常见鱼类
+            case "port": return "DEEP_SEA";  // 左舷：深海鱼类
+            case "starboard": return "TROPICAL"; // 右舷：热带鱼类
+            case "stern": return "STRANGE";  // 船尾：奇异生物
+            case "captain": return "LEGENDARY"; // 船长专用：传说鱼类
+            default: return "COMMON";
+        }
+    }
+
+    /**
+     * 获取钓点稀有度倍数
+     */
+    private double getSpotRarityMultiplier(String spot) {
+        switch (spot) {
+            case "bow": return 0.1;      // 船头：常见鱼类
+            case "port": return 0.05;    // 左舷：更稀有
+            case "starboard": return 0.08; // 右舷：中等稀有
+            case "stern": return 0.02;   // 船尾：很稀有
+            case "captain": return 0.01; // 船长专用：极稀有
+            default: return 0.1;
+        }
+    }
+
+    /**
+     * 生成随机钓鱼时间（5-20秒）
+     */
+    private int generateRandomFishingTime(String spot) {
+        int baseTime;
+        switch (spot) {
+            case "bow": baseTime = 8; break;      // 船头：较快
+            case "port": baseTime = 15; break;    // 左舷：较慢
+            case "starboard": baseTime = 10; break; // 右舷：中等
+            case "stern": baseTime = 18; break;   // 船尾：很慢
+            case "captain": baseTime = 12; break; // 船长专用：中等
+            default: baseTime = 10;
+        }
+
+        // 在基础时间上随机±5秒
+        return Math.max(5, Math.min(20, baseTime + random.nextInt(11) - 5));
+    }
+
+    /**
+     * 随机选择鱼类（原有方法，保持兼容性）
+     */
+    private Fish selectRandomFish(int playerSkill) {
+        double baseChance = 0.7; // 基础钓鱼成功率
+
+        if (random.nextDouble() > baseChance) {
+            return null; // 没钓到
+        }
+
         // 根据玩家技能选择鱼类
         try {
             return fishRepository.findRandomFish(0.1);
@@ -122,6 +247,50 @@ public class FishingService {
         }
     }
     
+    /**
+     * 生成没钓到鱼的消息
+     */
+    private String generateNoFishMessage(String spot) {
+        String spotName = getSpotDisplayName(spot);
+        String[] messages = {
+            "你在" + spotName + "等了很长时间，但什么都没钓到...",
+            spotName + "的鱼儿今天似乎不太活跃...",
+            "虽然在" + spotName + "很有耐心，但这次运气不太好...",
+            "在" + spotName + "钓了一会儿，鱼儿都很狡猾..."
+        };
+
+        return messages[random.nextInt(messages.length)];
+    }
+
+    /**
+     * 生成钓鱼成功消息（带钓点信息）
+     */
+    private String generateFishingMessage(Fish fish, String spot) {
+        String spotName = getSpotDisplayName(spot);
+        String[] messages = {
+            "你在" + spotName + "钓到了一条" + fish.getName() + "！",
+            "经过在" + spotName + "的耐心等待，你成功捕获了" + fish.getName() + "！",
+            "在" + spotName + "，你的鱼钩上挂着一条" + fish.getName() + "，看起来很新鲜！",
+            "太好了！在" + spotName + "钓到了" + fish.getName() + "！"
+        };
+
+        return messages[random.nextInt(messages.length)];
+    }
+
+    /**
+     * 获取钓点显示名称
+     */
+    private String getSpotDisplayName(String spot) {
+        switch (spot) {
+            case "bow": return "船头";
+            case "port": return "左舷";
+            case "starboard": return "右舷";
+            case "stern": return "船尾";
+            case "captain": return "船长专用钓点";
+            default: return "未知位置";
+        }
+    }
+
     /**
      * 应用钓鱼效果
      */

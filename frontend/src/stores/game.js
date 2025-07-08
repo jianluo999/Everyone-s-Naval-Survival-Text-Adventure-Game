@@ -277,6 +277,37 @@ export const useGameStore = defineStore('game', () => {
     }
   }
 
+  async function goFishingWithSpot(spot) {
+    if (!player.value || !canFish.value) {
+      error.value = '无法钓鱼：精力不足或理智过低'
+      return
+    }
+
+    loading.value = true
+    error.value = ''
+
+    try {
+      const response = await gameApi.goFishingWithSpot(player.value.name, spot)
+      fishingResult.value = response
+
+      if (response.fish) {
+        caughtFish.value = response.fish
+      }
+
+      // 更新玩家状态
+      if (response.playerChanges) {
+        applyPlayerChanges(response.playerChanges)
+      }
+
+      return response
+    } catch (err) {
+      error.value = err.message
+      throw err
+    } finally {
+      loading.value = false
+    }
+  }
+
   // 扩展钓鱼系统 - 添加新的物品类型
   const extendedFishingItems = ref([
     {
@@ -480,6 +511,7 @@ export const useGameStore = defineStore('game', () => {
     makeChoice,
     updatePlayerStats,
     goFishing,
+    goFishingWithSpot,
     eatFish,
     clearCaughtFish,
     advanceTime,

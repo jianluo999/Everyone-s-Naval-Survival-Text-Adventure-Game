@@ -95,6 +95,11 @@ const gameApi = {
     return await api.post(`/game/player/${playerName}/fishing`)
   },
 
+  // 钓鱼（带钓点选择）
+  async goFishingWithSpot(playerName, spot) {
+    return await api.post(`/game/player/${playerName}/fishing?spot=${spot}`)
+  },
+
   // 食用鱼类
   async eatFish(playerName, fishId) {
     return await api.post(`/game/player/${playerName}/eat/${fishId}`)

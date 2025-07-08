@@ -9,14 +9,14 @@
     </div>
 
     <div class="fishing-controls">
-      <button 
+      <button
         class="fishing-btn"
-        :disabled="!canFish || loading"
-        @click="handleFishing"
+        :disabled="!canFish || loading || showSpotSelector || showFishingProgress"
+        @click="showSpotSelection"
       >
-        <span v-if="loading">🔄 钓鱼中...</span>
+        <span v-if="loading || showFishingProgress">🔄 钓鱼中...</span>
         <span v-else-if="!canFish">❌ 无法钓鱼</span>
-        <span v-else>🎣 开始钓鱼</span>
+        <span v-else>🎣 选择钓点</span>
       </button>
       
       <div class="fishing-requirements" v-if="!canFish">
@@ -76,18 +76,39 @@
         </div>
       </div>
     </div>
-    <FishCaughtModal 
-      :visible="isModalVisible" 
-      :fish="caughtFish" 
-      @close="closeModal" 
+    <!-- 钓点选择器 -->
+    <FishingSpotSelector
+      :visible="showSpotSelector"
+      :player-level="player?.level || 1"
+      :ship-type="player?.ship?.type || 'BASIC'"
+      @close="closeSpotSelector"
+      @spot-selected="handleSpotSelected"
+    />
+
+    <!-- 钓鱼进度 -->
+    <FishingProgress
+      :visible="showFishingProgress"
+      :selected-spot="selectedSpot"
+      :fishing-duration="fishingDuration"
+      @fishing-complete="handleFishingComplete"
+      @fishing-cancelled="handleFishingCancelled"
+    />
+
+    <!-- 钓鱼结果弹窗 -->
+    <FishCaughtModal
+      :visible="isModalVisible"
+      :fish="caughtFish"
+      @close="closeModal"
     />
   </div>
 </template>
 
 <script setup>
-import { ref, watch, computed } from 'vue'; // 确保导入 computed
+import { ref, watch, computed } from 'vue';
 import { useGameStore } from '@/stores/game';
 import FishCaughtModal from './FishCaughtModal.vue';
+import FishingSpotSelector from './FishingSpotSelector.vue';
+import FishingProgress from './FishingProgress.vue';
 
 const gameStore = useGameStore();
 
@@ -98,16 +119,62 @@ const fishingResult = computed(() => gameStore.fishingResult);
 const canFish = computed(() => gameStore.canFish);
 const caughtFish = computed(() => gameStore.caughtFish);
 
+// 钓鱼流程状态
+const showSpotSelector = ref(false);
+const showFishingProgress = ref(false);
+const selectedSpot = ref('');
+const fishingDuration = ref(15);
 const isModalVisible = ref(false);
 
-const handleFishing = async () => {
+// 显示钓点选择
+const showSpotSelection = () => {
   if (!canFish.value || loading.value) return;
-  await gameStore.goFishing();
+  showSpotSelector.value = true;
+};
+
+// 关闭钓点选择器
+const closeSpotSelector = () => {
+  showSpotSelector.value = false;
+};
+
+// 处理钓点选择
+const handleSpotSelected = (spot) => {
+  selectedSpot.value = spot;
+  showSpotSelector.value = false;
+
+  // 生成随机钓鱼时间（5-20秒）
+  fishingDuration.value = Math.floor(Math.random() * 16) + 5;
+
+  // 显示钓鱼进度
+  showFishingProgress.value = true;
+};
+
+// 处理钓鱼完成
+const handleFishingComplete = async (fishingData) => {
+  showFishingProgress.value = false;
+
+  try {
+    // 调用后端钓鱼API
+    const result = await gameStore.goFishingWithSpot(selectedSpot.value);
+
+    if (result && result.success && result.fish) {
+      // 显示钓鱼结果弹窗
+      isModalVisible.value = true;
+    }
+  } catch (error) {
+    console.error('钓鱼失败:', error);
+  }
+};
+
+// 处理钓鱼取消
+const handleFishingCancelled = () => {
+  showFishingProgress.value = false;
+  selectedSpot.value = '';
 };
 
 const closeModal = () => {
   isModalVisible.value = false;
-  gameStore.clearCaughtFish(); 
+  gameStore.clearCaughtFish();
 };
 
 // 监听 store 中 caughtFish 的变化

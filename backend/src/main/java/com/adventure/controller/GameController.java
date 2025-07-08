@@ -398,22 +398,26 @@ public class GameController {
     }
     
     /**
-     * 钓鱼
+     * 钓鱼（带钓点选择）
      */
     @PostMapping("/player/{name}/fishing")
-    public ResponseEntity<Map<String, Object>> goFishing(@PathVariable String name) {
+    public ResponseEntity<Map<String, Object>> goFishing(
+            @PathVariable String name,
+            @RequestParam(required = false, defaultValue = "bow") String spot) {
         try {
-            FishingService.FishingResult result = fishingService.goFishing(name);
-            
+            FishingService.FishingResult result = fishingService.goFishing(name, spot);
+
             Map<String, Object> response = new HashMap<>();
             response.put("success", result.isSuccess());
             response.put("message", result.getMessage());
             response.put("playerChanges", result.getPlayerChanges());
-            
+            response.put("fishingSpot", result.getFishingSpot());
+            response.put("fishingDuration", result.getFishingDuration());
+
             if (result.getCaughtFish() != null) {
                 response.put("fish", createFishDTO(result.getCaughtFish()));
             }
-            
+
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
