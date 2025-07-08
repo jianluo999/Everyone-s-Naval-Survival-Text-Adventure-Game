@@ -27,10 +27,10 @@ public interface FishRepository extends JpaRepository<Fish, Long> {
     List<Fish> findByCatchDifficultyLessThanEqual(Integer difficulty);
     
     // 随机获取一条鱼（用于钓鱼）
-    @Query(value = "SELECT * FROM fish WHERE catch_probability >= :minProbability ORDER BY RANDOM() LIMIT 1", nativeQuery = true)
+    @Query(value = "SELECT * FROM fish WHERE catch_probability >= :minProbability ORDER BY RAND() LIMIT 1", nativeQuery = true)
     Fish findRandomFish(@Param("minProbability") Double minProbability);
-    
+
     // 根据玩家条件获取可钓到的鱼类
-    @Query(value = "SELECT * FROM fish WHERE catch_difficulty <= :playerSkill ORDER BY RANDOM() LIMIT :limit", nativeQuery = true)
+    @Query(value = "SELECT * FROM fish WHERE catch_difficulty <= :playerSkill ORDER BY RAND() LIMIT :limit", nativeQuery = true)
     List<Fish> findFishByPlayerSkill(@Param("playerSkill") Integer playerSkill, @Param("limit") Integer limit);
 } 

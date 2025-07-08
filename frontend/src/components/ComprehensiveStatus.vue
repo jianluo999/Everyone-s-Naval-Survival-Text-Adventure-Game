@@ -232,15 +232,23 @@
         <span class="remaining-actions">剩余行动: {{ gameStore.timeInfo.remainingActions }}</span>
       </div>
     </div>
+
+    <!-- 钓鱼弹窗 -->
+    <FishCaughtModal
+      :visible="isModalVisible"
+      :fish="gameStore.caughtFish"
+      @close="closeModal"
+    />
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useGameStore } from '@/stores/game'
 import { ElMessage } from 'element-plus'
 import { User, Ship, Money, TrophyBase, Timer, Box, Operation, Clock } from '@element-plus/icons-vue'
 import AttributeRadar from './AttributeRadar.vue'
+import FishCaughtModal from './FishCaughtModal.vue'
 
 const gameStore = useGameStore()
 
@@ -250,6 +258,8 @@ const fishingState = ref({
   lastResult: null,
   status: 'ready'
 })
+
+const isModalVisible = ref(false)
 
 // 计算属性
 const player = computed(() => gameStore.player)
@@ -348,7 +358,7 @@ const startFishing = async () => {
 
     if (result && result.success) {
       if (result.fish) {
-        // 钓到鱼了
+        // 钓到鱼了 - 显示精美弹窗而不是简单消息
         fishingState.value.lastResult = {
           fishName: result.fish.name,
           rarity: result.fish.rarity,
@@ -356,7 +366,9 @@ const startFishing = async () => {
           fishId: result.fish.id,
           description: result.fish.description
         }
-        ElMessage.success(`钓到了${result.fish.name}！`)
+        // 显示弹窗而不是消息
+        isModalVisible.value = true
+        console.log('显示钓鱼弹窗，鱼类数据:', result.fish)
       } else {
         // 没钓到鱼
         fishingState.value.lastResult = null
@@ -377,6 +389,11 @@ const startFishing = async () => {
     fishingState.value.fishing = false
     fishingState.value.status = 'ready'
   }
+}
+
+const closeModal = () => {
+  isModalVisible.value = false
+  gameStore.clearCaughtFish()
 }
 
 const eatFish = async (fish) => {
@@ -456,6 +473,21 @@ const advanceTime = async () => {
     ElMessage.error(err.message || '时间推进失败')
   }
 }
+
+// 监听 store 中 caughtFish 的变化
+watch(() => gameStore.caughtFish, (newFish) => {
+  console.log('监听到 caughtFish 变化:', newFish)
+  console.log('当前 isModalVisible 状态:', isModalVisible.value)
+  if (newFish) {
+    isModalVisible.value = true
+    console.log('设置 isModalVisible 为 true，当前值:', isModalVisible.value)
+  }
+})
+
+// 监听弹窗可见性变化
+watch(isModalVisible, (newValue) => {
+  console.log('弹窗可见性变化:', newValue)
+})
 </script>
 
 <style lang="scss" scoped>

@@ -46,51 +46,7 @@
           🎉 恭喜升级！现在是 {{ fishingResult.newLevel }} 级！
         </div>
 
-        <!-- 捕获的鱼类 -->
-        <div class="caught-fish" v-if="caughtFish">
-          <div class="fish-card">
-            <div class="fish-header">
-              <h5>{{ caughtFish.name }}</h5>
-              <span :class="['fish-rarity', caughtFish.rarity.toLowerCase()]">
-                {{ getRarityText(caughtFish.rarity) }}
-              </span>
-            </div>
-            
-            <div class="fish-image">
-              <img :src="getFishImage(caughtFish.name)" :alt="caughtFish.name" />
-            </div>
-            
-            <div class="fish-description">
-              {{ caughtFish.description }}
-            </div>
-            
-            <div class="fish-effects" v-if="caughtFish.effects">
-              <h6>效果：</h6>
-              <ul>
-                <li v-for="effect in caughtFish.effects" :key="effect">
-                  {{ effect }}
-                </li>
-              </ul>
-            </div>
-            
-            <div class="fish-actions">
-              <button 
-                class="eat-btn"
-                @click="handleEatFish"
-                :disabled="loading"
-              >
-                🍽️ 食用
-              </button>
-              
-              <button 
-                class="discard-btn"
-                @click="handleDiscardFish"
-              >
-                🗑️ 丢弃
-              </button>
-            </div>
-          </div>
-        </div>
+        <!-- 这里不再直接显示鱼，而是通过弹窗 -->
       </div>
     </div>
 
@@ -120,71 +76,70 @@
         </div>
       </div>
     </div>
+    <FishCaughtModal 
+      :visible="isModalVisible" 
+      :fish="caughtFish" 
+      @close="closeModal" 
+    />
   </div>
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import { useGameStore } from '@/stores/game'
+import { ref, watch, computed } from 'vue'; // 确保导入 computed
+import { useGameStore } from '@/stores/game';
+import FishCaughtModal from './FishCaughtModal.vue';
 
-const gameStore = useGameStore()
+const gameStore = useGameStore();
 
-const { 
-  player, 
-  loading, 
-  canFish, 
-  fishingResult, 
-  caughtFish,
-  survivalStatus 
-} = gameStore
+// 使用 toRefs 或者分开引用以保持响应性
+const player = computed(() => gameStore.player);
+const loading = computed(() => gameStore.loading);
+const fishingResult = computed(() => gameStore.fishingResult);
+const canFish = computed(() => gameStore.canFish);
+const caughtFish = computed(() => gameStore.caughtFish);
 
-// 计算属性
-const statusClass = computed(() => {
-  if (!canFish.value) return 'disabled'
-  return survivalStatus.value
-})
+const isModalVisible = ref(false);
 
-const statusText = computed(() => {
-  if (!canFish.value) return '无法钓鱼'
-  switch(survivalStatus.value) {
-    case 'critical': return '危险'
-    case 'poor': return '较差'
-    case 'fair': return '一般'
-    case 'good': return '良好'
-    default: return '未知'
+const handleFishing = async () => {
+  if (!canFish.value || loading.value) return;
+  await gameStore.goFishing();
+};
+
+const closeModal = () => {
+  isModalVisible.value = false;
+  gameStore.clearCaughtFish(); 
+};
+
+// 监听 store 中 caughtFish 的变化
+watch(() => gameStore.caughtFish, (newFish) => {
+  if (newFish) {
+    isModalVisible.value = true;
   }
-})
+});
+
+const statusClass = computed(() => { // 改回 computed
+  if (!canFish.value) return 'disabled';
+  return gameStore.survivalStatus;
+});
+
+const statusText = computed(() => { // 改回 computed
+  if (!canFish.value) return '无法钓鱼';
+  switch(gameStore.survivalStatus) {
+    case 'critical': return '危险';
+    case 'poor': return '较差';
+    case 'fair': return '一般';
+    case 'good': return '良好';
+    default: return '未知';
+  }
+});
 
 const hungerPercent = computed(() => {
-  return Math.max(0, player?.hunger || 100)
-})
+  return Math.max(0, player.value?.hunger || 0); // 注意访问 .value
+});
 
 const thirstPercent = computed(() => {
-  return Math.max(0, player?.thirst || 100)
-})
-
-// 方法
-const handleFishing = async () => {
-  try {
-    await gameStore.goFishing()
-  } catch (error) {
-    console.error('钓鱼失败:', error)
-  }
-}
-
-const handleEatFish = async () => {
-  if (!caughtFish) return
-  
-  try {
-    await gameStore.eatFish(caughtFish.id)
-  } catch (error) {
-    console.error('食用鱼类失败:', error)
-  }
-}
-
-const handleDiscardFish = () => {
-  gameStore.caughtFish = null
-}
+  return Math.max(0, player.value?.thirst || 0); // 注意访问 .value
+});
 
 const getRarityText = (rarity) => {
   const rarityMap = {
@@ -193,9 +148,9 @@ const getRarityText = (rarity) => {
     'RARE': '稀有',
     'EPIC': '史诗',
     'LEGENDARY': '传说'
-  }
-  return rarityMap[rarity] || rarity
-}
+  };
+  return rarityMap[rarity] || rarity;
+};
 
 const getFishImage = (fishName) => {
   // 根据鱼类名称返回对应图片

@@ -4,16 +4,12 @@ import com.adventure.model.Choice;
 import com.adventure.model.Story;
 import com.adventure.model.Equipment;
 import com.adventure.model.Player;
-import com.adventure.model.Ship;
-import com.adventure.model.GameState;
 import com.adventure.model.Fish;
-import com.adventure.model.Monster;
 import com.adventure.repository.StoryRepository;
 import com.adventure.repository.ChoiceRepository;
 import com.adventure.repository.EquipmentRepository;
 import com.adventure.repository.PlayerRepository;
 import com.adventure.repository.FishRepository;
-import com.adventure.repository.MonsterRepository;
 import com.adventure.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -21,8 +17,6 @@ import org.springframework.stereotype.Component;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,9 +37,6 @@ public class DataInitializer implements CommandLineRunner {
     
     @Autowired
     private FishRepository fishRepository;
-
-    @Autowired
-    private MonsterRepository monsterRepository;
 
     @Autowired
     private GameService gameService;
@@ -466,9 +457,6 @@ public class DataInitializer implements CommandLineRunner {
 
         // 创建选择（现在不再需要双向关联）
         createChoices();
-
-        // 创建怪物数据
-        createMonsters();
     }
     
     private void createChoices() {
@@ -866,47 +854,9 @@ public class DataInitializer implements CommandLineRunner {
         choiceRepository.save(choice1_18_2);
     }
 
-    private void createMonsters() {
-        // 创建溺亡者
-        Monster drownedSailor = new Monster();
-        drownedSailor.setMonsterId("drowned_sailor");
-        drownedSailor.setName("溺亡者");
-        drownedSailor.setDescription("溺亡在海里的不幸之人，怀着对生者的怨念，重新站了起来。身体肿胀发臭，行动缓慢但力量惊人。");
-        drownedSailor.setHealth(80);
-        drownedSailor.setMaxHealth(80);
-        drownedSailor.setAttack(15);
-        drownedSailor.setDefense(5);
-        drownedSailor.setSpeed(3);
-        drownedSailor.setMonsterType("UNDEAD");
-        drownedSailor.setAbilities("{\"self_destruct\": true, \"grab_attack\": true}");
-        drownedSailor.setLoot("{\"experience\": 30, \"materials\": [\"腐烂的水手服\", \"海藻\"]}");
-        drownedSailor.setSanityDamage(5);
-        drownedSailor.setCanRevive(false);
-        drownedSailor.setCanExplode(true);
-        drownedSailor.setEncounterStoryId("story_1_12");
-        monsterRepository.save(drownedSailor);
 
-        // 创建船长遗骸
-        Monster captainSkeleton = new Monster();
-        captainSkeleton.setMonsterId("captain_skeleton");
-        captainSkeleton.setName("船长的遗骸");
-        captainSkeleton.setDescription("他曾经是一位酷爱钓鱼的船长，直到他钓到了不该钓的东西...现在他的骸骨重新站了起来。");
-        captainSkeleton.setHealth(60);
-        captainSkeleton.setMaxHealth(60);
-        captainSkeleton.setAttack(12);
-        captainSkeleton.setDefense(8);
-        captainSkeleton.setSpeed(4);
-        captainSkeleton.setMonsterType("UNDEAD");
-        captainSkeleton.setAbilities("{\"fishing_rod_attack\": true, \"stealth\": true}");
-        captainSkeleton.setLoot("{\"experience\": 40, \"materials\": [\"船长帽\", \"钓鱼竿\"]}");
-        captainSkeleton.setSanityDamage(10);
-        captainSkeleton.setCanRevive(true);
-        captainSkeleton.setCanExplode(false);
-        captainSkeleton.setEncounterStoryId("story_1_15");
-        monsterRepository.save(captainSkeleton);
-    }
-    
     private void createGameEquipment() {
+        System.out.println("⚔️ 开始创建游戏装备...");
         // 创建基础装备
         Equipment rustySword = new Equipment();
         rustySword.setName("生锈的剑");
@@ -979,128 +929,135 @@ public class DataInitializer implements CommandLineRunner {
     }
     
     private void createStrangeFish() {
-        // 检查是否已有鱼类数据
-        if (fishRepository.count() > 0) {
-            return;
-        }
-        
-        System.out.println("🐟 创建怪异鱼类...");
-        
-        // 长腿沙丁鱼
-        Fish longLegSardine = new Fish();
-        longLegSardine.setName("长腿沙丁鱼");
-        longLegSardine.setType("STRANGE");
-        longLegSardine.setDescription("深渊鱼种，据说经常吃它，可以变成大长腿。可以吃，无毒，味道鲜美，但吃它需要勇气，可能降低理智。");
-        longLegSardine.setRarity("COMMON");
-        longLegSardine.setSize(3);
-        longLegSardine.setWeight(0.1);
-        longLegSardine.setIsEdible(true);
-        longLegSardine.setIsToxic(false);
-        longLegSardine.setHealthEffect(5);
-        longLegSardine.setSanityEffect(-2);
-        longLegSardine.setEnergyEffect(10);
-        longLegSardine.setHungerRestore(15);
-        longLegSardine.setThirstRestore(0);
-        longLegSardine.setAgilityBonus(1);
-        longLegSardine.setBonusDuration(30);
-        longLegSardine.setCatchDifficulty(2);
-        longLegSardine.setCatchProbability(0.6);
-        longLegSardine.setCatchCondition("{}");
-        longLegSardine.setSpecialEffects("{\"sanity_loss_on_catch\": 2}");
-        fishRepository.save(longLegSardine);
-        
-        // 囊肿刺豚
+        System.out.println("🐟 开始创建怪异鱼类...");
+        List<Fish> fishes = new ArrayList<>();
+
+        // 1. 水晶幽灵鱼
+        Fish crystalGhostFish = new Fish();
+        crystalGhostFish.setName("水晶幽灵鱼");
+        crystalGhostFish.setType("STRANGE");
+        crystalGhostFish.setDescription("通体由半透明水晶构成，体内散发着柔和的微光。据说它的眼泪可以净化被污染的海水。");
+        crystalGhostFish.setImageName("crystal-ghost-fish.png");
+        crystalGhostFish.setRarity("RARE");
+        crystalGhostFish.setSize(30);
+        crystalGhostFish.setWeight(1.5);
+        crystalGhostFish.setIsEdible(true);
+        crystalGhostFish.setHealthEffect(50);
+        crystalGhostFish.setSanityEffect(20);
+        crystalGhostFish.setHungerRestore(10);
+        crystalGhostFish.setCatchDifficulty(7);
+        crystalGhostFish.setCatchProbability(0.1);
+        fishes.add(crystalGhostFish);
+
+        // 2. 深海机械鲨
+        Fish mechaShark = new Fish();
+        mechaShark.setName("深海机械鲨");
+        mechaShark.setType("DANGEROUS");
+        mechaShark.setDescription("古文明的战争兵器，由金属和未知能量核心构成。它的装甲异常坚固，眼中闪烁着不祥的红光。");
+        mechaShark.setImageName("deep-sea-mecha-shark.png");
+        mechaShark.setRarity("LEGENDARY");
+        mechaShark.setSize(300);
+        mechaShark.setWeight(1000.0);
+        mechaShark.setIsEdible(false);
+        mechaShark.setCatchDifficulty(10);
+        mechaShark.setCatchProbability(0.01);
+        fishes.add(mechaShark);
+
+        // 3. 熔岩灯水母
+        Fish lavaJellyfish = new Fish();
+        lavaJellyfish.setName("熔岩灯水母");
+        lavaJellyfish.setType("STRANGE");
+        lavaJellyfish.setDescription("它的身体就像一盏活着的熔岩灯，内部的彩色物质不断变幻流动，散发着迷幻的光芒。触碰它会产生温暖而愉悦的感觉。");
+        lavaJellyfish.setImageName("lava-lamp-jellyfish.png");
+        lavaJellyfish.setRarity("UNCOMMON");
+        lavaJellyfish.setSize(50);
+        lavaJellyfish.setWeight(5.0);
+        lavaJellyfish.setIsEdible(true);
+        lavaJellyfish.setSanityEffect(30);
+        lavaJellyfish.setEnergyEffect(20);
+        lavaJellyfish.setHungerRestore(5);
+        lavaJellyfish.setCatchDifficulty(5);
+        lavaJellyfish.setCatchProbability(0.2);
+        fishes.add(lavaJellyfish);
+
+        // 4. 囊肿河豚
         Fish cysticPufferfish = new Fish();
-        cysticPufferfish.setName("囊肿刺豚");
+        cysticPufferfish.setName("囊肿河豚");
         cysticPufferfish.setType("DANGEROUS");
-        cysticPufferfish.setDescription("深渊鱼类，它的体液含有剧毒，正常人不会吃它的，除非....不想活了。");
+        cysticPufferfish.setDescription("表皮覆盖着大小不一的、搏动着的囊肿，看上去极其可憎。它的毒素不仅致命，还会侵蚀心智。");
+        cysticPufferfish.setImageName("cystic-pufferfish.png");
         cysticPufferfish.setRarity("UNCOMMON");
-        cysticPufferfish.setSize(8);
-        cysticPufferfish.setWeight(0.5);
-        cysticPufferfish.setIsEdible(false);
+        cysticPufferfish.setSize(25);
+        cysticPufferfish.setWeight(2.0);
+        cysticPufferfish.setIsEdible(true);
         cysticPufferfish.setIsToxic(true);
-        cysticPufferfish.setHealthEffect(-50);
-        cysticPufferfish.setSanityEffect(-5);
-        cysticPufferfish.setEnergyEffect(-20);
-        cysticPufferfish.setHungerRestore(0);
-        cysticPufferfish.setThirstRestore(0);
-        cysticPufferfish.setCatchDifficulty(4);
-        cysticPufferfish.setCatchProbability(0.3);
-        cysticPufferfish.setCatchCondition("{}");
-        cysticPufferfish.setSpecialEffects("{\"sanity_loss_on_catch\": 5, \"poison_weapon\": true}");
-        fishRepository.save(cysticPufferfish);
-        
-        // 人头章鱼
-        Fish humanHeadOctopus = new Fish();
-        humanHeadOctopus.setName("人头章鱼");
-        humanHeadOctopus.setType("DANGEROUS");
-        humanHeadOctopus.setDescription("深渊鱼种，不要试图去理解它的话，那不过是为了偷袭你，分散你注意力的手段。可食用，可作为素材，微毒性，吃下后力量暂时+1，体质+1，精神-1，理智-20。");
-        humanHeadOctopus.setRarity("RARE");
-        humanHeadOctopus.setSize(15);
-        humanHeadOctopus.setWeight(1.2);
-        humanHeadOctopus.setIsEdible(true);
-        humanHeadOctopus.setIsToxic(true);
-        humanHeadOctopus.setHealthEffect(0);
-        humanHeadOctopus.setSanityEffect(-20);
-        humanHeadOctopus.setEnergyEffect(0);
-        humanHeadOctopus.setHungerRestore(25);
-        humanHeadOctopus.setThirstRestore(0);
-        humanHeadOctopus.setStrengthBonus(1);
-        humanHeadOctopus.setConstitutionBonus(1);
-        humanHeadOctopus.setSpiritBonus(-1);
-        humanHeadOctopus.setBonusDuration(60);
-        humanHeadOctopus.setCatchDifficulty(7);
-        humanHeadOctopus.setCatchProbability(0.1);
-        humanHeadOctopus.setCatchCondition("{}");
-        humanHeadOctopus.setSpecialEffects("{\"sanity_loss_on_catch\": 10, \"speaks_strange_words\": true}");
-        fishRepository.save(humanHeadOctopus);
-        
-        // 普通海鲈鱼（作为对比）
-        Fish normalSeaBass = new Fish();
-        normalSeaBass.setName("海鲈鱼");
-        normalSeaBass.setType("NORMAL");
-        normalSeaBass.setDescription("一条普通的海鲈鱼，新鲜美味，是很好的食物来源。");
-        normalSeaBass.setRarity("COMMON");
-        normalSeaBass.setSize(25);
-        normalSeaBass.setWeight(2.0);
-        normalSeaBass.setIsEdible(true);
-        normalSeaBass.setIsToxic(false);
-        normalSeaBass.setHealthEffect(10);
-        normalSeaBass.setSanityEffect(0);
-        normalSeaBass.setEnergyEffect(15);
-        normalSeaBass.setHungerRestore(30);
-        normalSeaBass.setThirstRestore(5);
-        normalSeaBass.setCatchDifficulty(3);
-        normalSeaBass.setCatchProbability(0.8);
-        normalSeaBass.setCatchCondition("{}");
-        normalSeaBass.setSpecialEffects("{}");
-        fishRepository.save(normalSeaBass);
-        
-        // 深海怪鱼
+        cysticPufferfish.setHealthEffect(-100);
+        cysticPufferfish.setSanityEffect(-30);
+        cysticPufferfish.setCatchDifficulty(6);
+        cysticPufferfish.setCatchProbability(0.15);
+        fishes.add(cysticPufferfish);
+
+        // 5. 深海怪物 (概念)
         Fish deepSeaMonster = new Fish();
-        deepSeaMonster.setName("深海怪鱼");
+        deepSeaMonster.setName("深海巨兽");
         deepSeaMonster.setType("DANGEROUS");
-        deepSeaMonster.setDescription("来自深海的可怕生物，体型巨大，具有攻击性。不建议新手钓鱼者尝试。");
+        deepSeaMonster.setDescription("克苏鲁神话中的恐怖存在，仅仅是看到它的触须就足以让人疯狂。这不应被称为'鱼'，而是一种超出理解的灾厄。");
+        deepSeaMonster.setImageName("deep-sea-monster.png");
         deepSeaMonster.setRarity("LEGENDARY");
-        deepSeaMonster.setSize(100);
-        deepSeaMonster.setWeight(50.0);
-        deepSeaMonster.setIsEdible(true);
-        deepSeaMonster.setIsToxic(false);
-        deepSeaMonster.setHealthEffect(50);
-        deepSeaMonster.setSanityEffect(-10);
-        deepSeaMonster.setEnergyEffect(30);
-        deepSeaMonster.setHungerRestore(100);
-        deepSeaMonster.setThirstRestore(0);
-        deepSeaMonster.setStrengthBonus(2);
-        deepSeaMonster.setConstitutionBonus(2);
-        deepSeaMonster.setBonusDuration(120);
+        deepSeaMonster.setSize(9999);
+        deepSeaMonster.setWeight(99999.9);
+        deepSeaMonster.setIsEdible(false);
         deepSeaMonster.setCatchDifficulty(10);
-        deepSeaMonster.setCatchProbability(0.05);
-        deepSeaMonster.setCatchCondition("{}");
-        deepSeaMonster.setSpecialEffects("{\"sanity_loss_on_catch\": 15, \"requires_weapon\": true}");
-        fishRepository.save(deepSeaMonster);
+        deepSeaMonster.setCatchProbability(0.001);
+        fishes.add(deepSeaMonster);
         
-        System.out.println("🐟 怪异鱼类创建完成！");
+        // 6. 人头章鱼
+        Fish humanOctopus = new Fish();
+        humanOctopus.setName("人头章鱼");
+        humanOctopus.setType("DANGEROUS");
+        humanOctopus.setDescription("拥有人类头颅的章鱼，眼神中充满了怨毒与智慧。坊间传闻它是被诅咒的古代智者所化。");
+        humanOctopus.setImageName("human-headed-octopus.png");
+        humanOctopus.setRarity("RARE");
+        humanOctopus.setSize(150);
+        humanOctopus.setWeight(80.0);
+        humanOctopus.setIsEdible(false);
+        humanOctopus.setSanityEffect(-50);
+        humanOctopus.setCatchDifficulty(8);
+        humanOctopus.setCatchProbability(0.05);
+        fishes.add(humanOctopus);
+
+        // 7. 长腿沙丁鱼
+        Fish longLeggedSardine = new Fish();
+        longLeggedSardine.setName("长腿沙丁鱼");
+        longLeggedSardine.setType("STRANGE");
+        longLeggedSardine.setDescription("一种超现实的鱼类，拥有昆虫般细长的腿，能在海底行走。味道……据说和普通沙丁鱼没什么两样，就是有点扎嘴。");
+        longLeggedSardine.setImageName("long-legged-sardine.png");
+        longLeggedSardine.setRarity("COMMON");
+        longLeggedSardine.setSize(15);
+        longLeggedSardine.setWeight(0.2);
+        longLeggedSardine.setIsEdible(true);
+        longLeggedSardine.setHungerRestore(15);
+        longLeggedSardine.setCatchDifficulty(3);
+        longLeggedSardine.setCatchProbability(0.4);
+        fishes.add(longLeggedSardine);
+
+        // 8. 海鲈鱼
+        Fish seaBass = new Fish();
+        seaBass.setName("海鲈鱼");
+        seaBass.setType("NORMAL");
+        seaBass.setDescription("一种常见的食用鱼，肉质鲜美，是海上求生者可靠的食物来源。没什么特别的，但能填饱肚子就是最大的幸福。");
+        seaBass.setImageName("sea-bass.png");
+        seaBass.setRarity("COMMON");
+        seaBass.setSize(40);
+        seaBass.setWeight(3.0);
+        seaBass.setIsEdible(true);
+        seaBass.setHungerRestore(20);
+        seaBass.setCatchDifficulty(4);
+        seaBass.setCatchProbability(0.6);
+        fishes.add(seaBass);
+
+        fishRepository.saveAll(fishes);
+        System.out.println("✔️ " + fishes.size() + " 种怪异鱼类已创建");
     }
 
     // ==================== 批量生成的故事内容 ====================

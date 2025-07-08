@@ -24,6 +24,9 @@ public class Fish {
     @Column(columnDefinition = "TEXT")
     private String description; // 描述
     
+    @Column
+    private String imageName; // 图片文件名
+    
     @Column(nullable = false)
     private String rarity; // 稀有度：COMMON, UNCOMMON, RARE, LEGENDARY
     

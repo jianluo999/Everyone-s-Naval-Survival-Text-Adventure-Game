@@ -448,6 +448,7 @@ public class GameController {
         fishDTO.put("name", fish.getName());
         fishDTO.put("type", fish.getType());
         fishDTO.put("description", fish.getDescription());
+        fishDTO.put("imageName", fish.getImageName());
         fishDTO.put("rarity", fish.getRarity());
         fishDTO.put("size", fish.getSize());
         fishDTO.put("weight", fish.getWeight());

@@ -347,35 +347,32 @@ export const useGameStore = defineStore('game', () => {
   ])
 
   async function eatFish(fishId) {
-    if (!player.value || !fishId) return
-    
-    loading.value = true
-    error.value = ''
-    
+    if (!player.value) return;
+
     try {
-      const response = await gameApi.eatFish(player.value.name, fishId)
+      const response = await gameApi.eatFish({
+        playerName: player.value.name,
+        fishId: fishId
+      });
       
-      // 更新玩家状态
-      if (response.playerChanges) {
-        applyPlayerChanges(response.playerChanges)
-      }
+      player.value = response.player; // 更新玩家状态
+      ElMessage.success(response.message);
       
       // 清除已食用的鱼
-      if (caughtFish.value && caughtFish.value.id === fishId) {
-        caughtFish.value = null
-      }
-      
-      return response
-    } catch (err) {
-      error.value = err.message
-      throw err
-    } finally {
-      loading.value = false
+      caughtFish.value = null;
+
+    } catch (error) {
+      ElMessage.error(error.message || '食用失败');
+      console.error('食用鱼失败:', error);
     }
   }
 
+  function clearCaughtFish() {
+    caughtFish.value = null;
+  }
+
   function applyPlayerChanges(changes) {
-    if (!player.value || !changes) return
+    if (!player.value) return;
     
     Object.keys(changes).forEach(key => {
       if (key === 'levelUp') return
@@ -484,6 +481,7 @@ export const useGameStore = defineStore('game', () => {
     updatePlayerStats,
     goFishing,
     eatFish,
+    clearCaughtFish,
     advanceTime,
     getTimeInfo,
     resetGame
