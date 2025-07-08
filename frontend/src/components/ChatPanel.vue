@@ -5,6 +5,16 @@
       <div class="chat-title">
         <el-icon><ChatRound /></el-icon>
         <span>航海日志</span>
+        <!-- 连接状态指示器 -->
+        <div class="connection-status" :class="connectionStatus">
+          <el-icon v-if="connectionStatus === 'connected'"><SuccessFilled /></el-icon>
+          <el-icon v-else-if="connectionStatus === 'connecting'"><Loading /></el-icon>
+          <el-icon v-else><WarningFilled /></el-icon>
+          <span class="status-text">
+            {{ connectionStatus === 'connected' ? '已连接' :
+               connectionStatus === 'connecting' ? '连接中' : '未连接' }}
+          </span>
+        </div>
       </div>
       
       <!-- 频道切换 -->
@@ -79,7 +89,7 @@
           >
             <div class="message-header">
               <span class="player-name">{{ message.playerName }}</span>
-              <span class="message-time">{{ formatTime(message.time) }}</span>
+              <span class="message-time">{{ formatTime(message.timestamp || message.time) }}</span>
             </div>
             <div class="message-content">{{ message.content }}</div>
           </div>
@@ -141,8 +151,9 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, nextTick, watch } from 'vue'
+import { ref, computed, onMounted, onUnmounted, nextTick, watch } from 'vue'
 import { useGameStore } from '@/stores/game'
+import { useChatStore } from '@/stores/chat'
 import { ElMessage } from 'element-plus'
 import EnhancedTrading from './EnhancedTrading.vue'
 
@@ -150,81 +161,13 @@ import EnhancedTrading from './EnhancedTrading.vue'
 const emit = defineEmits(['messages-read'])
 
 const gameStore = useGameStore()
+const chatStore = useChatStore()
 
 // 响应式数据
 const activeTab = ref('system')
 const inputMessage = ref('')
 const sending = ref(false)
 const chatContentRef = ref(null)
-
-// 模拟消息数据
-const worldMessages = ref([
-  {
-    id: 1,
-    playerName: '冒险者小明',
-    content: '有人吗？这游戏太真实了！',
-    time: new Date(Date.now() - 300000)
-  },
-  {
-    id: 2,
-    playerName: '海上老兵',
-    content: '新人建议先熟悉航海日志的功能',
-    time: new Date(Date.now() - 240000)
-  },
-  {
-    id: 3,
-    playerName: '探索者萨拉',
-    content: '我的船刚刚遇到了海怪！差点沉了...',
-    time: new Date(Date.now() - 180000)
-  }
-])
-
-const regionMessages = ref([
-  {
-    id: 1,
-    playerName: '附近的船长',
-    content: '这片海域有黑雾接近，大家小心！',
-    time: new Date(Date.now() - 120000)
-  }
-])
-
-const systemMessages = ref([
-  {
-    id: 1,
-    content: '<strong>🎮 欢迎来到全民航海求生游戏！</strong><br/>你已成功觉醒，开始你的海上冒险之旅。',
-    time: new Date(Date.now() - 600000)
-  },
-  {
-    id: 2,
-    content: '<strong>📖 游戏提示：</strong><br/>• 查看航海日志了解游戏规则<br/>• 注意船只状态和资源管理<br/>• 小心后方追来的黑雾',
-    time: new Date(Date.now() - 480000)
-  },
-  {
-    id: 3,
-    content: '<strong>⚠️ 黑雾警告：</strong><br/>黑雾正在以10节的速度向前推进，请保持船只前进！',
-    time: new Date(Date.now() - 360000)
-  }
-])
-
-// 交易消息数据
-const tradeMessages = ref([
-  {
-    id: 1,
-    playerName: '商人船长',
-    tradeType: 'sell',
-    offering: ['白骨令牌', '锯齿匕首'],
-    wanting: ['淡水', '食物'],
-    time: new Date(Date.now() - 600000)
-  },
-  {
-    id: 2,
-    playerName: '深海探险家',
-    tradeType: 'buy',
-    offering: ['钢铁 x50'],
-    wanting: ['医疗绷带', '眼球果'],
-    time: new Date(Date.now() - 300000)
-  }
-])
 
 // 快捷消息
 const quickMessages = [
@@ -237,19 +180,12 @@ const quickMessages = [
 
 // 计算属性
 const currentMessages = computed(() => {
-  switch (activeTab.value) {
-    case 'world':
-      return worldMessages.value
-    case 'region':
-      return regionMessages.value
-    case 'system':
-      return systemMessages.value
-    case 'trade':
-      return tradeMessages.value
-    default:
-      return []
-  }
+  return chatStore.getChannelMessages(activeTab.value)
 })
+
+// 连接状态
+const connectionStatus = computed(() => chatStore.connectionStatus)
+const isConnected = computed(() => chatStore.connected)
 
 // 监听tab切换，滚动到底部并触发消息已读事件
 watch(activeTab, () => {
@@ -262,20 +198,33 @@ watch(activeTab, () => {
 
 // 生命周期
 onMounted(() => {
-  // 添加欢迎消息
-  addSystemMessage('欢迎船长 ' + (gameStore.player?.name || '未知') + ' 加入游戏！')
-  
-  // 模拟定期收到消息
-  startMessageSimulation()
-  
+  // 初始化聊天连接
+  initializeChat()
+
+  // 监听玩家状态变化
+  watch(() => gameStore.player, (newPlayer) => {
+    if (newPlayer?.name && !chatStore.connected) {
+      initializeChat()
+    }
+  }, { immediate: true })
+
   scrollToBottom()
+})
+
+onUnmounted(() => {
+  // 断开WebSocket连接
+  chatStore.disconnect()
 })
 
 // 方法
 const formatTime = (time) => {
+  if (!time) return ''
+
+  // 处理后端返回的时间戳格式
+  const messageTime = typeof time === 'string' ? new Date(time) : time
   const now = new Date()
-  const diff = now - time
-  
+  const diff = now - messageTime
+
   if (diff < 60000) { // 1分钟内
     return '刚刚'
   } else if (diff < 3600000) { // 1小时内
@@ -283,42 +232,30 @@ const formatTime = (time) => {
   } else if (diff < 86400000) { // 24小时内
     return Math.floor(diff / 3600000) + '小时前'
   } else {
-    return time.toLocaleDateString()
+    return messageTime.toLocaleDateString()
   }
 }
 
 const sendMessage = async () => {
   if (!inputMessage.value.trim()) return
-  
+
   sending.value = true
-  
+
   try {
-    // 模拟发送延迟
-    await new Promise(resolve => setTimeout(resolve, 500))
-    
-    const newMessage = {
-      id: Date.now(),
-      playerName: gameStore.player?.name || '匿名船长',
-      content: inputMessage.value.trim(),
-      time: new Date()
+    // 使用WebSocket发送消息
+    const success = chatStore.sendMessage(inputMessage.value.trim(), activeTab.value)
+
+    if (success) {
+      inputMessage.value = ''
+
+      // 滚动到底部
+      nextTick(() => {
+        scrollToBottom()
+      })
     }
-    
-    // 添加到对应频道
-    if (activeTab.value === 'world') {
-      worldMessages.value.push(newMessage)
-    } else if (activeTab.value === 'region') {
-      regionMessages.value.push(newMessage)
-    }
-    
-    inputMessage.value = ''
-    ElMessage.success('消息发送成功')
-    
-    // 滚动到底部
-    nextTick(() => {
-      scrollToBottom()
-    })
-    
+
   } catch (err) {
+    console.error('发送消息失败:', err)
     ElMessage.error('消息发送失败')
   } finally {
     sending.value = false
@@ -326,16 +263,8 @@ const sendMessage = async () => {
 }
 
 const addSystemMessage = (content) => {
-  systemMessages.value.push({
-    id: Date.now(),
-    content: content,
-    time: new Date()
-  })
-  
-  // 限制系统消息数量
-  if (systemMessages.value.length > 50) {
-    systemMessages.value = systemMessages.value.slice(-50)
-  }
+  // 系统消息现在通过WebSocket处理
+  console.log('系统消息:', content)
 }
 
 // 记录玩家选择
@@ -374,38 +303,12 @@ const scrollToBottom = () => {
   }
 }
 
-const startMessageSimulation = () => {
-  // 模拟其他玩家消息
-  const simulatedMessages = [
-    { player: '深海探险家', content: '发现了一个神秘岛屿！', delay: 30000 },
-    { player: '商人船长', content: '有人需要交易食物吗？', delay: 60000 },
-    { player: '老练水手', content: '暴风雨要来了，大家做好准备', delay: 90000 }
-  ]
-  
-  simulatedMessages.forEach((msg, index) => {
-    setTimeout(() => {
-      if (Math.random() > 0.5) { // 随机决定是否发送
-        worldMessages.value.push({
-          id: Date.now() + index,
-          playerName: msg.player,
-          content: msg.content,
-          time: new Date()
-        })
-        
-        // 如果当前在世界频道，滚动到底部
-        if (activeTab.value === 'world') {
-          nextTick(() => {
-            scrollToBottom()
-          })
-        }
-      }
-    }, msg.delay)
-  })
-  
-  // 模拟系统公告
-  setTimeout(() => {
-    addSystemMessage('<strong>🌊 海况更新：</strong><br/>海面风力增强，建议加强船只防护')
-  }, 45000)
+// 初始化聊天连接
+const initializeChat = () => {
+  if (gameStore.player?.name && !chatStore.connected) {
+    console.log('🔗 [CHAT] 初始化聊天连接 - 玩家:', gameStore.player.name)
+    chatStore.connect(gameStore.player.name)
+  }
 }
 
 // 交易相关方法
@@ -419,19 +322,8 @@ const contactTrader = (tradeMessage) => {
 }
 
 const addTradeMessage = (tradeData) => {
-  tradeMessages.value.push({
-    id: Date.now(),
-    playerName: gameStore.player?.name || '匿名船长',
-    ...tradeData,
-    time: new Date()
-  })
-
-  // 如果当前在交易频道，滚动到底部
-  if (activeTab.value === 'trade') {
-    nextTick(() => {
-      scrollToBottom()
-    })
-  }
+  // 交易消息现在通过WebSocket处理
+  console.log('交易消息:', tradeData)
 }
 
 // 暴露方法供外部组件调用
@@ -461,6 +353,7 @@ defineExpose({
   .chat-title {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 0.5rem;
     font-weight: bold;
     color: #ffffff;
@@ -468,10 +361,51 @@ defineExpose({
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
     font-family: 'Consolas', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
     letter-spacing: 0.5px;
-    
+
     .el-icon {
       color: #ffffff;
     }
+
+    .connection-status {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.8rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 12px;
+      background: rgba(0, 0, 0, 0.3);
+
+      &.connected {
+        color: #67C23A;
+        .el-icon {
+          color: #67C23A;
+        }
+      }
+
+      &.connecting {
+        color: #E6A23C;
+        .el-icon {
+          color: #E6A23C;
+          animation: spin 1s linear infinite;
+        }
+      }
+
+      &.disconnected {
+        color: #F56C6C;
+        .el-icon {
+          color: #F56C6C;
+        }
+      }
+
+      .status-text {
+        font-size: 0.7rem;
+      }
+    }
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
   }
   
   .chat-tabs {

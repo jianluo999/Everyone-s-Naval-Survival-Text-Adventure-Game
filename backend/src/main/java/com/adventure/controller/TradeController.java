@@ -14,7 +14,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/trade")
-@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3002"})
+@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001", "http://localhost:3002", "http://localhost:3003"})
 public class TradeController {
     
     private static final Logger logger = LoggerFactory.getLogger(TradeController.class);

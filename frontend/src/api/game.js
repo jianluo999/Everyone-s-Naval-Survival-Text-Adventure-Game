@@ -135,6 +135,18 @@ const gameApi = {
   // 获取玩家的交易
   async getPlayerTrades(playerId) {
     return await api.get(`/trade/player/${playerId}`)
+  },
+
+  // ==================== 聊天系统API ====================
+
+  // 获取聊天历史
+  async getChatHistory(channel, page = 0, size = 50) {
+    return await api.get(`/chat/history/${channel}?page=${page}&size=${size}`)
+  },
+
+  // 获取活跃玩家列表
+  async getActivePlayers() {
+    return await api.get('/chat/active-players')
   }
 }
 

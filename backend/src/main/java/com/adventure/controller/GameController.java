@@ -23,7 +23,7 @@ import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/game")
-@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3002"})
+@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001", "http://localhost:3002", "http://localhost:3003"})
 public class GameController {
 
     private static final Logger logger = LoggerFactory.getLogger(GameController.class);

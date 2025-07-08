@@ -4,6 +4,7 @@ D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\reposi
 D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\model\GameState.java
 D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\model\Material.java
 D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\model\Trade.java
+D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\controller\ChatController.java
 D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\service\GameService.java
 D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\repository\IslandRepository.java
 D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\repository\MaterialRepository.java
@@ -14,13 +15,16 @@ D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\servic
 D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\controller\TradeController.java
 D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\model\Island.java
 D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\repository\StoryRepository.java
+D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\service\ChatService.java
 D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\service\TradeService.java
+D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\model\ChatMessage.java
 D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\model\Equipment.java
 D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\model\Player.java
 D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\sailinggame\model\Equipment.java
 D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\controller\GameController.java
 D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\repository\ChoiceRepository.java
 D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\config\DataInitializer.java
+D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\repository\ChatMessageRepository.java
 D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\model\Ship.java
 D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\repository\FishRepository.java
 D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\repository\TalentRepository.java
@@ -29,3 +33,4 @@ D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\model\
 D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\repository\TradeRepository.java
 D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\SailingGameApplication.java
 D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\repository\EquipmentRepository.java
+D:\StudyPlanT\mygithub\xiaoshuodagang\backend\src\main\java\com\adventure\config\WebSocketConfig.java
