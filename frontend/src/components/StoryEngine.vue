@@ -149,9 +149,9 @@ import { ArrowLeft, ArrowRight } from '@element-plus/icons-vue'
 
 const gameStore = useGameStore()
 
-// 响应式数据
-const currentStoryId = ref(gameStore.gameState?.currentStoryId || 'chapter_01_start');
-const currentChapter = ref({ title: '加载中...', totalPages: 1, content: {} });
+// 响应式数据 - 不应该有硬编码的默认值
+const currentStoryId = ref(gameStore.gameState?.currentStoryId || '');
+const currentChapter = ref({ title: '', totalPages: 0, content: {} });
 const currentChoices = ref([]);
 const currentPage = ref(1);
 const autoPlay = ref(false);

@@ -122,77 +122,11 @@ const gameStore = useGameStore()
 const detailsVisible = ref(false)
 const selectedTalent = ref(null)
 
-// 天赋数据
-const talents = ref([
-  {
-    id: 'mystery_talent_001',
-    name: '深海适应',
-    icon: '🌊',
-    description: '长期在海上生活让你适应了海洋环境，游泳速度提升，溺水抗性增加。',
-    type: 'survival',
-    unlocked: false,
-    revealed: true,
-    progress: 0,
-    requirement: 3,
-    condition: 'survive_days',
-    hint: '在海上生存足够长的时间...',
-    effects: {
-      swimming_speed: 50,
-      drowning_resistance: 25
-    }
-  },
-  {
-    id: 'mystery_talent_002',
-    name: '钓鱼大师',
-    icon: '🎣',
-    description: '对钓鱼的深度理解让你能够钓到更稀有的鱼类，钓鱼成功率大幅提升。',
-    type: 'skill',
-    unlocked: false,
-    revealed: false,
-    progress: 0,
-    requirement: 100,
-    condition: 'fishing_attempts',
-    hint: '重复进行某种海上活动...',
-    effects: {
-      fishing_success_rate: 30,
-      rare_fish_chance: 15
-    }
-  },
-  {
-    id: 'mystery_talent_003',
-    name: '战斗本能',
-    icon: '⚔️',
-    description: '经历过生死战斗后觉醒的本能，战斗时攻击力和闪避率提升。',
-    type: 'combat',
-    unlocked: false,
-    revealed: false,
-    progress: 0,
-    requirement: 5,
-    condition: 'monsters_killed',
-    hint: '面对危险时的选择...',
-    effects: {
-      attack_power: 20,
-      dodge_rate: 15
-    }
-  },
-  {
-    id: 'mystery_talent_004',
-    name: '理智守护',
-    icon: '🧠',
-    description: '经历过无数诡异事件后，你的心智变得更加坚韧，理智值下降速度减缓。',
-    type: 'mental',
-    unlocked: false,
-    revealed: false,
-    progress: 0,
-    requirement: 50,
-    condition: 'sanity_lost',
-    hint: '承受精神压力...',
-    effects: {
-      sanity_loss_reduction: 25,
-      madness_resistance: 20
-    }
-  }
-])
+// 天赋数据 - 从后端API获取
+const talents = ref([])
+const loadingTalents = ref(false)
+
+// 所有天赋数据现在从后端API获取，不再使用硬编码假数据
 
 // 计算属性
 const unlockedTalents = computed(() => {

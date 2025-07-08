@@ -219,13 +219,13 @@ watch(resources) → 触发相关成就和天赋条件
 
 ### 组件通信
 ```javascript
-// 使用 Pinia 统一状态管理
-const gameStore = useGameEcosystemStore()
+// 使用 Pinia 统一状态管理 - 注意：只使用真实的gameStore
+const gameStore = useGameStore()
 
-// 组件间通过 store 通信
-gameStore.completeExploration(islandId, resources, exp)
-gameStore.completeTrade(itemId, price, isBuying)
-gameStore.completeCombat(result, damage)
+// 所有操作都通过后端API进行，确保数据一致性
+await gameStore.makeChoice(choiceId, nextStoryId)
+await gameStore.goFishing()
+await gameStore.updatePlayerStats(changes)
 ```
 
 ### 性能优化

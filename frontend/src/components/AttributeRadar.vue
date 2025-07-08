@@ -232,32 +232,32 @@ const modal = ref({
   attr: null
 })
 
-// 属性数据
+// 属性数据 - 不应该有默认值，应该显示真实数据
 const attributes = computed(() => [
-  { 
-    key: 'strength', 
-    name: '力量', 
-    value: props.playerData.strength || 50 
+  {
+    key: 'strength',
+    name: '力量',
+    value: props.playerData.strength || 0
   },
-  { 
-    key: 'spirit', 
-    name: '精神', 
-    value: props.playerData.spirit || 50 
+  {
+    key: 'spirit',
+    name: '精神',
+    value: props.playerData.spirit || 0
   },
-  { 
-    key: 'agility', 
-    name: '敏捷', 
-    value: props.playerData.agility || 50 
+  {
+    key: 'agility',
+    name: '敏捷',
+    value: props.playerData.agility || 0
   },
-  { 
-    key: 'constitution', 
-    name: '体质', 
-    value: props.playerData.constitution || 50 
+  {
+    key: 'constitution',
+    name: '体质',
+    value: props.playerData.constitution || 0
   },
-  { 
-    key: 'perception', 
-    name: '感知', 
-    value: props.playerData.perception || 50 
+  {
+    key: 'perception',
+    name: '感知',
+    value: props.playerData.perception || 0
   }
 ])
 

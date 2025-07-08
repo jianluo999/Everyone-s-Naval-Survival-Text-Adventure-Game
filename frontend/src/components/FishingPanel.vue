@@ -222,13 +222,13 @@ const getRarityText = (rarity) => {
 const getFishImage = (fishName) => {
   // 根据鱼类名称返回对应图片
   const fishImages = {
-    '长腿沙丁鱼': '/src/assets/images/fish/long-legged-sardine.svg',
-    '囊肿刺豚': '/src/assets/images/fish/cystic-pufferfish.svg',
-    '人头章鱼': '/src/assets/images/fish/human-headed-octopus.svg',
-    '海鲈鱼': '/src/assets/images/fish/sea-bass.svg',
-    '深海怪鱼': '/src/assets/images/fish/deep-sea-monster.svg'
+    '长腿沙丁鱼': '/images/fish/generated/long-legged-sardine.png',
+    '囊肿刺豚': '/images/fish/generated/cystic-pufferfish.png',
+    '人头章鱼': '/images/fish/generated/human-headed-octopus.png',
+    '海鲈鱼': '/images/fish/generated/sea-bass.png',
+    '深海怪鱼': '/images/fish/generated/deep-sea-monster.png'
   }
-  return fishImages[fishName] || '/src/assets/images/fish/sea-bass.svg'
+  return fishImages[fishName] || '/images/fish/generated/sea-bass.png'
 }
 </script>
 

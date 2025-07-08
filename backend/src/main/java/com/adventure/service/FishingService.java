@@ -87,8 +87,13 @@ public class FishingService {
         // 消耗精力
         player.setEnergy(Math.max(0, player.getEnergy() - 10));
 
-        // 计算钓鱼技能（基于感知和经验）
-        int fishingSkill = (player.getPerception() + player.getLevel()) / 2;
+        // 计算钓鱼技能（更复杂的计算公式，避免高等级玩家过于强势）
+        int baseSkill = player.getPerception();
+        int levelBonus = Math.min(player.getLevel() / 3, 10); // 等级加成有上限
+        int sanityPenalty = player.getSanity() < 50 ? (50 - player.getSanity()) / 10 : 0; // 理智影响
+        int energyPenalty = player.getEnergy() < 30 ? (30 - player.getEnergy()) / 5 : 0; // 精力影响
+
+        int fishingSkill = Math.max(1, baseSkill + levelBonus - sanityPenalty - energyPenalty);
 
         // 根据钓点和技能选择鱼类
         Fish caughtFish = selectFishBySpot(fishingSkill, fishingSpot);

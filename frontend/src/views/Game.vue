@@ -1,5 +1,5 @@
 <template>
-  <div class="game-container deep-sea-game">
+  <div v-if="gameStore.player" class="game-container deep-sea-game">
     <!-- 隐藏的移动侧边栏 -->
     <div class="mobile-sidebar" :class="{ 'expanded': sidebarExpanded }" @mouseenter="expandSidebar" @mouseleave="collapseSidebar">
       <div class="sidebar-toggle">
@@ -371,7 +371,7 @@
 
     <!-- 船舱第一视角环境 -->
     <ShipCabin
-      ref="shipCabinRef"
+      ref="shipCabin"
       class="cabin-environment"
       :class="{ 'cabin-active': showCabin }"
     />
@@ -398,8 +398,8 @@
 
       <!-- 使用新的文字冒险布局 -->
       <TextAdventureLayout
-        ref="textAdventureRef"
-        @choice-made="handleChoiceMade"
+        ref="textAdventureLayout"
+        @choice-made="handleMakeChoice"
       />
 
       <!-- 底部深海操作栏 -->
@@ -461,9 +461,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-import { useRouter } from 'vue-router'
-import { useGameStore } from '@/stores/game'
+import { ref, onMounted, onUnmounted, computed } from 'vue';
+import { useRouter } from 'vue-router';
+import { useGameStore } from '@/stores/game';
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { ArrowLeft, Document, Loading, ChatDotRound, Notebook, House } from '@element-plus/icons-vue'
 
@@ -471,14 +471,15 @@ import { ArrowLeft, Document, Loading, ChatDotRound, Notebook, House } from '@el
 import StoryDisplay from '@/components/StoryDisplay.vue'
 import ChatPanel from '@/components/ChatPanel.vue'
 import ComprehensiveStatus from '@/components/ComprehensiveStatus.vue'
-import NavigationLog from '@/components/NavigationLog.vue'
+import AttributeRadar from '@/components/AttributeRadar.vue';
+import SailingMap from '@/components/SailingMap.vue';
+import LogPanel from '@/components/LogPanel.vue';
 import ShipCabin from '@/components/ShipCabin.vue'
 import TextAdventureLayout from '@/components/TextAdventureLayout.vue'
 
-const router = useRouter()
-const gameStore = useGameStore()
+const router = useRouter();
+const gameStore = useGameStore();
 
-// 响应式数据
 const loading = ref(false)
 const saving = ref(false)
 const showCabin = ref(true) // 控制船舱环境显示
@@ -488,7 +489,6 @@ const shipCabinRef = ref(null)
 const textAdventureRef = ref(null)
 const activeRightTab = ref('chat')
 
-// 侧边栏相关状态
 const sidebarExpanded = ref(false)
 const expandedSections = ref({
   island: false,
@@ -506,37 +506,10 @@ const expandedSections = ref({
   blackFog: false
 })
 
-// 装备效果数据
-const equipmentEffects = ref([
-  { id: 1, icon: '⚔️', name: '攻击力', value: '+15' },
-  { id: 2, icon: '🛡️', name: '防御力', value: '+12' },
-  { id: 3, icon: '💨', name: '速度', value: '+8' },
-  { id: 4, icon: '🔥', name: '火焰伤害', value: '+5' }
-])
+const equipmentEffects = ref([])
+const infectionLevel = computed(() => gameStore.player?.infectionLevel || 0)
+const seekingLevel = computed(() => gameStore.player?.seekingLevel || 0)
 
-// 寻求与感染状态
-const seekingLevel = ref(35)
-const infectionLevel = ref(12)
-
-// 生命周期
-onMounted(() => {
-  // 如果没有玩家数据，重定向到主页
-  if (!gameStore.player) {
-    ElMessage.warning('请先唤醒你的深海化身')
-    router.push('/')
-    return
-  }
-
-  // 开始深海游戏循环
-  startGameLoop()
-})
-
-onUnmounted(() => {
-  // 清理资源
-  stopGameLoop()
-})
-
-// 深海游戏循环
 let gameLoopTimer = null
 
 const startGameLoop = () => {
@@ -559,12 +532,10 @@ const stopGameLoop = () => {
   }
 }
 
-// 自动保存
 const autoSave = async () => {
   console.log('正在封印深海记忆...')
 }
 
-// 返回主页
 const handleBackToHome = async () => {
   try {
     await ElMessageBox.confirm(
@@ -585,7 +556,6 @@ const handleBackToHome = async () => {
   }
 }
 
-// 保存游戏
 const handleSaveGame = async () => {
   if (!gameStore.player) return
 
@@ -602,7 +572,6 @@ const handleSaveGame = async () => {
   }
 }
 
-// 切换船舱显示
 const toggleCabin = () => {
   if (textAdventureRef.value && textAdventureRef.value.toggleCabin) {
     textAdventureRef.value.toggleCabin()
@@ -612,7 +581,6 @@ const toggleCabin = () => {
   }
 }
 
-// 侧边栏相关方法
 const expandSidebar = () => {
   sidebarExpanded.value = true
 }
@@ -761,7 +729,6 @@ const openFeature = (feature) => {
   }
 }
 
-// 处理侧边栏功能点击（新增功能专用）
 const handleFeature = (feature) => {
   console.log('点击功能:', feature)
 
@@ -769,8 +736,7 @@ const handleFeature = (feature) => {
   openFeature(feature)
 }
 
-// 处理选择记录
-const handleChoiceMade = (choiceData) => {
+const handleMakeChoice = async (choiceData) => {
   // 记录到聊天面板
   if (chatPanelRef.value && chatPanelRef.value.recordPlayerChoice) {
     chatPanelRef.value.recordPlayerChoice(choiceData.choice, choiceData.storyTitle)

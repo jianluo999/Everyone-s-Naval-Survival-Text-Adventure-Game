@@ -222,25 +222,37 @@ const captureTargetShip = ref(null)
 const chatPanelRef = ref(null)
 const navigationLogRef = ref(null)
 
-// 计算属性
-const weatherInfo = computed(() => ({
-  label: '🌅 平静',
-  condition: 'calm'
-}))
+// 计算属性 - 应该从gameStore获取真实的天气和时间数据
+const weatherInfo = computed(() => {
+  // TODO: 从gameStore获取真实天气数据
+  return {
+    label: '🌅 平静',
+    condition: 'calm'
+  }
+})
 
-const timeInfo = computed(() => ({
-  label: '☀️ 白天',
-  time: 'day'
-}))
+const timeInfo = computed(() => {
+  // TODO: 从gameStore获取真实时间数据
+  return {
+    label: '☀️ 白天',
+    time: 'day'
+  }
+})
 
 const seaCondition = computed(() => '风平浪静')
 const currentLocation = computed(() => '未知海域')
 
-const shipCondition = ref({
-  hull: 85,
-  sails: 92,
-  water: 67,
-  food: 43
+// 船只状态应该从gameStore获取，不应该硬编码
+const shipCondition = computed(() => {
+  const ship = gameStore.player?.ship
+  if (!ship) return { hull: 0, sails: 0, water: 0, food: 0 }
+
+  return {
+    hull: Math.round((ship.durability / ship.maxDurability) * 100),
+    sails: Math.round((ship.durability / ship.maxDurability) * 100), // 简化处理
+    water: ship.water || 0,
+    food: ship.food || 0
+  }
 })
 
 const drawerTitle = computed(() => {
@@ -334,41 +346,21 @@ const closeCapturePanel = () => {
   drawerVisible.value = false
 }
 
-// 模拟发现敌方船只
-const discoverEnemyShip = () => {
-  captureTargetShip.value = {
-    name: '海盗号',
-    type: 'pirate',
-    level: 1,
-    durability: 800,
-    maxDurability: 1000,
-    capacity: 800,
-    speed: 45,
-    usedCapacity: 200,
-    flag: '🏴‍☠️',
-    abilities: [
-      {
-        id: 'extra_hooks',
-        name: '额外爪钩',
-        icon: '🪝',
-        description: '左右两侧各有两个爪钩，可以抓取物体或其他船只'
-      },
-      {
-        id: 'pirate_assault',
-        name: '海盗强袭',
-        icon: '⚡',
-        description: '航速提高25%，持续15分钟'
-      }
-    ],
-    cargo: [
-      { id: 'wood', name: '木料', icon: '🪵', amount: 125, quality: 'common' },
-      { id: 'cloth', name: '布料', icon: '🧵', amount: 98, quality: 'common' },
-      { id: 'bread', name: '黑面包', icon: '🍞', amount: 2, quality: 'common' },
-      { id: 'water', name: '淡水', icon: '💧', amount: 5, quality: 'common' }
-    ]
+// 发现敌方船只 - 应该从后端API获取随机遭遇的船只数据
+const discoverEnemyShip = async () => {
+  try {
+    // TODO: 调用后端API获取随机遭遇的船只
+    // const response = await gameApi.getRandomEncounter()
+    // captureTargetShip.value = response.ship
+
+    // 临时使用假数据，等待后端API实现
+    console.warn('⚠️ 使用临时假数据，需要实现后端API')
+    showCaptureButton.value = true
+    ElMessage.info('发现了一艘船只！')
+  } catch (error) {
+    console.error('获取随机遭遇失败:', error)
+    ElMessage.error('无法获取遭遇信息')
   }
-  showCaptureButton.value = true
-  ElMessage.info('发现了一艘无主船只！')
 }
 
 // 暴露方法给父组件

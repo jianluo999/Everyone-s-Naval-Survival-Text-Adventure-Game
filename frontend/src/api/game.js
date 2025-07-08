@@ -113,6 +113,28 @@ const gameApi = {
   // 获取时间信息
   async getTimeInfo(playerName) {
     return await api.get(`/game/player/${playerName}/time`)
+  },
+
+  // ==================== 交易系统API ====================
+
+  // 获取市场交易列表
+  async getMarketTrades(quality = 'all') {
+    return await api.get(`/trade/market?quality=${quality}`)
+  },
+
+  // 创建新交易
+  async createTrade(tradeData) {
+    return await api.post('/trade/create', tradeData)
+  },
+
+  // 完成交易
+  async completeTrade(tradeId) {
+    return await api.post(`/trade/${tradeId}/complete`)
+  },
+
+  // 获取玩家的交易
+  async getPlayerTrades(playerId) {
+    return await api.get(`/trade/player/${playerId}`)
   }
 }
 

@@ -143,81 +143,14 @@ import { ElMessage } from 'element-plus'
 const gameStore = useGameStore()
 const selectedLocation = ref(null)
 
-// 地图位置数据
-const mapLocations = ref([
-  {
-    id: 'start_area',
-    name: '神秘海域',
-    type: 'island',
-    x: 100,
-    y: 300,
-    size: 20,
-    current: true,
-    explored: true,
-    accessible: true,
-    description: '你的冒险开始的地方，一片神秘的海域。',
-    connections: ['eastern_island', 'northern_ships']
-  },
-  {
-    id: 'eastern_island',
-    name: '东方小岛',
-    type: 'island',
-    x: 300,
-    y: 250,
-    size: 18,
-    current: false,
-    explored: true,
-    accessible: true,
-    description: '一座冒着轻烟的神秘小岛，夜晚曾发生恐怖事件。',
-    connections: ['start_area', 'deep_waters']
-  },
-  {
-    id: 'northern_ships',
-    name: '北方船队',
-    type: 'ships',
-    x: 150,
-    y: 150,
-    size: 15,
-    current: false,
-    explored: false,
-    accessible: true,
-    description: '远处的船只，可能是商船或其他冒险者。',
-    connections: ['start_area']
-  },
-  {
-    id: 'deep_waters',
-    name: '深海区域',
-    type: 'water',
-    x: 500,
-    y: 300,
-    size: 25,
-    current: false,
-    explored: false,
-    accessible: false,
-    description: '深不见底的海域，传说中有古老的秘密。',
-    connections: ['eastern_island']
-  },
-  {
-    id: 'western_storm',
-    name: '风暴海域',
-    type: 'storm',
-    x: 50,
-    y: 450,
-    size: 20,
-    current: false,
-    explored: false,
-    accessible: false,
-    description: '乌云密布的危险海域，雷电交加。',
-    connections: []
-  }
-])
+// 地图位置数据 - 从后端API获取
+const mapLocations = ref([])
+const loadingMap = ref(false)
 
-// 雾气区域
-const fogAreas = ref([
-  { id: 1, x: 600, y: 200, radius: 80 },
-  { id: 2, x: 700, y: 400, radius: 60 },
-  { id: 3, x: 400, y: 500, radius: 70 }
-])
+// 所有地图数据现在从后端API获取，不再使用硬编码假数据
+
+// 雾气区域 - 也应该从后端获取
+const fogAreas = ref([])
 
 // 获取地点颜色
 const getLocationColor = (location) => {

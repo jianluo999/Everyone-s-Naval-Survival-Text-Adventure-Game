@@ -122,13 +122,14 @@ import { ArrowLeft, View, Compass, Search, Reading, Sunny } from '@element-plus/
 const router = useRouter()
 const cabinRef = ref(null)
 
-// 环境状态
+// 环境状态 - 应该从游戏状态获取，不应该硬编码
+// TODO: 从gameStore获取真实的天气和时间数据
 const currentWeather = ref('calm')
 const currentTime = ref('day')
 const soundEnabled = ref(true)
 const volume = ref(30)
 
-// 标签映射
+// 标签映射 - 这些可以保留作为UI显示用
 const weatherLabels = {
   calm: '🌅 平静',
   windy: '💨 多风',

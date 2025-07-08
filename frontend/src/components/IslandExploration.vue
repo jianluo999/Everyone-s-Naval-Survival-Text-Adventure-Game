@@ -63,60 +63,10 @@ import { ref, computed } from 'vue'
 
 // 响应式数据
 const currentArea = ref(null)
-const explorationLog = ref([
-  { time: '10:00', text: '开始探索神秘岛屿...' }
-])
-
-const explorationAreas = ref([
-  {
-    id: 'beach',
-    name: '海滩',
-    icon: '🏖️',
-    description: '金色的沙滩上散落着贝壳和海藻',
-    explored: false,
-    current: false,
-    actions: [
-      { id: 'collect_shells', name: '收集贝壳', icon: '🐚', energyCost: 5 },
-      { id: 'search_debris', name: '搜寻漂流物', icon: '🔍', energyCost: 10 }
-    ]
-  },
-  {
-    id: 'forest',
-    name: '丛林',
-    icon: '🌲',
-    description: '茂密的热带丛林，充满了未知的危险和机遇',
-    explored: false,
-    current: false,
-    actions: [
-      { id: 'gather_wood', name: '收集木材', icon: '🪵', energyCost: 15 },
-      { id: 'hunt_animals', name: '狩猎', icon: '🏹', energyCost: 20 }
-    ]
-  },
-  {
-    id: 'cave',
-    name: '洞穴',
-    icon: '🕳️',
-    description: '黑暗的洞穴深处似乎隐藏着什么秘密',
-    explored: false,
-    current: false,
-    actions: [
-      { id: 'explore_cave', name: '深入探索', icon: '🔦', energyCost: 25 },
-      { id: 'mine_ore', name: '挖掘矿石', icon: '⛏️', energyCost: 30 }
-    ]
-  },
-  {
-    id: 'ruins',
-    name: '古迹',
-    icon: '🏛️',
-    description: '古老的石制建筑遗迹，散发着神秘的气息',
-    explored: false,
-    current: false,
-    actions: [
-      { id: 'investigate_ruins', name: '调查遗迹', icon: '📜', energyCost: 20 },
-      { id: 'decipher_symbols', name: '解读符文', icon: '🔮', energyCost: 35 }
-    ]
-  }
-])
+// 从后端API获取探索数据
+const explorationLog = ref([])
+const explorationAreas = ref([])
+const loadingExploration = ref(false)
 
 // 方法
 const exploreArea = (area) => {

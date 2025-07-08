@@ -62,14 +62,18 @@ const imagePath = computed(() => {
   if (props.fish && props.fish.imageName) {
     console.log('Loading image:', props.fish.imageName); // 调试日志
 
-    // 使用动态导入的方式加载图片
-    const imageName = props.fish.imageName;
-    try {
-      // 直接使用相对路径，Vite 会处理资源
-      return `/src/assets/images/fish/generated/${imageName}`;
-    } catch (error) {
-      console.warn('无法加载鱼类图片:', imageName, error);
+    // 使用 public 目录中的图片
+    let imageName = props.fish.imageName;
+
+    // 确保文件名有正确的扩展名
+    if (!imageName.includes('.')) {
+      imageName = `${imageName}.png`;
     }
+
+    // 在 Vite 中，public 目录中的文件可以直接通过根路径访问
+    const imagePath = `/images/fish/generated/${imageName}`;
+    console.log('Generated image path:', imagePath); // 调试日志
+    return imagePath;
   }
 
   // 返回默认的占位符 SVG

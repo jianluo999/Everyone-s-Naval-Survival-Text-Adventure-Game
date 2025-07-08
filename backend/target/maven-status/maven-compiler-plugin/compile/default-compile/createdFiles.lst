@@ -6,6 +6,7 @@ com\adventure\model\Ship.class
 com\adventure\model\Story.class
 com\adventure\repository\FishRepository.class
 com\adventure\model\Choice.class
+com\adventure\config\DataInitializer.class
 com\adventure\controller\GameController$StoryDTO.class
 com\adventure\controller\GameController$ShipDTO.class
 com\adventure\model\Equipment.class

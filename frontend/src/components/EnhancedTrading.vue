@@ -265,10 +265,11 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useGameStore } from '@/stores/game'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { Shop, ChatDotRound, User, Search } from '@element-plus/icons-vue'
+import gameApi from '@/api/game'
 
 const gameStore = useGameStore()
 
@@ -279,122 +280,17 @@ const selectedQuality = ref('all')
 const friendSearchQuery = ref('')
 const currentPlayer = ref('杨逸') // 当前玩家名称
 
-// 交易列表数据
-const marketListings = ref([
-  {
-    id: 1,
-    sellerName: '周黛',
-    sellerShip: '光辉女神号',
-    createdAt: new Date(Date.now() - 300000),
-    quality: 'excellent',
-    offering: [
-      {
-        id: 'holy_water',
-        name: '圣水',
-        icon: '💧',
-        amount: 2,
-        quality: 'excellent',
-        description: '受祝福的水，可治愈多种毒素和诅咒'
-      }
-    ],
-    wanting: ['溺亡者之怨', '布料', '海螺币'],
-    status: 'active'
-  },
-  {
-    id: 2,
-    sellerName: '钢铁雄心号',
-    sellerShip: '钢铁战舰',
-    createdAt: new Date(Date.now() - 600000),
-    quality: 'good',
-    offering: [
-      {
-        id: 'steel',
-        name: '钢铁',
-        icon: '⚙️',
-        amount: 50,
-        quality: 'good',
-        description: '高质量的钢铁材料'
-      }
-    ],
-    wanting: ['医疗绷带', '眼球果'],
-    status: 'active'
-  },
-  {
-    id: 3,
-    sellerName: '深海探险家',
-    sellerShip: '探索者号',
-    createdAt: new Date(Date.now() - 900000),
-    quality: 'good',
-    offering: [
-      {
-        id: 'bone_token',
-        name: '白骨令牌',
-        icon: '🦴',
-        amount: 1,
-        quality: 'excellent',
-        description: '可以召唤骷髅战士的神秘令牌'
-      },
-      {
-        id: 'serrated_dagger',
-        name: '锯齿匕首',
-        icon: '🗡️',
-        amount: 1,
-        quality: 'excellent',
-        description: '锋利但短小的武器'
-      }
-    ],
-    wanting: ['淡水', '食物', '海螺币'],
-    status: 'active'
-  }
-])
+// 交易列表数据 - 从后端API获取
+const marketListings = ref([])
+const loadingMarket = ref(false)
 
-// 私人交易数据
-const privateTrades = ref([
-  {
-    id: 1,
-    traderName: '周黛',
-    status: 'pending',
-    read: false,
-    lastUpdate: new Date(Date.now() - 180000),
-    theirOffer: [
-      { name: '圣水', amount: 1 }
-    ],
-    theirRequest: ['溺亡者之怨', '400海螺币'],
-    myOffer: [],
-    myRequest: []
-  }
-])
+// 私人交易数据 - 从后端API获取
+const privateTrades = ref([])
+const loadingTrades = ref(false)
 
-// 好友数据
-const friends = ref([
-  {
-    id: 1,
-    name: '周黛',
-    shipName: '光辉女神号',
-    avatar: '👩‍🦳',
-    status: '在交易中心',
-    online: true,
-    lastSeen: null
-  },
-  {
-    id: 2,
-    name: '钢铁雄心号',
-    shipName: '钢铁战舰',
-    avatar: '👨‍🔧',
-    status: '正在航行',
-    online: true,
-    lastSeen: null
-  },
-  {
-    id: 3,
-    name: '深海探险家',
-    shipName: '探索者号',
-    avatar: '🧭',
-    status: '离线',
-    online: false,
-    lastSeen: new Date(Date.now() - 3600000)
-  }
-])
+// 好友数据 - 从后端API获取
+const friends = ref([])
+const loadingFriends = ref(false)
 
 // 计算属性
 const filteredListings = computed(() => {
@@ -416,6 +312,39 @@ const onlineFriends = computed(() => {
 const offlineFriends = computed(() => {
   return friends.value.filter(friend => !friend.online)
 })
+
+// 加载市场数据
+const loadMarketData = async () => {
+  loadingMarket.value = true
+  try {
+    const response = await gameApi.getMarketTrades(selectedQuality.value)
+    if (response.success) {
+      marketListings.value = response.trades
+      console.log('✅ 市场数据加载成功:', response.trades.length, '个交易')
+    } else {
+      ElMessage.error('加载市场数据失败')
+    }
+  } catch (error) {
+    console.error('❌ 加载市场数据失败:', error)
+    ElMessage.error('无法连接到交易服务器')
+  } finally {
+    loadingMarket.value = false
+  }
+}
+
+// 加载好友数据
+const loadFriendsData = async () => {
+  loadingFriends.value = true
+  try {
+    // TODO: 实现好友API
+    console.warn('⚠️ 好友系统API尚未实现')
+    friends.value = [] // 暂时清空
+  } catch (error) {
+    console.error('❌ 加载好友数据失败:', error)
+  } finally {
+    loadingFriends.value = false
+  }
+}
 
 // 方法
 const getQualityText = (quality) => {
@@ -556,6 +485,18 @@ onMounted(() => {
       ElMessage.info('收到新的交易请求')
     }
   }, 3000)
+})
+
+// 组件挂载时加载数据
+onMounted(() => {
+  console.log('🏪 交易组件挂载，开始加载数据...')
+  loadMarketData()
+  loadFriendsData()
+})
+
+// 监听品质筛选变化
+watch(selectedQuality, () => {
+  loadMarketData()
 })
 </script>
 

@@ -12,13 +12,14 @@ export const useGameStore = defineStore('game', () => {
   const gameStarted = ref(false)
   const fishingResult = ref(null)
   const caughtFish = ref(null)
+  // 时间信息应该从后端获取，不应该硬编码默认值
   const timeInfo = ref({
-    currentDay: 1,
-    currentHour: 8,
-    timeDescription: '上午',
+    currentDay: 0,
+    currentHour: 0,
+    timeDescription: '',
     actionsToday: 0,
-    maxActionsPerDay: 10,
-    remainingActions: 10
+    maxActionsPerDay: 0,
+    remainingActions: 0
   })
 
   // 计算属性
@@ -308,89 +309,32 @@ export const useGameStore = defineStore('game', () => {
     }
   }
 
-  // 扩展钓鱼系统 - 添加新的物品类型
-  const extendedFishingItems = ref([
-    {
-      id: 'eyeball_fruit',
-      name: '眼球果',
-      type: 'consumable',
-      rarity: 'uncommon',
-      description: '虽然外表诡异，但它是一种产自深渊的水果，微甜，可补充维生素、盐分和水分。',
-      effects: {
-        sanity: -2,
-        health: 5,
-        thirst: 15,
-        hunger: 10
-      },
-      consumable: true
-    },
-    {
-      id: 'cyst_pufferfish',
-      name: '囊肿刺豚',
-      type: 'consumable',
-      rarity: 'rare',
-      description: '一种奇特的深海鱼类，身上长满了囊肿，但肉质鲜美。生吃可能有风险。',
-      effects: {
-        sanity: -5,
-        health: -10, // 可能中毒
-        hunger: 20
-      },
-      consumable: true,
-      cookable: true
-    },
-    {
-      id: 'long_leg_sardine',
-      name: '长腿沙丁鱼',
-      type: 'consumable',
-      rarity: 'common',
-      description: '一种奇异的沙丁鱼，长着细长的腿。虽然看起来诡异，但营养丰富。',
-      effects: {
-        sanity: -1,
-        hunger: 8,
-        thirst: 3
-      },
-      consumable: true,
-      cookable: true
-    },
-    {
-      id: 'medical_bandage',
-      name: '医疗绷带',
-      type: 'medical',
-      rarity: 'uncommon',
-      description: '具有加速愈合和消炎效果的医疗用品。',
-      effects: {
-        health: 15,
-        infection: -1 // 减少感染程度
-      },
-      consumable: true
-    },
-    {
-      id: 'fresh_water',
-      name: '淡水',
-      type: 'consumable',
-      rarity: 'common',
-      description: '珍贵的淡水资源。',
-      effects: {
-        thirst: 25
-      },
-      consumable: true
-    }
-  ])
+  // 注意：所有游戏数据都应该从后端获取，不在前端硬编码
+  // 这些数据仅作为类型定义参考，实际使用时从API获取
 
   async function eatFish(fishId) {
     if (!player.value) return;
 
     try {
-      const response = await gameApi.eatFish({
-        playerName: player.value.name,
-        fishId: fishId
-      });
-      
-      player.value = response.player; // 更新玩家状态
-      ElMessage.success(response.message);
-      
-      // 清除已食用的鱼
-      caughtFish.value = null;
+      // 修复API调用 - 使用正确的参数格式
+      const response = await gameApi.eatFish(player.value.name, fishId);
+
+      // 更新玩家状态
+      if (response.success) {
+        // 应用玩家状态变化
+        if (response.playerChanges) {
+          applyPlayerChanges(response.playerChanges);
+        }
+        ElMessage.success(response.message);
+
+        // 清除已食用的鱼
+        caughtFish.value = null;
+
+        // 同步最新状态
+        await syncPlayerState();
+      } else {
+        ElMessage.error(response.message || '食用失败');
+      }
 
     } catch (error) {
       ElMessage.error(error.message || '食用失败');
@@ -477,12 +421,62 @@ export const useGameStore = defineStore('game', () => {
     fishingResult.value = null
     caughtFish.value = null
     timeInfo.value = {
-      currentDay: 1,
-      currentHour: 8,
-      timeDescription: '上午',
+      currentDay: 0,
+      currentHour: 0,
+      timeDescription: '',
       actionsToday: 0,
-      maxActionsPerDay: 10,
-      remainingActions: 10
+      maxActionsPerDay: 0,
+      remainingActions: 0
+    }
+  }
+
+  // 统一的状态同步方法 - 确保前端状态与后端一致
+  async function syncPlayerState() {
+    if (!player.value?.name) return
+
+    try {
+      const response = await gameApi.getPlayer(player.value.name)
+      player.value = response.player
+
+      // 同步时间信息
+      if (player.value.gameState) {
+        timeInfo.value = {
+          currentDay: player.value.gameState.currentDay || 1,
+          currentHour: player.value.gameState.currentHour || 8,
+          timeDescription: player.value.gameState.timeDescription || '上午',
+          actionsToday: player.value.gameState.actionsToday || 0,
+          maxActionsPerDay: player.value.gameState.maxActionsPerDay || 10,
+          remainingActions: (player.value.gameState.maxActionsPerDay || 10) - (player.value.gameState.actionsToday || 0)
+        }
+      }
+
+      // 同步当前故事
+      await loadCurrentStory()
+
+      console.log('✅ 状态同步成功:', player.value)
+    } catch (err) {
+      console.error('❌ 状态同步失败:', err)
+      error.value = '状态同步失败: ' + err.message
+    }
+  }
+
+  // 定期同步状态（可选，防止前后端数据偏差）
+  let syncInterval = null
+
+  function startAutoSync(intervalMs = 30000) { // 30秒同步一次
+    if (syncInterval) clearInterval(syncInterval)
+
+    syncInterval = setInterval(() => {
+      if (gameStarted.value && player.value) {
+        syncPlayerState()
+      }
+    }, intervalMs)
+  }
+
+  function stopAutoSync() {
+    if (syncInterval) {
+      clearInterval(syncInterval)
+      syncInterval = null
     }
   }
 
@@ -496,14 +490,14 @@ export const useGameStore = defineStore('game', () => {
     fishingResult,
     caughtFish,
     timeInfo,
-    
+
     // 计算属性
     isPlayerAlive,
     playerLevel,
     shipStatus,
     canFish,
     survivalStatus,
-    
+
     // 动作
     createPlayer,
     loadPlayer,
@@ -516,6 +510,11 @@ export const useGameStore = defineStore('game', () => {
     clearCaughtFish,
     advanceTime,
     getTimeInfo,
-    resetGame
+    resetGame,
+
+    // 新增：状态同步方法
+    syncPlayerState,
+    startAutoSync,
+    stopAutoSync
   }
 }) 
