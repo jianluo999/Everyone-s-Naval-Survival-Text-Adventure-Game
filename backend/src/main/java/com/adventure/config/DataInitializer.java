@@ -52,16 +52,20 @@ public class DataInitializer implements CommandLineRunner {
             System.out.println("⚠️ 游戏装备已存在，跳过创建");
         }
 
-        // 检查并创建基础游戏故事（story_1_1 到 story_1_3）
-        if (storyRepository.findByStoryId("story_1_1").isEmpty()) {
-            createBasicGameStories();
-        } else {
-            System.out.println("⚠️ 基础游戏故事已存在，跳过创建");
-        }
+        // 检查故事数据是否已存在
+        long storyCount = storyRepository.count();
+        long choiceCount = choiceRepository.count();
 
-        // 强制重新创建批量故事
-        System.out.println("🔄 强制重新导入批量故事数据...");
-        createBatchStories();
+        if (storyCount > 100) {
+            System.out.println("✅ 发现大量故事数据已存在 (" + storyCount + " 个故事)，跳过数据创建");
+            System.out.println("✅ 发现大量选择数据已存在 (" + choiceCount + " 个选择)");
+        } else {
+            System.out.println("⚠️ 故事数据较少 (" + storyCount + " 个)，创建基础数据");
+            // 检查并创建基础游戏故事（story_1_1 到 story_1_3）
+            if (storyRepository.findByStoryId("story_1_1").isEmpty()) {
+                createBasicGameStories();
+            }
+        }
 
         // 检查并创建怪异鱼类
         if (fishRepository.count() == 0) {
